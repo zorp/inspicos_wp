@@ -9,3 +9,11 @@ Version: 1.0.0.
 */
 
 @import url('../stereoclub-wpl/style.css');
+
+#page {
+  padding-top: 0;
+}
+
+.site-header .container_12 .grid_12 {
+  background-color: #fff;
+}
