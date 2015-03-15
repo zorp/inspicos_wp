@@ -48,7 +48,7 @@
 				<div class="container_12">
 					<div class="grid_12 no-m-b no-m-t">
 						<!-- Site title and description -->
-						<div class="fleft grid_4 alpha branding">
+						<div class="fleft grid_4 branding">
 							<h1 id="site-title">
 								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?> - <?php bloginfo('description'); ?>" rel="home">
 								<?php   
@@ -62,7 +62,7 @@
 							<h2 id="site-description"><?php bloginfo('description'); ?></h2>
 						</div>
 						<!-- Search and Share icons -->
-						<div class="grid_8 omega socialnetworking">
+						<div class="fright no-m-t socialnetworking">
 							<?php $toolbar_share = ot_get_option( 'toolbar_share', array() ); ?>
 								
 								<?php
@@ -92,6 +92,8 @@
 										<?php endforeach; ?>
 									<?php endif; ?>
 								</ul>
+
+								<div class="epa-logo"><img src="/wp-content/uploads/2015/02/epa_logo.png" alt="European Patent Attorneys"</div>
 						</div>
 						<div class="clear"></div>
 					</div>
