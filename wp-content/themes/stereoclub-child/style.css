@@ -10,6 +10,20 @@ Version: 1.0.0.
 
 @import url('../stereoclub-wpl/style.css');
 
+.link-icon {
+  background-image: url('images/link-icon.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding-left: 30px;
+  line-height: 20px;
+  min-height: 20px;
+  display: block;
+}
+
+.fleftmargin {
+  margin-right: 1em;
+}
+
 #page {
   padding-top: 0;
 }
@@ -34,4 +48,154 @@ Version: 1.0.0.
 
 .socialnetworking .epa-logo {
   margin-top: 60px;
+}
+
+.inspicoslatestposts {
+  margin-bottom: 1.5em;
+}
+
+.entry-head,
+.entry-head a:link,
+.entry-head a:visited,
+.entry-head a:active,
+.entry-head a:hover {
+  color: #002b65;
+  text-decoration: none;
+}
+.entry-title a:link,
+.entry-title a:visited,
+.entry-title a:active,
+.entry-title a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.list-entry-content {
+  padding: 1.5em;
+}
+
+.latest-item .entry-thumb img {
+  float: left;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  margin-top: 5px;
+}
+
+.latest-item .entry-head a {
+  font-size: 100%;
+  display: block;
+}
+
+.list-block-item:hover {
+  background: none;
+  animation-name: none;
+  color: #333;
+}
+.list-block-item .entry-description .entry-head a:hover {
+  color: #002b65;
+}
+.no-margin {
+  margin: 0;
+}
+
+/*  ----------------------------------------------------------
+  Share buttons
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+.more-options.share-bt {position: relative; float: right;}
+
+.more-options .share-buttons {
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  width: 120px;
+  margin: 0;
+  padding: 0;
+  display: none;
+  background: #8C8F95!important;
+
+}
+.share-click {
+  cursor: pointer;
+    font-size: 6px;
+}
+
+.entry-header .more-options.share-bt.square {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+}
+
+.more-options .share-buttons li {
+  float: left;
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  
+}
+
+.more-options .share-buttons li a{
+  font-size: 18px;
+  margin: 0;
+  padding: 8px 0 0 0;
+  height: 32px;
+  width: 40px;
+}
+
+.more-options .share-buttons li a:hover{
+  cursor: pointer;
+}
+
+.more-options .share-buttons li .share-icon-fb:hover{
+  background: #3b5998;
+}
+.more-options .share-buttons li .share-icon-tw:hover{
+  background: #00aced;
+}
+.more-options .share-buttons li .share-icon-pt:hover{
+  background: #cb2027;
+}
+
+.entry-meta .more-options {
+  float: right;
+  background: #fff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: 8px;
+}
+
+.entry-meta .more-options a{
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.entry-meta .more-options.share-bt.square {
+    border-radius: 0px;
+}
+
+.entry-content-post {
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 48%;
+  float: left;
+  margin-right: 20px;
+
+}
+.profile-intro {
+  width: 48%;
+  float: left;
+
 }
