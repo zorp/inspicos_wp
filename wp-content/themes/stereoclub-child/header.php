@@ -30,6 +30,7 @@
 	<?php if ( is_singular() ) wp_enqueue_script( "comment-reply" ); ?>
 	<?php wp_head(); ?>
 	<style type="text/css"><?php echo stripslashes(ot_get_option('wpl_css')) ?></style>
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 <body <?php body_class(); ?>>
 	

@@ -10,7 +10,9 @@ License URI: license.txt
 Tags: black, blue, green, orange, pink, red, white, two-columns, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, front-page-post-form, microformats, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, blavatar
 */
 
+/*
 @import url(http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic);
+*/
 
 /* Fonts
 	font-family: 'Arimo', sans-serif;
@@ -138,7 +140,8 @@ a img {
 body, input, textarea {
 	color: #333;
 	font-size: 14px;
-	font-family: 'Arimo', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 400;
 	line-height: 1.5;
 }
 
