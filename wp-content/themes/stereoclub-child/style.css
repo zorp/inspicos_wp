@@ -27,10 +27,49 @@ h2 {
   color: #002B65;
 }
 
+/*
+ * MENU STYLING
+*/
+
+#site-navigation ul li.current_page_item a {
+  background: #000!important;
+}
+
+#site-navigation ul.sub-menu {
+  background: #fff!important;
+}
+
+.site-navigation ul.menu ul a {
+  color: #000;
+}
+
+.site-navigation ul.menu ul.sub-menu li.current_page_item a {
+  color: #fff!important;
+}
+
+#site-navigation ul.sub-menu li:hover,
+#site-navigation ul li:hover a:hover {
+  background: #000!important;
+  color: #fff!important;
+}
+
+/*.site-navigation ul.sub-menu ul.sub-menu li a,
+.site-navigation ul.sub-menu li:hover ul.sub-menu li a,
+.site-navigation .menu .sub-menu, .site-navigation .menu .children a {
+  color: #000!important;
+}*/
+
+.site-navigation .sub-menu .sub-menu li a {
+  color: #000!important; 
+}
+
 .site-navigation .menu li a {
   font-family: 'Titillium Web', sans-serif;
   font-weight: 200;
 }
+
+/* ******* */
+
 .list-block-item .entry-description .entry-head {
   font-family: 'Titillium Web', sans-serif;
   font-weight: 200;
