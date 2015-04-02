@@ -27,6 +27,11 @@ h2 {
   color: #002B65;
 }
 
+.widget ul li:hover {
+    animation-duration: 0s;
+    animation-name: none;
+}
+
 /*
  * MENU STYLING
 */
@@ -63,6 +68,10 @@ h2 {
 .site-navigation .menu .sub-menu, .site-navigation .menu .children a {
   color: #000!important;
 }*/
+
+.site-navigation .menu .sub-menu {
+  color: #000;
+}
 
 .site-navigation .sub-menu .sub-menu li a {
   color: #000!important; 
@@ -268,4 +277,43 @@ h2 {
   width: 48%;
   float: left;
 
+}
+
+/* FOOTER REGION */
+.site-footer #status-info {
+  background: #8c8f95!important;
+}
+
+.site-footer .textwidget a,
+.site-footer .textwidget a:visited {
+    color: #fff!important;
+    text-decoration: none;
+}
+
+.site-footer .textwidget a.link-icon, a.link-icon:visited {
+    color: #505050!important;
+}
+
+.site-footer .entry-header {
+  background: transparent;
+  color: #505050;
+}
+
+.site-footer .first .widget .textwidget,
+.site-footer .first .entry-header {
+  padding-left: 40px;
+}
+
+.site-footer .first .entry-header {
+  color: #002B65;
+}
+
+.site-footer .entry-header {
+  padding-bottom: 0;
+}
+
+.site-footer .widget .textwidget {
+  background: transparent;
+  padding-top: 10px;
+  color: #fff;
 }
