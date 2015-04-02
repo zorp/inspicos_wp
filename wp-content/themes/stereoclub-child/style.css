@@ -39,7 +39,12 @@ h2 {
   background: #fff!important;
 }
 
-.site-navigation ul.menu ul a {
+.site-navigation ul.sub-menu li:hover a {
+  color: #fff;
+}
+
+.site-navigation ul.menu ul a,
+.site-navigation ul.sub-menu ul.sub-menu li a {
   color: #000;
 }
 
