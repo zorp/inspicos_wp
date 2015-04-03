@@ -11,17 +11,13 @@
 <!-- Posts -->
 <article id="post-<?php the_ID(); ?>" <?php post_class('single-post'); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<div class="clear"></div>
-	</header>
-	<div class="entry-meta">
-		<time datetime="2010-03-20" class="fleft"><?php wplook_get_date(); ?></time>
+		<h2 class="entry-title"><?php echo get_post_custom_values('short_title')[0]; ?></h2>
 		<?php $share_buttons = get_post_meta(get_the_ID(), 'wpl_share_buttons_blog', true); ?>
 		<?php if ( $share_buttons !='off' ) {
 			wplook_get_share_buttons();
 		} ?>
 		<div class="clear"></div>
-	</div>
+	</header>
 	
 	<div class="entry-content-list">
 		<?php if ( has_post_thumbnail() ) { ?>
@@ -33,6 +29,8 @@
 		<div class="clear"></div>
 		<div class="entry-content-post">
 			<br />
+			<h1 class="entry-title"><?php the_title(); ?></h1>
+			<time datetime="2010-03-20" class="post-date"><?php wplook_get_date(); ?></time>
 			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="clear"></div><div class="page-link"><span>' . __( 'Pages:', 'wplook' ) . '</span>', 'after' => '</div>' ) ); ?>
 			<?php if ( get_the_tag_list( '', ', ' ) ) { ?>

@@ -139,6 +139,16 @@ h2 {
   margin-bottom: 10px;
 }
 
+.entry-title {
+  line-height: 1em;
+  margin-bottom: 10px;
+}
+
+.post-date {
+  margin-bottom: 15px;
+  display: block;
+}
+
 .entry-head,
 .entry-head a:link,
 .entry-head a:visited,
@@ -201,7 +211,7 @@ h2.entry-title {
   margin: 0;
   padding: 0;
   display: none;
-  background: #8C8F95!important;
+  background: #505050!important;
 
 }
 .share-click {
