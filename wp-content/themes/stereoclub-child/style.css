@@ -133,6 +133,12 @@ h2 {
   margin-bottom: 1.5em;
 }
 
+.inspicoslatestposts .entry-head {
+  line-height: 1em;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
 .entry-head,
 .entry-head a:link,
 .entry-head a:visited,
@@ -147,6 +153,10 @@ h2 {
 .entry-title a:hover {
   color: #fff;
   text-decoration: none;
+}
+
+h2.entry-title {
+  color: #fff;
 }
 
 .list-entry-content {

@@ -78,11 +78,11 @@
 					</div>
 				<?php }	?>
 
-				<?php if ( ot_get_option('wpl_copyright') ): ?>
+				<?php if ( ot_get_option('wpl_copyright') != 'empty' ): ?>
 					<!-- Site info -->
 					<div id="site-info" class="grid_12">
 						<div class="margins">
-							<?php if ( ot_get_option('wpl_copyright') ){ echo ot_get_option('wpl_copyright'); } ?>
+							<?php if ( ot_get_option('wpl_copyright') != 'empty' ){ echo ot_get_option('wpl_copyright'); } ?>
 						</div>
 					</div>
 				<?php endif ?>

@@ -107,15 +107,16 @@ class inspicos_posts_widget extends WP_Widget {
 				<?php while( $posts->have_posts() ) : $posts->the_post(); ?>
 					<aside id="latest-posts-<?php the_ID(); ?>" class="inspicoslatestposts widget">
 						<header class="entry-header">
-							<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><?php //echo wplook_custom_taxonomies_terms_links(); ?></h1>
+							<!--<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><?php //echo wplook_custom_taxonomies_terms_links(); ?></h1>-->
+							<h2 class="entry-title"><?php echo get_post_custom_values('short_title')[0]; ?></h2>
 							<div class="clear"></div>
 						</header>
 						
 						<div class="entry-content list-entry-content">
 							<div class="entry-description">
-								<!--<h1 class="entry-head"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>-->
+								<h1 class="entry-head"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 								<div class="short-description">
-									<p><?php echo wplook_short_excerpt(ot_get_option('wpl_rest_events_excerpt_limit'));?></p>
+									<p><?php echo wplook_short_excerpt(ot_get_option('wpl_rest_events_excerpt_limit'));?>...</p>
 									<a href="<?php the_permalink(); ?>" title="<?php _e('read more', 'wplook'); ?>" class="link-icon"><?php _e('read more', 'wplook'); ?></a>
 								</div>
 							</div>
