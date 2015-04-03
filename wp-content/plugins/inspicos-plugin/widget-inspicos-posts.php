@@ -42,11 +42,24 @@ class inspicos_posts_widget extends WP_Widget {
 			$nr_posts = __( '4', 'inspicos' );
 		}
 
+		if ( $instance ) {
+			$offset_posts = esc_attr( $instance[ 'offset_posts' ] );
+		}
+		else {
+			$offset_posts = __( '0', 'inspicos' );
+		}
+
 		?>			
 			<p>
 				<label for="<?php echo $this->get_field_id('nr_posts'); ?>"> <?php _e('Number of Posts:', 'inspicos'); ?> </label>
 				<input class="widefat" id="<?php echo $this->get_field_id('nr_posts'); ?>" name="<?php echo $this->get_field_name('nr_posts'); ?>" type="text" value="<?php echo $nr_posts; ?>" />
 				<p style="font-size: 10px; color: #999; margin: -10px 0 0 0px; padding: 0px;"> <?php _e('Number of posts you want to display', 'inspicos'); ?></p>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id('offset_posts'); ?>"> <?php _e('Offset posts by:', 'inspicos'); ?> </label>
+				<input class="widefat" id="<?php echo $this->get_field_id('offset_posts'); ?>" name="<?php echo $this->get_field_name('offset_posts'); ?>" type="text" value="<?php echo $offset_posts; ?>" />
+				<p style="font-size: 10px; color: #999; margin: -10px 0 0 0px; padding: 0px;"> <?php _e('Offset posts displayed by', 'inspicos'); ?></p>
 			</p>
 
 		<?php 
@@ -60,6 +73,7 @@ class inspicos_posts_widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['nr_posts'] = sanitize_text_field($new_instance['nr_posts']);
+		$instance['offset_posts'] = sanitize_text_field($new_instance['offset_posts']);
 		return $instance;
 	}
 
@@ -71,6 +85,7 @@ class inspicos_posts_widget extends WP_Widget {
 		global $post;
 		extract( $args );
 		$nr_posts = apply_filters( 'widget', $instance['nr_posts'] );
+		$offset_posts = apply_filters( 'widget', $instance['offset_posts'] );
 		?>
 		
 		<?php
@@ -79,6 +94,7 @@ class inspicos_posts_widget extends WP_Widget {
 				'post_type' => 'post',
 				'post_status' => 'publish',
 				'posts_per_page' => $nr_posts,
+				'offset'=> $offset_posts,
 			);
 
 			$posts = null;

@@ -290,7 +290,8 @@ h2 {
     text-decoration: none;
 }
 
-.site-footer .textwidget a.link-icon, a.link-icon:visited {
+.site-footer .textwidget a.link-icon,
+.site-footer .textwidget a.link-icon:visited {
     color: #505050!important;
 }
 
@@ -316,4 +317,49 @@ h2 {
   background: transparent;
   padding-top: 10px;
   color: #fff;
+}
+
+/* RESPNSIVE RULES */
+
+@media only screen and (min-width: 962px) and (max-width: 1220px) {
+
+}
+
+@media only screen and (min-width: 767px) and (max-width: 962px) {
+  .branding {
+    margin-left: 20px!important;
+  }
+  .socialnetworking {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .branding {
+    margin-left: 0px!important;
+  }
+  .socialnetworking {
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .branding {
+    margin-left: 0px!important;
+  }
+  .socialnetworking {
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .branding {
+    margin-left: 0px!important;
+  }
+  .socialnetworking {
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
 }
