@@ -36,8 +36,12 @@ h2 {
  * MENU STYLING
 */
 
-#site-navigation ul li.current_page_item a {
+#site-navigation ul li.current_page_item {
   background: #000!important;
+}
+
+#site-navigation ul li a {
+  background: transparent!important;
 }
 
 #site-navigation ul.sub-menu {
@@ -53,7 +57,7 @@ h2 {
   color: #000;
 }
 
-.site-navigation ul.menu ul.sub-menu li.current_page_item a {
+.site-navigation ul.menu ul.sub-menu li.current_page_item>a:first-child {
   color: #fff!important;
 }
 
