@@ -99,14 +99,18 @@ class inspicos_posts_widget extends WP_Widget {
 
 			$posts = null;
 			$posts = new WP_Query( $args );
+			$count = 0;
 		?>
 
 			<?php if( $posts->have_posts() ) : ?>
 			
 				<!-- Latest Posts -->
 				<?php while( $posts->have_posts() ) : $posts->the_post(); ?>
+					<?php
+						$count++
+					?>
 					<aside id="latest-posts-<?php the_ID(); ?>" class="inspicoslatestposts widget">
-						<header class="entry-header">
+						<header class="entry-header<?php echo ($count==1)?' first':'';?>">
 							<!--<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><?php //echo wplook_custom_taxonomies_terms_links(); ?></h1>-->
 							<h2 class="entry-title"><?php echo get_post_custom_values('short_title')[0]; ?></h2>
 							<div class="clear"></div>

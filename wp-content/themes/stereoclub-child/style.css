@@ -145,6 +145,10 @@ h2 {
   margin-bottom: 10px;
 }
 
+#secondary .inspicoslatestposts .entry-header.first {
+  background-color: #000;
+}
+
 .entry-title {
   line-height: 1em;
   margin-bottom: 10px;
