@@ -50,7 +50,7 @@
 									<div class="clear"></div>
 									<h1 class="entry-head"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 									<div class="short-description">
-										<p><?php echo wplook_short_excerpt(ot_get_option('wpl_events_excerpt_limit'));?></p>
+										<p><?php echo wplook_short_excerpt(ot_get_option('wpl_events_excerpt_limit'));?>...</p>
 									</div>
 									<a href="<?php the_permalink(); ?>" title="<?php _e('read more', 'wplook'); ?>" class="link-icon"><?php _e('read more', 'wplook'); ?></a>
 								</div>
