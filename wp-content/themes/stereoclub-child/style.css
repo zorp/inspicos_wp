@@ -38,8 +38,26 @@ h2 {
  * MENU STYLING
 */
 
+#site-navigation {
+  margin-top: 0!important;
+}
+
 #site-navigation ul li.current_page_item {
   background: #000!important;
+}
+
+.site-navigation .menu li a {
+  text-transform: none;
+  font-size: 20px;
+}
+
+.site-navigation ul.menu ul a {
+  font-size: 14px;
+  padding: 10px 10px 10px;
+}
+
+.site-navigation .menu .sub-menu ul {
+  left: 205px;
 }
 
 #site-navigation ul li a {
