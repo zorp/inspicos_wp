@@ -24,14 +24,33 @@ h1,h2,h3,h4,h5,h6 {
   font-weight: 200;
 }
 h2 {
+  font-size: 24px;
   color: #002B65;
   line-height: 1em;
   margin-bottom: 0.3em;
+}
+h1 {
+  font-size: 30px;
 }
 
 .widget ul li:hover {
     animation-duration: 0s;
     animation-name: none;
+}
+
+.site-header .container_12 .grid_12,
+.entry-content,
+.widget .textwidget,
+.entry-content-list,
+.comments,
+.widget ul {
+  /*background-color: #fff;*/
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.widget ul li,
+.latest-item {
+  background: none;
 }
 
 /*
@@ -129,11 +148,6 @@ h2 {
 
 #page {
   padding-top: 0;
-}
-
-.site-header .container_12 .grid_12 {
-  /*background-color: #fff;*/
-  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .branding {
