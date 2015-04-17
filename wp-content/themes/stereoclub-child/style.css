@@ -243,6 +243,21 @@ h2.entry-title {
 /*  ----------------------------------------------------------
   Share buttons
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+.share-items li {
+  background: #8C8F95!important;
+}
+
+.share-items .share-item-icon-search {
+  margin-right: 1px;
+}
+
+.share-items .share-item-icon-search a:hover,
+.share-items .share-item-icon-linkedin a:hover {
+  background: #505050!important;
+  animation-duration: 0s;
+  animation-name: none;
+}
+
 .more-options.share-bt {position: relative; float: right;}
 
 .more-options .share-buttons {
