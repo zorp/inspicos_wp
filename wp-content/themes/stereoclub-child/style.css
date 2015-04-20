@@ -38,6 +38,10 @@ h1 {
     animation-name: none;
 }
 
+.widget_text:last-child .textwidget {
+  margin-bottom: 0;
+}
+
 .site-header .container_12 .grid_12,
 .entry-content,
 .widget .textwidget,
