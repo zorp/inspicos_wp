@@ -2,13 +2,21 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-03-26 22:41:23+0000\n"
+"PO-Revision-Date: 2015-04-13 17:42:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/1.0-alpha-1000\n"
 "Project-Id-Version: Development\n"
+
+#: views/notice.php:91
+msgid "The connection to akismet.com cannot be established. Please refer to <a href=\"%s\" target=\"_blank\">our guide about firewalls</a> and check your server configuration."
+msgstr "Forbindelsen til akismet.com kan ikke oprettes. Se venligst <a href=\"%s\" target=\"_blank\">vores guide om firewalls</a> og kontroller din server-konfiguration."
+
+#: views/notice.php:90
+msgid "The key you entered could not be verified."
+msgstr "Den indtastede nøgle kunne ikke godkendes."
 
 #: views/config.php:92
 msgid "Akismet encountered a problem with a previous SSL request and disabled it temporarily. It will begin using SSL for requests again shortly."
@@ -38,7 +46,7 @@ msgstr "Deaktiveret."
 msgid "SSL Status"
 msgstr "SSL-status"
 
-#: views/notice.php:96
+#: views/notice.php:97
 msgid "Your Pro subscription allows the use of Akismet on only one site. Please <a href=\"http://docs.akismet.com/billing/add-more-sites/\">purchase additional Pro subscriptions</a> or upgrade to an Enterprise subscription that allows the use of Akismet on unlimited sites.<br /><br />If you have any questions, please get in touch with our support team."
 msgstr "Dit Pro-abonnement tillader brug af Akismet på kun ét websted. <a href=\"http://docs.akismet.com/billing/add-more-sites/\">Køb flere Pro-abonnementer</a> eller opgrader til et Enterprise-abonnement, der tillader brug af Akismet på et ubegrænset antal websteder.<br /><br />Hvis du har spørgsmål, så tag venligst kontakt til vores supportteam."
 
@@ -144,15 +152,15 @@ msgstr "Kommentarer"
 msgid "Your subscription is missing."
 msgstr "Dit abonnement mangler."
 
-#: views/notice.php:98
+#: views/notice.php:99
 msgid "You're using Akismet on far too many sites for your Pro subscription."
 msgstr "Du bruger Aksimet på alt for mange websteder til dit Pro-abonnement."
 
-#: views/notice.php:95
+#: views/notice.php:96
 msgid "You're using your Akismet key on more sites than your Pro subscription allows."
 msgstr "Du bruger din Aksimet-nøgle på flere websteder end dit Pro-abonnement tillader."
 
-#: views/notice.php:99
+#: views/notice.php:100
 msgid "To continue your service, <a href=\"%s\" target=\"_blank\">upgrade to an Enterprise subscription</a>, which covers an unlimited number of sites. Please <a href=\"%s\" target=\"_blank\">contact our support team</a> with any questions."
 msgstr "Vil du fortsætte, skal du <a href=\"%s\" target=\"_blank\">opgradere til et Enterprise abonnement</a>, som dækker et ubegrænset antal hjemmesider. <a href=\"%s\" target=\"_blank\">Kontakt venligst vores support</a>, hvis du har spørgsmål."
 
@@ -167,10 +175,6 @@ msgstr "Akismet %s kræver WordPress 3.0 eller nyere."
 #: views/notice.php:86
 msgid "The key you entered is invalid. Please double-check it."
 msgstr "Din n&#248;gle er ugyldig. Dobbelttjek den."
-
-#: views/notice.php:90
-msgid "The key you entered could not be verified because a connection to akismet.com could not be established. Please check your server configuration."
-msgstr "Den n&#248;gle, du indtastede, kunne ikke godkendes, fordi der ikke kunne oprettes forbindelse til akismet.com. Tjek dine server-konfigurationer."
 
 #: views/notice.php:20
 msgid "Akismet has detected a problem."
