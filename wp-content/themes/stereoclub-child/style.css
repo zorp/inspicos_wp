@@ -356,6 +356,19 @@ h2.entry-title {
 
 }
 
+.cv-year {
+  float: left;
+  width: 25%;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+.cv-text {
+  float: left;
+  width: 65%;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
 /* FOOTER REGION */
 .site-footer #status-info {
   background: #8c8f95!important;
@@ -438,5 +451,38 @@ h2.entry-title {
   .socialnetworking {
     margin-right: 20px;
     margin-bottom: 10px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .cv-year,
+  .cv-text {
+    clear: both;
+    width: 100%;
+  }
+  .cv-year {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .cv-year,
+  .cv-text {
+    clear: both;
+    width: 100%;
+  }
+  .cv-year {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .cv-year,
+  .cv-text {
+    clear: both;
+    width: 100%;
+  }
+  .cv-year {
+    margin-bottom: 0;
   }
 }
