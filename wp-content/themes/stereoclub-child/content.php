@@ -28,7 +28,6 @@
 
 		<div class="clear"></div>
 		<div class="entry-content-post">
-			<br />
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<time datetime="2010-03-20" class="post-date"><?php wplook_get_date(); ?></time>
 			<?php the_content(); ?>

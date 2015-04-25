@@ -104,7 +104,6 @@
 
 				<div class="entry-content">
 					<div class="entry-content-post">
-						<br />
 						<?php _e('Sorry, no posts matched your criteria.', 'wplook'); ?>
 					</div>
 					<div class="clear"></div>

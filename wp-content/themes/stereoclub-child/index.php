@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Blog/post
+ * The main template file
  *
  * @package WordPress
  * @subpackage StereoClub
@@ -9,21 +9,24 @@
 ?>
 
 <?php get_header(); ?>
+
+<?php get_template_part( 'inc', 'background-message' ); ?>
+
 <!-- Main -->
 <div id="main" class="site-main container_12">
 	
 	<!-- Left column -->
 	<div id="primary" class="grid_8">
-		<!-- Latest Events -->
-			<header class="entry-header">
-				<h1 class="entry-title"><?php the_title(); ?></h1>
+		<?php if ( is_home() ) { ?>
+			<div class="widget-title">
+				<div class="entry-header">
+					<h1 class="entry-title"><?php _e('Latest posts', 'wplook'); ?></h1>
+					<div class="clear"></div>
+				</div>
 				<div class="clear"></div>
-			</header>
-				
+			</div>
 			<div class="entry-content-list">
-				<?php $args = array( 'post_type' => 'post','post_status' => 'publish', 'paged'=> $paged); ?>
-				<?php $wp_query = null;
-				$wp_query = new WP_Query( $args ); ?>
+				
 				<?php if ( $wp_query->have_posts() ) : ?>
 					<?php $count = 0; ?>
 					<?php while ( $wp_query->have_posts() ) : $wp_query->the_post();?>
@@ -34,18 +37,24 @@
 					<?php if ($count == 1) : ?>	
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class('latest-item'); ?>>
-							<?php if ( has_post_thumbnail() ) { ?>
-								<div class="grid_4 alpha omega">
+							
+							<div class="grid_4 alpha omega">
+								<?php if ( has_post_thumbnail() ) { ?>
 									<figure>
 										<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
 											<?php the_post_thumbnail('medium-ver-thumb'); ?>
 										</a>
 									</figure>
-								</div>
+								<?php } else { ?>
+									<figure>
+										<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
+											<img src="<?php echo get_template_directory_uri() . '/images/temp/320x170.jpg' ?>">
+										</a>
+									</figure>
+								<?php } ?>
+							</div>
+
 							<div class="grid_4 alpha omega">
-							<?php } else { ?>
-								<div class="grid_7  alpha">
-							<?php }?>
 								<div class="entry-description">
 									<h1 class="entry-head"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 									<div class="short-description">
@@ -67,7 +76,7 @@
 						</article>
 
 					<?php else : ?>
-
+						
 						<article id="post-<?php the_ID(); ?>" <?php post_class('list-block-item'); ?>>
 							<div class="margins">
 								<?php if ( has_post_thumbnail() ) { ?>
@@ -103,9 +112,9 @@
 			<article class="single-post">
 
 				<div class="entry-content">
+					<br>
 					<div class="entry-content-post">
-						<br />
-						<?php _e('Sorry, no posts matched your criteria.', 'wplook'); ?>
+						<?php _e('Sorry, no post matched your criteria.', 'wplook'); ?>
 					</div>
 					<div class="clear"></div>
 
@@ -115,9 +124,14 @@
 
 		<?php endif; ?>
 		</div>
-	</div> <!-- / #primary -->
+
+		<?php } ?>
+		
+	</div>
 	
-<?php get_sidebar(); ?>
-<div class="clear"></div>		
-</div><!-- / #main -->
+	<?php get_sidebar(); ?>
+	<div class="clear"></div>	
+</div>
+
+
 <?php get_footer(); ?>
