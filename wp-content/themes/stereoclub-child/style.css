@@ -38,7 +38,7 @@ aside{
   margin-bottom: 40px;
 }
 
-p:last-of-type {
+.widget p:last-of-type {
   margin-bottom: 0;
 }
 
