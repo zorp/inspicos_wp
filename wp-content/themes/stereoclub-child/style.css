@@ -46,6 +46,10 @@ ul, ol {
   margin: 0px 0px 1.5em 15px;
 }
 
+#secondary {
+  margin-bottom: 0;
+}
+
 .widget ul li:hover {
     animation-duration: 0s;
     animation-name: none;
@@ -55,6 +59,11 @@ ul, ol {
   /*padding: 20px 40px 20px 40px;*/
   padding: 40px;
 }
+
+.widget-area {
+  margin-bottom: 0;
+}
+
 .entry-pagination {
     padding: 40px;
     padding-top: 0;
@@ -432,6 +441,10 @@ h2.entry-title {
 }
 
 /* FOOTER REGION */
+.site-footer #status-info {
+  margin-top: 0;
+}
+
 .site-footer #status-info {
   background: #8c8f95!important;
 }
