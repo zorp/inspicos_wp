@@ -471,6 +471,31 @@ h2.entry-title {
   color: #fff;
 }
 
+/* STICKY MENU */
+
+#wpadminbar {
+  position: absolute !important;
+  top: 0px !important;
+}
+#mysticky-nav {
+  width:100%!important;
+  position: static;top: -100px;
+}
+.wrapfixed {
+  position: fixed!important;
+  top:0px!important;
+  left: auto!important;
+  margin-top:0px!important;
+  z-index: 1000000;
+  background-color: !important;
+}
+@media (max-width: 359px) {
+  .wrapfixed {
+    position: static!important;
+    display: none!important;
+  }
+}
+
 /* RESPNSIVE RULES */
 
 @media only screen and (min-width: 962px) and (max-width: 1220px) {
@@ -548,3 +573,8 @@ h2.entry-title {
     margin-bottom: 0;
   }
 }
+
+
+
+
+
