@@ -50,6 +50,16 @@ ul, ol {
   margin: 0px 0px 1.5em 15px;
 }
 
+hr {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.list-page hr {
+    margin-bottom: 40px;
+    margin-top: 15px;
+}
+
 #secondary {
   margin-bottom: 0;
 }
