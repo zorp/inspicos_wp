@@ -6014,7 +6014,7 @@ msgctxt "post"
 msgid "Pending"
 msgstr "Afventer"
 
-#: wp-includes/wp-db.php:2835
+#: wp-includes/wp-db.php:2949
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>FEJL</strong>: WordPress %1$s kræver MySQL %2$s eller nyere"
 

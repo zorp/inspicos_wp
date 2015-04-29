@@ -11,83 +11,83 @@ msgstr ""
 "Project-Id-Version: Administration\n"
 
 #. translators: 1: Term splitting guide link
-#: wp-admin/about.php:115
+#: wp-admin/about.php:123
 msgid "Terms shared across multiple taxonomies will be split when one of them is updated. Find out more in the <a href=\"%1$s\">Plugin Developer Handbook</a>."
 msgstr "Termer, der deles af flere taksonomier, vil blive opdelt, når en af dem opdateres. Læs mere i <a href=\"%1$s\">håndbogen for plugin-udviklere</a>."
 
 #. translators: 1: WP_Query, 2: WP_Comment_Query, 3: WP_User_Query
-#: wp-admin/about.php:121
+#: wp-admin/about.php:129
 msgid "%1$s, %2$s, and %3$s now support complex ordering with named meta query clauses."
 msgstr "%1$s, %2$s og %3$s understøtter nu komplekse rækkefølger med navngivne betingelser i meta-forespørgsler."
 
-#: wp-admin/about.php:52
+#: wp-admin/about.php:60
 msgid "Clip it, edit it, publish it. Get familiar with the new and improved Press This. From the <a href=\"%s\">Tools</a> menu, add Press This to your browser bookmark bar or your mobile device home screen. Once installed you can share your content with lightning speed. Sharing your favorite videos, images, and content has never been this fast or this easy."
 msgstr "Klip det, rediger det, udgiv det. Bliv fortrolig med den nye og forbedrede Press det. Fra menuen <a href=\"%s\">Værktøjer</a> kan du tilføje Press det til bogmærkelinjen i din browser eller startskærmen på din mobile enhed. Når det er installeret, kan du dele dit indhold med lynets hast. Deling af dine foretrukne videoer, billeder og indhold har aldrig været så hurtigt eller så nemt."
 
-#: wp-admin/about.php:83
+#: wp-admin/about.php:91
 msgid "Browse and preview your installed themes from the Customizer. Make sure the theme looks great with <em>your</em> content, before it debuts on your site. "
 msgstr "Gennemse og forhåndsvis dine installerede temaer med Tilpasseren. Sørg for, at temaet ser flot ud med <em>dit</em> indhold, før det introduceres på dit websted."
 
-#: wp-admin/about.php:88
+#: wp-admin/about.php:96
 msgid "Paste links from Tumblr.com and Kickstarter and watch them magically appear right in the editor. With every release, your publishing and editing experience get closer together."
 msgstr "Indsæt links fra Tumblr.com og Kickstarter og se dem magisk blive vist i editoren. Med hver udgivelse vil dine publicerings- og redigeringsoplevelser komme tættere sammen."
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:120
 msgid "Shared term splitting"
 msgstr "Opdeling af delte termer"
 
 #. translators: %s wp.a11y.speak()
-#: wp-admin/about.php:108
+#: wp-admin/about.php:116
 msgid "You can now send audible notifications to screen readers in JavaScript with %s. Pass it a string, and an update will be sent to a dedicated ARIA live notifications area."
 msgstr "Du kan nu sende lyd-meddelelser til skærmlæsere i JavaScript med %s. Med brug af en tekststreng vil en opdatering blive sendt til et dedikeret ARIA live meddelelsesområde."
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:113
 msgid "JavaScript accessibility"
 msgstr "Tilgængelighed i JavaScript"
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:111
 msgid "Database character encoding has changed from utf8 to utf8mb4, which adds support for a whole range of new 4-byte characters."
 msgstr "Databasetegnsæt er ændret fra utf8 til utf8mb4, som tilføjer understøttelse af en lang række nye 4-byte tegn."
 
 #. translators: 1: heart emoji, 2: frog face emoji, 3, monkey emoji, 4: pizza
 #. emoji, 5: Emoji Codex link
-#: wp-admin/about.php:74
+#: wp-admin/about.php:82
 msgid "Don&#8217;t use any of those characters? You can still have fun &mdash; emoji are now available in WordPress! Get creative and decorate your content with %1$s, %2$s, %3$s, %4$s, and all the many other <a href=\"%5$s\">emoji</a>."
 msgstr "Bruger du ingen af de tegn? Du kan stadig have det sjovt &mdash; emoji er nu tilgængelige i WordPress! Vær kreativ og dekorer dit indhold med %1$s, %2$s, %3$s, %4$s og alle de mange andre <a href=\"%5$s\">emoji</a>."
 
-#: wp-admin/about.php:93
+#: wp-admin/about.php:101
 msgid "Goodbye boring loading screen, hello smooth and simple plugin updates. Click <em>Update&nbsp;Now</em> and watch the magic happen."
 msgstr "Farvel loading-skærm, hej smurte og enkle plugin-opdateringer. Klik <em>Opdater&nbsp;nu</em> og se det magiske ske."
 
-#: wp-admin/about.php:87
+#: wp-admin/about.php:95
 msgid "Even more embeds"
 msgstr "Endnu flere indlejringer"
 
-#: wp-admin/about.php:71
+#: wp-admin/about.php:79
 msgid "Writing in WordPress, whatever your language, just got better. WordPress 4.2 supports a host of new characters out-of-the-box, including native Chinese, Japanese, and Korean characters, musical and mathematical symbols, and hieroglyphs."
 msgstr "At skrive i WordPress, uanset sprog, er lige blevet bedre. WordPress 4.2 understøtter en masse nye tegn ud af boksen, heriblandt kinesiske, japanske og koreanske tegn, musik- og matematiksymboler og hieroglyffer."
 
-#: wp-admin/about.php:51
+#: wp-admin/about.php:59
 msgid "An easier way to share content"
 msgstr "En lettere måde at dele indhold"
 
-#: wp-admin/about.php:118
+#: wp-admin/about.php:126
 msgid "Complex query ordering"
 msgstr "Forespørgsler med komplekse rækkefølger"
 
-#: wp-admin/about.php:92
+#: wp-admin/about.php:100
 msgid "Streamlined plugin updates"
 msgstr "Strømlinede plugin-opdateringer"
 
-#: wp-admin/about.php:70
+#: wp-admin/about.php:78
 msgid "Extended character support"
 msgstr "Udvidet tegnunderstøttelse"
 
-#: wp-admin/about.php:102
+#: wp-admin/about.php:110
 msgid "utf8mb4 support"
 msgstr "utf8mb4 understøttelse"
 
-#: wp-admin/about.php:82
+#: wp-admin/about.php:90
 msgid "Switch themes in the Customizer"
 msgstr "Skift tema i Tilpasseren"
 
@@ -95,7 +95,7 @@ msgstr "Skift tema i Tilpasseren"
 msgid "Thank you for updating! WordPress %s helps you communicate and share, globally."
 msgstr "Tak fordi du opdaterede! WordPress %s hjælper dig med at kommunikere og dele globalt."
 
-#: wp-admin/about.php:74
+#: wp-admin/about.php:82
 msgid "https://codex.wordpress.org/Emoji"
 msgstr "https://codex.wordpress.org/Emoji"
 
@@ -571,7 +571,7 @@ msgstr "Skjul indlægsindstillinger"
 msgid "In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key. In some cases the Esc key will need to be pressed twice before the Tab key will allow you to continue."
 msgstr "I redigeringsområdet vil tabulatortasten indtaste et tabulatortegn. For at flytte fokus nedunder dette område skal du først trykke på Esc-tasten efterfulgt af tabulatortasten. I nogle tilfælde skal du trykke på Esc-tasten to gange, før tabulatortasten vil tillade dig at fortsætte."
 
-#: wp-admin/about.php:53 wp-admin/tools.php:48
+#: wp-admin/about.php:61 wp-admin/tools.php:48
 msgid "Drag the bookmarklet below to your bookmarks bar. Then, when you&#8217;re on a page you want to share, simply &#8220;press&#8221; it."
 msgstr "Træk bookmarkleten nedenfor til din bogmærkelinje. Når du så er på en side, som du vil dele, skal du blot trykke på den for at &#8220;press&#8221; det."
 
@@ -4143,12 +4143,12 @@ msgstr "Bidragende udviklere"
 msgid "Show Toolbar when viewing site"
 msgstr "Vis værktøjslinje på webstedet"
 
-#: wp-admin/about.php:166
+#: wp-admin/about.php:47 wp-admin/about.php:174
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Hvis du vil vide mere, så læs <a href=\"%s\">udgivelsesnoterne</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:155
+#: wp-admin/about.php:163
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> rettede %2$s fejl."
@@ -4156,7 +4156,7 @@ msgstr[1] "<strong>Version %1$s</strong> rettede %2$s fejl."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:163
+#: wp-admin/about.php:171
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
@@ -4164,7 +4164,7 @@ msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rette
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:159
+#: wp-admin/about.php:167
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
@@ -4174,7 +4174,7 @@ msgstr[1] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
 msgstr "Velkommen til dit WordPress kontrolpanel. Dette er det skærmbillede, du møder, når du logger ind på dit websted, og det giver dig adgang til administationsmulighederne i WordPress. Der er en hjælpetekst til hvert skærmbillede gemt under Hjælp-fanen i øverste højre hjørne."
 
-#: wp-admin/about.php:148
+#: wp-admin/about.php:156
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "Vedligeholdelse- og sikkerhedsudgivelse"
@@ -4184,20 +4184,20 @@ msgstr[1] "Vedligeholdelses- og sikkerhedsudgivelser"
 msgid "What&#8217;s New"
 msgstr "Hvad er nyt"
 
-#: wp-admin/about.php:147
+#: wp-admin/about.php:44 wp-admin/about.php:155
 msgid "Security Release"
 msgid_plural "Security Releases"
 msgstr[0] "Sikkerhedsudgivelse"
 msgstr[1] "Sikkerhedsudgivelser"
 
-#: wp-admin/about.php:146
+#: wp-admin/about.php:154
 msgid "Maintenance Release"
 msgid_plural "Maintenance Releases"
 msgstr[0] "Vedligeholdelsesudgivelse"
 msgstr[1] "Vedligeholdelsesudgivelser"
 
 #. translators: 1: WordPress version number.
-#: wp-admin/about.php:151
+#: wp-admin/about.php:45 wp-admin/about.php:159
 msgid "<strong>Version %1$s</strong> addressed a security issue."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul."
@@ -4207,7 +4207,7 @@ msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller."
 msgid "This screen allows you to choose your default permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Dette skærmbillede kan du vælge din permalinkstruktur. Du kan vælge mellem almindelige indstillinger eller oprette en brugerdefineret URL-struktur."
 
-#: wp-admin/about.php:130
+#: wp-admin/about.php:138
 msgid "Return to Updates"
 msgstr "Tilbage til opdateringer"
 
@@ -4510,11 +4510,11 @@ msgstr "Den sandsynlige direkte indkludering af wp-admin/includes/template.php f
 msgid "Welcome to WordPress %s"
 msgstr "Velkommen til WordPress %s"
 
-#: wp-admin/about.php:130
+#: wp-admin/about.php:138
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:142
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrolpanel &rarr; Forside"
 
@@ -4526,7 +4526,7 @@ msgstr "WordPress er skabt af et verdensomspændende team af passionerede person
 msgid "Core Developers"
 msgstr "Kerneudviklere"
 
-#: wp-admin/about.php:98
+#: wp-admin/about.php:106
 msgid "Under the Hood"
 msgstr "Under motorhjelmen"
 
@@ -6881,7 +6881,7 @@ msgid_plural "Must-Use <span class=\"count\">(%s)</span>"
 msgstr[0] "Skal bruge <span class=\"count\">(%s)</span>"
 msgstr[1] "Skal bruge <span class=\"count\">(%s)</span>"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:142
 msgid "Go to Dashboard"
 msgstr "G&#229; til kontrolpanelet"
 
@@ -9113,7 +9113,7 @@ msgstr "Vis alle"
 msgid "Configure"
 msgstr "Indstil"
 
-#: wp-admin/about.php:56 wp-admin/tools.php:16 wp-admin/tools.php:40
+#: wp-admin/about.php:64 wp-admin/tools.php:16 wp-admin/tools.php:40
 #: wp-admin/tools.php:51
 msgid "Press This"
 msgstr "Press det"
