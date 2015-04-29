@@ -38,6 +38,10 @@ aside{
   margin-bottom: 40px;
 }
 
+.home #primary {
+  margin-bottom: 40px;
+}
+
 .widget p:last-of-type {
   margin-bottom: 0;
 }
