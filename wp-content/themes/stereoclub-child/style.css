@@ -60,6 +60,15 @@ hr {
     margin-top: 15px;
 }
 
+.news-list-page {
+  padding: 40px;
+}
+
+.news-list-page .attachment-medium-thumb {
+  width: 100%;
+  height: auto;
+}
+
 #secondary {
   margin-bottom: 0;
 }

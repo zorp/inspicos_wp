@@ -20,7 +20,7 @@
 				<div class="clear"></div>
 			</header>
 				
-			<div class="entry-content-list">
+			<div class="entry-content-list list-page news-list-page">
 				
 				<?php if ( $wp_query->have_posts() ) : ?>
 					<?php $count = 0; ?>
@@ -31,65 +31,45 @@
 
 					<?php if ($count == 1) : ?>	
 
-						<article id="post-<?php the_ID(); ?>" <?php post_class('latest-item'); ?>>
-							<?php if ( has_post_thumbnail() ) { ?>
-								<div class="grid_2 alpha omega">
-									<div class="entry-thumb">
-										<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-											<?php the_post_thumbnail('medium-thumb'); ?>
-										</a>
-									</div>
-								</div>
-							<div class="grid_6 alpha omega">
-							<?php } else { ?>
-								<div class="grid_7 alpha">
-							<?php }?>
-								<div class="entry-description">
-									<time class="fleft fleftmargin" datetime="<?php echo get_the_date( 'c' ) ?>"><a href="<?php the_permalink(); ?>"><i class="icon-calendar"></i> <?php wplook_get_date(); ?></a></time>
-									<!--<span class="author fleft"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><i class="icon-user"></i> <?php echo get_the_author(); ?></a></span>-->
-									<div class="clear"></div>
-									<h1 class="entry-head"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-									<div class="short-description">
-										<p><?php echo wplook_short_excerpt(ot_get_option('wpl_events_excerpt_limit'));?>...</p>
-									</div>
-									<a href="<?php the_permalink(); ?>" title="<?php _e('read more', 'wplook'); ?>" class="link-icon"><?php _e('read more', 'wplook'); ?></a>
-								</div>
-							</div>
-							<div class="clear"></div>
-						</article>
+						<?php if ( has_post_thumbnail() ) { ?>
+						<div class="profile-image grid_3 omega alpha no-m-t">
+							<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium-thumb'); ?></a>
+						</div>
+						<div class="profile-text grid_4 omega no-m-t">
+						<?php } else { ?>
+						<div class="profile-text grid_7 omega alpha no-m-t">
+						<?php }?>
+							<h2 class="entry-head"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<time datetime="<?php echo get_the_date( 'c' ) ?>"><a href="<?php the_permalink(); ?>"><?php wplook_get_date(); ?></a></time>
+							<p><?php echo wplook_short_excerpt(ot_get_option('wpl_events_excerpt_limit'));?>...</p>
+							<a href="<?php the_permalink(); ?>" title="<?php _e('read more', 'wplook'); ?>" class="link-icon"><?php _e('read more', 'wplook'); ?></a>
+						</div>
+						<div class="clear"></div>
 
 					<?php else : ?>
 
-						<article id="post-<?php the_ID(); ?>" <?php post_class('list-block-item'); ?>>
-							<div class="margins">
-								<?php if ( has_post_thumbnail() ) { ?>
-									<div class="entry-thumb">
-										<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-											<?php the_post_thumbnail('small-thumb'); ?>
-										</a>
-									</div>
-								<?php } else { ?>
-									<div class="entry-date">
-										<div class="date"><?php echo get_the_date( 'j' ) ?></div>
-										<div class="month"><?php echo get_the_date( 'M' ) ?></div>
-									</div>
-								<?php } ?>
-
-								<div class="entry-description">
-									<time class="fleft fleftmargin" datetime="<?php echo get_the_date( 'c' ) ?>"><a href="<?php the_permalink(); ?>"><i class="icon-calendar"></i> <?php wplook_get_date(); ?></a></time>
-									<!--<span class="author fleft"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><i class="icon-user"></i> <?php echo get_the_author(); ?></a></span>-->
-									<div class="clear"></div>
-									<h1 class="entry-head"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-									<div class="short-description">
-										<p><?php echo wplook_short_excerpt(ot_get_option('wpl_rest_events_excerpt_limit'));?></p>
-									</div>
-									<a href="<?php the_permalink(); ?>" title="<?php _e('read more', 'wplook'); ?>" class="link-icon"><?php _e('read more', 'wplook'); ?></a>
-								</div>
-								<div class="clear"></div>
-							</div>
-						</article>
+						<?php if ( has_post_thumbnail() ) { ?>
+						<div class="profile-image grid_3 omega alpha no-m-t">
+							<a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium-thumb'); ?></a>
+						</div>
+						<div class="profile-text grid_4 omega no-m-t">
+						<?php } else { ?>
+						<div class="profile-text grid_7 omega alpha no-m-t">
+						<?php }?>
+							<h2 class="entry-head"><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<time datetime="<?php echo get_the_date( 'c' ) ?>"><a href="<?php the_permalink(); ?>"><?php wplook_get_date(); ?></a></time>
+							<p><?php echo wplook_short_excerpt(ot_get_option('wpl_events_excerpt_limit'));?>...</p>
+							<a href="<?php the_permalink(); ?>" title="<?php _e('read more', 'wplook'); ?>" class="link-icon"><?php _e('read more', 'wplook'); ?></a>
+						</div>
+						<div class="clear"></div>
 
 					<?php endif; ?>
+
+					<?php	
+					if ($wp_query->post_count != $count) {
+						echo "<hr />";
+					}
+					?>
 							
 					<?php endwhile; wp_reset_postdata(); ?>
 
