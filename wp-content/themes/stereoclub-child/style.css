@@ -551,6 +551,9 @@ h2.entry-title {
   .socialnetworking {
     margin-right: 20px;
   }
+  #menu-main-menu {
+    padding-left: 0px;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
@@ -563,6 +566,32 @@ h2.entry-title {
   }
   .site-footer .grid_3 {
     margin-left: 0px;
+  }
+  .header-image {
+    display: none;
+  }
+  #menu-main-menu {
+    padding-left: 0px;
+  }
+  .socialnetworking .epa-logo {
+    width: 90%;
+    padding-left: 20px;
+  }
+  .socialnetworking .epa-logo img {
+    width: 100%;
+  }
+  .entry-content-post .grid_2,
+  .entry-content-list .grid_3,
+  .entry-content-list .grid_4,
+  .entry-content-list .grid_7 {
+    width: 100% !important;
+  }
+  .profile-text {
+    margin-left: 0!important;
+  }
+  .profile-image,
+  .profile-intro {
+    width: 100%;
   }
 }
 
@@ -577,6 +606,40 @@ h2.entry-title {
   .site-footer .grid_3 {
     margin-left: 0px;
   }
+  .header-image {
+    display: none;
+  }
+  #menu-main-menu {
+    padding-left: 0px;
+  }
+  .socialnetworking .epa-logo {
+    width: 90%;
+    padding-left: 20px;
+  }
+  .socialnetworking .epa-logo img {
+    width: 100%;
+  }
+  .branding #site-title {
+    width: 90%;
+    padding-left: 20px;
+  }
+  .branding #site-title img {
+    width: 100%;
+  }
+  .entry-content-post .grid_2,
+  .entry-content-post .grid_3,
+  .entry-content-list .grid_3,
+  .entry-content-list .grid_4,
+  .entry-content-list .grid_7 {
+    width: 100% !important;
+  }
+  .profile-text {
+    margin-left: 0!important;
+  }
+  .profile-image,
+  .profile-intro {
+    width: 100%;
+  }
 }
 
 @media (max-width: 320px) {
@@ -590,6 +653,41 @@ h2.entry-title {
   .site-footer .grid_3 {
     margin-left: 0px;
   }
+  .header-image {
+    display: none;
+  }
+  #menu-main-menu {
+    padding-left: 0px;
+  }
+  .socialnetworking .epa-logo {
+    width: 90%;
+    padding-left: 20px;
+  }
+  .socialnetworking .epa-logo img {
+    width: 100%;
+  }
+  .branding #site-title {
+    width: 90%;
+    padding-left: 20px;
+  }
+  .branding #site-title img {
+    width: 100%;
+  }
+  .entry-content-post .grid_2,
+  .entry-content-post .grid_3,
+  .entry-content-list .grid_3,
+  .entry-content-list .grid_4,
+  .entry-content-list .grid_7 {
+    width: 100% !important;
+  }
+  .profile-text {
+    margin-left: 0!important;
+  }
+  .profile-image,
+  .profile-intro {
+    width: 100%;
+  }
+}
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
