@@ -1,0 +1,319 @@
+0000.001 (0) Opened log file at time: Sun, 21 Jun 2015 12:15:11 +0000 on http://inspicos-wp.node2.artz.dk
+0000.003 (0) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.10.1 WP: 4.2.2 PHP: 5.4.41-1~dotdeb+7.1 (Linux localhost 3.19.1-x86_64-linode53 #1 SMP Tue Mar 10 15:30:28 EDT 2015 x86_64) MySQL: 5.6.19-1~dotdeb.1 Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 29.3M | 30.5M) multisite: N mcrypt: Y LANG: C ZipArchive::addFile: Y
+0000.004 (0) Free space on disk containing Updraft's temporary directory: 35082.2 Mb
+0000.008 (0) Tasks: Backup files: 1 (schedule: daily) Backup DB:  (schedule: daily)
+0000.009 (0) Processed schedules. Tasks now: Backup files: 1 Backup DB: 1
+0000.013 (0) Requesting semaphore lock (fd)
+0000.015 (0) Set semaphore last lock (fd) time to 2015-06-21 12:15:11
+0000.016 (0) Semaphore lock (fd) complete
+0000.020 (0) Backup run: resumption=0, nonce=cd6724c55b9a, begun at=1434888911 (0s ago), job type=backup
+0000.022 (0) Scheduling a resumption (1) after 300 seconds (1434889211) in case this run gets aborted
+0000.033 (0) PHP event: code E_WARNING: apc_store(): Unable to allocate memory for pool. (line 91, wp-content/plugins/background-manager/vendor/pf4wp/lib/vendor/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php)
+0000.037 (0) Checking if we have a zip executable available
+0000.038 (0) Testing: /usr/bin/zip
+0000.067 (0) Output: zip warning: binziptest/test.zip not found or empty
+0000.069 (0) Output: adding: binziptest/subdir1/	(in=0) (out=0) (stored 0%)
+0000.070 (0) Output: adding: binziptest/subdir1/subdir2/	(in=0) (out=0) (stored 0%)
+0000.071 (0) Output: adding: binziptest/subdir1/subdir2/test.html	(in=127) (out=105) (deflated 17%)
+0000.072 (0) Output: total bytes=127, compressed=105 -> 17% savings
+0000.095 (0) Output: adding: binziptest/subdir1/subdir2/test2.html	(in=134) (out=109) (deflated 19%)
+0000.097 (0) Output: total bytes=261, compressed=214 -> 18% savings
+0000.098 (0) PHP event: code E_WARNING: apc_store(): Unable to allocate memory for pool. (line 91, wp-content/plugins/background-manager/vendor/pf4wp/lib/vendor/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php)
+0000.109 (0) Working binary zip found: /usr/bin/zip
+0000.112 (0) Zip engine: found/will use a binary zip: /usr/bin/zip
+0000.112 (0) Creation of backups of directories: beginning
+0000.117 (0) Beginning creation of dump of plugins (split every: 500 Mb)
+0000.483 (0) Total entities for the zip file: 493 directories, 3091 files (0 skipped as non-modified), 38.4 Mb
+0000.490 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0000.495 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0000.499 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0000.503 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0000.508 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 500 files added (on-disk size: 0 Kb)
+0000.509 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (14.5 Mb, 3091 files batched, 501 (501) added so far); re-opening (prior size: 0 Kb)
+0001.617 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: size is now: 4.80 Mb
+0001.622 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 600 files added (on-disk size: 4941.1 Kb)
+0001.628 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 700 files added (on-disk size: 4941.1 Kb)
+0001.635 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 800 files added (on-disk size: 4941.1 Kb)
+0001.640 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 900 files added (on-disk size: 4941.1 Kb)
+0001.644 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1000 files added (on-disk size: 4941.1 Kb)
+0001.645 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (1.7 Mb, 3091 files batched, 501 (1002) added so far); re-opening (prior size: 4941.1 Kb)
+0001.907 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1100 files added (on-disk size: 5522.2 Kb)
+0001.912 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1200 files added (on-disk size: 5522.2 Kb)
+0001.917 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1300 files added (on-disk size: 5522.2 Kb)
+0001.921 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1400 files added (on-disk size: 5522.2 Kb)
+0001.926 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1500 files added (on-disk size: 5522.2 Kb)
+0001.927 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (3.8 Mb, 3091 files batched, 501 (1503) added so far); re-opening (prior size: 5522.2 Kb)
+0002.312 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: size is now: 7.70 Mb
+0002.319 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1600 files added (on-disk size: 7858.8 Kb)
+0002.323 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1700 files added (on-disk size: 7858.8 Kb)
+0002.327 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1800 files added (on-disk size: 7858.8 Kb)
+0002.331 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 1900 files added (on-disk size: 7858.8 Kb)
+0002.335 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2000 files added (on-disk size: 7858.8 Kb)
+0002.337 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (8.9 Mb, 3091 files batched, 501 (2004) added so far); re-opening (prior size: 7858.8 Kb)
+0003.254 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: size is now: 11.10 Mb
+0003.263 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2100 files added (on-disk size: 11318.3 Kb)
+0003.269 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2200 files added (on-disk size: 11318.3 Kb)
+0003.273 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2300 files added (on-disk size: 11318.3 Kb)
+0003.278 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2400 files added (on-disk size: 11318.3 Kb)
+0003.282 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2500 files added (on-disk size: 11318.3 Kb)
+0003.283 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (6 Mb, 3091 files batched, 501 (2505) added so far); re-opening (prior size: 11318.3 Kb)
+0003.860 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: size is now: 14.20 Mb
+0003.867 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2600 files added (on-disk size: 14573.6 Kb)
+0003.871 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2700 files added (on-disk size: 14573.6 Kb)
+0003.876 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2800 files added (on-disk size: 14573.6 Kb)
+0003.880 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 2900 files added (on-disk size: 14573.6 Kb)
+0003.884 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip.tmp: 3000 files added (on-disk size: 14573.6 Kb)
+0003.885 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (3.5 Mb, 3091 files batched, 501 (3006) added so far); re-opening (prior size: 14573.6 Kb)
+0004.585 (0) Created plugins zip (0) - 16175.4 Kb in 4.5 s (3622.3 Kb/s) (SHA1 checksum: b4daed369d046d7fe5c226766bd911ae0ca8ba4f)
+0004.588 (0) Beginning creation of dump of themes (split every: 500 Mb)
+0004.635 (0) Total entities for the zip file: 68 directories, 416 files (0 skipped as non-modified), 7.6 Mb
+0004.640 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0004.644 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0004.648 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0004.652 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0005.300 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip.tmp: size is now: 3.90 Mb
+0005.320 (0) Created themes zip (0) - 3975.2 Kb in 0.7 s (5445.4 Kb/s) (SHA1 checksum: 596b729750e016dfbed937e0086253fa9325e9b1)
+0005.322 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0005.324 (0) Looking for candidates to back up in: /var/www/inspicos_wp/public_html/wp-content/uploads
+0005.324 (0) finding files: 500c0615e7e10aa867b93e258681a63f.spc: adding to list (1)
+0005.325 (0) finding files: 2013: adding to list (2)
+0005.326 (0) finding files: 2014: adding to list (3)
+0005.327 (0) finding files: 2015: adding to list (4)
+0005.328 (0) Beginning creation of dump of uploads (split every: 500 Mb)
+0005.344 (0) Total entities for the zip file: 12 directories, 386 files (0 skipped as non-modified), 64.9 Mb
+0005.349 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0005.352 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 25 Mb added on this batch (25.7 Mb, 386 files batched, 160 (160) added so far); re-opening (prior size: 0 Kb)
+0006.698 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip.tmp: size is now: 25.40 Mb
+0006.703 (0) A useful amount of data was added after this amount of zip processing: 1.7 s (normalised: 1.7 s, rate: 15203.3 Kb/s)
+0006.705 (0) Performance is good - will increase the amount of data we attempt to batch (time=1.7295789718628, normalised_time=1.683848792784, max_time=-1, data points known=0, old_max_bytes=26214400, new_max_bytes=93408862)
+0006.709 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip.tmp: 200 files added (on-disk size: 26019.9 Kb)
+0006.714 (0) Zip: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip.tmp: 300 files added (on-disk size: 26019.9 Kb)
+0008.784 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip.tmp: size is now: 64.60 Mb
+0009.037 (0) Created uploads zip (0) - 66119.9 Kb in 3.7 s (17838.1 Kb/s) (SHA1 checksum: 31200d62f2d2b93fd45daa73e5838b94df0a7c9a)
+0009.039 (0) Beginning backup of other directories found in the content directory (index: 0)
+0009.040 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups
+0009.042 (0) Looking for candidates to back up in: /var/www/inspicos_wp/public_html/wp-content
+0009.043 (0) finding files: .DS_Store: adding to list (1)
+0009.044 (0) finding files: upgrade: skipping: excluded by options
+0009.045 (0) finding files: plugins: skipping: this is the plugins directory
+0009.046 (0) finding files: uploads: skipping: this is the uploads directory
+0009.047 (0) finding files: updraft: skipping: this is the updraft directory
+0009.048 (0) finding files: languages: adding to list (2)
+0009.049 (0) finding files: index.php: adding to list (3)
+0009.051 (0) finding files: themes: skipping: this is the themes directory
+0009.056 (0) Total entities for the zip file: 3 directories, 34 files (0 skipped as non-modified), 2.7 Mb
+0009.249 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip.tmp: size is now: 0.70 Mb
+0009.259 (0) Created others zip (0) - 748.6 Kb in 0.2 s (3622.7 Kb/s) (SHA1 checksum: 18e568429a52800f3a20309b75bd6b5a69ab3b78)
+0009.264 (0) Saving backup status to database (elements: 8)
+0009.267 (0) Beginning creation of database dump (WordPress DB)
+0009.269 (0) Testing: /usr/bin/mysqldump
+0009.351 (0) Working binary mysqldump found: /usr/bin/mysqldump
+0009.365 (0) Table wp_options: Total expected rows (approximate): 405
+0009.393 (0) Table wp_options: Total rows added: 404 in 0.03 seconds
+0009.394 (0) Table wp_options: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_options.table.gz - 31 Kb)
+0009.398 (0) Table wp_users: Total expected rows (approximate): 0
+0009.401 (0) Table wp_users: Total rows added: 2 in 0.00 seconds
+0009.402 (0) Table wp_users: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_users.table.gz - 0.6 Kb)
+0009.407 (0) Table wp_usermeta: Total expected rows (approximate): 47
+0009.412 (0) Table wp_usermeta: Total rows added: 50 in 0.00 seconds
+0009.413 (0) Table wp_usermeta: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_usermeta.table.gz - 2 Kb)
+0009.417 (0) Table wp_commentmeta: Total expected rows (approximate): 0
+0009.419 (0) Table wp_commentmeta: Total rows added: 0 in 0.00 seconds
+0009.420 (0) Table wp_commentmeta: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_commentmeta.table.gz - 0.4 Kb)
+0009.425 (0) Table wp_comments: Total expected rows (approximate): 0
+0009.428 (0) Table wp_comments: Total rows added: 1 in 0.00 seconds
+0009.429 (0) Table wp_comments: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_comments.table.gz - 0.9 Kb)
+0009.433 (0) Table wp_links: Total expected rows (approximate): 0
+0009.436 (0) Table wp_links: Total rows added: 0 in 0.00 seconds
+0009.438 (0) Table wp_links: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_links.table.gz - 0.4 Kb)
+0009.442 (0) Table wp_postmeta: Total expected rows (approximate): 1068
+0009.485 (0) Table wp_postmeta: Total rows added: 1068 in 0.04 seconds
+0009.487 (0) Table wp_postmeta: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_postmeta.table.gz - 11.8 Kb)
+0009.492 (0) Table wp_posts: Total expected rows (approximate): 515
+0009.579 (0) Table wp_posts: Total rows added: 494 in 0.09 seconds
+0009.581 (0) Table wp_posts: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_posts.table.gz - 102.1 Kb)
+0009.585 (0) Table wp_term_relationships: Total expected rows (approximate): 362
+0009.593 (0) Table wp_term_relationships: Total rows added: 364 in 0.01 seconds
+0009.594 (0) Table wp_term_relationships: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_term_relationships.table.gz - 1.3 Kb)
+0009.598 (0) Table wp_term_taxonomy: Total expected rows (approximate): 67
+0009.605 (0) Table wp_term_taxonomy: Total rows added: 70 in 0.00 seconds
+0009.607 (0) Table wp_term_taxonomy: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_term_taxonomy.table.gz - 1.2 Kb)
+0009.611 (0) Table wp_terms: Total expected rows (approximate): 67
+0009.615 (0) Table wp_terms: Total rows added: 70 in 0.00 seconds
+0009.617 (0) Table wp_terms: finishing file (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_terms.table.gz - 1.3 Kb)
+0009.620 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_options.table.gz (1/11): adding to final database dump
+0009.629 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_users.table.gz (2/11): adding to final database dump
+0009.631 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_usermeta.table.gz (3/11): adding to final database dump
+0009.633 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_commentmeta.table.gz (4/11): adding to final database dump
+0009.634 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_comments.table.gz (5/11): adding to final database dump
+0009.636 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_links.table.gz (6/11): adding to final database dump
+0009.637 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_postmeta.table.gz (7/11): adding to final database dump
+0009.645 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_posts.table.gz (8/11): adding to final database dump
+0009.675 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_term_relationships.table.gz (9/11): adding to final database dump
+0009.678 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_term_taxonomy.table.gz (10/11): adding to final database dump
+0009.679 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db-table-wp_terms.table.gz (11/11): adding to final database dump
+0009.681 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz: finished writing out complete database file (128 Kb)
+0009.686 (0) Total database tables backed up: 11 (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz, size: 155134, checksum (SHA1): 31949dc1100e942dd863f1e30a2559cb2031112a)
+0009.688 (0) Saving backup history
+0009.693 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0009.694 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0009.695 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0009.696 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip: others: This file has not yet been successfully uploaded: will queue
+0009.697 (0) backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz: db: This file has not yet been successfully uploaded: will queue
+0009.700 (0) Requesting upload of the files that have not yet been successfully uploaded (5)
+0009.704 (0) Cloud backup selection (1/1): dropbox (last)
+0009.706 (0) Beginning dispatch of backup to remote (dropbox)
+0009.707 (0) Dropbox: begin cloud upload
+0009.711 (0) Dropbox: access gained
+0010.544 (0) Dropbox quota usage: normal=20965.8 Mb, shared=1764.8 Mb, total=1062656 Mb, available=1039925.4 Mb
+0010.546 (0) Dropbox: Attempt to upload: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip to: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip
+0012.125 (0) Dropbox chunked upload: 6.3 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 1048576)
+0014.404 (0) Dropbox chunked upload: 12.7 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 2097152)
+0016.632 (0) Dropbox chunked upload: 19 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 3145728)
+0020.100 (0) Dropbox chunked upload: 25.3 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 4194304)
+0021.640 (0) Dropbox chunked upload: 31.7 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 5242880)
+0023.410 (0) Dropbox chunked upload: 38 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 6291456)
+0025.461 (0) Dropbox chunked upload: 44.3 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 7340032)
+0028.011 (0) Dropbox chunked upload: 50.6 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 8388608)
+0029.618 (0) Dropbox chunked upload: 57 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 9437184)
+0031.478 (0) Dropbox chunked upload: 63.3 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 10485760)
+0033.555 (0) Dropbox chunked upload: 69.6 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 11534336)
+0036.200 (0) Dropbox chunked upload: 76 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 12582912)
+0038.164 (0) Dropbox chunked upload: 82.3 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 13631488)
+0040.035 (0) Dropbox chunked upload: 88.6 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 14680064)
+0042.252 (0) Dropbox chunked upload: 95 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 15728640)
+0044.368 (0) Dropbox chunked upload: 100 % uploaded (CfsqWGY8PVNSkbLNie74pQ, 16563567)
+0047.419 (0) Recording as successfully uploaded: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip (39f80082c5ccdb443b38e969a7809ed4)
+0047.425 (0) Deleting local file: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip: OK
+0047.427 (0) Dropbox: File upload success (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-plugins.zip): 16175 Kb in 36s (438 Kb/s)
+0048.239 (0) Dropbox quota usage: normal=20981.6 Mb, shared=1764.8 Mb, total=1062656 Mb, available=1039909.6 Mb
+0048.241 (0) Dropbox: Attempt to upload: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip to: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip
+0049.867 (0) Dropbox chunked upload: 25.8 % uploaded (75K73d-wQ5dBYDdPwiawyw, 1048576)
+0051.742 (0) Dropbox chunked upload: 51.5 % uploaded (75K73d-wQ5dBYDdPwiawyw, 2097152)
+0054.066 (0) Dropbox chunked upload: 77.3 % uploaded (75K73d-wQ5dBYDdPwiawyw, 3145728)
+0056.421 (0) Dropbox chunked upload: 100 % uploaded (75K73d-wQ5dBYDdPwiawyw, 4070559)
+0062.767 (0) Recording as successfully uploaded: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip (ccd7eaa46b8bab76f4ce2112d126ec2c)
+0062.773 (0) Deleting local file: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip: OK
+0062.774 (0) Dropbox: File upload success (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-themes.zip): 3975 Kb in 14s (273 Kb/s)
+0063.622 (0) Dropbox quota usage: normal=20985.5 Mb, shared=1764.8 Mb, total=1062656 Mb, available=1039905.7 Mb
+0063.624 (0) Dropbox: Attempt to upload: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip to: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip
+0065.464 (0) Dropbox chunked upload: 1.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 1048576)
+0067.395 (0) Dropbox chunked upload: 3.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 2097152)
+0069.660 (0) Dropbox chunked upload: 4.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 3145728)
+0072.637 (0) Dropbox chunked upload: 6.2 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 4194304)
+0074.266 (0) Dropbox chunked upload: 7.7 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 5242880)
+0076.166 (0) Dropbox chunked upload: 9.3 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 6291456)
+0078.609 (0) Dropbox chunked upload: 10.8 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 7340032)
+0081.499 (0) Dropbox chunked upload: 12.4 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 8388608)
+0083.079 (0) Dropbox chunked upload: 13.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 9437184)
+0084.943 (0) Dropbox chunked upload: 15.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 10485760)
+0087.260 (0) Dropbox chunked upload: 17 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 11534336)
+0090.126 (0) Dropbox chunked upload: 18.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 12582912)
+0091.901 (0) Dropbox chunked upload: 20.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 13631488)
+0093.835 (0) Dropbox chunked upload: 21.7 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 14680064)
+0095.893 (0) Dropbox chunked upload: 23.2 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 15728640)
+0099.291 (0) Dropbox chunked upload: 24.8 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 16777216)
+0100.950 (0) Dropbox chunked upload: 26.3 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 17825792)
+0102.805 (0) Dropbox chunked upload: 27.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 18874368)
+0105.015 (0) Dropbox chunked upload: 29.4 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 19922944)
+0108.033 (0) Dropbox chunked upload: 31 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 20971520)
+0109.602 (0) Dropbox chunked upload: 32.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 22020096)
+0111.684 (0) Dropbox chunked upload: 34.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 23068672)
+0113.955 (0) Dropbox chunked upload: 35.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 24117248)
+0116.923 (0) Dropbox chunked upload: 37.2 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 25165824)
+0118.611 (0) Dropbox chunked upload: 38.7 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 26214400)
+0120.664 (0) Dropbox chunked upload: 40.3 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 27262976)
+0122.861 (0) Dropbox chunked upload: 41.8 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 28311552)
+0126.366 (0) Dropbox chunked upload: 43.4 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 29360128)
+0128.070 (0) Dropbox chunked upload: 44.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 30408704)
+0130.347 (0) Dropbox chunked upload: 46.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 31457280)
+0132.421 (0) Dropbox chunked upload: 48 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 32505856)
+0135.067 (0) Dropbox chunked upload: 49.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 33554432)
+0137.603 (0) Dropbox chunked upload: 51.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 34603008)
+0139.431 (0) Dropbox chunked upload: 52.7 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 35651584)
+0141.358 (0) Dropbox chunked upload: 54.2 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 36700160)
+0144.970 (0) Dropbox chunked upload: 55.8 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 37748736)
+0146.676 (0) Dropbox chunked upload: 57.3 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 38797312)
+0148.530 (0) Dropbox chunked upload: 58.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 39845888)
+0150.403 (0) Dropbox chunked upload: 60.4 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 40894464)
+0153.478 (0) Dropbox chunked upload: 61.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 41943040)
+0155.202 (0) Dropbox chunked upload: 63.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 42991616)
+0156.969 (0) Dropbox chunked upload: 65 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 44040192)
+0159.054 (0) Dropbox chunked upload: 66.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 45088768)
+0161.750 (0) Dropbox chunked upload: 68.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 46137344)
+0163.443 (0) Dropbox chunked upload: 69.7 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 47185920)
+0165.261 (0) Dropbox chunked upload: 71.2 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 48234496)
+0167.117 (0) Dropbox chunked upload: 72.8 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 49283072)
+0170.357 (0) Dropbox chunked upload: 74.3 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 50331648)
+0171.987 (0) Dropbox chunked upload: 75.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 51380224)
+0173.917 (0) Dropbox chunked upload: 77.4 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 52428800)
+0175.953 (0) Dropbox chunked upload: 79 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 53477376)
+0178.914 (0) Dropbox chunked upload: 80.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 54525952)
+0180.901 (0) Dropbox chunked upload: 82.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 55574528)
+0182.691 (0) Dropbox chunked upload: 83.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 56623104)
+0184.805 (0) Dropbox chunked upload: 85.2 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 57671680)
+0187.417 (0) Dropbox chunked upload: 86.7 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 58720256)
+0189.047 (0) Dropbox chunked upload: 88.3 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 59768832)
+0190.872 (0) Dropbox chunked upload: 89.8 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 60817408)
+0192.750 (0) Dropbox chunked upload: 91.4 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 61865984)
+0195.928 (0) Dropbox chunked upload: 92.9 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 62914560)
+0197.764 (0) Dropbox chunked upload: 94.5 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 63963136)
+0199.540 (0) Dropbox chunked upload: 96 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 65011712)
+0201.597 (0) Dropbox chunked upload: 97.6 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 66060288)
+0204.210 (0) Dropbox chunked upload: 99.1 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 67108864)
+0205.744 (0) Dropbox chunked upload: 100 % uploaded (aCPUj8h7OwdFhVDLYkYB1A, 67706741)
+0206.987 (0) Recording as successfully uploaded: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip (c21a305cfd318d2b79b42d3953cf63dd)
+0207.001 (0) Deleting local file: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip: OK
+0207.003 (0) Dropbox: File upload success (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-uploads.zip): 66119 Kb in 143s (461 Kb/s)
+0207.828 (0) Dropbox quota usage: normal=21050.1 Mb, shared=1764.8 Mb, total=1062656 Mb, available=1039841.1 Mb
+0207.830 (0) Dropbox: Attempt to upload: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip to: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip
+0209.466 (0) Dropbox chunked upload: 100 % uploaded (4_Izk-ZAsIX8LjTA9TZN3Q, 766615)
+0211.141 (0) Recording as successfully uploaded: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip (0cf70331c0ba64e7b03080f94bc88d60)
+0211.146 (0) Deleting local file: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip: OK
+0211.147 (0) Dropbox: File upload success (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-others.zip): 748 Kb in 3s (225 Kb/s)
+0212.008 (0) Dropbox quota usage: normal=21050.8 Mb, shared=1764.8 Mb, total=1062656 Mb, available=1039840.4 Mb
+0212.009 (0) Dropbox: Attempt to upload: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz to: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz
+0213.206 (0) Dropbox chunked upload: 100 % uploaded (DpIc6SehjQEpifLzmUDMBw, 155134)
+0214.761 (0) Recording as successfully uploaded: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz (e14327e0eec05c7e58c37928ea1d0d5e)
+0214.765 (0) Deleting local file: backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz: OK
+0214.765 (0) Dropbox: File upload success (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz): 151 Kb in 2s (54 Kb/s)
+0214.768 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0214.769 (0) Number of backup sets in history: 3
+0214.771 (0) Examining backup set with datestamp: 1434888911 (Jun 21 2015 12:15:11)
+0214.773 (0) 1434888911: db: this set includes a database (backup_2015-06-21-1215_Inspicos_cd6724c55b9a-db.gz); db count is now 1
+0214.775 (0) 1434888911: this backup set remains non-empty (1/1); will retain in history
+0214.776 (0) Examining backup set with datestamp: 1434810963 (Jun 20 2015 14:36:03)
+0214.777 (0) 1434810963: db: this set includes a database (backup_2015-06-20-1436_Inspicos_e36809c516aa-db.gz); db count is now 2
+0214.780 (0) 1434810963: this backup set remains non-empty (1/1); will retain in history
+0214.781 (0) Examining backup set with datestamp: 1434738680 (Jun 19 2015 18:31:20)
+0214.782 (0) 1434738680: db: this set includes a database (backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-db.gz); db count is now 3
+0214.783 (0) 1434738680: db: over retain limit (2); will delete this database
+0214.784 (0) Delete file: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-db.gz, service=dropbox
+0214.785 (0) Dropbox: request deletion: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-db.gz
+0215.734 (0) Dropbox: delete succeeded
+0215.738 (0) plugins: 1434738680: over retain limit (2); will delete this file (backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-plugins.zip)
+0215.739 (0) themes: 1434738680: over retain limit (2); will delete this file (backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-themes.zip)
+0215.740 (0) uploads: 1434738680: over retain limit (2); will delete this file (backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-uploads.zip)
+0215.741 (0) others: 1434738680: over retain limit (2); will delete this file (backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-others.zip)
+0215.741 (0) Delete file: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-plugins.zip, service=dropbox
+0215.742 (0) Delete file: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-themes.zip, service=dropbox
+0215.743 (0) Delete file: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-uploads.zip, service=dropbox
+0215.744 (0) Delete file: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-others.zip, service=dropbox
+0215.745 (0) Dropbox: request deletion: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-plugins.zip
+0217.328 (0) Dropbox: delete succeeded
+0217.330 (0) Dropbox: request deletion: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-themes.zip
+0218.251 (0) Dropbox: delete succeeded
+0218.253 (0) Dropbox: request deletion: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-uploads.zip
+0219.231 (0) Dropbox: delete succeeded
+0219.233 (0) Dropbox: request deletion: backup_2015-06-19-1831_Inspicos_bc0d21b44cb0-others.zip
+0220.228 (0) Dropbox: delete succeeded
+0220.231 (0) 1434738680: this backup set is now empty; will remove from history
+0220.232 (0) 1434738680: deleting log file (log.bc0d21b44cb0.txt)
+0220.233 (0) Retain: saving new backup history (sets now: 2) and finishing retain operation
+0220.235 (0) Resume backup (cd6724c55b9a, 0): finish run
+0220.238 (0) Decremented the semaphore (fd) by 1
+0220.239 (0) Semaphore (fd) unlocked
+0220.240 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0220.244 (0) The backup apparently succeeded and is now complete
+0220.245 (0) No email will/can be sent - the user has not configured an email address.
+0220.246 (0) Sikkerhedskopieringen lykkedes og er nu færdig
