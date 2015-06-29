@@ -392,7 +392,7 @@ msgstr "<span class=\"nav-next-text\">Ældrer</span> <span class=\"nav-next-icon
 #: inc/library.php:106
 #@ wplook
 msgid "<span class=\"nav-previous-icon\"></span>  <span class=\"nav-previous-text\">Previous</span>"
-msgstr ""
+msgstr "<span class=\"nav-previous-icon\"></span>  <span class=\"nav-previous-text\">Forrige</span>"
 
 #: inc/library.php:107
 #@ wplook
