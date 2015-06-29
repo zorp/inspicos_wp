@@ -74,6 +74,10 @@
 								</div>
 							<?php endif; ?>
 
+							<div class="grid_3 omega no-m-b fourth">
+									<a href="http://www.cancer.dk/om+os/The+Danish+Cancer+Society.htm" target="_blank"><img src="/wp-content/uploads/2015/06/inspicos_cancer.jpg" alt="" /></a>
+							</div>
+
 						<?php }	?>
 					</div>
 				<?php }	?>
