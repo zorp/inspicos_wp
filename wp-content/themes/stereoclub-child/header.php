@@ -77,7 +77,7 @@
 										<a target="_blank" title="Search"><i class="icon-search"></i></a>
 										<!-- Search Form -->
 										<div class="header-search-form">
-											<form method="get" id="header-searchform" action="<?php echo home_url( '/' ); ?>">
+											<form method="get" id="header-searchform" action="<?php echo get_site_url(); ?>">
 												<div>
 													<input class="radius" type="text" size="" name="s" id="s" value="<?php _e('Type your searching word', 'wplook'); ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"/>
 													<input type="submit" class="search-button" id="searchsubmit" value="<?php _e('Search', 'wplook'); ?>" />
