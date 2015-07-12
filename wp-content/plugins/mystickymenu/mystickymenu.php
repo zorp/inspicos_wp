@@ -3,7 +3,7 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 1.8.1
+	Version: 1.8.2
 	Author: m.r.d.a
 	Text domain: mystickymenu
 	Domain Path: /languages
@@ -215,8 +215,7 @@ class MyStickyMenuPage
 				'mysticky_active_on_height' => '320',
 				'mysticky_active_on_height_home' => '320',
 				'myfixed_fade' => false,
-				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }',
-				'disable_css' => false
+				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }'
 			);
 
 		if ( get_option('mysticky_option_name') == false ) {	
@@ -469,7 +468,7 @@ if  ($mysticky_options ['disable_css'] == false ){
 			$mysticky_options['mysticky_active_on_height'] = $mysticky_options['mysticky_active_on_height_home'];
 		};
 		
-			wp_register_script('mystickymenu', WP_PLUGIN_URL. '/mystickymenu/js/mystickymenu.min.js', false,'1.0.0', true);
+			wp_register_script('mystickymenu', plugins_url( 'js/mystickymenu.min.js', __FILE__ ), false,'1.0.0', true);
 			wp_enqueue_script( 'mystickymenu' );
 
 		$mysticky_translation_array = array( 

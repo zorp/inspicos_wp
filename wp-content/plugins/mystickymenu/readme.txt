@@ -1,10 +1,10 @@
 === myStickymenu ===
 Contributors: damiroquai
-Donate link: http://wordpress.transformnews.com
+Donate link: http://wordpress.transformnews.com/contact
 Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
 Requires at least: 3.5.1
-Tested up to: 4.1
-Stable tag: 1.8.1
+Tested up to: 4.2.2
+Stable tag: 1.8.2
 License: GPLv2 or later
 
 This modern lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
@@ -19,7 +19,9 @@ Another advancement of this simple plugin is that increases usability and page v
 Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
 
 == Installation ==
-Install like any other plugin. After install activate. If using template other than Twenty Thirteen go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id..
+Install like any other plugin. After install activate. 
+Go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id… 
+Also make sure that Disable CSS style option is not enabled, you must add myStickymenu CSS style to your style.css file first. More about disable CSS option can be found here - http://wordpress.transformnews.com/tutorials/disable-css-style-in-mystickymenu-938
 
 
 == Frequently Asked Questions ==
@@ -30,6 +32,17 @@ So this depends on what you want to make sticky and what theme do you use, but f
 = Is there any way to restrict the width to the width of the header, rather than it being full width? =
 Yes, just leave "Sticky Background Color" field blank (clear). Than if needed define custom background color for sticky header inside ".myfixed css class" field using .myfixed class. 
 
+= Ho do I add small logo to the menu? =
+That will depend on a theme you use, but if initially your menu and logo are in one div than you can use that div class or id in myStickymenu settings. 
+
+If not you can change that in your header template file and add logo and menu divs inside new div with some custom class or id, than use that class or id in myStickymenu settings as a sticky class.
+
+In CSS you can style your custom class while not sticky using custom class you added before. Furthermore you can style your menu while sticky using .myfixed class which is added by js to your custom class while sticky is active. 
+
+In some cases you can use the whole header div and than just style it different with .myfixed class, hide what you don’t need using CSS display:none; property, and position logo and menu as you like. 
+
+Check Twenty Thirteen CSS example using default full header id #masthead as a sticky class - http://wordpress.transformnews.com/tutorials/mystickymenu-theme-support-682 . 
+Also check another header example here - https://wordpress.org/support/topic/logo-in-menu-2 .
 
 == Screenshots ==
 
@@ -38,6 +51,9 @@ Yes, just leave "Sticky Background Color" field blank (clear). Than if needed de
 
 
 == Changelog ==
+
+= 1.8.2 =
+* Fixed: js load on https
 
 = 1.8.1 =
 * Added: “Disable CSS“. If you plan to add style manually to your style.css in order to improve your site performance disable plugin CSS style printed by default in document head element.
@@ -84,6 +100,9 @@ Yes, just leave "Sticky Background Color" field blank (clear). Than if needed de
 * First release of myStickymenu plugin
 
 == Upgrade Notice ==
+
+= 1.8.2 =
+* Fixed: js load on https
 
 = 1.8.1 =
 * Added: “Disable CSS“. If you plan to add style manually to your style.css in order to improve your site performance disable plugin CSS style printed by default in document head element.
