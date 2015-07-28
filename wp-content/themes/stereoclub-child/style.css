@@ -572,6 +572,9 @@ h2.entry-title {
   #menu-main-menu {
     padding-left: 0px;
   }
+  .entry-content-post .grid_2 {
+    width: 100% !important;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
