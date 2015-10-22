@@ -63,7 +63,7 @@ msgstr "Webstedets URL"
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Documentation on Upgrade Network</a>"
 msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Updates_Screen\" target=\"_blank\">Dokumentation om opdatering af netværket</a>"
 
-#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:279
+#: wp-admin/network/user-new.php:29 wp-admin/network/users.php:280
 msgid "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Documentation on Network Users</a>"
 msgstr "<a href=\"https://codex.wordpress.org/Network_Admin_Users_Screen\" target=\"_blank\">Dokumentation om netværksbrugere</a>"
 
@@ -140,7 +140,7 @@ msgid_plural "%s themes deleted."
 msgstr[0] "%s tema slettet."
 msgstr[1] "%s temaer slettet."
 
-#: wp-admin/network/users.php:117
+#: wp-admin/network/users.php:118
 msgid "Once you hit &#8220;Confirm Deletion&#8221;, these users will be permanently removed."
 msgstr "Når du klikker &#8220;Bekræft sletning&#8221;, vil disse brugere blive fjernet permanent."
 
@@ -164,11 +164,11 @@ msgstr "Tilladte filtyper. Separer typer med mellemrum."
 msgid "New registrations settings"
 msgstr "Indstillinger for nye registreringer"
 
-#: wp-admin/network/users.php:115
+#: wp-admin/network/users.php:116
 msgid "Once you hit &#8220;Confirm Deletion&#8221;, the user will be permanently removed."
 msgstr "Når du klikker &#8220;Bekræft sletning&#8221;, vil brugeren blive fjernet permanent."
 
-#: wp-admin/network/users.php:101
+#: wp-admin/network/users.php:102
 msgid "User has no sites or content and will be deleted."
 msgstr "Brugeren har ingen websteder eller indhold og vil blive slettet."
 
@@ -198,7 +198,7 @@ msgstr "Hvad skal der ske med indhold ejet af %s?"
 #: wp-admin/network/site-new.php:30 wp-admin/network/site-settings.php:33
 #: wp-admin/network/site-themes.php:33 wp-admin/network/site-users.php:36
 #: wp-admin/network/sites.php:46 wp-admin/network/user-new.php:30
-#: wp-admin/network/users.php:280
+#: wp-admin/network/users.php:281
 msgid "<a href=\"https://wordpress.org/support/forum/multisite/\" target=\"_blank\">Support Forums</a>"
 msgstr "<a href=\"https://wordpress.org/support/forum/multisite/\" target=\"_blank\">Supportfora</a>"
 
@@ -210,7 +210,7 @@ msgstr "Bekræft din handling"
 msgid "This email address will receive notifications. Registration and support emails will also come from this address."
 msgstr "Denne e-mailadresse vil modtage notifikationer. Registreringer og support e-mails vil blive afsendt fra denne adresse."
 
-#: wp-admin/network/users.php:270
+#: wp-admin/network/users.php:271
 msgid "Hover over any user on the list to make the edit links appear. The Edit link on the left will take you to their Edit User profile page; the Edit link on the right by any site name goes to an Edit Site screen for that site."
 msgstr "Hold musen over en bruger på listen for at få redigeringslinks. Redigeringslinket til venstre vil føre dig til redigering af deres brugerprofil; redigeringslinket til højre fører dig til Rediger websted skærmbilledet for webstedet."
 
@@ -793,7 +793,7 @@ msgstr "Din e-mailadresse."
 msgid "You do not have sufficient permissions to edit this site."
 msgstr "Du har ikke tilstrækkeligt med rettigheder til at redigere dette websted."
 
-#: wp-admin/network/users.php:181
+#: wp-admin/network/users.php:182
 msgid "Warning! User cannot be modified. The user %s is a network administrator."
 msgstr "Advarsel! Brugeren kan ikke ændres. Bruger %s er netværksadministrator."
 
@@ -817,7 +817,7 @@ msgstr "Hold musen over et websted og du får syv valgmuligheder (tre for hoveds
 msgid "Operational settings has fields for the network&#8217;s name and admin email."
 msgstr "Operationelle indstillinger har felter til netværkets navn og administrator e-mail."
 
-#: wp-admin/network/users.php:271
+#: wp-admin/network/users.php:272
 msgid "You can also go to the user&#8217;s profile page by clicking on the individual username."
 msgstr "Du kan også gå til brugerens profilside ved at klikke på brugernavnet."
 
@@ -825,7 +825,7 @@ msgstr "Du kan også gå til brugerens profilside ved at klikke på brugernavnet
 msgid "Upload settings control the size of the uploaded files and the amount of available upload space for each site. You can change the default value for specific sites when you edit a particular site. Allowed file types are also listed (space separated only)."
 msgstr "Upload indstillinger bestemmer størrelsen af uploadede filer og mængden af tilgængelig upload-plads til hvert websted. Du kan ændre standardindstillingen for de enkelte websteder, når du redigerer dem. Tilladte filtyper er også listet (adskilt med mellemrum)."
 
-#: wp-admin/network/users.php:273
+#: wp-admin/network/users.php:274
 msgid "The bulk action will permanently delete selected users, or mark/unmark those selected as spam. Spam users will have posts removed and will be unable to sign up again with the same email addresses."
 msgstr "Med massehandling kan du permanent slette udvalgte brugere eller tilføje/fjerne markeringen ved dem, der udvalgt som spam. Spam-brugeres indlæg vil blive slettet, og de vil ikke kunne tilmelde sig igen med samme e-mailadresse."
 
@@ -833,7 +833,7 @@ msgstr "Med massehandling kan du permanent slette udvalgte brugere eller tilføj
 msgid "Visit to go to the frontend site live."
 msgstr "Besøg webstedet for at se hvordan det ser ud."
 
-#: wp-admin/network/users.php:269
+#: wp-admin/network/users.php:270
 msgid "This table shows all users across the network and the sites to which they are assigned."
 msgstr "Denne tabel viser alle brugere i hele netværket og de websteder, som de er blevet knyttet til."
 
@@ -869,7 +869,7 @@ msgstr "Dette er hovedoversigten over alle websteder på dette netværk. Skift m
 msgid "Users who are signed up to the network without a site are added as subscribers to the main or primary dashboard site, giving them profile pages to manage their accounts. These users will only see Dashboard and My Sites in the main navigation until a site is created for them."
 msgstr "Brugere, der er tilmeldt til netværket uden et websted, er tilføjet som abonnenter på hovedwebstedet i kontrolpanelet, og de vil have en profilside, hvor de kan håndtere deres brugerkonto. Disse brugere vil kun se Kontrolpanelet og Mine websteder i hovednavigationen indtil et websted er oprettet til dem."
 
-#: wp-admin/network/users.php:272
+#: wp-admin/network/users.php:273
 msgid "You can sort the table by clicking on any of the bold headings and switch between list and excerpt views by using the icons in the upper right."
 msgstr "Du kan sortere tabellen ved at klikke på en af overskrifterne med fed og skifte mellem liste- og uddragsvisning ved hjælp af ikonerne i øverst til højre."
 
@@ -881,7 +881,7 @@ msgstr "Hvis denne proces, af en eller anden grund, ikke gennemføres, så vil b
 msgid "If a version update to core has not happened, clicking this button won&#8217;t affect anything."
 msgstr "Hvis opdatering af kernekoden til den nyeste version ikke er gennemført, så vil det ikke påvirke noget at klikke på denne knap."
 
-#: wp-admin/network/users.php:274
+#: wp-admin/network/users.php:275
 msgid "You can make an existing user an additional super admin by going to the Edit User profile page and checking the box to grant that privilege."
 msgstr "Du kan gøre en eksisterende bruger til superadministrator ved at gå ind i brugerens profilside og markere feltet, der giver brugere rolle som superadministrator."
 
@@ -921,7 +921,7 @@ msgstr "Webstederne er markerede som spam."
 msgid "Sites removed from spam."
 msgstr "Webstederne er fjernet fra spam."
 
-#: wp-admin/network/users.php:297
+#: wp-admin/network/users.php:298
 msgid "Users removed from spam."
 msgstr "Brugerne er fjernet fra spam."
 
@@ -937,7 +937,7 @@ msgstr "Websted deaktiveret."
 msgid "Site activated."
 msgstr "Websted aktiveret."
 
-#: wp-admin/network/users.php:300
+#: wp-admin/network/users.php:301
 msgid "Users deleted."
 msgstr "Brugere slettet."
 
@@ -957,7 +957,7 @@ msgstr "Websteder slettet."
 msgid "Site deleted."
 msgstr "Websted slettet."
 
-#: wp-admin/network/users.php:294
+#: wp-admin/network/users.php:295
 msgid "Users marked as spam."
 msgstr "Brugere markeret som spam."
 
@@ -1087,9 +1087,9 @@ msgstr "Brugerne har ikke tilladelse til at oprette disse websteder. Adskil navn
 #: wp-admin/network/site-themes.php:64 wp-admin/network/site-users.php:57
 #: wp-admin/network/sites.php:17 wp-admin/network/sites.php:124
 #: wp-admin/network/upgrade.php:39 wp-admin/network/user-new.php:37
-#: wp-admin/network/users.php:17 wp-admin/network/users.php:134
-#: wp-admin/network/users.php:155 wp-admin/network/users.php:168
-#: wp-admin/network/users.php:217
+#: wp-admin/network/users.php:17 wp-admin/network/users.php:135
+#: wp-admin/network/users.php:156 wp-admin/network/users.php:169
+#: wp-admin/network/users.php:218
 msgid "You do not have permission to access this page."
 msgstr "Du har ikke tilladelse til at tilgå denne side."
 

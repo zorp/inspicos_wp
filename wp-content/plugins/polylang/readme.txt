@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: multilingual, bilingual, translate, translation, language, multilanguage, international, localization
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 1.7.9
+Stable tag: 1.7.11
 License: GPLv2 or later
 
 Making WordPress multilingual
@@ -26,7 +26,7 @@ Polylang allows you to create a bilingual or multilingual WordPress site. You wr
 
 = Translators =
 
-The plugin admin interface is currently available in 40 languages:
+The plugin admin interface is currently available in 41 languages:
 
 * English
 * French by [fxbenard](http://fxbenard.com/)
@@ -68,6 +68,7 @@ The plugin admin interface is currently available in 40 languages:
 * Galician by [Toño Calo](http://fedellar.wordpress.com/)
 * Romanian by uskro
 * Japanese by [Eiko Toda](http://www.eikotoda.com)
+* Occitan by [Cédric Valmary](http://www.totenoc.eu/)
 
 = Credits =
 
@@ -110,6 +111,31 @@ See http://polylang.wordpress.com/documentation/contribute/
 1. The Polylang languages admin panel in WordPress 3.8
 
 == Changelog ==
+
+= 1.7.11 (2015-10-15) =
+
+* fix: conflict with GET ajax requests sent by the jquery method load
+* fix: notice in frontend-nav-menu.php at line 211 (introduced in 1.7.10) [props Jesse Graupmann](https://wordpress.org/support/topic/warning-and-notice-on-upgrade)
+* fix: the parent list in page attributes metabox is not in the correct language (introduced in 1.7.10)
+* fix: error 404 for attachments
+* fix: the language switcher is not displayed when combining "Forces link to front page" and "Hides languages with no translation"
+
+= 1.7.10 (2015-09-28) =
+
+* Add Occitan translation contributed by [Cédric Valmary](http://www.totenoc.eu/)
+* Add de_DE_formal, en_NZ, es_CO, hy, oci, ps and tl to the predefined languages list
+* Add the filter 'pll_predefined_languages' and the actions 'pll_language_edit_form_fields' and 'pll_language_add_form_fields'
+* the termmeta table (used in Polylang < 1.2) is no more deleted when uninstalling the plugin (as it will soon be included in WP)
+* fix: prevent creating a media translation if one already exists
+* fix: Attempt to translate the nav menus for themes registering a theme location but not using it in wp_nav_menu()
+* fix: Jetpack infinite scroll
+* fix: issue with terms languages when two languages have the same name
+* fix: notices when deleting a tag and Lingotek is active
+* fix: the languages cache is not cleaned when updating the site home url
+* fix: conflict with the theme Ambition
+* fix: front page canonical url displayed by Yoast SEO
+* fix: typo in options definition at install [props null.bit](https://wordpress.org/support/topic/suggestions-for-two-new-filters?replies=5#post-7466159)
+* fix: error when adding a term in a non-translated taxonomy
 
 = 1.7.9 (2015-08-17) =
 
