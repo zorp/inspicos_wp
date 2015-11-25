@@ -1,14 +1,14 @@
 <?php
 /**
- * Module Name: WordPress.com Stats
- * Module Description: Monitor your stats with clear, concise reports and no additional load on your server.
+ * Module Name: Site Stats
+ * Module Description: Collect traffic stats and insights.
  * Sort Order: 1
  * Recommendation Order: 2
  * First Introduced: 1.1
  * Requires Connection: Yes
  * Auto Activate: Yes
- * Module Tags: WordPress.com Stats, Recommended
- * Feature: Recommended
+ * Module Tags: Site Stats, Recommended
+ * Feature: Recommended, Traffic
  */
 
 if ( defined( 'STATS_VERSION' ) ) {
@@ -120,7 +120,7 @@ function stats_map_meta_caps( $caps, $cap, $user_id, $args ) {
 		$stats_roles = stats_get_option( 'roles' );
 
 		// Is the users role in the available stats roles?
-		if ( in_array( $user_role, $stats_roles ) ) {
+		if ( is_array( $stats_roles ) && in_array( $user_role, $stats_roles ) ) {
 			$caps = array( 'read' );
 		}
 	}
@@ -261,6 +261,13 @@ function stats_upgrade_options( $options ) {
 }
 
 function stats_array( $kvs ) {
+	/**
+	 * Filter the options added to the JavaScript Stats tracking code.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param array $kvs Array of options about the site and page you're on.
+	 */
 	$kvs = apply_filters( 'stats_array', $kvs );
 	$kvs = array_map( 'addslashes', $kvs );
 	foreach ( $kvs as $k => $v )

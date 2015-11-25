@@ -35,7 +35,7 @@ class PLL_Install extends PLL_Install_Base {
 	 *
 	 * @since 0.5
 	 */
-	protected function _activate($networkwide) {
+	protected function _activate() {
 		global $polylang;
 
 		if ($options = get_option('polylang')) {
@@ -55,8 +55,8 @@ class PLL_Install extends PLL_Install_Base {
 				'redirect_lang' => 0, // do not redirect the language page to the homepage
 				'media_support' => 1, // support languages and translation for media by default
 				'sync'          => array(), // synchronisation is disabled by default (was the opposite before 1.2)
-				'post_types'    => array_values(get_post_types(array('_builtin' => false, 'show_ui => true'))),
-				'taxonomies'    => array_values(get_taxonomies(array('_builtin' => false, 'show_ui => true'))),
+				'post_types'    => array_values(get_post_types(array('_builtin' => false, 'show_ui' => true))),
+				'taxonomies'    => array_values(get_taxonomies(array('_builtin' => false, 'show_ui' => true))),
 				'domains'       => array(),
 				'version'       => POLYLANG_VERSION,
 			);
@@ -71,9 +71,9 @@ class PLL_Install extends PLL_Install_Base {
 		$polylang->links_model = $polylang->model->get_links_model();
 		do_action('pll_init');
 
-		// FIXME don't flush rewrite rules at network activation. See #32471
-		if (!$networkwide)
-			flush_rewrite_rules();
+		// don't use flush_rewrite_rules at network activation. See #32471
+		// thanks to RavanH for the trick. See https://polylang.wordpress.com/2015/06/10/polylang-1-7-6-and-multisite/
+		delete_option('rewrite_rules');
 	}
 
 	/*
@@ -81,9 +81,7 @@ class PLL_Install extends PLL_Install_Base {
 	 *
 	 * @since 0.5
 	 */
-	protected function _deactivate($networkwide) {
-		// FIXME don't flush rewrite rules at network deactivation. See #32471
-		if (!$networkwide)
-			flush_rewrite_rules();
+	protected function _deactivate() {
+		delete_option('rewrite_rules'); // don't use flush_rewrite_rules at network activation. See #32471
 	}
 }

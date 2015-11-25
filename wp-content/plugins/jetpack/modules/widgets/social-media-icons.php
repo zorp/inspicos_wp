@@ -14,6 +14,7 @@ class WPCOM_social_media_icons_widget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'wpcom_social_media_icons_widget',
+			/** This filter is documented in modules/widgets/facebook-likebox.php */
 			apply_filters( 'jetpack_widget_name', esc_html__( 'Social Media Icons', 'jetpack' ) ),
 			array( 'description' => __( 'A simple widget that displays social media icons.', 'jetpack' ), )
 		);
@@ -55,6 +56,7 @@ class WPCOM_social_media_icons_widget extends WP_Widget {
 	// front end
 	public function widget( $args, $instance ) {
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
+		/** This filter is documented in core/src/wp-includes/default-widgets.php */
 		$instance['title'] = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
 
 		if ( ! $this->check_genericons() ) {
@@ -72,6 +74,15 @@ class WPCOM_social_media_icons_widget extends WP_Widget {
 		$html .= '<ul>';
 
 		$alt_text = esc_attr__( 'View %1$s&#8217;s profile on %2$s', 'jetpack' );
+
+		/**
+		 * Fires in the beginning of the list of Social Media accounts, inside the unordered list.
+		 *
+		 * Can be used to add a new Social Media Site to the Social Media Icons Widget.
+		 *
+		 * @since 3.7.0
+		 */
+		do_action( 'jetpack_social_media_icons_widget_list_before' );
 
 		if ( ! empty( $instance['facebook_username'] ) ) {
 			$html .= '<li><a title="' . sprintf( $alt_text, esc_attr( $instance['facebook_username'] ), 'Facebook' ) . '" href="' . esc_url( 'https://www.facebook.com/' . $instance['facebook_username'] . '/' ) . '" class="genericon genericon-facebook" target="_blank"><span class="screen-reader-text">' . sprintf( $alt_text, esc_html( $instance['facebook_username'] ), 'Facebook' ) . '</span></a></li>';
@@ -104,6 +115,15 @@ class WPCOM_social_media_icons_widget extends WP_Widget {
 		if ( ! empty( $instance['vimeo_username'] ) ) {
 			$html .= '<li><a title="' . sprintf( $alt_text, esc_attr( $instance['vimeo_username'] ), 'Vimeo' ) . '" href="' . esc_url( 'https://vimeo.com/' . $instance['vimeo_username'] . '/' ) . '" class="genericon genericon-vimeo" target="_blank"><span class="screen-reader-text">' . sprintf( $alt_text, esc_html( $instance['vimeo_username'] ), 'Vimeo' ) . '</span></a></li>';
 		}
+
+		/**
+		 * Fires at the end of the list of Social Media accounts, inside the unordered list.
+		 *
+		 * Can be used to add a new Social Media Site to the Social Media Icons Widget.
+		 *
+		 * @since 3.7.0
+		 */
+		do_action( 'jetpack_social_media_icons_widget_list_after' );
 
 		$html .= '</ul>';
 
@@ -178,6 +198,14 @@ class WPCOM_social_media_icons_widget extends WP_Widget {
 		$stats = array_keys( $stats );
 		$stats = array_map( array( $this, 'remove_username' ), $stats );
 		foreach ( $stats as $val ) {
+			/**
+			 * Fires for each Social Media account being saved in the Social Media Widget settings.
+			 *
+			 * @since 3.6.0
+			 *
+			 * @param string social-media-links-widget-svcs Type of action to track.
+			 * @param string $val Name of the Social Media account being saved.
+			 */
 			do_action( 'jetpack_bump_stats_extras', 'social-media-links-widget-svcs', $val ) ;
 		}
 

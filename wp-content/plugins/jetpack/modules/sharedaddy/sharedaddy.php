@@ -54,6 +54,7 @@ function sharing_email_check_for_spam_via_akismet( $data ) {
 }
 
 function sharing_email_send_post_content( $data ) {
+	/* translators: included in e-mail when post is shared via e-mail. First item is sender's name. Second is sender's e-mail address. */
 	$content  = sprintf( __( '%1$s (%2$s) thinks you may be interested in the following post:', 'jetpack' ), $data['name'], $data['source'] );
 	$content .= "\n\n";
 	$content .= $data['post']->post_title."\n";
@@ -63,6 +64,9 @@ function sharing_email_send_post_content( $data ) {
 
 function sharing_add_meta_box() {
 	global $post;
+	if ( empty( $post ) ) { // If a current post is not defined, such as when editing a comment.
+		return;
+	}
 	$post_types = get_post_types( array( 'public' => true ) );
 	/**
 	 * Filter the Sharing Meta Box title.
