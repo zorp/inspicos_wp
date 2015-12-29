@@ -45,4 +45,14 @@ var y = hasScrollY ? window.scrollY : document.documentElement.scrollTop;
 }
 
 document.addEventListener('scroll', onScroll);
+
+function OnResizeDocument () {
+mysticky_navbar.style.removeProperty("width");
+mysticky_navbar.classList.remove('myfixed');
+wrappernav.classList.remove('wrapfixed');
+wrappermysticky.style.removeProperty("width");
+parentnav.style.removeProperty("height");
+}
+
+window.addEventListener('resize', OnResizeDocument);
 };

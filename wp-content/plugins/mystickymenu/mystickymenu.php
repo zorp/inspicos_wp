@@ -3,9 +3,9 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 1.8.2
+	Version: 1.8.3
 	Author: m.r.d.a
-	Text domain: mystickymenu
+	Text Domain: mystickymenu
 	Domain Path: /languages
 	License: GPLv2 or later
 	*/
