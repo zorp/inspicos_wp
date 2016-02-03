@@ -32,7 +32,7 @@
 
 .mrl_box1{
 	position:relative;
-	width:100px;
+	width:200px;
 	height:75px;
 	padding:0 0 5px 0;
 }
@@ -54,6 +54,25 @@
 }
 .mrl_dir_new {
 	float:left;
+}
+.mrl_select_all {
+	float:left;
+	padding-left: 7px;
+}
+.mrl_deselect_all {
+	float:left;
+	padding-left: 7px;
+position:relative;top:-2px;
+}
+.mrl_select_all_button {
+	height:14px;
+	font-weight:bold;
+	font-size:7px;
+	line-height:8px;
+	color:#000099;
+	background-color:#def3ff;
+	border:1px solid #050505;
+	cursor:pointer;
 }
 
 

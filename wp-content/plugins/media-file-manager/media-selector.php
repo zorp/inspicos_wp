@@ -361,6 +361,7 @@ HTML;
 	{
 		global $mrelocator_uploaddir;
 		global $mrelocator_uploadurl;
+		global $mrelocator_plugin_URL;
 		echo "<script type=\"text/javascript\"> var uploaddir = '".$mrelocator_uploaddir."' </script>\n";
 		echo "<script type=\"text/javascript\"> var uploadurl = '".$mrelocator_uploadurl."' </script>\n";
 		echo "<script type=\"text/javascript\"> var pluginurl = '".$mrelocator_plugin_URL."' </script>\n";

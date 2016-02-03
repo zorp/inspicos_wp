@@ -3,13 +3,13 @@
 Plugin Name: Media File Manager
 Plugin URI: http://tempspace.net/plugins/?page_id=111
 Description: You can make sub-directories in the upload directory, and move files into them. At the same time, this plugin modifies the URLs/path names in the database. Also an alternative file-selector is added in the editing post/page screen, so you can pick up media files from the subfolders easily.
-Version: 1.3.1
+Version: 1.4.0
 Author: Atsushi Ueda
 Author URI: http://tempspace.net/plugins/
 License: GPL2
 */
 
-set_time_limit(600);
+_set_time_limit(600);
 
 if (!is_admin()) {
 	return;
@@ -38,13 +38,11 @@ function mrelocator_admin_register_head() {
 }
 add_action('admin_head', 'mrelocator_admin_register_head');
 
-
-// add a setting menu
-add_action('admin_menu', 'mrelocator_plugin_menu');
-function mrelocator_plugin_menu()
+// test permission for accessing media file manager
+function test_mfm_permission()
 {
 	$current_user = wp_get_current_user();
-	if ( !($current_user instanceof WP_User) ) return;
+	if ( !($current_user instanceof WP_User) ) return FALSE;
 	$roles = $current_user->roles;
 	$accepted_roles = get_option("mediafilemanager_accepted_roles", "administrator");
 	$accepted = explode(",", $accepted_roles);
@@ -52,11 +50,21 @@ function mrelocator_plugin_menu()
 	for ($i=0; $i<count($accepted); $i++) {
 		for ($j=0; $j<count($roles); $j++) {
 			if ($accepted[$i] == $roles[$j]) {
-				/*  add a configuration screen  */
-				add_submenu_page('upload.php', 'Media File Manager', 'Media File Manager', $roles[$j], 'mrelocator-submenu-handle', 'mrelocator_magic_function'); 
-				return;
+				return $roles[$j];
 			}
 		}
+	}
+	return FALSE;
+}
+
+// add a setting menu
+add_action('admin_menu', 'mrelocator_plugin_menu');
+function mrelocator_plugin_menu()
+{
+	$role = test_mfm_permission();
+	if ($role) {
+		/*  add a configuration screen  */
+		add_submenu_page('upload.php', 'Media File Manager', 'Media File Manager', $role, 'mrelocator-submenu-handle', 'mrelocator_magic_function'); 
 	}
 }
 
@@ -85,6 +93,8 @@ function mrelocator_magic_function()
 					<div style="clear:both;"></div>
 					<div class="mrl_dir_up" id="mrl_left_dir_up"><img src="<?php echo $mrelocator_plugin_URL."/images/dir_up.png";?>"></div>
 					<div class="mrl_dir_up" id="mrl_left_dir_new"><img src="<?php echo $mrelocator_plugin_URL."/images/dir_new.png";?>"></div>
+					<div class="mrl_select_all" ><input class="mrl_select_all_button" id="mrl_left_select_all" type="button" value="Select All"></div>
+					<div class="mrl_deselect_all"><input class="mrl_select_all_button" id="mrl_left_deselect_all"type="button" value="Deselect All"></div>
 				</div>
 				<div style="clear:both;"></div>
 				<div class="mrl_pane" id="mrl_left_pane">	</div>
@@ -101,6 +111,8 @@ function mrelocator_magic_function()
 					<div style="clear:both;"></div>
 					<div class="mrl_dir_up" id="mrl_right_dir_up"><img src="<?php echo $mrelocator_plugin_URL."/images/dir_up.png";?>"></div>
 					<div class="mrl_dir_up" id="mrl_right_dir_new"><img src="<?php echo $mrelocator_plugin_URL."/images/dir_new.png";?>"></div>
+					<div class="mrl_select_all" ><input class="mrl_select_all_button" id="mrl_right_select_all" type="button" value="Select All"></div>
+					<div class="mrl_deselect_all"><input class="mrl_select_all_button" id="mrl_right_deselect_all"type="button" value="Deselect All"></div>
 				</div>
 				<div style="clear:both;"></div>
 				<div class="mrl_pane" id="mrl_right_pane"></div>
@@ -153,6 +165,8 @@ function mrelocator_isEmptyDir($dir)
 
 function mrelocator_getdir_callback()
 {
+	if (!test_mfm_permission()) return 0;
+
 	global $wpdb;
 	global $mrelocator_plugin_URL;
 	global $mrelocator_uploaddir;
@@ -320,6 +334,8 @@ function mrelocator_dircmp_r($a, $b)
 
 function mrelocator_mkdir_callback()
 {
+	if (!test_mfm_permission()) return 0;
+
 	global $wpdb;
 	global $mrelocator_uploaddir;
 	
@@ -370,12 +386,14 @@ function mrelocator_get_subdir($dir)
 
 function mrelocator_rename_callback()
 {
+	if (!test_mfm_permission()) return 0;
+
 	global $wpdb;
 	global $mrelocator_uploaddir;
 	global $mrelocator_uploadurl;
 
 	ignore_user_abort(true);
-	set_time_limit(1800);
+	_set_time_limit(1800);
 	ini_set("track_errors",true);
 
 	$wpdb->show_errors();
@@ -428,7 +446,7 @@ function mrelocator_rename_callback()
 	$subdir = mrelocator_get_subdir($dir);
 
 	try {
-		if (!mysql_query("START TRANSACTION", $wpdb->dbh)) {throw new Exception('1');}
+		if ($wpdb->query("START TRANSACTION")===false) {throw new Exception('1');}
 
 		for ($i=0; $i<count($old); $i++) {
 			$oldp = $dir . $old[$i];	//old path
@@ -477,11 +495,11 @@ function mrelocator_rename_callback()
 			}
 		}
 	
-		$rc=mysql_query("COMMIT", $wpdb->dbh);
+		if ($rc=$wpdb->query("COMMIT") === FALSE) {throw new Exception('9');}
 
 		die("Success");
 	} catch (Exception $e) {
-		mysql_query("ROLLBACK", $wpdb->dbh);
+		$wpdb->query("ROLLBACK");
 		for ($j=0; $j<count($new); $j++) {
 			$res = @rename($dir.$new[$j], $dir.$old[$j]);
 		}
@@ -492,11 +510,13 @@ add_action('wp_ajax_mrelocator_rename', 'mrelocator_rename_callback');
 
 function mrelocator_move_callback()
 {
+	if (!test_mfm_permission()) return 0;
+
 	global $wpdb;
 $wpdb->show_errors();
 
 	ignore_user_abort(true);
-	set_time_limit(900);
+	_set_time_limit(900);
 	ini_set("track_errors",true);
 
 
@@ -544,7 +564,7 @@ $wpdb->show_errors();
 //die("OK");
 
 	try {
-		mysql_query("BEGIN", $wpdb->dbh);
+		if ($wpdb->query("START TRANSACTION") === FALSE) {throw new Exception('0');}
 
 		$subdir_from = mrelocator_get_subdir($dir_from);
 		$subdir_to = mrelocator_get_subdir($dir_to);
@@ -589,11 +609,11 @@ $wpdb->show_errors();
 			}
 		}
 
-		mysql_query("COMMIT", $wpdb->dbh);
+		if ($wpdb->query("COMMIT") === FALSE) {throw new Exception('8');}
 
 		die("Success");
 	} catch (Exception $e) {
-		mysql_query("ROLLBACK", $wpdb->dbh);
+		$wpdb->query("ROLLBACK");
 		for ($j=0; $j<count($items); $j++) {
 			$res = @rename($dir_to . $items[$j] , $dir_from . $items[$j]);
 		}
@@ -606,6 +626,8 @@ add_action('wp_ajax_mrelocator_move', 'mrelocator_move_callback');
 
 function mrelocator_delete_empty_dir_callback()
 {
+	if (!test_mfm_permission()) return 0;
+
 	global $mrelocator_uploaddir;
 	
 	$local_post_dir = stripslashes($_POST['dir']);
@@ -746,6 +768,10 @@ function mrelocator_admin_magic_function()
 			}
 		}
 		update_option('mediafilemanager_accepted_roles_selector', $roles_val);
+
+		$disable_set_time_limit = (!(empty($_POST['disable_set_time_limit']))) ? 1 : 0;
+		update_option('mediafilemanager_disable_set_time_limit', $disable_set_time_limit);
+		
 	}
 
 	?>
@@ -757,6 +783,7 @@ function mrelocator_admin_magic_function()
 		wp_nonce_field('update-options');
 		$accepted_roles = get_option("mediafilemanager_accepted_roles", "administrator");
 		$accepted_roles_selector = get_option("mediafilemanager_accepted_roles_selector", "administrator,editor,author,contributor,subscriber");
+		$disable_set_time_limit = get_option("mediafilemanager_disable_set_time_limit", 0);
 		?>
 		<table class="form-table">
 		<tr>
@@ -803,8 +830,11 @@ function mrelocator_admin_magic_function()
 		</td>
 		</tr>
 		
-		<tr>
-		<td>
+		<th>Others</th>
+		<td style="text-align: left;">
+		<input type="checkbox" name="disable_set_time_limit" id="disable_set_time_limit" <?php echo $disable_set_time_limit?"checked":"";?>>Disable set_time_limit() (not recommended)</input><br>
+		</td>
+		</tr>
 
 		</table>
 		<input type="hidden" name="action" value="update" />
@@ -927,12 +957,22 @@ function mrelocator_log($str)
 
 function mrelocator_delete_log_callback()
 {
+	if (!test_mfm_permission()) return 0;
+
 	global $wpdb;
 	$ret = $wpdb->query("TRUNCATE TABLE ".$wpdb->prefix."media_file_manager_log");
 	die ($ret===FALSE ? "failure":"success");
 }
 add_action('wp_ajax_mrelocator_delete_log', 'mrelocator_delete_log_callback');
 
+
+function _set_time_limit($t)
+{
+	if (get_option("mediafilemanager_disable_set_time_limit", 0)) {
+	} else {
+		set_time_limit($t);
+	}
+}
 
 include 'media-selector.php';
 

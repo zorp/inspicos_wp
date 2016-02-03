@@ -82,11 +82,14 @@ var MrlPaneClass = function(id_root, flg_chkbox)
 	this.id_dir = id_root + "_path";
 	this.id_dir_new = id_root + "_dir_new";
 	this.id_dir_up = id_root + "_dir_up";
+	this.id_select_all = id_root + "_select_all";
+	this.id_deselect_all = id_root + "_deselect_all";
 	this.flg_chkbox = flg_chkbox;
 	this.checked_loc = -1;
 	this.last_div_id = "";
 	this.chk_prepare_id = -1;
 	this.opposite=this;
+	this.disp_num = 0;
 
 	var that = this;
 
@@ -128,6 +131,16 @@ var MrlPaneClass = function(id_root, flg_chkbox)
 		});
 	});
 
+	jQuery('#'+this.id_select_all).click(function(ev) {
+		for (i=0; i<that.disp_num; i++) {
+			jQuery('#'+that.get_chkid(i)).attr('checked',true);
+		}
+	});
+	jQuery('#'+this.id_deselect_all).click(function(ev) {
+		for (i=0; i<that.disp_num; i++) {
+			jQuery('#'+that.get_chkid(i)).attr('checked',false);
+		}
+	});
 }
 
 MrlPaneClass.prototype.get_chkid = function (n) {return this.id_pane+'_ck_'+n;}
@@ -178,7 +191,7 @@ MrlPaneClass.prototype.dir_ajax = function(target_dir,dirj)
 	}
 	this.cur_dir = target_dir;
 	jQuery('#'+this.id_dir).val(target_dir);
-	var disp_num = 0;
+	this.disp_num = 0;
 
 	dirj = jQuery.trim(dirj);
 	if (dirj=="") {
@@ -201,13 +214,13 @@ MrlPaneClass.prototype.dir_ajax = function(target_dir,dirj)
 
 	for (i=0; i<dir.length; i++) {
 		if (dir[i].isthumb) continue;
-		this.dir_disp_list[disp_num] = i;
+		this.dir_disp_list[this.disp_num] = i;
 		html = html+'<div style="vertical-align:middle;display:block;height:55px;clear:both; position:relative;">';
 		if (this.flg_chkbox) {
-			html = html + '<div style="float:left;"><input type="checkbox" id="'+this.get_chkid(disp_num)+'"></div>';
+			html = html + '<div style="float:left;"><input type="checkbox" id="'+this.get_chkid(this.disp_num)+'"></div>';
 		}
-		html = html + '<div style="float:left;" id="' + this.get_divid(disp_num)+'">';
-		this.last_div_id = this.get_divid(disp_num);
+		html = html + '<div style="float:left;" id="' + this.get_divid(this.disp_num)+'">';
+		this.last_div_id = this.get_divid(this.disp_num);
 		if (dir[i].thumbnail_url && dir[i].thumbnail_url!="") {
 			html=html+'<img style="margin:0 5px 0 5px;" src="' + dir[i].thumbnail_url+'" width="50" />';
 		}
@@ -215,7 +228,7 @@ MrlPaneClass.prototype.dir_ajax = function(target_dir,dirj)
 		html = html + mrl_ins8203(dir[i].name)/*+" --- " + dir[i].isdir+ (dir[i].id!=""?" "+dir[i].id:"")*/;
 		html = html + '</div></div>';
 
-		disp_num ++;
+		this.disp_num ++;
 	}
 	jQuery('#'+this.id_pane).html(html);
 
@@ -339,6 +352,7 @@ MrlPaneClass.prototype.prepare_checkboxes = function()
 								to: mrloc_input_text.result
 							};
 							mrl_ajax_in();
+
 							jQuery.post(ajaxurl, data, function(response) {
 								if (response.search(/Success/i) < 0) alert("mrelocator_rename: "+response);
 								if (that.opposite.cur_dir.indexOf(that.cur_dir+old_name+"/")===0) {
