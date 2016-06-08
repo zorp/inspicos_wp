@@ -72,8 +72,8 @@ class Updraft_Restorer extends WP_Upgrader {
 		$this->ud_multisite_selective_restore = (is_array($restore_options) && !empty($restore_options['updraft_restore_ms_whichsites']) && $restore_options['updraft_restore_ms_whichsites'] > 0) ? $restore_options['updraft_restore_ms_whichsites'] : false;
 		$this->ud_restore_options = $restore_options;
 		
-		$this->ud_foreign = (empty($info['meta_foreign'])) ? false : $info['meta_foreign'];
-		if (isset($info['multisite'])) $this->ud_backup_is_multisite = $info['multisite'];
+		$this->ud_foreign = empty($info['meta_foreign']) ? false : $info['meta_foreign'];
+		if (isset($info['is_multisite'])) $this->ud_backup_is_multisite = $info['is_multisite'];
 		if (isset($info['created_by_version'])) $this->created_by_version = $info['created_by_version'];
 
 		parent::__construct($skin);
@@ -97,7 +97,7 @@ class Updraft_Restorer extends WP_Upgrader {
 		$this->strings['moving_backup'] = __('Moving unpacked backup into place...','updraftplus');
 		$this->strings['restore_database'] = __('Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...','updraftplus');
 		$this->strings['cleaning_up'] = __('Cleaning up rubbish...','updraftplus');
-		$this->strings['old_move_failed'] = __('Could not move old files out of the way.','updraftplus').' '.__('You should check the file permissions in your WordPress installation', 'updraftplus');
+		$this->strings['old_move_failed'] = __('Could not move old files out of the way.','updraftplus').' '.__('You should check the file ownerships and permissions in your WordPress installation', 'updraftplus');
 		$this->strings['old_delete_failed'] = __('Could not delete old directory.','updraftplus');
 		$this->strings['new_move_failed'] = __('Could not move new files into place. Check your wp-content/upgrade folder.','updraftplus');
 		$this->strings['move_failed'] = __('Could not move the files into place. Check your file permissions.','updraftplus');
@@ -722,7 +722,7 @@ class Updraft_Restorer extends WP_Upgrader {
 
 		$now_done = apply_filters('updraftplus_pre_restore_move_in', false, $type, $working_dir, $info, $this->ud_backup_info, $this, $wp_filesystem_dir);
 		if (is_wp_error($now_done)) return $now_done;
-		
+
 		// A slightly ugly way of getting a particular result back
 		if (is_string($now_done)) {
 			$wp_filesystem_dir = $now_done;
@@ -810,7 +810,7 @@ class Updraft_Restorer extends WP_Upgrader {
 							return new WP_Error('new_move_failed', $this->strings['new_move_failed']);
 						}
 					}
-				
+
 					// On the first time, create the -old directory in updraft_dir
 					// (Old style was: On the first time, move the existing data to -old)
 					if (!isset($this->been_restored[$type]) && empty($do_not_move_old)) {
@@ -1755,9 +1755,9 @@ ENDHERE;
 			} elseif (preg_match('/^use /i', $sql_line)) {
 				# WPB2D produces these, as do some phpMyAdmin dumps
 				$sql_type = 7;
-			} elseif (preg_match('#/\*\!40\d+ SET NAMES (\S+)#', $sql_line, $smatches)) {
+			} elseif (preg_match('#/\*\!40\d+ SET NAMES (.*)\*\/#', $sql_line, $smatches)) {
 				$sql_type = 8;
-				$this->set_names = $smatches[1];
+				$this->set_names = rtrim($smatches[1]);
 			} else {
 				# Prevent the previous value of $sql_type being retained for an unknown type
 				$sql_type = 0;

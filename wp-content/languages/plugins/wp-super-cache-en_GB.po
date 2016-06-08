@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-03-12 12:28:26+0000\n"
+"PO-Revision-Date: 2016-05-09 15:03:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.1.0-alpha\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Stable (latest release)\n"
 
 #: wp-cache.php:1036
@@ -562,7 +562,7 @@ msgstr "Object cache in use. No cache listing available."
 
 #: wp-cache.php:2477
 msgid "Deleting supercache file: <strong>%s</strong><br />"
-msgstr "Deleting SuperCache file: <strong>%s</strong><br />"
+msgstr "Deleting supercache file: <strong>%s</strong><br />"
 
 #: wp-cache.php:2499
 msgid "Deleting wp-cache file: <strong>%s</strong><br />"
@@ -778,7 +778,7 @@ msgstr "[%s] Cache Preload Completed"
 
 #: wp-cache.php:3316
 msgid "Cleaning up old supercache files."
-msgstr "Cleaning up old SuperCache files."
+msgstr "Cleaning up old supercache files."
 
 #: wp-cache.php:3358
 msgid "[%s] Preload may have stalled."
@@ -1144,7 +1144,7 @@ msgstr "Less emails, 1 at the start and 1 at the end of preloading all posts."
 
 #: wp-cache.php:963
 msgid "Refresh of cache in %d hours %d minutes and %d seconds."
-msgstr "Refresh of cache in %d hours, %d minutes and %d seconds."
+msgstr "Refresh of cache in %d hours %d minutes and %d seconds."
 
 #: wp-cache.php:964
 msgid "Full refresh of cache in %d hours %d minutes and %d seconds."
@@ -1446,11 +1446,11 @@ msgstr "Caching is only one part of making a website faster. Here are some other
 
 #: wp-cache.php:1264
 msgid "<a href=\"%s\">Yahoo! Yslow</a> is an extension for the Firefox add-on Firebug. It analyzes web pages and suggests ways to improve their performance based on a set of rules for high performance web pages. Also try the performance tools online at <a href=\"%s\">GTMetrix</a>."
-msgstr "<a href=\"%s\">Yahoo! YSlow</a> is an extension for the Firefox add-on Firebug. It analyses web pages and suggests ways to improve their performance based on a set of rules for high performance web pages. Also try the performance tools online at <a href=\"%s\">GTMetrix</a>."
+msgstr "<a href=\"%s\">Yahoo! Yslow</a> is an extension for the Firefox add-on Firebug. It analyses web pages and suggests ways to improve their performance based on a set of rules for high performance web pages. Also try the performance tools online at <a href=\"%s\">GTMetrix</a>."
 
 #: wp-cache.php:1265
 msgid "<a href=\"%s\">Use Google Libraries</a> allows you to load some commonly used Javascript libraries from Google webservers. Ironically, it may reduce your Yslow score."
-msgstr "<a href=\"%s\">Use Google Libraries</a> allows you to load some commonly used JavaScript libraries from Google webservers. Ironically, it may reduce your YSlow score."
+msgstr "<a href=\"%s\">Use Google Libraries</a> allows you to load some commonly used JavaScript libraries from Google webservers. Ironically, it may reduce your Yslow score."
 
 #: wp-cache.php:1266
 msgid "<strong>Advanced users only:</strong> <a href=\"%s\">Speed up your site with Caching and cache-control</a> explains how to make your site more cacheable with .htaccess rules."
@@ -1606,7 +1606,7 @@ msgstr "Your website probably uses lots of static files. Image, JavaScript and C
 
 #: ossdl-cdn.php:152
 msgid "<strong style=\"color: red\">WARNING:</strong> Test some static urls e.g., %s  to ensure your CDN service is fully working before saving changes."
-msgstr "<strong style=\"color: red\">WARNING:</strong> Test some static URLs e.g., %s  to ensure your CDN service is fully working before saving changes."
+msgstr "<strong style=\"color: red\">WARNING:</strong> Test some static urls e.g., %s  to ensure your CDN service is fully working before saving changes."
 
 #: ossdl-cdn.php:153
 msgid "You can define different CDN URLs for each site on a multsite network."
@@ -1717,7 +1717,7 @@ msgstr "Bad Behaviour"
 
 #: plugins/badbehaviour.php:68
 msgid "(Only legacy caching supported, disabled compression and requires <a href=\"http://www.bad-behavior.ioerror.us/\">Bad Behavior</a> in \"%s/plugins/bad-behavior/\") "
-msgstr "(Only legacy caching supported, disabled compression and requires <a href=\"http://www.bad-behavior.ioerror.us/\">Bad Behaviour</a> in \"%s/plugins/bad-behavior/\") "
+msgstr "(Only legacy caching supported, disabled compression and requires <a href=\"http://www.bad-behavior.ioerror.us/\">Bad Behavior</a> in \"%s/plugins/bad-behavior/\") "
 
 #: plugins/badbehaviour.php:74
 msgid "Bad Behavior support is now %s"

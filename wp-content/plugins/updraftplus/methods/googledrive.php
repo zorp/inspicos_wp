@@ -202,7 +202,7 @@ class UpdraftPlus_BackupModule_googledrive {
 			foreach ($result->get_error_messages() as $msg) $updraftplus->log("Error message: $msg");
 			return false;
 		} else {
-			$json_values = json_decode( $result['body'], true );
+			$json_values = json_decode(wp_remote_retrieve_body($result), true);
 			if ( isset( $json_values['access_token'] ) ) {
 				$updraftplus->log("Google Drive: successfully obtained access token");
 				return $json_values['access_token'];
@@ -238,7 +238,7 @@ class UpdraftPlus_BackupModule_googledrive {
 			global $updraftplus;
 			$updraftplus->log(sprintf(__('The %s authentication could not go ahead, because something else on your site is breaking it. Try disabling your other plugins and switching to a default theme. (Specifically, you are looking for the component that sends output (most likely PHP warnings/errors) before the page begins. Turning off any debugging settings may also help).', ''), 'Google Drive'), 'error');
 		} else {
-			header('Location: https://accounts.google.com/o/oauth2/auth?'.http_build_query($params));
+			header('Location: https://accounts.google.com/o/oauth2/auth?'.http_build_query($params, null, '&'));
 		}
 	}
 
@@ -278,7 +278,7 @@ class UpdraftPlus_BackupModule_googledrive {
 				}
 				header('Location: '.UpdraftPlus_Options::admin_page_url().'?page=updraftplus&error='.urlencode($add_to_url));
 			} else {
-				$json_values = json_decode($result['body'], true);
+				$json_values = json_decode(wp_remote_retrieve_body($result), true);
 				if (isset($json_values['refresh_token'])) {
 
 					 // Save token
