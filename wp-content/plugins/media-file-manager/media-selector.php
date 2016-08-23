@@ -1,6 +1,6 @@
 <?php
 
-
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function mrelocator_get_media_list_callback()
 {
@@ -58,22 +58,27 @@ function mrelocator_get_image_info_callback()
 {
 	global $wpdb;
 	$id = $_POST['id'];
+	if (!is_numeric($id)) {
+		die("error");
+	}
 
-	$res = $wpdb->get_results(
+	$query = $wpdb->prepare(
 		"SELECT * from $wpdb->posts ".
-		"WHERE id=".$id." ".
-		" ");
+		"WHERE id='%d'",$id);
+	$res = $wpdb->get_results($query);
 	$ret->posts = $res[0];
 
 	$meta = wp_get_attachment_metadata($id);
 	$ret->meta = $meta;
 
-	$file = $wpdb->get_results(
-		"SELECT meta_value FROM $wpdb->postmeta WHERE post_id=".$id." AND  meta_key='_wp_attached_file'");
+	$query = $wpdb->prepare(
+		"SELECT meta_value FROM $wpdb->postmeta WHERE post_id='%d' AND meta_key='_wp_attached_file'", $id);
+	$file = $wpdb->get_results($query);	
 	$ret->file = $file[0]->meta_value;
 
-	$alt = $wpdb->get_results(
-		"SELECT meta_value FROM $wpdb->postmeta WHERE post_id=".$id." AND meta_key='_wp_attachment_image_alt'");
+	$query = $wpdb->prepare(
+		"SELECT meta_value FROM $wpdb->postmeta WHERE post_id='%d' AND meta_key='_wp_attachment_image_alt'", $id);
+	$alt = $wpdb->get_results($query);
 	if ($alt) {
 		$ret->alt = $alt[0]->meta_value;
 	} else {
@@ -93,6 +98,9 @@ function mrelocator_get_image_insert_screen_callback()
 	global $mrelocator_uploadurl;
 
 	$id = $_POST['id'];
+	if (!is_numeric($id)) {
+		die("error");
+	}
 
 	$mime_type = "";
 	$upload_date="";
@@ -107,10 +115,10 @@ function mrelocator_get_image_insert_screen_callback()
 	$url="";
 	$dat =  array();
 
-	$res = $wpdb->get_results(
+	$query = $wpdb->prepare(
 		"SELECT * from $wpdb->posts ".
-		"WHERE id=".$id." ".
-		" ");
+		"WHERE id='%d'", $id);
+	$res = $wpdb->get_results($query);
 	if (count($res)) {
 		$mime_type = $res[0]->post_mime_type;
 		$upload_date=$res[0]->post_date;
@@ -122,8 +130,9 @@ function mrelocator_get_image_insert_screen_callback()
 
 	$is_image = (substr($mime_type, 0, 5)=='image');
 
-	$res = $wpdb->get_results(
-		"SELECT meta_value FROM $wpdb->postmeta WHERE post_id=".$id." AND  meta_key='_wp_attached_file'");
+	$query = $wpdb->prepare(
+		"SELECT meta_value FROM $wpdb->postmeta WHERE post_id='%d' AND meta_key='_wp_attached_file'", $id);
+	$res = $wpdb->get_results($query);
 	if (count($res)) {
 		$file = $res[0]->meta_value;
 	}
@@ -169,8 +178,9 @@ function mrelocator_get_image_insert_screen_callback()
 		}
 		$size_full='('.$meta['width']." x ".$meta['height'].')';
 
-		$res = $wpdb->get_results(
-			"SELECT meta_value FROM $wpdb->postmeta WHERE post_id=".$id." AND meta_key='_wp_attachment_image_alt'");
+		$query = $wpdb->prepare(
+			"SELECT meta_value FROM $wpdb->postmeta WHERE post_id='%d' AND meta_key='_wp_attachment_image_alt'", $id);
+		$res = $wpdb->get_results($query);
 		if (count($res)) {
 			$alt = esc_html($res[0]->meta_value);
 		}
@@ -377,7 +387,7 @@ HTML;
 	 */
 	public function onMediaHead()
 	{
-		echo '<script type="text/javascript" src="' . $this->pluginDirUrl . './media-selector.js"></script>';
+		wp_enqueue_script( "media-selector", plugins_url( 'media-selector.js', __FILE__ ));
 	}
 
 	/**

@@ -3,11 +3,13 @@
 Plugin Name: Media File Manager
 Plugin URI: http://tempspace.net/plugins/?page_id=111
 Description: You can make sub-directories in the upload directory, and move files into them. At the same time, this plugin modifies the URLs/path names in the database. Also an alternative file-selector is added in the editing post/page screen, so you can pick up media files from the subfolders easily.
-Version: 1.4.0
+Version: 1.4.2
 Author: Atsushi Ueda
 Author URI: http://tempspace.net/plugins/
 License: GPL2
 */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 _set_time_limit(600);
 
@@ -32,9 +34,7 @@ function mrelocator_init() {
 add_action('init', 'mrelocator_init');
 
 function mrelocator_admin_register_head() {
-	global $mrelocator_plugin_URL;
-	$url = $mrelocator_plugin_URL . '/style.css';
-	echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
+	wp_enqueue_style( "mfm-style", plugins_url( 'style.css', __FILE__ ));
 }
 add_action('admin_head', 'mrelocator_admin_register_head');
 
@@ -75,11 +75,10 @@ function mrelocator_magic_function()
 	global $mrelocator_plugin_URL;
 	global $mrelocator_uploadurl;
 	global $mrelocator_uploaddir_t;
+
+	wp_enqueue_script( "media-relocator", plugins_url( 'media-relocator.js', __FILE__ ));
 	?>
-
-
 	<script type="text/javascript"> mrloc_url_root='<?php echo $mrelocator_uploadurl;?>';</script>
-	<script type="text/javascript" src="<?php echo $mrelocator_plugin_URL;?>/media-relocator.js"></script>
 
 	<div class="wrap">
 		<h2>Media File Manager</h2>
@@ -845,7 +844,30 @@ function mrelocator_admin_magic_function()
 
 
 	</div>
-	<a href="../wp-content/plugins/media-file-manager/output_log.php">Download Log</a>
+	<a href="#" onclick="download_log()">Download Log</a>
+	<script type="text/javascript">
+	function download_log() {
+		var data = {
+			action: 'mrelocator_download_log'
+		};
+		jQuery.post(ajaxurl, data, function(response) {
+			download("mfm_log.txt",response);
+		});
+	}
+
+	function download(filename, text) {
+  		var element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+
+		element.style.display = 'none';
+		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	}
+	</script>
 
 	&nbsp;&nbsp;<a href="#" onclick="delete_log()">Delete log</a>
 	<script type="text/javascript">
@@ -864,67 +886,6 @@ function mrelocator_admin_magic_function()
 		//echo '<script type="text/javascript">alert("Options Saved.");</script>';
 	}
 }
-
-
-
-
-
-
-
-function mrelocator_test()
-{
-	global $wpdb;
-global $wp_roles;
-global $current_user;
-//print_r($wp_roles);
-//print_r($current_user);
-
-
-$current_user = wp_get_current_user();
-if ( !($current_user instanceof WP_User) )
-   return;
-$roles = $current_user->roles;
-print_r($roles);
-
-return;
-
-	$res = wp_get_attachment_metadata( 4272);
-	print_r($res);
-
-	//print_r(wp_get_attachment_metadata( 2916));
-
-	print_r(get_intermediate_image_sizes());
-
-	unset($cfiles);
-	$cfiles=array();
-	foreach ( get_intermediate_image_sizes() as $size ) {
-		if ( $intermediate = image_get_intermediate_size(2916, $size) ) {
-			$intermediate_file = $intermediate['path'];
-print_r($intermediate);
-			$cfiles[count($cfiles)] = $intermediate_file;
-		}
-	}
-
-	$backup_sizes = get_post_meta( 2916, '_wp_attachment_backup_sizes', true );
-	$meta = wp_get_attachment_metadata( 2916 );
-	if ( is_array($backup_sizes) ) {
-		foreach ( $backup_sizes as $size ) {
-			$cfiles[count($cfiles)] = $size['file']."\n";
-		}
-	}
-	print_r($cfiles);
-
-
-	//echo mrelocator_get_subdir("/home/tempspace/public_html/hu6/wp-content/uploads/abc/def")."\n";
-
-	$a=pathinfo("abc.jpg");
-	//print_r($a);
-
-	$res = get_post_meta(2916,'_wp_attachment_backup_sizes');
-	//print_r($res);
-	die();
-}
-add_action('wp_ajax_mrelocator_test', 'mrelocator_test');
 
 
 function media_file_manager_install() {
@@ -954,6 +915,22 @@ function mrelocator_log($str)
 	$sql = "INSERT INTO ". $wpdb->prefix."media_file_manager_log (date_time,log_data) VALUES ('" . date("Y-m-d H:i:s") . "', '" . $str . "');";
 	$wpdb->query($sql);
 }
+
+function mrelocator_download_log_callback()
+{
+	if (!test_mfm_permission()) return 0;
+
+	global $wpdb;
+
+	$sql = "select * from " . $wpdb->prefix . "media_file_manager_log order by date_time desc";
+	$res = $wpdb->get_results($sql);
+
+	for ($i=0; $i<count($res); $i++) {
+		echo $res[$i]->date_time . "\t" . $res[$i]->log_data . "\n";
+	}
+	die("");
+}
+add_action('wp_ajax_mrelocator_download_log', 'mrelocator_download_log_callback');
 
 function mrelocator_delete_log_callback()
 {

@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 function mrl_adjpath($adr, $tailslash=false)
 {
 	$serverpathflag = false;

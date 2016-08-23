@@ -163,6 +163,7 @@ function mrl_make_file_list()
 		jQuery('#mrl_media_'+i).appear(function(){
 			html = '<img src="'+jQuery(this).data('thumbnail')+'" width="50" />';
 			jQuery(this).html(html);	
+console.log(html);
 			jQuery(this).unbind('appear');
 		});
 	}
