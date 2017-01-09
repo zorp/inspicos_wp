@@ -76,7 +76,9 @@
 
 							<div class="grid_3 omega no-m-b fourth">
 								<div class="cancer-logo">
-									<a href="http://www.cancer.dk/om+os/The+Danish+Cancer+Society.htm" target="_blank"><img src="/wp-content/uploads/2015/11/Logo_EP_Hjemmeside_Dec15Dec16.jpg" alt="" /></a>
+									<a href="http://www.cancer.dk/om+os/The+Danish+Cancer+Society.htm" target="_blank">
+<img src="/wp-content/uploads/2017/01/Logo_EP_Jan17_Jan18<?php if (pll_current_language()=='en'){ echo "_en"; } ?>.png" alt="" />
+</a>
 								</div>
 							</div>
 
