@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Custom Post Type UI - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-10 19:44:33+0000\n"
+"PO-Revision-Date: 2017-02-02 07:57:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.3.0-alpha\n"
 "Language: en_GB\n"
 "Project-Id-Version: Plugins - Custom Post Type UI - Stable (latest release)\n"
+
+#: inc/tools.php:751
+msgid "All of the selectable code snippets below are useful if you wish to migrate away from CPTUI and retain your existing registered post types or taxonomies."
+msgstr "All of the selectable code snippets below are useful if you wish to migrate away from CPTUI and retain your existing registered post types or taxonomies."
 
 #: inc/utility.php:588
 msgid "Invalid data provided"
@@ -51,7 +55,7 @@ msgstr "(e.g. View Movies)"
 msgid "View Items"
 msgstr "View Items"
 
-#: inc/post-types.php:230
+#: inc/post-types.php:230 inc/taxonomies.php:231
 msgid "Slugs should only contain alphanumeric, latin characters. Underscores should be used in place of spaces. Set \"Custom Rewrite Slug\" field to make slug use dashes for URLs."
 msgstr "Slugs should only contain alphanumeric, latin characters. Underscores should be used in place of spaces. Set \"Custom Rewrite Slug\" field to make slug use dashes for URLs."
 
@@ -635,10 +639,6 @@ msgstr "Used for the post type admin menu item."
 msgid "DO NOT EDIT the post type slug unless also planning to migrate posts. Changing the slug registers a new post type entry."
 msgstr "DO NOT EDIT the post type slug unless also planning to migrate posts. Changing the slug registers a new post type entry."
 
-#: inc/taxonomies.php:231
-msgid "Slugs should only contain alphanumeric, latin characters. Underscores or dashes should be used in place of spaces."
-msgstr "Slugs should only contain alphanumeric, Latin characters. Underscores or dashes should be used in place of spaces."
-
 #: inc/post-types.php:224
 msgid "The post type name/slug. Used for various queries for post type content."
 msgstr "The post type name/slug. Used for various queries for post type content."
@@ -743,19 +743,19 @@ msgstr "Archives file name examples."
 msgid "Template Hierarchy"
 msgstr "Template Hierarchy"
 
-#: inc/tools.php:813
+#: inc/tools.php:815
 msgid "Send debug info"
 msgstr "Send debug info"
 
-#: inc/tools.php:804
+#: inc/tools.php:806
 msgid "Please provide an email address to send debug information to: "
 msgstr "Please provide an email address to send debug information to: "
 
-#: inc/tools.php:777
+#: inc/tools.php:779
 msgid "%s Taxonomy"
 msgstr "%s Taxonomy"
 
-#: inc/tools.php:760
+#: inc/tools.php:762
 msgid "%s Post Type"
 msgstr "%s Post Type"
 
@@ -1444,11 +1444,11 @@ msgstr "No post types to display at this time"
 msgid "No taxonomies to display at this time"
 msgstr "No taxonomies to display at this time"
 
-#: inc/tools.php:766
+#: inc/tools.php:768
 msgid "All CPT UI Taxonomies"
 msgstr "All CPT UI Taxonomies"
 
-#: inc/tools.php:752 inc/tools.php:761 inc/tools.php:769 inc/tools.php:778
+#: inc/tools.php:754 inc/tools.php:763 inc/tools.php:771 inc/tools.php:780
 msgid "Copy/paste the code below into your functions.php file."
 msgstr "Copy/paste the code below into your functions.php file."
 
@@ -1670,7 +1670,7 @@ msgstr "Follow on Twitter:"
 msgid "%s version %s by %s"
 msgstr "%s version %s by %s"
 
-#. #-#-#-#-#  tmp-custom-post-type-ui.pot (Custom Post Type UI 1.5.1) 
+#. #-#-#-#-#  tmp-custom-post-type-ui.pot (Custom Post Type UI 1.5.2) 
 #. #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: inc/about.php:34 inc/utility.php:103

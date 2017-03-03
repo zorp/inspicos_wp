@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the WordPress - 4.7.x - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-21 21:47:15+0000\n"
+"PO-Revision-Date: 2017-02-28 00:33:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: da_DK\n"
 "Project-Id-Version: WordPress - 4.7.x - Administration\n"
 
@@ -26,115 +26,115 @@ msgctxt "start of week"
 msgid "1"
 msgstr "1"
 
-#: wp-admin/about.php:234
+#: wp-admin/about.php:228
 msgid "Customize changesets make changes in the customizer persistent, like autosave drafts. They also make exciting new features like starter content possible."
 msgstr "Tilpasser ændringssæt gør ændringer i Tilpasser blivende, som autogemte kladder. De muliggør også spændende nye funktioner som opstartsindhold."
 
-#: wp-admin/about.php:233
+#: wp-admin/about.php:227
 msgid "Customize Changesets"
 msgstr "Tilpasser ændringssæt"
 
 #. translators: 1: register_setting(), 2:
 #. https://make.wordpress.org/core/2016/10/26/registering-your-settings-in-wordpress-4-7/
-#: wp-admin/about.php:226
+#: wp-admin/about.php:220
 msgid "%1$s <a href=\"%2$s\">has been enhanced</a> to include type, description, and REST API visibility."
 msgstr "%1$s <a href=\"%2$s\">er blevet forbedret</a> til at inkludere type, beskrivelse og synlighed for REST API."
 
-#: wp-admin/about.php:222
+#: wp-admin/about.php:216
 msgid "Settings Registration API"
 msgstr "Indstillinger Registrerings API"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2016/09/08/wp_hook-next-generation-actions-and-filters/
-#: wp-admin/about.php:216
+#: wp-admin/about.php:210
 msgid "The code that lies beneath actions and filters has been overhauled and modernized, fixing bugs along the way."
 msgstr "Koden bag actions og filtre er blevet gennemgået og moderniseret og mange bugs rettet undervejs."
 
-#: wp-admin/about.php:206
+#: wp-admin/about.php:200
 msgid "List tables, now with more than bulk edit and delete."
 msgstr "Visningstabeller, nu med andet en bare ret og slet i massehandlinger."
 
-#: wp-admin/about.php:205
+#: wp-admin/about.php:199
 msgid "Custom Bulk Actions"
 msgstr "Tilpassede Massehandlinger"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2016/09/09/new-functions-hooks-and-behaviour-for-theme-developers-in-wordpress-4-7/
-#: wp-admin/about.php:199
+#: wp-admin/about.php:193
 msgid "WordPress 4.7 includes <a href=\"%s\">new functions, hooks, and behavior</a> for theme developers."
 msgstr "WordPress 4.7 inkluderer <a href=\"%s\">nye funktioner og hooks</a> for temaudviklere."
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:189
 msgid "More Theme API Goodies"
 msgstr "Flere tema API godbidder"
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:186
 msgid "By opening up the page template functionality to all post types, theme developers have even more flexibility with the WordPress template hierarchy."
 msgstr "Ved at lukke op for funktionerne i sideskabeloner for alle indholdstyper, får temaudviklere endnu mere fleksibilitet i WordPress skabelonhierakiet."
 
-#: wp-admin/about.php:191
+#: wp-admin/about.php:185
 msgid "Post Type Templates"
 msgstr "Skabeloner for indholdstyper"
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:184
+#: wp-admin/about.php:178
 msgid "Even More Developer Happiness %s"
 msgstr "Endnu mere udviklerglæde %s"
 
 #. translators: %s: https://developer.wordpress.org/rest-api/
-#: wp-admin/about.php:172
+#: wp-admin/about.php:166
 msgid "Content endpoints provide machine-readable external access to your WordPress site with a clear, standards-driven interface, paving the way for new and innovative methods of interacting with sites through plugins, themes, apps, and beyond. Ready to get started with development? <a href=\"%s\">Check out the REST API reference.</a>"
 msgstr "Indholdsslutpunkter giver maskin-læsbar ekstern adgang til dit WordPress websted med en overskuelig, standard-dreven brugerflade og baner vejen for nye og innovative metoder til at interagere med websteder gennem plugins, temaer, apps og videre. Klar til at begynde med at udvikle? <a href=\"%s\">Tjek REST API referencen ud.</a>"
 
-#: wp-admin/about.php:167
+#: wp-admin/about.php:161
 msgid "WordPress 4.7 comes with REST API endpoints for posts, comments, terms, users, meta, and settings."
 msgstr "WordPress 4.7 kommer med REST API slutpunkter for indlæg, kommentarer, termer, brugere, meta og indstillinger."
 
-#: wp-admin/about.php:166
+#: wp-admin/about.php:160
 msgid "Introducing REST API Content Endpoints"
 msgstr "Introduktion af REST API indholds-slutpunkter"
 
-#: wp-admin/about.php:159
+#: wp-admin/about.php:153
 msgid "Just because your site is in one language doesn&#8217;t mean that everybody helping manage it prefers that language for their admin. Add more languages to your site and a user language option will show up in your user&#8217;s profiles."
 msgstr "Bare fordi dit websted er på et sprog, behøver det ikke at betyde, at alle der hjælper til med vedligeholdelsen ønsker det samme sprog til deres admin. Føj flere sprog til dit websted og en mulighed for at vælge brugersprog vil dukke op i dine brugeres profiler."
 
-#: wp-admin/about.php:157
+#: wp-admin/about.php:151
 msgid "Dashboard in your language"
 msgstr "Kontrolpanel i dit eget sprog"
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:148
 msgid "Managing your document collection is easier with WordPress 4.7. Uploading PDFs will generate thumbnail images so you can more easily distinguish between all your documents."
 msgstr "Håndtering af din dokumentsamling er lettere med WordPress 4.7. Upload af PDF'er vil generere miniaturebilleder, så du nemmere kan skelne mellem alle dine dokumenter."
 
-#: wp-admin/about.php:152
+#: wp-admin/about.php:146
 msgid "PDF Thumbnail Previews"
 msgstr "PDF miniaturevisning"
 
-#: wp-admin/about.php:144
+#: wp-admin/about.php:138
 msgid "Sometimes you just need a few visual tweaks to make your site perfect. WordPress 4.7 allows you to add custom CSS and instantly see how your changes affect your site. The live preview allows you to work quickly without page refreshes slowing you down."
 msgstr "Nogle gange behøver du bare et par små tilpasninger for at gøre dit websted perfekt. WordPress 4.7 lader dig tilføje din egen CSS og med det samme se, hvordan ændringerne påvirker dit websted. Live kladdevisning lader dig arbejder hurtigt uden at skulle vente på sideopdateringer."
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:133
 msgid "Many menus for sites contain links to the pages of your site, but what happens when you don&#8217;t have any pages yet? Now you can add new pages while building menus instead of leaving the customizer and abandoning your changes. Once you&#8217;ve published your customizations, you&#8217;ll have new pages ready for you to fill with content."
 msgstr "Mange webstedsmenuer indeholder links til sider på dit websted, men hvad sker der, når de sider ikke er lavet endnu? Nu kan du tilføje nye sider mens du opbygger menuerne i stedet for at skulle forlade Tilpasser og miste dine ændringer.Når først du har udgivet dine tilpasninger, vil du have nye sider klar til blive fyldt med dit indhold."
 
-#: wp-admin/about.php:137
+#: wp-admin/about.php:131
 msgid "Smoother Menu Building"
 msgstr "Lettere opbygning af menuer"
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:125
 msgid "Sometimes a big atmospheric video as a moving header image is just what you need to showcase your wares; go ahead and try it out with Twenty Seventeen. Need some video inspiration? Try searching for sites with video headers available for download and use."
 msgstr "Nogle gange er en stor stemningsfyldt video som animeret sidehovede lige hvad du har brug for til at fremvise dine varer; prøv det af med Twenty Seventeen. Har du brug for lidt videoinspiration? Prøv at søg efter websteder med animerede sidehoveder tilgængelig for download og brug."
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:115
 msgid "Video Headers"
 msgstr "Video sidehoveder"
 
-#: wp-admin/about.php:116
+#: wp-admin/about.php:112
 msgid "Visible icons appear to show you which parts of your site can be customized while live previewing. Click on a shortcut and get straight to editing. Paired with starter content, getting started with customizing your site is faster than ever."
 msgstr "Synlige ikoner viser dig, hvilke dele af dit websted, der kan tilpasses under live kladdevisning. Klik på en genvej og rediger det direkte. Sammen med opstartsindhold har det nu gjort det endnu hurtigere at tilpasse dit websted."
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:102
 msgid "Edit Shortcuts"
 msgstr "Genveje til redigering"
 
@@ -340,7 +340,7 @@ msgstr "Du kan finde nye plugins at installere ved at søge i eller gennemgå bi
 
 #: wp-admin/plugin-install.php:82
 msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\">WordPress Plugin Directory</a> are compatible with the license WordPress uses."
-msgstr "Plugins hægter sig på WordPress' funktioner og udvider dine muligheder som bruger. Plugins udvikles uafhængigt af kernekoden i WordPress af tusinder af udviklere over hele verden. Alle plugins i det officielle <a href=\"%s\">WordPress plugin-bibliotek</a> er forenelige med den licens, som WordPress bruger."
+msgstr "Plugins hægter sig på WordPress' funktioner og udvider dine muligheder som bruger. Plugins udvikles uafhængigt af kernekoden i WordPress af tusinder af udviklere over hele verden. Alle plugins i det officielle <a href=\"%s\" target=\"_blank\">WordPress plugin-bibliotek</a> er forenelige med den licens, som WordPress-bruger."
 
 #: wp-admin/includes/plugin-install.php:281
 msgid "Search plugins by:"
@@ -1228,7 +1228,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "Velkommen til %s. Dette er dit første indlæg. Rediger eller slet det, og begynd så at blogge!"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:269
+#: wp-admin/about.php:263
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Version %s</strong> tog hånd om ét sikkerhedsproblem."
 
@@ -1245,15 +1245,15 @@ msgstr "Du kan ændre dit profilbillede på <a href=\"%s\">Gravatar</a>."
 msgid "Profile Picture"
 msgstr "Profilbillede"
 
-#: wp-admin/about.php:47 wp-admin/about.php:266
+#: wp-admin/about.php:47 wp-admin/about.php:260
 msgid "Maintenance and Security Releases"
 msgstr "Vedligeholdelses- og sikkerhedsudgivelser"
 
-#: wp-admin/about.php:263
+#: wp-admin/about.php:257
 msgid "Security Releases"
 msgstr "Sikkerhedsudgivelser"
 
-#: wp-admin/about.php:260
+#: wp-admin/about.php:254
 msgid "Maintenance Releases"
 msgstr "Vedligeholdelsesudgivelser"
 
@@ -4624,7 +4624,7 @@ msgid ""
 "\n"
 "As a new WordPress user, you should go to <a href=\"%s\">your dashboard</a> to delete this page and create new pages for your content. Have fun!"
 msgstr ""
-"Dette er en eksempelside. Den er forskellig fra et indlæg, fordi den vil forblive det samme sted og være en del af dit websteds navigation (i de fleste temaer). De fleste vil lægge ud med en Om-side, der præsenterer dem for potentielle besøgende. Ordlyden kunne være noget i retning af:\n"
+"Dette er en eksempelside. Den er forskellig fra et blogindlæg, fordi den vil forblive det samme sted og være en del af dit websteds navigation (i de fleste temaer). De fleste vil lægge ud med en Om-side, der præsenterer dem for potentielle besøgende. Ordlyden kunne være noget i retning af:\n"
 "\n"
 "<blockquote>Hejsa! Jeg er cykelbud om dagen, prøver at blive skuespiller om aftenen og dette er min blog. Jeg bor i København, har en dejlig hund, der hedder King, og jeg kan lide Mojitos. (og at blive overrasket af regnvejr.)</blockquote>\n"
 "\n"
@@ -4632,7 +4632,7 @@ msgstr ""
 "\n"
 "<blockquote>XYZ Dingenot fabrikken blev grundlagt i 1971 og har leveret kvalitetsdingenoter til offentligheden lige siden. Beliggende i Andeby, har 2.000 ansatte og bidrager med alverdens seje tiltag i lokalområdet.</blockquote>\n"
 "\n"
-"Som ny WordPress bruger, bør du gå til <a href=\"%s\">dit kontrolpanel</a> for at slette denne side og oprette nye sider til dit indhold. God fornøjelse!"
+"Som ny WordPress-bruger, bør du gå til <a href=\"%s\">dit kontrolpanel</a> for at slette denne side og oprette nye sider til dit indhold. God fornøjelse!"
 
 #: wp-admin/includes/widgets.php:224
 msgctxt "widget"
@@ -5383,7 +5383,7 @@ msgid "Contributing Developers"
 msgstr "Bidragende udviklere"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:274
+#: wp-admin/about.php:268
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> rettede %2$s fejl."
@@ -5391,20 +5391,20 @@ msgstr[1] "<strong>Version %1$s</strong> rettede %2$s fejl."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:51 wp-admin/about.php:282
+#: wp-admin/about.php:51 wp-admin/about.php:276
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 msgstr[1] "<strong>Version %1$s</strong> lukkede nogle sikkerhedshuller og rettede %2$s fejl."
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:49 wp-admin/about.php:53 wp-admin/about.php:286
+#: wp-admin/about.php:49 wp-admin/about.php:53 wp-admin/about.php:280
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Hvis du vil vide mere, så læs <a href=\"%s\">udgivelsesnoterne</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:278
+#: wp-admin/about.php:272
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> lukkede et sikkerhedshul og rettede %2$s fejl."
@@ -5415,15 +5415,15 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Velkommen til dit WordPress kontrolpanel! Det her er det skærmbillede, du vil se, når du logger ind på dit websted, og det giver dig adgang til alle administationsmulighederne i WordPress. Du kan få hjælp til alle skærmbilleder ved at klikke på Hjælp-fanen ovenover skærmbilledets titel."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:48 wp-admin/about.php:271
+#: wp-admin/about.php:48 wp-admin/about.php:265
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Version %s</strong> tog sig af nogle sikkerhedsproblemer."
 
-#: wp-admin/about.php:259
+#: wp-admin/about.php:253
 msgid "Maintenance Release"
 msgstr "Vedligeholdelsesudgivelse"
 
-#: wp-admin/about.php:262
+#: wp-admin/about.php:256
 msgid "Security Release"
 msgstr "Sikkerhedsudgivelse"
 
@@ -5431,7 +5431,7 @@ msgstr "Sikkerhedsudgivelse"
 msgid "What&#8217;s New"
 msgstr "Hvad er nyt"
 
-#: wp-admin/about.php:265
+#: wp-admin/about.php:259
 msgid "Maintenance and Security Release"
 msgstr "Vedligeholdelse- og sikkerhedsudgivelse"
 
@@ -5443,7 +5443,7 @@ msgstr "På dette skærmbillede kan du vælge din permalinkstruktur. Du kan væl
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Velkommen til WordPress %1$s <a href=\"%2$s\">Læs mere</a>."
 
-#: wp-admin/about.php:245
+#: wp-admin/about.php:239
 msgid "Return to Updates"
 msgstr "Tilbage til opdateringer"
 
@@ -5640,7 +5640,7 @@ msgstr "Alle filerne du har uploadet findes i mediebiblioteket med de nyeste fø
 
 #: wp-admin/upload.php:205
 msgid "If a media file has not been attached to any content, you will see that in the Uploaded To column, and can click on Attach to launch a small popup that will allow you to search for existing content and attach the file."
-msgstr "Hvis en mediefil ikke er knyttet til noget indhold, vil du se det i kolonnen Vedhæftet til. Du kan klikke på Vedhæft fil, hvorefter der åbner et lille popup-vindue, som vil give dig mulighed for at søge efter eksisterende indhold og vedhæfte filen."
+msgstr "Hvis en mediefil ikke er knyttet til noget indlæg, vil du se det i Vedhæftet til-kolonnen, og kan klikke på Vedhæft fil, hvorefter der åbner et lille pop op-vindue, der vil give dig mulighed for at søge efter et indlæg og vedhæfte filen."
 
 #: wp-admin/edit.php:244
 msgid "You can also perform the same types of actions, including narrowing the list by using the filters, acting on a page using the action links that appear when you hover over a row, or using the Bulk Actions menu to edit the metadata for multiple pages at once."
@@ -5726,11 +5726,11 @@ msgstr "Den sandsynlige direkte indkludering af wp-admin/includes/template.php f
 msgid "Welcome to WordPress %s"
 msgstr "Velkommen til WordPress %s"
 
-#: wp-admin/about.php:245
+#: wp-admin/about.php:239
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Tilbage til Kontrolpanel &rarr; Opdateringer"
 
-#: wp-admin/about.php:248
+#: wp-admin/about.php:242
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrolpanel &rarr; Forside"
 
@@ -6202,12 +6202,12 @@ msgstr "Navn"
 #. translators: %s: Theme Directory URL
 #: wp-admin/theme-install.php:85
 msgid "You can find additional themes for your site by using the Theme Browser/Installer on this screen, which will display themes from the <a href=\"%s\">WordPress Theme Directory</a>. These themes are designed and developed by third parties, are available free of charge, and are compatible with the license WordPress uses."
-msgstr "Du kan finde flere temaer til dit websted ved at bruge Håndter tema/Installer-fanerne på skærmbilledet, som vil vise temaer fra <a href=\"%s\">WordPress.org-temabiblioteket</a>. Disse temaer er designet og udviklet af tredjeparter, er gratis til rådighed, og er kompatible med den licens, WordPress bruger."
+msgstr "Du kan finde flere temaer til dit websted ved at bruge Håndter tema/Installer på skærmbilledet, som vil vise temaer fra <a href=\"%s\">WordPress.org-temabiblioteket</a>. Disse temaer er designet og udviklet af tredjeparter, er gratis til rådighed, og er kompatible med den licens, WordPress-bruger."
 
 #. translators: %s: WordPress Plugin Directory URL
 #: wp-admin/plugins.php:391
 msgid "If you would like to see more plugins to choose from, click on the &#8220;Add New&#8221; button and you will be able to browse or search for additional plugins from the <a href=\"%s\">WordPress Plugin Directory</a>. Plugins in the WordPress Plugin Directory are designed and developed by third parties, and are compatible with the license WordPress uses. Oh, and they&#8217;re free!"
-msgstr "Hvis du gerne vil se flere plugins at vælge imellem, klik på knappen &#8220;Tilføj ny&#8221;, og du vil få mulighed for at gennemse eller søge efter yderligere plugins fra <a href=\"%s\">WordPress&#39; pluginbibliotek</a>. Plugins i WordPress&#39; pluginbibliotek er designet og udviklet af tredjeparter, og er kompatible med den licens, WordPress bruger. Nå ja, og så er de gratis!"
+msgstr "Hvis du gerne vil se flere plugins at vælge imellem, klik på knappen &#8220;Tilføj ny&#8221;, og du vil få mulighed for at gennemse eller søge efter yderligere plugins fra <a href=\"%s\">WordPress&#39; pluginbibliotek</a>. Plugins i WordPress&#39; pluginbibliotek er designet og udviklet af tredjeparter, og er kompatible med den licens, WordPress-bruger. Nå ja, og så er de gratis!"
 
 #: wp-admin/update-core.php:61
 msgid "Re-install Now"
@@ -6409,7 +6409,7 @@ msgstr "Boksene i dit Kontrolpanel er:"
 
 #: wp-admin/tools.php:17
 msgid "Press This is a bookmarklet that makes it easy to blog about something you come across on the web. You can use it to just grab a link, or to post an excerpt. Press This will even allow you to choose from images included on the page and use them in your post. Just drag the Press This link on this screen to your bookmarks bar in your browser, and you&#8217;ll be on your way to easier content creation. Clicking on it while on another website opens a popup window with all these options."
-msgstr "'Press det' er en bookmarklet, der gør det nemt at blogge om noget, du falder over på nettet. Du kan bruge det til at snuppe et link eller til at skrive et uddrag. 'Press det' vil endda give dig mulighed for at vælge mellem billeder udgivet på siden og bruge dem i dit indlæg. Bare træk 'Press det'-link på dette skærmbillede til bjælken med bogmærker i din browser. Så vil du være på vej til at kunne producere indhold på den helt nemme måde. Hvis du klikker 'Press det', mens du er på et andet websted, så åbner et popup-vindue med ovenstående muligheder."
+msgstr "'Press det' er en bookmarklet, der gør det nemt at blogge om noget, du flader over på nettet. Du kan bruge det til at snuppe et link eller til at skrive et uddrag. 'Press det' vil endda give dig mulighed for at vælge mellem billeder udgivet på siden og bruge dem i dit indlæg. Bare træk 'Press det' link på dette skærmbillede til bjælken med bogmærker i din browser. Så vil du være på vej til at kunne producere indhold på den helt nemme måde. Hvis du klikker 'Press det', mens du er på et andet websted, så åbner et pop op-vindue med ovenstående muligheder."
 
 #: wp-admin/includes/upgrade.php:239
 msgid "Sample Page"
@@ -6961,7 +6961,7 @@ msgstr "Når den er genereret, kan din WXR-fil importeres på en anden WordPress
 
 #: wp-admin/import.php:23
 msgid "This screen lists links to plugins to import data from blogging/content management platforms. Choose the platform you want to import from, and click Install Now when you are prompted in the popup window. If your platform is not listed, click the link to search the plugin directory for other importer plugins to see if there is one for your platform."
-msgstr "Dette skærmbillede linker til plugins, der kan importere data fra andre blogging/content management platforme. Vælg hvilken platform du vil importere fra og klik Installer nu når du bliver spurgt i et pop-op-vindue. Findes din platform ikke på listen, så klik på linket til at søge i plugin-biblioteket efter andre import-plugins og se om der findes et til din platform."
+msgstr "Dette skærmbillede linker til plugins, der kan importere data fra andre blogging/content management platforme. Vælg hvilken platform du vil importere fra og klik Installer nu når du bliver spurgt i et pop op-vindue. Findes din platform ikke på listen, så klik på linket til at søge i plugin-biblioteket efter andre import-plugins og se om der findes et til din platform."
 
 #: wp-admin/plugin-editor.php:146
 msgid "Choose a plugin to edit from the dropdown menu and click the Select button. Click once on any file name to load it in the editor, and make your changes. Don&#8217;t forget to save your changes (Update File) when you&#8217;re finished."
@@ -7586,7 +7586,7 @@ msgstr "Vis alle"
 msgid "Please enter a valid menu name."
 msgstr "Indtast venligst navnet på en eksisterende menu."
 
-#: wp-admin/about.php:248
+#: wp-admin/about.php:242
 msgid "Go to Dashboard"
 msgstr "G&#229; til kontrolpanelet"
 
@@ -9965,7 +9965,7 @@ msgstr "Den uploadede fil blev kun delvist uploadet."
 
 #: wp-admin/includes/file.php:62
 msgid "Popup Comments Template"
-msgstr "Popup-kommentarer"
+msgstr "Pop op-kommentarer"
 
 #: wp-admin/includes/file.php:61
 msgid "Comments Template"
@@ -10025,7 +10025,7 @@ msgstr "Kategorier"
 
 #: wp-admin/includes/file.php:63
 msgid "Popup Comments"
-msgstr "Popup-kommentarer"
+msgstr "Pop op-kommentarer"
 
 #: wp-admin/includes/file.php:55
 msgid "RTL Stylesheet"
