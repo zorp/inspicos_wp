@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.7.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-26 15:49:25+0000\n"
+"PO-Revision-Date: 2017-04-05 09:50:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,12 +38,12 @@ msgstr "."
 
 #: wp-includes/option.php:1762
 msgid "This address is used for admin purposes, like new user notification."
-msgstr "Denne adresse benyttes til admin formål, fx besked om nye brugerkonti."
+msgstr "Denne adresse bruges til administrative formål, f.eks. besked om nye brugerkonti."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:101
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:832
 msgid "Unique identifier for the term."
-msgstr "Unik identifikator for udtryk."
+msgstr "Unik identifikator for udtrykket."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:127
 msgid "Required to be true, as terms do not support trashing."
@@ -629,7 +629,7 @@ msgstr "REST basisrute for klassificeringen."
 #: wp-includes/l10n.php:1198
 msgctxt "default site language"
 msgid "Site Default"
-msgstr "Websted standard"
+msgstr "Webstedets standard"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:431
 msgid "HTML description for the object, transformed for display."
@@ -654,10 +654,6 @@ msgstr "CSS lader dig tilpasse udseende og layout på dit websted med kode. Sepa
 #: wp-includes/class-wp-customize-manager.php:4331
 msgid "Please enter a valid YouTube URL."
 msgstr "Indtast venligst en gyldig YouTube-URL."
-
-#: wp-includes/script-loader.php:83
-msgid "Expand Main menu"
-msgstr "Udvid hovedmenu"
 
 #: wp-includes/script-loader.php:82
 msgid "Collapse Main menu"
@@ -686,6 +682,10 @@ msgstr "Kommentaren understøtter ikke papirkurven. Sæt force=true for at slett
 #: wp-includes/class-wp-customize-manager.php:3958
 msgid "Or, enter a YouTube URL:"
 msgstr "Eller indtast en YouTube-URL:"
+
+#: wp-includes/script-loader.php:83
+msgid "Expand Main menu"
+msgstr "Udfold hovedmenu"
 
 #: wp-includes/rest-api/class-wp-rest-request.php:697
 msgid "Invalid JSON body passed."
@@ -1024,10 +1024,6 @@ msgstr "Om objektet kan pinges eller ej."
 msgid "Whether or not comments are open on the object."
 msgstr "Om objektet er åbent for kommentarer eller ej."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1956
-msgid "The ID of the featured media for the object."
-msgstr "ID&#39;et for objektets fremhævede medie."
-
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1945
 msgid "Whether the excerpt is protected with a password."
 msgstr "Om uddraget er beskyttet med en adgangskode."
@@ -1036,6 +1032,10 @@ msgstr "Om uddraget er beskyttet med en adgangskode."
 msgid "HTML excerpt for the object, transformed for display."
 msgstr "HTML-uddrag for objektet, transformeret for visning."
 
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1956
+msgid "The ID of the featured media for the object."
+msgstr "ID'et for objektets fremhævede medie."
+
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1934
 msgid "Excerpt for the object, as it exists in the database."
 msgstr "Uddrag for objektet, som det eksisterer i databasen."
@@ -1043,11 +1043,6 @@ msgstr "Uddrag for objektet, som det eksisterer i databasen."
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1926
 msgid "The excerpt for the object."
 msgstr "Uddrag for objektet."
-
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1918
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:471
-msgid "The ID for the author of the object."
-msgstr "ID&#39;et for objektets forfatter."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1907
 msgid "Whether the content is protected with a password."
@@ -1077,6 +1072,11 @@ msgstr "En alfanumerisk identifikator, unik for dets indholdstype, for objektet.
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1864
 msgid "The title for the object."
 msgstr "Objektets titel."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1918
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:471
+msgid "The ID for the author of the object."
+msgstr "ID'et for objektets forfatter."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1766
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:504
@@ -1175,10 +1175,6 @@ msgstr "Hvorvidt klassificeringen kan have underemner."
 msgid "All capabilities used by the taxonomy."
 msgstr "Alle egenskaber brugt af klassificeringen."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1229
-msgid "An alphanumeric identifier for the user."
-msgstr "En alfanumerisk ID for brugeren."
-
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:287
 msgid "Whether to include posts in the edit listing for their post type."
 msgstr "Hvorvidt indlægs skal inkluderes i lister over deres indholdstype."
@@ -1202,6 +1198,10 @@ msgstr "Letlæselig etiketter for klassificering i forskellig kontekst."
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:250
 msgid "A human-readable description of the taxonomy."
 msgstr "En letlæselig beskrivelse af klassificeringen."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1229
+msgid "An alphanumeric identifier for the user."
+msgstr "En alfanumerisk identifikator for brugeren."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:263
 msgid "Whether posts with this status should be private."
@@ -1406,15 +1406,11 @@ msgstr "E-mailadresse for objektets forfatter."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:724
 msgid "Updating comment failed."
-msgstr "Opdatering af kommentar fejlede."
+msgstr "Opdatering af kommentar mislykkedes."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:702
 msgid "Updating comment status failed."
-msgstr "Opdatering af kommentarstatus fejlede."
-
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:590
-msgid "Creating comment failed."
-msgstr "Oprettelse af kommentar fejlede."
+msgstr "Opdatering af kommentarstatus mislykkedes."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:490
 msgid "Cannot create existing comment."
@@ -1423,6 +1419,10 @@ msgstr "Kan ikke oprette eksisterende kommentar."
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:536
 msgid "Creating a comment requires valid author name and email values."
 msgstr "Oprettelse af kommentar kræver gyldige forfatternavn- og e-mail-værdier."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:590
+msgid "Creating comment failed."
+msgstr "Oprettelse af kommentar mislykkedes."
 
 #: wp-includes/comment.php:3057
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:403
@@ -1626,13 +1626,13 @@ msgstr "WordPress landestandard."
 msgid "A day number of the week that the week should start on."
 msgstr "Nummer ugedag som ugen skal starte på."
 
-#: wp-includes/option.php:1783
-msgid "A time format for all time strings."
-msgstr "Tidsformat for alle tidsstrenge."
-
 #: wp-includes/option.php:1777
 msgid "A date format for all date strings."
 msgstr "Datoformat for alle datostrenge."
+
+#: wp-includes/option.php:1783
+msgid "A time format for all time strings."
+msgstr "Klokkeslætformat for alle tidsstrenge."
 
 #: wp-includes/option.php:1771
 msgid "A city in the same timezone as you."
@@ -1690,29 +1690,29 @@ msgid_plural "There are %s unclosed code comments. Close each comment with <code
 msgstr[0] "Der er %s kodekommentar, der ikke er lukket. Luk kommentaren med <code>*/</code>."
 msgstr[1] "Der er %s kodekommentarer, der ikke er lukket. Luk hver kommentar med <code>*/</code>."
 
-#: wp-includes/customize/class-wp-customize-custom-css-setting.php:196
-msgid "Your double quotes <code>\"</code> are uneven. Make sure there is a closing <code>\"</code> for every opening <code>\"</code>."
-msgstr "Antallet af dobbelte anførselstegn <code>\"</code> er ulige. Vær sikker på, at der er en start <code>\"</code> for hvert slut <code>\"</code>."
-
 #: wp-includes/customize/class-wp-customize-custom-css-setting.php:219
 msgid "Imbalanced/unclosed character errors can be caused by <code>content: \"\";</code> declarations. You may need to remove this or add it to a custom CSS file."
 msgstr "Ubalancerede/ikke-lukkede tegn-fejl kan forårsages af <code>indhold: \"\";</code>-deklarationer. Du kan blive nødt til at fjerne en sådan eller tilføje det til en fil med brugerdefineret CSS."
 
-#: wp-includes/customize/class-wp-customize-custom-css-setting.php:184
-msgid "Your brackets <code>[]</code> are imbalanced. Make sure there is a closing <code>]</code> for every opening <code>[</code>."
-msgstr "Dine kantede parenteser <code>[]</code> er ubalancerede. Vær sikker på, at der er en start <code>[</code> for hvert slut <code>]</code>."
-
-#: wp-includes/customize/class-wp-customize-custom-css-setting.php:190
-msgid "Your parentheses <code>()</code> are imbalanced. Make sure there is a closing <code>)</code> for every opening <code>(</code>."
-msgstr "Dine parenteser <code>()</code> er ubalancerede. Vær sikker på, at der er en start <code>(</code> for hvert slut <code>)</code>."
-
-#: wp-includes/customize/class-wp-customize-custom-css-setting.php:178
-msgid "Your curly brackets <code>{}</code> are imbalanced. Make sure there is a closing <code>}</code> for every opening <code>{</code>."
-msgstr "Dine krøllede parenteser <code>{}</code> er ubalancerede. Vær sikker på, at der er en start <code>{</code> for hvert slut <code>}</code>."
+#: wp-includes/customize/class-wp-customize-custom-css-setting.php:196
+msgid "Your double quotes <code>\"</code> are uneven. Make sure there is a closing <code>\"</code> for every opening <code>\"</code>."
+msgstr "Antallet af dobbelte anførselstegn <code>\"</code> er ulige. Sørg for, at der er en afslutnings-<code>\"</code> for hver åbnings-<code>\"</code>."
 
 #: wp-includes/customize/class-wp-customize-custom-css-setting.php:171
 msgid "Markup is not allowed in CSS."
 msgstr "Markup er ikke tilladt i CSS."
+
+#: wp-includes/customize/class-wp-customize-custom-css-setting.php:190
+msgid "Your parentheses <code>()</code> are imbalanced. Make sure there is a closing <code>)</code> for every opening <code>(</code>."
+msgstr "Dine parenteser <code>()</code> er ubalancerede. Sørg for, at der er en afslutnings-<code>)</code> for hver åbnings-<code>(</code>."
+
+#: wp-includes/customize/class-wp-customize-custom-css-setting.php:184
+msgid "Your brackets <code>[]</code> are imbalanced. Make sure there is a closing <code>]</code> for every opening <code>[</code>."
+msgstr "Dine kantede parenteser <code>[]</code> er ubalancerede. Sørg for, at der er en afslutnings-<code>]</code> for hver åbnings-<code>[</code>."
+
+#: wp-includes/customize/class-wp-customize-custom-css-setting.php:178
+msgid "Your curly brackets <code>{}</code> are imbalanced. Make sure there is a closing <code>}</code> for every opening <code>{</code>."
+msgstr "Dine krøllede parenteser <code>{}</code> er ubalancerede. Sørg for, at der er en afslutnings-<code>}</code> for hver åbnings-<code>{</code>."
 
 #: wp-includes/class-wp-xmlrpc-server.php:5427
 msgid "Sorry, your entry could not be edited."
@@ -2265,12 +2265,12 @@ msgid "Password strength unknown"
 msgstr "Adgangskodestyrke ukendt"
 
 #. translators: %s: site title
-#: wp-includes/pluggable.php:1720
+#: wp-includes/pluggable.php:1736
 msgid "[%s] Password Changed"
 msgstr "[%s] Adgangskode ændret"
 
 #. translators: %s: user name
-#: wp-includes/pluggable.php:1715
+#: wp-includes/pluggable.php:1731
 msgid "Password changed for user: %s"
 msgstr "Adgangskode ændret for bruger: %s"
 
@@ -2751,12 +2751,6 @@ msgid "February"
 msgstr "februars"
 
 #. translators: month name, genitive
-#: wp-includes/class-wp-locale.php:174
-msgctxt "genitive"
-msgid "March"
-msgstr "martsʼ"
-
-#. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:175
 msgctxt "genitive"
 msgid "April"
@@ -2774,6 +2768,12 @@ msgstr "majs"
 msgctxt "decline months names: on or off"
 msgid "off"
 msgstr "off"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:174
+msgctxt "genitive"
+msgid "March"
+msgstr "marts'"
 
 #: wp-includes/embed.php:992
 msgid "Sharing options"
@@ -2862,41 +2862,41 @@ msgstr "Forfatter:"
 msgid "Are you sure that the database server is running?"
 msgstr "Er du sikker på, at databaseserveren kører?"
 
-#. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1600 wp-includes/wp-db.php:1704
-msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
-msgstr "Hvis du er usikker på, hvad disse ord betyder, bør du nok kontakte din udbyder. Hvis du stadigvæk har brug for hjælp, kan du altid besøge <a href=\"%s\">WordPressʼ supportfora</a>."
-
 #: wp-includes/wp-db.php:1689
 msgid "Error reconnecting to the database"
 msgstr "Fejl i forsøg på at genoprette forbindelse til databasen"
-
-#. translators: %s: database host
-#: wp-includes/wp-db.php:1693
-msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
-msgstr "Dette betyder, at vi har mistet forbindelsen til databaseserveren på %s. Det kunne tyde på, at din udbyders databaseserver er nede."
 
 #: wp-includes/wp-db.php:1699
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "Er du sikker på, at databaseserveren ikke er ekstraordinært hårdt belastet?"
 
+#. translators: %s: database host
+#: wp-includes/wp-db.php:1693
+msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
+msgstr "Dette betyder, at vi har mistet forbindelsen til databaseserveren på %s. Det kunne betyde, at din udbyders databaseserver er nede."
+
+#. translators: %s: support forums URL
+#: wp-includes/wp-db.php:1600 wp-includes/wp-db.php:1704
+msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
+msgstr "Hvis du er usikker på, hvad disse ting betyder, bør du nok kontakte din udbyder. Hvis du stadigvæk har brug for hjælp, kan du altid besøge <a href=\"%s\">WordPress' supportfora</a> (eller <a href=\"http://wp-danmark.dk/forum/\">WordPress DK Forum</a> hvor vi kan hjælpe på dansk)."
+
 #: wp-includes/wp-db.php:1594
 msgid "Are you sure that you have typed the correct hostname?"
-msgstr "Er du sikker på, at du har skrevet det rigtige værtsnavn?"
+msgstr "Er du sikker på, at du har skrevet det korrekte værtsnavn?"
+
+#: wp-includes/wp-db.php:1593
+msgid "Are you sure you have the correct username and password?"
+msgstr "Er du sikker på, at du har det korrekte brugernavn og adgangskode?"
 
 #. translators: 1: wp-config.php. 2: database host
 #: wp-includes/wp-db.php:1587
 msgid "This either means that the username and password information in your %1$s file is incorrect or we can&#8217;t contact the database server at %2$s. This could mean your host&#8217;s database server is down."
-msgstr "Det betyder enten, at oplysningerne om brugernavn og adgangskode i filen %1$s er forkerte, eller at vi ikke kan oprette forbindelse til %2$s. Det kunne fx tænkes, at din udbyders databaseserver er nede."
-
-#: wp-includes/wp-db.php:1593
-msgid "Are you sure you have the correct username and password?"
-msgstr "Er du sikker på, at du har det rigtige brugernavn og adgangskode?"
+msgstr "Det betyder enten, at oplysningerne om brugernavn og adgangskode i filen %1$s er forkerte, eller at vi ikke kan oprette forbindelse til %2$s. Det kunne betyde, at din udbyders databaseserver er nede."
 
 #. translators: %s: support forums URL
 #: wp-includes/wp-db.php:1128
 msgid "If you don&#8217;t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href=\"%s\">WordPress Support Forums</a>."
-msgstr "Hvis du ikke ved, hvordan man sætter en database op, bør du <strong>kontakte din udbyder</strong> Hvis alt andet mislykkes, kan du måske få hjælp i <a href=\"%s\">WordPressʼ supportfora</a>."
+msgstr "Hvis du ikke ved, hvordan man sætter en database op, bør du <strong>kontakte din udbyder</strong> Hvis alt andet mislykkes, kan du måske få hjælp i <a href=\"%s\">WordPress' supportfora</a>."
 
 #: wp-includes/wp-db.php:1100
 msgid "Can&#8217;t select database"
@@ -3209,10 +3209,6 @@ msgstr "Ældre kommentarer"
 msgid "Posts published on %s"
 msgstr "Indlæg udgivet den %s"
 
-#: wp-includes/embed.php:1014
-msgid "Copy and paste this code into your site to embed"
-msgstr "Kopiér og indsæt denne kode på dit websted for at indsætte (indlejre)"
-
 #: wp-includes/embed.php:1019
 msgid "Close sharing dialog"
 msgstr "Luk delingsdialog"
@@ -3221,6 +3217,10 @@ msgstr "Luk delingsdialog"
 #: wp-includes/feed.php:103 wp-includes/feed.php:129
 msgid "Use the %s filter instead."
 msgstr "Brug filteret %s i stedet for."
+
+#: wp-includes/embed.php:1014
+msgid "Copy and paste this code into your site to embed"
+msgstr "Kopier og indsæt denne kode på dit websted for at indlejre"
 
 #: wp-includes/embed.php:951
 msgid "%s <span class=\"screen-reader-text\">Comment</span>"
@@ -3242,7 +3242,7 @@ msgstr "HTML-indlejring"
 
 #: wp-includes/embed.php:1007
 msgid "Copy and paste this URL into your WordPress site to embed"
-msgstr "Kopiér og indsæt denne URL på dit websted for at indsætte (indlejre)"
+msgstr "Kopier og indsæt denne URL på dit websted for at indlejre"
 
 #: wp-includes/customize/class-wp-widget-area-customize-control.php:67
 msgid "When in reorder mode, additional controls to reorder widgets will be available in the widgets list above."
@@ -3447,17 +3447,17 @@ msgstr "WordPress databasefejl:"
 
 #: wp-login.php:506
 msgid "Your password reset link has expired. Please request a new link below."
-msgstr "Dit link til at gendanne din adgangskode er udløbet. Bed venligst om et nyt link herunder."
+msgstr "Dit link til at gendanne din adgangskode er udløbet. Bed venligst om et nyt link nedenfor."
 
 #: wp-login.php:504
 msgid "Your password reset link appears to be invalid. Please request a new link below."
-msgstr "Dit link til at gendanne din adgangskode ser ud til at være ugyldigt. Bed venligst om et nyt link herunder."
+msgstr "Dit link til at gendanne din adgangskode ser ud til at være ugyldigt. Bed venligst om et nyt link nedenfor."
 
 #: wp-includes/ms-functions.php:451 wp-includes/user.php:1448
 msgid "Username may not be longer than 60 characters."
 msgstr "Brugernavn kan ikke indeholde mere end 60 tegn."
 
-#: wp-includes/pluggable.php:1790
+#: wp-includes/pluggable.php:1806
 msgid "To set your password, visit the following address:"
 msgstr "For at indstille din adgangskode, så besøg følgende adresse:"
 
@@ -3513,11 +3513,6 @@ msgstr "Præformateret"
 msgid "Menus can be displayed in locations defined by your theme."
 msgstr "Menuer kan blive vist ved placeringer defineret af dit tema."
 
-#. translators: 1: PHP class name, 2: version number, 3: __construct() method
-#: wp-includes/functions.php:3895
-msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
-msgstr "Den benyttede constructor-metode for %1$s er <strong>forældet</strong> siden version %2$s! Benyt %3$s i stedet."
-
 #. translators: URL to the widgets panel of the customizer
 #: wp-includes/class-wp-customize-nav-menus.php:562
 msgid "Menus can be displayed in locations defined by your theme or in <a href=\"%s\">widget areas</a> by adding a &#8220;Custom Menu&#8221; widget."
@@ -3531,7 +3526,12 @@ msgstr "Sorter menuelementerne"
 #. translators: %s: Name of the directory (build)
 #: wp-includes/class-wp-locale.php:247
 msgid "The %s directory of the develop repository must be used for RTL."
-msgstr "Mappen %s af develop-repository'en skal benyttes til RTL."
+msgstr "Mappen %s af develop-repository'en skal bruges til RTL."
+
+#. translators: 1: PHP class name, 2: version number, 3: __construct() method
+#: wp-includes/functions.php:3895
+msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
+msgstr "Den kaldte constructor-metode for %1$s er <strong>forældet</strong> siden version %2$s! Benyt %3$s i stedet."
 
 #. translators: User email change notification email subject. 1: Site name
 #: wp-includes/user.php:1883
@@ -3810,7 +3810,7 @@ msgstr "Tilføj menupunkter"
 
 #: wp-includes/class-wp-customize-nav-menus.php:559
 msgid "This panel is used for managing navigation menus for content you have already published on your site. You can create menus and add items for existing content such as pages, posts, categories, tags, formats, or custom links."
-msgstr "Dette panel benyttes til at håndtere navigationsmenuer for indhold, du allerede har udgivet på dit websted. Du kan oprette menuer og tilføje punkter for eksisterende indhold såsom sider, indlæg, kategorier, tags, formater eller egne links."
+msgstr "Dette panel bruges til at håndtere navigationsmenuer for indhold, du allerede har udgivet på dit websted. Du kan oprette menuer og tilføje punkter for eksisterende indhold såsom sider, indlæg, kategorier, tags, formater eller egne links."
 
 #. translators: 1: item name, 2: item position, 3: parent item name
 #: wp-includes/class-wp-customize-nav-menus.php:470
@@ -3938,15 +3938,15 @@ msgstr "Linkrelationer (XFN)"
 msgid "CSS Classes"
 msgstr "CSS klasser"
 
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110
+msgid "Title Attribute"
+msgstr "Titel-attribut"
+
 #: wp-includes/class-wp-editor.php:1459
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
 #: wp-includes/media-template.php:1005
 msgid "Open link in a new tab"
-msgstr "Åbn link i en ny fane"
-
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:110
-msgid "Title Attribute"
-msgstr "Titel-attribut"
+msgstr "Åbn link i et nyt faneblad"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:98
 msgid "Navigation Label"
@@ -3968,7 +3968,7 @@ msgstr "Slet menu"
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:55
 msgctxt "Reorder menu items in Customizer"
 msgid "Reorder"
-msgstr "Omroker"
+msgstr "Arranger igen"
 
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:52
 msgid "Add Items"
@@ -4004,7 +4004,7 @@ msgstr "https://codex.wordpress.org/"
 #. translators: 1: the id argument, 2: sidebar name, 3: recommended id value
 #: wp-includes/widgets.php:258
 msgid "No %1$s was set in the arguments array for the \"%2$s\" sidebar. Defaulting to \"%3$s\". Manually set the %1$s to \"%3$s\" to silence this notice and keep existing sidebar content."
-msgstr "%1$s blev ikke fundet i listen med attributter til din \"%2$s\" sidebar. Standarden \"%3$s\" benyttes i stedet. Du skal manuelt sætte %1$s til \"%3$s\" for at skjule denne meddelelse og beholde det eksisterende indhold i din sidebar."
+msgstr "%1$s blev ikke fundet i listen med attributter til din \"%2$s\" sidebar. Standarden \"%3$s\" bruges i stedet. Du skal manuelt sætte %1$s til \"%3$s\" for at skjule denne meddelelse og beholde det eksisterende indhold i din sidebar."
 
 #: wp-includes/script-loader.php:582 wp-includes/script-loader.php:706
 msgid "Connection lost or the server is busy. Please try again later."
@@ -4132,27 +4132,20 @@ msgstr "Installation gennemført."
 #. translators: 1: comment author, 2: author IP, 3: author domain
 #. translators: 1: Comment author name, 2: comment author's IP, 3: comment
 #. author IP's hostname
-#: wp-includes/pluggable.php:1457 wp-includes/pluggable.php:1617
+#: wp-includes/pluggable.php:1473 wp-includes/pluggable.php:1633
 msgid "Author: %1$s (IP: %2$s, %3$s)"
 msgstr "Forfatter: %1$s (IP: %2$s, %3$s)"
 
 #. translators: 1: Trackback/pingback website name, 2: website IP, 3: website
 #. hostname
-#: wp-includes/pluggable.php:1436 wp-includes/pluggable.php:1447
-#: wp-includes/pluggable.php:1597 wp-includes/pluggable.php:1607
+#: wp-includes/pluggable.php:1452 wp-includes/pluggable.php:1463
+#: wp-includes/pluggable.php:1613 wp-includes/pluggable.php:1623
 msgid "Website: %1$s (IP: %2$s, %3$s)"
 msgstr "Websted: %1$s (IP: %2$s, %3$s)"
 
 #: wp-includes/media.php:3415
 msgid "Drag and drop to reorder media files."
 msgstr "Træk og slip for at sortere mediefiler."
-
-#: wp-includes/class-wp-customize-nav-menus.php:161
-#: wp-includes/class-wp-customize-nav-menus.php:414
-#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:337
-#: wp-includes/nav-menu.php:768
-msgid "Custom Link"
-msgstr "Eget link"
 
 #. translators: 1: site url, 2: table name, 3: database name
 #: wp-includes/ms-load.php:477
@@ -4237,6 +4230,13 @@ msgstr "j. F Y @ H:i:s"
 #: wp-includes/ms-load.php:471
 msgid "<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted %s. You really should look at your database now."
 msgstr "<strong>Databasetabeller mangler.</strong> Dette betyder, at MySQL ikke kører, at WordPress ikke blev installeret korrekt, eller at %s er blevet slettet. Du bør tilse din database omgående."
+
+#: wp-includes/class-wp-customize-nav-menus.php:161
+#: wp-includes/class-wp-customize-nav-menus.php:414
+#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:337
+#: wp-includes/nav-menu.php:768
+msgid "Custom Link"
+msgstr "Tilpasset link"
 
 #: wp-includes/widgets/class-wp-widget-archives.php:85
 msgid "Select Day"
@@ -4368,9 +4368,9 @@ msgid "%s must set a database connection for use with escaping."
 msgstr "%s skal opsætte en databaseforbindelse for at bruge undvigning."
 
 #. translators: 1: Trackback/pingback/comment author URL
-#: wp-includes/pluggable.php:1437 wp-includes/pluggable.php:1448
-#: wp-includes/pluggable.php:1459 wp-includes/pluggable.php:1599
-#: wp-includes/pluggable.php:1609 wp-includes/pluggable.php:1621
+#: wp-includes/pluggable.php:1453 wp-includes/pluggable.php:1464
+#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1615
+#: wp-includes/pluggable.php:1625 wp-includes/pluggable.php:1637
 msgid "URL: %s"
 msgstr "URL: %s"
 
@@ -4402,8 +4402,8 @@ msgid "Available"
 msgstr "Tilgængelig"
 
 #. translators: 1: Comment text
-#: wp-includes/pluggable.php:1438 wp-includes/pluggable.php:1449
-#: wp-includes/pluggable.php:1460 wp-includes/pluggable.php:1623
+#: wp-includes/pluggable.php:1454 wp-includes/pluggable.php:1465
+#: wp-includes/pluggable.php:1476 wp-includes/pluggable.php:1639
 msgid "Comment: %s"
 msgstr "Kommentar: %s"
 
@@ -4417,15 +4417,15 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "Slet"
 
-#: wp-includes/pluggable.php:1461
+#: wp-includes/pluggable.php:1477
 msgid "You can see all comments on this post here:"
 msgstr "Du kan se alle kommentarer til indlægget her:"
 
-#: wp-includes/pluggable.php:1450
+#: wp-includes/pluggable.php:1466
 msgid "You can see all pingbacks on this post here:"
 msgstr "Du kan se alle pingbacks til indlægget her:"
 
-#: wp-includes/pluggable.php:1439
+#: wp-includes/pluggable.php:1455
 msgid "You can see all trackbacks on this post here:"
 msgstr "Du kan se alle trackbacks til indlægget her:"
 
@@ -4779,14 +4779,6 @@ msgstr "Alle datoer"
 msgid "Unattached"
 msgstr "Uhæftede"
 
-#: wp-includes/media.php:3445
-msgid "Filter by date"
-msgstr "Filtrer efter dato"
-
-#: wp-includes/media.php:3446
-msgid "Filter by type"
-msgstr "Filtrer efter type"
-
 #: wp-includes/media.php:3447
 msgid "Search Media"
 msgstr "Søg medier"
@@ -4810,6 +4802,14 @@ msgstr ""
 #: wp-includes/script-loader.php:709
 msgid "No plugins found. Try a different search."
 msgstr "Ingen plugins fundet. Prøv med en anden søgning."
+
+#: wp-includes/media.php:3445
+msgid "Filter by date"
+msgstr "Filtrer efter dato"
+
+#: wp-includes/media.php:3446
+msgid "Filter by type"
+msgstr "Filtrer efter type"
 
 #: wp-includes/comment.php:3097
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
@@ -4974,7 +4974,7 @@ msgstr "Rediger lydafspilningsliste"
 
 #: wp-includes/media.php:3505
 msgid "&#8592; Cancel Audio Playlist"
-msgstr "&#8592;  Annuller lydafspilningsliste"
+msgstr "&#8592; Annuller lydafspilningsliste"
 
 #: wp-includes/class-wp-customize-widgets.php:708
 msgctxt "Move widget"
@@ -5483,10 +5483,6 @@ msgstr "Slet kolonne"
 msgid "Insert table"
 msgstr "Indsæt tabel"
 
-#: wp-includes/class-wp-editor.php:982
-msgid "Header cell"
-msgstr "Header celle"
-
 #: wp-includes/class-wp-editor.php:1017
 msgid "Cell type"
 msgstr "Celletype"
@@ -5720,6 +5716,10 @@ msgstr "Bland uploadede headere"
 #: wp-includes/class-wp-editor.php:901
 msgid "Robots"
 msgstr "Robotter"
+
+#: wp-includes/class-wp-editor.php:982
+msgid "Header cell"
+msgstr "Header-celle"
 
 #: wp-includes/general-template.php:3454
 msgctxt "admin color scheme"
@@ -5956,7 +5956,7 @@ msgstr "#%d (ingen titel)"
 
 #: wp-includes/post-template.php:1812
 msgid "JavaScript must be enabled to use this feature."
-msgstr "JavaScript skal være aktiveret for at benytte denne funktion."
+msgstr "JavaScript skal være aktiveret for at bruge denne funktion."
 
 #. translators: localized time format, see https://secure.php.net/date
 #: wp-includes/class-wp-locale.php:400
@@ -6524,7 +6524,7 @@ msgstr "Hex-værdi"
 
 #: wp-includes/class-wp-customize-manager.php:3839
 msgid "Header Text Color"
-msgstr "Header tekstfarve"
+msgstr "Header-tekstfarve"
 
 #: wp-includes/class-wp-customize-manager.php:3816
 msgid "Colors"
@@ -6568,7 +6568,7 @@ msgstr "Du har desværre ikke tilladelse til at udgive denne side."
 #: wp-includes/class-wp-customize-manager.php:3893
 #: wp-includes/customize/class-wp-customize-header-image-control.php:31
 msgid "Header Image"
-msgstr "Header billede"
+msgstr "Header-billede"
 
 #: wp-includes/class-wp-xmlrpc-server.php:467
 msgid "Post Thumbnail"
@@ -7007,7 +7007,7 @@ msgstr[1] "%s kommentarer afventer godkendelse"
 
 #: wp-includes/script-loader.php:294
 msgid "%s exceeds the maximum upload size for the multi-file uploader when used in your browser."
-msgstr "%s overstiger den maksimale uploadstørrelse for multi-fil uploader, når den benyttes i din browser."
+msgstr "%s overstiger den maksimale uploadstørrelse for multi-fil uploader, når den bruges i din browser."
 
 #: wp-includes/script-loader.php:302
 msgid "&#8220;%s&#8221; has failed to upload."
@@ -7163,10 +7163,6 @@ msgctxt "add new from admin bar"
 msgid "User"
 msgstr "Bruger"
 
-#: wp-includes/pluggable.php:1043 wp-includes/pluggable.php:1086
-msgid "You should specify a nonce action to be verified by using the first parameter."
-msgstr "Du skal angive en nonce handling, der skal verificeres gennem den første parameter."
-
 #: wp-includes/taxonomy.php:503
 msgid "View Tag"
 msgstr "Vis tag"
@@ -7174,6 +7170,10 @@ msgstr "Vis tag"
 #: wp-includes/taxonomy.php:503
 msgid "View Category"
 msgstr "Vis kategori"
+
+#: wp-includes/pluggable.php:1059 wp-includes/pluggable.php:1102
+msgid "You should specify a nonce action to be verified by using the first parameter."
+msgstr "Du skal angive en nonce-handling, der skal verificeres gennem den første parameter."
 
 #. translators: 1: login URL, 2: network home URL
 #: wp-activate.php:150
@@ -7183,7 +7183,7 @@ msgstr "Din konto er nu aktiveret. <a href=\"%1$s\">Log ind</a> eller gå tilbag
 #. translators: 1: site URL, 2: login URL
 #: wp-activate.php:145
 msgid "Your account is now activated. <a href=\"%1$s\">View your site</a> or <a href=\"%2$s\">Log in</a>"
-msgstr "Din konto er nu aktiveret. <a href=\"%1$s\">Besøg dit websted</a> eller <a href=\"%2$s\">Log ind</a>"
+msgstr "Din konto er nu aktiveret. <a href=\"%1$s\">Vis dit websted</a> eller <a href=\"%2$s\">Log ind</a>"
 
 #: wp-includes/post.php:1382
 msgid "All Posts"
@@ -7273,7 +7273,7 @@ msgstr "%1$s er kaldt <strong>forkert</strong>. %2$s %3$s"
 msgid "(This message was added in version %s.)"
 msgstr "(denne meddelelse blev tilføjet i version %s)."
 
-#: wp-includes/pluggable.php:1467
+#: wp-includes/pluggable.php:1483
 msgid "Permalink: %s"
 msgstr "Permalink: %s"
 
@@ -7386,7 +7386,7 @@ msgstr "Denne fil behøver ikke længere at blive inkluderet."
 
 #: wp-login.php:527
 msgid "Please enter your username or email address. You will receive a link to create a new password via email."
-msgstr "Indtast venligst dit brugernavn og din e-mailadresse. Du vil modtage et link til at oprette en ny adgangskode via e-mail."
+msgstr "Indtast venligst dit brugernavn eller din e-mailadresse. Du vil modtage et link til at oprette en ny adgangskode via e-mail."
 
 #: wp-includes/widgets/class-wp-widget-archives.php:159
 #: wp-includes/widgets/class-wp-widget-categories.php:164
@@ -7773,7 +7773,7 @@ msgstr "Webstedet er allerede aktiveret."
 msgid "Sorry, that site is reserved!"
 msgstr "Beklager, men det websted er optaget!"
 
-#: wp-includes/pluggable.php:1758
+#: wp-includes/pluggable.php:1774
 msgid "New user registration on your site %s:"
 msgstr "Ny brugerregistrering på dit websted %s:"
 
@@ -7853,7 +7853,7 @@ msgstr "En term med det angivne navn findes allerede med denne forælder."
 
 #: wp-includes/ms-functions.php:2022
 msgid "An error occurred adding you to this site. Back to the <a href=\"%s\">homepage</a>."
-msgstr "En fejl skete i forsøg på at tilføje dig til dette websted. Gå tilbage til <a href=\"%s\">forsiden</a>."
+msgstr "Der opstod en fejl under forsøg på at tilføje dig til dette websted. Gå tilbage til <a href=\"%s\">forsiden</a>."
 
 #: wp-includes/ms-functions.php:1940
 msgid "This file is too big. Files must be less than %d KB in size."
@@ -7974,31 +7974,31 @@ msgstr[0] "%d Temaopdatering"
 msgstr[1] "%d Temaopdateringer"
 
 #. translators: 1: Post title
-#: wp-includes/pluggable.php:1434
+#: wp-includes/pluggable.php:1450
 msgid "New trackback on your post \"%s\""
 msgstr "Nyt trackback til dit indlæg \"%s\""
 
-#: wp-includes/pluggable.php:1455
+#: wp-includes/pluggable.php:1471
 msgid "New comment on your post \"%s\""
 msgstr "Ny kommentar til dit indlæg \"%s\""
 
 #. translators: 1: Post title
-#: wp-includes/pluggable.php:1445
+#: wp-includes/pluggable.php:1461
 msgid "New pingback on your post \"%s\""
 msgstr "Nyt pingback til dit indlæg \"%s\""
 
 #. translators: 1: Post title
-#: wp-includes/pluggable.php:1594
+#: wp-includes/pluggable.php:1610
 msgid "A new trackback on the post \"%s\" is waiting for your approval"
 msgstr "Et nyt trackback til dit indlæg \"%s\" afventer din godkendelse"
 
 #. translators: 1: Post title
-#: wp-includes/pluggable.php:1604
+#: wp-includes/pluggable.php:1620
 msgid "A new pingback on the post \"%s\" is waiting for your approval"
 msgstr "Et nyt pingback til dit indlæg \"%s\" afventer din godkendelse"
 
 #. translators: 1: Post title
-#: wp-includes/pluggable.php:1614
+#: wp-includes/pluggable.php:1630
 msgid "A new comment on the post \"%s\" is waiting for your approval"
 msgstr "En ny kommentar til dit indlæg \"%s\" afventer din godkendelse"
 
@@ -8126,10 +8126,6 @@ msgstr "Ugyldig kommentarstatus."
 msgid "Is there no link to us?"
 msgstr "Er der ikke et link til os?"
 
-#: wp-includes/class-wp-xmlrpc-server.php:6296
-msgid "The source URL and the target URL cannot both point to the same resource."
-msgstr "Kilde-URL og destinations-URL kan ikke pege p&#229; samme ressource."
-
 #: wp-includes/class-wp-xmlrpc-server.php:6304
 msgid "The pingback has already been registered."
 msgstr "Det pingback er allerede blevet registreret."
@@ -8146,12 +8142,6 @@ msgstr "Kilde-URL'en indeholder ikke et link til destinations-URL'en og kan derf
 #: wp-includes/class-wp-xmlrpc-server.php:6420
 msgid "Pingback from %1$s to %2$s registered. Keep the web talking! :-)"
 msgstr "Pingback fra %1$s til %2$s registreret. Lad webbet snakke! :-)"
-
-#. translators: 1: Database error message, 2: SQL query, 3: Name of the calling
-#. function
-#: wp-includes/wp-db.php:1369
-msgid "WordPress database error %1$s for query %2$s made by %3$s"
-msgstr "WordPress-databasefejl %1$s for foresp&#248;rgslen %2$s fra %3$s"
 
 #: wp-includes/class-wp-xmlrpc-server.php:6286
 #: wp-includes/class-wp-xmlrpc-server.php:6293
@@ -8290,6 +8280,16 @@ msgstr "Tillad nye brugere at tilmelde sig"
 msgid "Comment author name and email are required."
 msgstr "Kommentarforfatteren skal udfylde navn og e-mail."
 
+#. translators: 1: Database error message, 2: SQL query, 3: Name of the calling
+#. function
+#: wp-includes/wp-db.php:1369
+msgid "WordPress database error %1$s for query %2$s made by %3$s"
+msgstr "WordPress-databasefejl %1$s for forespørgslen %2$s fra %3$s"
+
+#: wp-includes/class-wp-xmlrpc-server.php:6296
+msgid "The source URL and the target URL cannot both point to the same resource."
+msgstr "Kilde-URL og destinations-URL kan ikke pege på samme ressource."
+
 #: wp-includes/post.php:209
 msgid "Scheduled <span class=\"count\">(%s)</span>"
 msgid_plural "Scheduled <span class=\"count\">(%s)</span>"
@@ -8422,10 +8422,6 @@ msgstr "Vis indhold?"
 msgid "Display item date?"
 msgstr "Vis dato?"
 
-#: wp-includes/deprecated.php:64
-msgid "new WordPress Loop"
-msgstr "Nyt WordPress-loop"
-
 #: wp-includes/deprecated.php:963
 msgid "Last updated"
 msgstr "Sidst opdateret"
@@ -8550,19 +8546,6 @@ msgstr "%1$s %2$s %3$s-kategorifeed"
 #: wp-includes/general-template.php:2654
 msgid "%1$s %2$s %3$s Tag Feed"
 msgstr "%1$s %2$s %3$s-tagfeed"
-
-#. translators: 1: blog name, 2: separator(raquo), 3: search phrase
-#: wp-includes/general-template.php:2660
-msgid "%1$s %2$s Search Results for &#8220;%3$s&#8221; Feed"
-msgstr "%1$s %2$s S&#248;geresultater for &#8220;%3$s&#8221;-feed"
-
-#: wp-includes/general-template.php:3258
-msgid "&laquo; Previous"
-msgstr "&laquo; Tidligere"
-
-#: wp-includes/class-http.php:268
-msgid "User has blocked requests through HTTP."
-msgstr "Brugeren har blokeret foresp&#248;rgsler via HTTP."
 
 #: wp-includes/class-wp-http-curl.php:189
 #: wp-includes/class-wp-http-streams.php:228
@@ -8753,10 +8736,6 @@ msgstr "Tabelegenskaber"
 #: wp-includes/class-wp-editor.php:995
 msgid "Cut table row"
 msgstr "Klip tabelrække"
-
-#: wp-includes/class-wp-editor.php:996
-msgid "Copy table row"
-msgstr "Kopier tabelrække"
 
 #: wp-includes/class-wp-editor.php:971
 msgid "Delete table"
@@ -8975,42 +8954,42 @@ msgid "PM"
 msgstr "PM"
 
 #. translators: 1: blog name, 2: post title
-#: wp-includes/pluggable.php:1463
+#: wp-includes/pluggable.php:1479
 msgid "[%1$s] Comment: \"%2$s\""
 msgstr "[%1$s] Kommentar: \"%2$s\""
 
 #. translators: 1: blog name, 2: post title
-#: wp-includes/pluggable.php:1441
+#: wp-includes/pluggable.php:1457
 msgid "[%1$s] Trackback: \"%2$s\""
 msgstr "[%1$s] Trackback: \"%2$s\""
 
 #. translators: 1: blog name, 2: post title
-#: wp-includes/pluggable.php:1452
+#: wp-includes/pluggable.php:1468
 msgid "[%1$s] Pingback: \"%2$s\""
 msgstr "[%1$s] Pingback: \"%2$s\""
 
 #. translators: Comment moderation. 1: Comment action URL
-#: wp-includes/pluggable.php:1471 wp-includes/pluggable.php:1632
+#: wp-includes/pluggable.php:1487 wp-includes/pluggable.php:1648
 msgid "Trash it: %s"
 msgstr "Smid i papirkurv: %s"
 
 #. translators: Comment moderation. 1: Comment action URL
-#: wp-includes/pluggable.php:1473 wp-includes/pluggable.php:1635
+#: wp-includes/pluggable.php:1489 wp-includes/pluggable.php:1651
 msgid "Delete it: %s"
 msgstr "Slet den: %s"
 
 #. translators: Comment moderation. 1: Comment action URL
-#: wp-includes/pluggable.php:1475 wp-includes/pluggable.php:1639
+#: wp-includes/pluggable.php:1491 wp-includes/pluggable.php:1655
 msgid "Spam it: %s"
 msgstr "Spam den: %s"
 
 #. translators: Comment moderation. 1: Comment action URL
-#: wp-includes/pluggable.php:1628
+#: wp-includes/pluggable.php:1644
 msgid "Approve it: %s"
 msgstr "Godkend den: %s"
 
 #. translators: Comment moderation. 1: Number of comments awaiting approval
-#: wp-includes/pluggable.php:1642
+#: wp-includes/pluggable.php:1658
 msgid "Currently %s comment is waiting for approval. Please visit the moderation panel:"
 msgid_plural "Currently %s comments are waiting for approval. Please visit the moderation panel:"
 msgstr[0] "Der er i øjeblikket %s kommentar, der venter på godkendelse. Gå til bedømmelsessiden:"
@@ -9018,16 +8997,16 @@ msgstr[1] "Der er i øjeblikket %s kommentarer, der venter på godkendelse. Gå 
 
 #. translators: Comment moderation notification email subject. 1: Site name, 2:
 #. Post title
-#: wp-includes/pluggable.php:1647
+#: wp-includes/pluggable.php:1663
 msgid "[%1$s] Please moderate: \"%2$s\""
 msgstr "[%1$s] Bedøm venligst: \"%2$s\""
 
-#: wp-includes/pluggable.php:1759 wp-includes/pluggable.php:1789
+#: wp-includes/pluggable.php:1775 wp-includes/pluggable.php:1805
 #: wp-login.php:329
 msgid "Username: %s"
 msgstr "Brugernavn: %s"
 
-#: wp-includes/pluggable.php:1762
+#: wp-includes/pluggable.php:1778
 msgid "[%s] New User Registration"
 msgstr "[%s] Ny brugerregistrering"
 
@@ -9070,10 +9049,6 @@ msgstr "Skriv URL til billedet"
 #: wp-includes/script-loader.php:96
 msgid "Enter a description of the image"
 msgstr "Lav en beskrivelse af billedet"
-
-#: wp-includes/script-loader.php:266
-msgid "&lt; Prev"
-msgstr "&lt; Tidligere"
 
 #: wp-includes/script-loader.php:267
 msgid "Image"
@@ -9328,7 +9303,7 @@ msgstr "Fuldskærm"
 msgid "Unable to create directory %s. Is its parent directory writable by the server?"
 msgstr "Kan ikke oprette mappen %s. Er modermappen skrivbar for serveren?"
 
-#: wp-includes/pluggable.php:1795
+#: wp-includes/pluggable.php:1811
 msgid "[%s] Your username and password info"
 msgstr "[%s] Dit brugernavn og din adgangskode"
 
@@ -9468,11 +9443,6 @@ msgstr "Vis forfatter hvis tilgængelig?"
 msgid "Number of posts to show:"
 msgstr "Antal indlæg at vise:"
 
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:31
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:50
-msgid "Recent Posts"
-msgstr "Nye indlæg"
-
 #: wp-includes/class-http.php:965 wp-includes/class-wp-http-curl.php:232
 #: wp-includes/class-wp-http-curl.php:271
 msgid "Too many redirects."
@@ -9529,10 +9499,6 @@ msgstr "E-mailen kunne ikke sendes."
 #: wp-login.php:314
 msgid "<strong>ERROR</strong>: Invalid username or email."
 msgstr "<strong>FEJL</strong>: Ugyldigt brugernavn eller e-mail."
-
-#: wp-includes/widgets/class-wp-widget-meta.php:58
-msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
-msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> af indlæg"
 
 #: wp-includes/option.php:156
 msgid "%s is a protected WP option and may not be modified"
@@ -9680,11 +9646,11 @@ msgstr "IO-fejl."
 msgid "HTTP error."
 msgstr "HTTP-fejl."
 
-#: wp-includes/pluggable.php:1610
+#: wp-includes/pluggable.php:1626
 msgid "Pingback excerpt: "
 msgstr "Pingback uddrag: "
 
-#: wp-includes/pluggable.php:1600
+#: wp-includes/pluggable.php:1616
 msgid "Trackback excerpt: "
 msgstr "Trackback uddrag: "
 
@@ -9777,6 +9743,40 @@ msgstr "%1$s blev kaldt med et argument der har været <strong>forældet</strong
 msgid "Tag Cloud"
 msgstr "Tag-sky"
 
+#: wp-includes/script-loader.php:266
+msgid "&lt; Prev"
+msgstr "&lt; Forrige"
+
+#: wp-includes/class-http.php:268
+msgid "User has blocked requests through HTTP."
+msgstr "Brugeren har blokeret forespørgsler via HTTP."
+
+#: wp-includes/general-template.php:3258
+msgid "&laquo; Previous"
+msgstr "&laquo; Forrige"
+
+#. translators: 1: blog name, 2: separator(raquo), 3: search phrase
+#: wp-includes/general-template.php:2660
+msgid "%1$s %2$s Search Results for &#8220;%3$s&#8221; Feed"
+msgstr "%1$s %2$s Søgeresultater for &#8220;%3$s&#8221;-feed"
+
+#: wp-includes/deprecated.php:64
+msgid "new WordPress Loop"
+msgstr "nyt WordPress-loop"
+
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:31
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:50
+msgid "Recent Posts"
+msgstr "Seneste indlæg"
+
+#: wp-includes/widgets/class-wp-widget-meta.php:58
+msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr "Indlæg-<abbr title=\"Really Simple Syndication\">RSS</abbr>"
+
+#: wp-includes/class-wp-editor.php:996
+msgid "Copy table row"
+msgstr "Kopier tabelrække"
+
 #: wp-includes/taxonomy.php:502
 msgid "Edit Category"
 msgstr "Rediger kategori"
@@ -9859,10 +9859,6 @@ msgstr "Indstillinger"
 #: wp-includes/class-wp-xmlrpc-server.php:489
 msgid "Date Format"
 msgstr "Datoformat"
-
-#: wp-includes/class-wp-xmlrpc-server.php:494
-msgid "Time Format"
-msgstr "Tidsformat"
 
 #: wp-includes/class-wp-customize-manager.php:3799
 #: wp-includes/customize/class-wp-customize-color-control.php:54
@@ -10099,10 +10095,6 @@ msgstr "Blå"
 msgid "Tags: "
 msgstr "Tags: "
 
-#: wp-includes/widgets/class-wp-widget-meta.php:70
-msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
-msgstr "Denne webside k&#248;rer WordPress; et moderne, semantisk publiceringsverkt&#248;j."
-
 #: wp-includes/class-wp-theme.php:785
 msgid "Green"
 msgstr "Grøn"
@@ -10118,6 +10110,14 @@ msgstr "Sølv"
 #: wp-includes/class-wp-user.php:717
 msgid "Usage of user levels by plugins and themes is deprecated. Use roles and capabilities instead."
 msgstr "Brug af brugerniveauer i forbindelse med plugins og temaer er forældet. Brug roller og rettigheder i stedet."
+
+#: wp-includes/widgets/class-wp-widget-meta.php:70
+msgid "Powered by WordPress, state-of-the-art semantic personal publishing platform."
+msgstr "Denne webside kører WordPress; en moderne, semantisk udgivelsesplatform."
+
+#: wp-includes/class-wp-xmlrpc-server.php:494
+msgid "Time Format"
+msgstr "Klokkeslætformat"
 
 #: wp-includes/category-template.php:527
 #: wp-includes/theme-compat/sidebar.php:97
@@ -10238,11 +10238,6 @@ msgstr "RSS"
 #: wp-includes/functions.php:2131
 msgid "Invalid file type"
 msgstr "Ugyldig filtype"
-
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:31
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:78
-msgid "Recent Comments"
-msgstr "Nye kommentarer"
 
 #: wp-includes/admin-bar.php:473
 msgid "Plugins"
@@ -10420,8 +10415,8 @@ msgid "Full Size"
 msgstr "Fuld størrelse"
 
 #. translators: 1: Comment author URL
-#: wp-includes/pluggable.php:1458 wp-includes/pluggable.php:1619
-#: wp-includes/pluggable.php:1760
+#: wp-includes/pluggable.php:1474 wp-includes/pluggable.php:1635
+#: wp-includes/pluggable.php:1776
 msgid "Email: %s"
 msgstr "E-mail: %s"
 
@@ -10542,6 +10537,11 @@ msgstr "Miniature"
 msgid "The GD image library is not installed."
 msgstr "GD image library er ikke installeret."
 
+#: wp-includes/widgets/class-wp-widget-recent-comments.php:31
+#: wp-includes/widgets/class-wp-widget-recent-comments.php:78
+msgid "Recent Comments"
+msgstr "Seneste kommentarer"
+
 #: wp-includes/class-wp-customize-manager.php:412
 #: wp-includes/class-wp-customize-manager.php:475
 #: wp-includes/script-loader.php:467
@@ -10584,10 +10584,6 @@ msgstr "Aktiveringsnøgle:"
 msgid "Your account is now active!"
 msgstr "Din konto er nu aktiv!"
 
-#: wp-activate.php:123
-msgid "An error occurred during the activation"
-msgstr "Der skete en fejl under aktiveringen"
-
 #: wp-activate.php:134 wp-signup.php:228
 msgid "Username:"
 msgstr "Brugernavn:"
@@ -10612,3 +10608,7 @@ msgstr "Afventer gennemlæsning"
 #: wp-includes/post.php:1379
 msgid "No posts found."
 msgstr "Ingen indlæg fundet."
+
+#: wp-activate.php:123
+msgid "An error occurred during the activation"
+msgstr "Der opstod en fejl under aktiveringen"
