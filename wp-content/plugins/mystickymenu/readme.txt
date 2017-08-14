@@ -1,28 +1,35 @@
 === myStickymenu ===
 Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com/contact
-Tags: sticky menu, twentythirteen, twenty-thirteen, plugin, menu, jquery, sticky header, header, sticky, sticky navigation
+Tags: sticky, menu, header, sticky menu, sticky header, floating, floating menu
 Requires at least: 3.5.1
-Tested up to: 4.4
-Stable tag: 1.8.3
+Tested up to: 4.8.1
+Stable tag: 1.9.1
 License: GPLv2 or later
 
-This modern lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
+This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
 
 == Description ==
-Plugin is designed for Twenty Thirteen template but should work on any theme. By default, it uses Twenty Thirteen navigation css class ".navbar" under "Sticky Class" setting field   and that should be modified for other themes (if different) to make it work. Don’t forget this, it’s a mandatory field. 
+By default, sticky menu is designed to use element class ".navbar" as "Sticky Class". That value should be modified in plugin settings for different themes to make it work. Sticky Class is actually nothing more than an element class (or id) of the element that should become sticky. 
+
+Advancement of this simple plugin is that increases usability and page views of your WordPress site since menu is available to the user all the time.
 
 Plugin is localized (multi language support) and responsive (as far as your theme is). Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
 
-Another advancement of this simple plugin is that increases usability and page views of your WordPress site since menu is available to the user all the time. 
+Plugin is originally designed for Twenty Thirteen template but should work on any theme.  
 
-Plugin Home + Demo URL: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269 
+[Plugin Home + Demo URL][1] 
+[myStickymenu theme support page][2]
+
+[1]: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
+[2]: http://wordpress.transformnews.com/tutorials/mystickymenu-theme-support-682
 
 == Installation ==
 Install like any other plugin. After install activate. 
 Go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id… 
-Also make sure that Disable CSS style option is not enabled, you must add myStickymenu CSS style to your style.css file first. More about disable CSS option can be found here - http://wordpress.transformnews.com/tutorials/disable-css-style-in-mystickymenu-938
+Also make sure that Disable CSS style option is not enabled, you must add myStickymenu CSS style to your style.css file first. [More about disable CSS option][3] 
 
+[3: http://wordpress.transformnews.com/tutorials/disable-css-style-in-mystickymenu-938
 
 == Frequently Asked Questions ==
 
@@ -41,9 +48,6 @@ In CSS you can style your custom class while not sticky using custom class you a
 
 In some cases you can use the whole header div and than just style it different with .myfixed class, hide what you don’t need using CSS display:none; property, and position logo and menu as you like. 
 
-Check Twenty Thirteen CSS example using default full header id #masthead as a sticky class - http://wordpress.transformnews.com/tutorials/mystickymenu-theme-support-682 . 
-Also check another header example here - https://wordpress.org/support/topic/logo-in-menu-2 .
-
 == Screenshots ==
 
 1.  screenshot-1.png shows administration settings.
@@ -51,6 +55,33 @@ Also check another header example here - https://wordpress.org/support/topic/log
 
 
 == Changelog ==
+
+= 1.9.1 =
+* Changed: admin bar is fixed as default, and menu goes under it.
+
+= 1.9 =
+* Fixed: enable / disable at search pages
+
+= 1.8.9 =
+* Added: New option - Disable at certain posts and pages.
+
+= 1.8.8 =
+* Fixed: removed esc_attr for echo css, since input is already sanitized.
+
+= 1.8.7 =
+* Fixed: minor bug when browser resized.
+
+= 1.8.6 =
+* Fixed: minor bug.
+
+= 1.8.5 =
+* Improved: Improved performance and optimized scripts.
+
+= 1.8.4 =
+* Fixed: changed is_home() to is_front_page() for menu activation height on front page.
+
+= 1.8.3 =
+* Change: minor cosmetic changes…
 
 = 1.8.2 =
 * Fixed: js load on https
@@ -100,6 +131,12 @@ Also check another header example here - https://wordpress.org/support/topic/log
 * First release of myStickymenu plugin
 
 == Upgrade Notice ==
+
+= 1.8.4 =
+* Fixed: changed is_home() to is_front_page() for menu activation height on front page.
+
+= 1.8.3 =
+* Change: minor cosmetic changes…
 
 = 1.8.2 =
 * Fixed: js load on https
