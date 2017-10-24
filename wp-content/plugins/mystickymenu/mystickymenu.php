@@ -2,8 +2,8 @@
 	/*
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
-	Description: Simple sticky (fixed on top) menu implementation for default Twentythirteen navigation menu. For other themes, after install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 1.9.1
+	Description: Simple sticky (fixed on top) menu implementation for navigation menu. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
+	Version: 2.0.1
 	Author: m.r.d.a
 	Author URI: http://wordpress.transformnews.com/
 	Text Domain: mystickymenu
@@ -12,6 +12,7 @@
 	*/
 
 defined('ABSPATH') or die("Cannot access pages directly.");
+define( 'MYSTICKY_VERSION', '2.0.1' );
 
 class MyStickyMenuBackend
 {
@@ -24,8 +25,120 @@ class MyStickyMenuBackend
 		add_action( 'admin_init', array( $this, 'mysticky_load_transl') );
 		add_action( 'admin_init', array( $this, 'page_init' ) );
 		add_action( 'admin_init', array( $this, 'mysticky_default_options' ) );
-		add_action( 'admin_enqueue_scripts',  array( $this, 'mysticky_enqueue_color_picker' ) );	
+		
+		add_action( 'admin_enqueue_scripts',  array( $this, 'mysticky_enqueue_color_picker' ) );
+		add_action( 'admin_head', array( $this, 'mysticky_admin_script' ) );	
     }
+	
+	
+	
+
+public function mysticky_admin_script() {
+	echo '<style type="text/css">.mysticky-general,.mysticky-style,.mysticky-advanced,.mysticky-hideform,.mysticky-hideformreset{display:none;}</style>';
+	echo '
+<script> 
+			
+(function( $ ) {
+	"use strict";
+
+	jQuery(document).ready(function($){
+			
+			
+    	$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
+		$("#myfixed_bgcolor").parent().parent().parent().hide();
+		$("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
+		$(".mysticky-hideformreset").hide();
+		$(".mysticky-hideform,.mysticky-general").fadeIn(300);			
+			
+					
+		$(".btn-general").click(function(){
+        
+			$(".btn-general").addClass("nav-tab-active");
+			$(".btn-style,.btn-advanced").removeClass("nav-tab-active");
+			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().show();
+    		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
+			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().hide();
+			$("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
+						
+			$(".mysticky-general").fadeIn(300);
+			$(".mysticky-style,.mysticky-advanced,.mysticky-hideformreset") .hide();
+			
+						
+						
+						
+		});
+						
+		$(".btn-general,.btn-style,.btn-advanced").hover(function() {
+       		$(".btn-general,.btn-style,.btn-advanced").css("cursor","pointer");
+    	});
+						
+				
+							
+		$(".btn-style").click(function(){
+        
+			$(".btn-style").addClass("nav-tab-active");
+			$(".btn-general,.btn-advanced").removeClass("nav-tab-active");
+						
+							
+			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
+						
+    		$("#myfixed_zindex,#myfixed_bgcolor,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().show();
+						
+			$("#myfixed_cssstyle").parent().parent().show();
+			
+			$("#mysticky_disable_at_front_home").parent().parent().hide();
+							
+			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().show();
+						
+			$(".mysticky-general").hide();
+			$(".mysticky-hideformreset").hide();
+			$(".mysticky-style") .fadeIn(300);
+			$(".mysticky-advanced").hide();
+						
+		});
+						
+						
+						
+						
+		$(".btn-advanced").click(function(){
+        
+   
+			$(".btn-advanced").addClass("nav-tab-active");
+			$(".btn-style,.btn-general").removeClass("nav-tab-active");
+						
+			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
+    		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
+			$("#myfixed_cssstyle").parent().parent().hide();
+							
+			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().hide();
+						
+			$("#mysticky_disable_at_front_home").parent().parent().show();
+			$(".mysticky-hideformreset").fadeIn(300);
+						
+			$(".mysticky-general").hide();
+			$(".mysticky-style") .hide();
+			$(".mysticky-advanced").fadeIn(300);
+						
+						
+						
+			});		
+						
+						
+						
+			$(".confirm").click(function() {
+       			return window.confirm("Reset to default settings?");
+    		});
+	
+	});		
+	
+	})(jQuery);	
+</script>';
+  
+}
+	
+	
+	
+	
 		
 	public function mysticky_load_transl()
 	{
@@ -50,15 +163,91 @@ class MyStickyMenuBackend
 		$this->options = get_option( 'mysticky_option_name');
 		?>
 		<div class="wrap">
-			<?php screen_icon(); ?>
-			<h2><?php _e('myStickymenu Settings', 'mystickymenu'); ?></h2>       
-			<form method="post" action="options.php">
-			<?php
-				settings_fields( 'mysticky_option_group' );   
-				do_settings_sections( 'my-stickymenu-settings' );
-				submit_button(); 
+			
+			<h2><?php _e('myStickymenu', 'mystickymenu'); ?></h2>  
+            <p><?php _e("Add sticky menu / header to any theme. <br />Simply change 'Sticky Class' to HTML element class desired to be sticky (div id can be used as well).", 'mystickymenu'); ?></p>  
+                
+            
+            
+            <?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'mysticky-general';  ?> 
+            
+            <h2 class="nav-tab-wrapper">
+                <a class="nav-tab btn-general <?php echo $active_tab == 'mysticky-general' ? 'nav-tab-active' : ''; ?>">General Settings</a>  
+                <a class="nav-tab btn-style <?php echo $active_tab == 'mysticky-style' ? 'nav-tab-active' : ''; ?>">Style</a> 
+                <a class="nav-tab btn-advanced <?php echo $active_tab == 'mysticky-advanced' ? 'nav-tab-active' : ''; ?>">Advanced</a> 
+            </h2>
+            
+            
+                   
+            
+            
+            
+          
+            
+            
+			<form class="mysticky-hideform" method="post" action="options.php">
+            
+            
+            
+             <?php
+			
+			
+			 //we check if the page is visited by click on the tabs or on the menu button.
+                //then we get the active tab.
+               
+                if(isset($_GET["tab"]))
+                {
+					
+					if($_GET["tab"] == "mysticky-general")
+                    {
+					echo '<div class="mysticky-general">';
+					settings_fields( 'mysticky_option_group' );   
+					do_settings_sections( 'my-stickymenu-settings' );
+					echo '</div>';
+					
+					}
+                    else if($_GET["tab"] == "mysticky-style")
+                    {
+					echo '<div class="mysticky-style">';	
+					settings_fields( 'mysticky_option_group' );   
+					do_settings_sections( 'my-stickymenu-settings' );
+					echo '</div>';
+                    }
+					
+					else if($_GET["tab"] == "mysticky-advanced")
+                    {
+					echo '<div class="mysticky-advanced">';		
+					settings_fields( 'mysticky_option_group' );   
+					do_settings_sections( 'my-stickymenu-settings' );
+					echo '</div>';
+                    } 
+		
+					
+                }
+				
+				else {
+						
+					//	echo '<div class="mysticky-general">';
+					settings_fields( 'mysticky_option_group' );   
+					do_settings_sections( 'my-stickymenu-settings' );
+				//	echo '</div>';
+						
+						
+						}
+			
+				
+				submit_button();
 			?>
+       
+ 
 			</form>
+  
+			<form class="mysticky-hideformreset" method="post" action="">
+				<input name="reset" class="button button-secondary confirm" type="submit" value="Reset to default settings" >
+				<input type="hidden" name="action" value="reset" />
+			</form>
+            
+            
 			</div>
 		<?php
 	}
@@ -72,14 +261,23 @@ class MyStickyMenuBackend
 			array( $this, 'sanitize' )
 		);
 		
+		
+		
+		
 		add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() );
 
 		add_settings_section(
 			'setting_section_id',
-			__("myStickymenu Options", 'mystickymenu'),
+			__(" ", 'mystickymenu'),
 			array( $this, 'print_section_info' ),
 			'my-stickymenu-settings'
+			
 		);
+		
+		
+		
+		
+		
 		add_settings_field(
 			'mysticky_class_selector',
 			__("Sticky Class", 'mystickymenu'),
@@ -87,6 +285,14 @@ class MyStickyMenuBackend
 			'my-stickymenu-settings',
 			'setting_section_id'
 		);
+		
+		add_settings_field(
+			'myfixed_fade', 
+			__("Fade or slide effect", 'mystickymenu'),
+			array( $this, 'myfixed_fade_callback' ), 
+			'my-stickymenu-settings', 
+			'setting_section_id'
+		);	
 		add_settings_field(
 			'myfixed_zindex', 
 			__("Sticky z-index", 'mystickymenu'),
@@ -136,16 +342,18 @@ class MyStickyMenuBackend
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
+		
+		
 		add_settings_field(
-			'myfixed_fade', 
-			__("Fade or slide effect", 'mystickymenu'),
-			array( $this, 'myfixed_fade_callback' ), 
+			'myfixed_disable_scroll_down', 
+			__("Disable on scroll down", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);	
+		
 		add_settings_field(
 			'myfixed_cssstyle', 
-			__(".myfixed css class", 'mystickymenu'),
+			__("CSS style", 'mystickymenu'),
 			array( $this, 'myfixed_cssstyle_callback' ), 
 			'my-stickymenu-settings', 
 			'setting_section_id'
@@ -205,13 +413,13 @@ class MyStickyMenuBackend
 		);
 		add_settings_field(
 			'mysticky_enable_at_pages', 
-			__("", 'mystickysidebar'),
+			__(" ", 'mystickysidebar'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_enable_at_posts', 
-			__("", 'mystickysidebar'),
+			__(" ", 'mystickysidebar'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
@@ -259,6 +467,10 @@ class MyStickyMenuBackend
 
 		if( isset( $input['myfixed_fade'] ) )
 			$new_input['myfixed_fade'] = sanitize_text_field( $input['myfixed_fade'] ); 
+		
+		if( isset( $input['myfixed_disable_scroll_down'] ) )
+			$new_input['myfixed_disable_scroll_down'] = sanitize_text_field( $input['myfixed_disable_scroll_down'] ); 
+				
 			
 		if( isset( $input['myfixed_cssstyle'] ) )
 			$new_input['myfixed_cssstyle'] = sanitize_text_field( $input['myfixed_cssstyle'] );
@@ -311,31 +523,42 @@ class MyStickyMenuBackend
 		$default = array(
 
 				'mysticky_class_selector' => '.navbar',
-				'myfixed_zindex' => '1000',
-				'myfixed_bgcolor' => '#FAFAFA',
+				'myfixed_zindex' => '99990',
+				'myfixed_bgcolor' => '#f7f5e7',
 				'myfixed_opacity' => '90',
 				'myfixed_transition_time' => '0.3',
-				'myfixed_disable_small_screen' => '359',
-				'mysticky_active_on_height' => '320',
-				'mysticky_active_on_height_home' => '320',
-				'myfixed_fade' => false,
-				'myfixed_cssstyle' => '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }'
+				'myfixed_disable_small_screen' => '0',
+				'mysticky_active_on_height' => '0',
+				'mysticky_active_on_height_home' => '0',
+				'myfixed_fade' => 'on',
+				'myfixed_cssstyle' => '#mysticky-nav.wrapfixed { } #mysticky-nav.wrapfixed.up { } #mysticky-nav.wrapfixed.down { } #mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }'
 			);
 
 		if ( get_option('mysticky_option_name') == false ) {	
 			update_option( 'mysticky_option_name', $default );		
+		} 
+		
+		
+		if(isset($_POST['reset'])) {
+			update_option( 'mysticky_option_name', $default );
 		}
+	
+		
 	}
 	
-	public  function mysticky_enqueue_color_picker(  ) 
+	
+	
+	
+	public function mysticky_enqueue_color_picker(  ) 
 	{
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'my-script-handle', plugins_url('js/iris-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+		
 	}
 
 	public function print_section_info()
 	{
-		echo __("Add nice modern sticky menu or header to any theme. Defaults works for Twenty Thirteen theme. <br />For other themes change 'Sticky Class' to div class desired to be sticky (div id can be used too).", 'mystickymenu');
+		echo __(" ", 'mystickymenu');
     }
 
 	public function mysticky_class_selector_callback()
@@ -344,7 +567,7 @@ class MyStickyMenuBackend
 			'<p class="description"><input type="text" size="8" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> ',  
 			isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
 		);
-		 echo __("menu or header div class or id.", 'mystickymenu');
+		 echo __("menu or header element class or id.", 'mystickymenu');
 		 echo '</p>';
 	}
 
@@ -408,7 +631,7 @@ class MyStickyMenuBackend
 		' <input type="number" class="small-text" min="0" step="1" id="mysticky_active_on_height" name="mysticky_option_name[mysticky_active_on_height]" value="%s" />',
 			isset( $this->options['mysticky_active_on_height'] ) ? esc_attr( $this->options['mysticky_active_on_height']) : ''
 		);
-		echo __("px.", 'mystickymenu');
+		echo __("px. If set to 0 auto calculate will be used.", 'mystickymenu');
 		echo '</p>';
 	}
 
@@ -422,7 +645,7 @@ class MyStickyMenuBackend
 		' <input type="number" class="small-text" min="0" step="1" id="mysticky_active_on_height_home" name="mysticky_option_name[mysticky_active_on_height_home]" value="%s" />',
 			isset( $this->options['mysticky_active_on_height_home'] ) ? esc_attr( $this->options['mysticky_active_on_height_home']) : ''
 		);
-		echo __("px.", 'mystickymenu');
+		echo __("px. If set to 0 it will use initial Make visible on Scroll value.", 'mystickymenu');
 		echo '</p>';
 	}
 
@@ -435,6 +658,18 @@ class MyStickyMenuBackend
 		);
 		echo __("Checked is slide, unchecked is fade.", 'mystickymenu');
 		echo '</p>';	
+		
+		printf(
+			'<p class="description"><input id="%1$s" name="mysticky_option_name[myfixed_disable_scroll_down]" type="checkbox" %2$s /> ',
+			'myfixed_disable_scroll_down',
+			checked( isset( $this->options['myfixed_disable_scroll_down'] ), true, false ) 
+		);
+		echo __("Disable sticky menu at scroll down", 'mystickymenu');
+		echo '</p>';	
+		
+		
+		
+		
 	} 
 
 	public function myfixed_cssstyle_callback()
@@ -442,16 +677,15 @@ class MyStickyMenuBackend
 		printf(
 		'<p class="description">'
 		);
-		echo __("Add/Edit .myfixed css class to change sticky menu style. Leave it blank for default style.", 'mystickymenu');
+		echo __("Add/edit CSS style. Leave it blank for default style.", 'mystickymenu');
 		echo '</p>';
 		printf(
 			'<textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />',
 			isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
 		);
 		echo '<p class="description">';
-		echo __("Default style: ", 'mystickymenu'); 
-		echo '.myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; }<br /><br />';
-		echo __("If you want to change sticky hover color first add default style and than: ", 'mystickymenu'); 
+		
+		echo __("If you want to change sticky hover color: ", 'mystickymenu'); 
 		echo '.myfixed li a:hover {color:#000; background-color: #ccc;}<br />'; 
 		echo __("More examples <a href='http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403'>here</a>.", 'mystickymenu'); 
 		echo'</p>';
@@ -613,61 +847,27 @@ class MyStickyMenuFrontend
 	
 	{
 		
-		
-	
-		
-		
-
-    echo
-'<style type="text/css">';
-	
-	if (  $mysticky_options['myfixed_cssstyle'] == "" )  {
-		echo '.myfixed{margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important;}';
-	}
-	echo $mysticky_options ['myfixed_cssstyle']; 
-	echo '#mysticky-nav { width:100%!important;  position: static;';
-    
-	
-	if (isset($mysticky_options['myfixed_fade']))
-	{
-		echo 'top: -100px;';
-	}
-	echo '}';
-
-
-	if  ($mysticky_options ['myfixed_opacity'] == 100 ){
-		
-		if ( is_admin_bar_showing() ) {
+    echo '<style id="mystickymenu" type="text/css">';
+	echo '#mysticky-nav { width:100%; position: static; }';
+	echo '#mysticky-nav.wrapfixed { position:fixed; left: 0px; margin-top:0px;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')"; filter: alpha(opacity=' . $mysticky_options ['myfixed_opacity'] . '); opacity:' . $mysticky_options ['myfixed_opacity'] / 100 . '; background-color: ' . $mysticky_options ['myfixed_bgcolor'] . ';}';
 			
-			echo '.wrapfixed { position: fixed!important; top:32px!important; left: 0px!important; margin-top:0px!important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;  background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;}';
-			
-			} else {					
-			
-			echo '.wrapfixed { position: fixed!important; top:0px!important; left: 0px!important; margin-top:0px!important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's;  background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;}';
-			
-		}
-
-	}
-
-	if  ($mysticky_options ['myfixed_opacity'] < 100 ){
-		
-		if ( is_admin_bar_showing() ) {
-
-			echo '.wrapfixed { position: fixed!important; top:32px!important; left: 0px!important; margin-top:0px!important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')"; filter: alpha(opacity=' . $mysticky_options ['myfixed_opacity'] . '); opacity:.' . $mysticky_options ['myfixed_opacity'] . '; background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;}';
-	
-		} else {	
-		
-			echo '.wrapfixed { position: fixed!important; top:0px!important; left: 0px!important; margin-top:0px!important;  z-index: '. $mysticky_options ['myfixed_zindex'] .'; -webkit-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -moz-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -o-transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; transition: ' . $mysticky_options ['myfixed_transition_time'] . 's; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' . $mysticky_options ['myfixed_opacity'] . ')"; filter: alpha(opacity=' . $mysticky_options ['myfixed_opacity'] . '); opacity:.' . $mysticky_options ['myfixed_opacity'] . '; background-color: ' . $mysticky_options ['myfixed_bgcolor'] . '!important;}';
-		
-		}
-
-	}
 
 	if  ($mysticky_options ['myfixed_disable_small_screen'] > 0 ){
 
-	echo '@media (max-width: ' . $mysticky_options ['myfixed_disable_small_screen'] . 'px) {.wrapfixed {position: static!important;} }';
+	//echo '@media (max-width: '.$mysticky_options['myfixed_disable_small_screen'].'px) {#mysticky-nav.wrapfixed {position: static;} }';
 
+	};
+	
+	if (  $mysticky_options['myfixed_cssstyle'] == "" )  {
+		echo '#mysticky-nav.wrapfixed { } #mysticky-nav.wrapfixed.up { } #mysticky-nav.wrapfixed.down { } #mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }';
 	}
+	
+	
+	
+	echo $mysticky_options ['myfixed_cssstyle']; 
+	
+	
+	
 	echo '</style>';
 	}
 }
@@ -677,6 +877,13 @@ class MyStickyMenuFrontend
 	public function mystickymenu_script() {
 		
 		$mysticky_options = get_option( 'mysticky_option_name' );
+	
+			if ( is_admin_bar_showing() ) {
+				$top = "true";
+				} else {
+				$top = "false";
+			}
+			
 		
 		// needed for update 1.7 => 1.8 ... will be removed in the future ()
 		if (isset($mysticky_options['mysticky_active_on_height_home'])){
@@ -684,6 +891,7 @@ class MyStickyMenuFrontend
 			} else {
 				$mysticky_options['mysticky_active_on_height_home'] = $mysticky_options['mysticky_active_on_height'];
 		};
+		
 		
 		if  ($mysticky_options['mysticky_active_on_height_home'] == 0 ){
 			$mysticky_options['mysticky_active_on_height_home'] = $mysticky_options['mysticky_active_on_height'];
@@ -700,16 +908,24 @@ class MyStickyMenuFrontend
 		
 		}
 		
-			wp_register_script('mystickymenu', plugins_url( 'js/mystickymenu.min.js', __FILE__ ), array('jquery'),'1.8.7', true);
+			wp_register_script('mystickymenu', plugins_url( 'js/mystickymenu.min.js', __FILE__ ), array('jquery'), MYSTICKY_VERSION, true);
 			wp_enqueue_script( 'mystickymenu' );
 
+		$myfixed_disable_scroll_down = isset($mysticky_options['myfixed_disable_scroll_down']) ? $mysticky_options['myfixed_disable_scroll_down'] : 'false';
+		$mystickyTransition = isset($mysticky_options['myfixed_fade']) ? $mysticky_options['myfixed_fade'] : 'fade';
+			
 		$mysticky_translation_array = array( 
-		    'mysticky_string' => $mysticky_options['mysticky_class_selector'] ,
-			'mysticky_active_on_height_string' => $mysticky_options['mysticky_active_on_height'],
-			'mysticky_disable_at_width_string' => $mysticky_options['myfixed_disable_small_screen']
+		    'mystickyClass' => $mysticky_options['mysticky_class_selector'] ,
+			'activationHeight' => $mysticky_options['mysticky_active_on_height'],
+			'disableWidth' => $mysticky_options['myfixed_disable_small_screen'],
+			'adminBar' => $top,
+			'mystickyTransition' => $mystickyTransition,
+			'mysticky_disable_down' => $myfixed_disable_scroll_down,
+			
+			
 		);
 		
-			wp_localize_script( 'mystickymenu', 'mysticky_name', $mysticky_translation_array );
+			wp_localize_script( 'mystickymenu', 'option', $mysticky_translation_array );
 	}
 
 	//add_action( 'wp_enqueue_scripts', 'mystickymenu_script' );

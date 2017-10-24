@@ -4,7 +4,7 @@ Donate link: http://wordpress.transformnews.com/contact
 Tags: sticky, menu, header, sticky menu, sticky header, floating, floating menu
 Requires at least: 3.5.1
 Tested up to: 4.8.1
-Stable tag: 1.9.1
+Stable tag: 2.0.1
 License: GPLv2 or later
 
 This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
@@ -26,15 +26,13 @@ Plugin is originally designed for Twenty Thirteen template but should work on an
 
 == Installation ==
 Install like any other plugin. After install activate. 
-Go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id… 
-Also make sure that Disable CSS style option is not enabled, you must add myStickymenu CSS style to your style.css file first. [More about disable CSS option][3] 
+Go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id . Sticky Class should be HTML id or class of the HTML element desired to be sticky… Clear WordPress cache if exists.
 
-[3: http://wordpress.transformnews.com/tutorials/disable-css-style-in-mystickymenu-938
 
 == Frequently Asked Questions ==
 
 = How to find Sticky Class, what should I enter here? =
-So this depends on what you want to make sticky and what theme do you use, but for example if you want your menu to be sticky, than you can examine the code (in firefox right click and “View page source”) and find div in which your menu is situated. This div have some class or id, and that’s the Sticky Class we need. If using class than don’t forget to ad dot (.) in front of class name, or hash (#) in front of id name in Sticky Class field. Twenty Thirteen default working class is ".navbar" without of quotes.
+So this depends on what you want to make sticky and what theme do you use, but for example if you want your menu to be sticky, than you can examine the code (in firefox right click and “View page source”) and find HTML element in which your menu is situated. This element have some class or id, and that’s the Sticky Class we need. If using class than don’t forget to ad dot (.) in front of class name, or hash (#) in front of id. Twenty Thirteen default working class is ".navbar" without of quotes.
 
 = Is there any way to restrict the width to the width of the header, rather than it being full width? =
 Yes, just leave "Sticky Background Color" field blank (clear). Than if needed define custom background color for sticky header inside ".myfixed css class" field using .myfixed class. 
@@ -50,17 +48,35 @@ In some cases you can use the whole header div and than just style it different 
 
 == Screenshots ==
 
-1.  screenshot-1.png shows administration settings.
-2.  screenshot-2.png shows menu when page is scrolled towards the bottom.
+1.  screenshot-1.png shows general administration settings.
+2.  screenshot-2.png shows style settings.
+3.  screenshot-3.png shows advanced settings.
 
 
 == Changelog ==
+= 2.0.1 =
+* Fixed: If user logged in but admin bar is not showing (error to calculate activation height)
+* Fixed: Admin style conflict with Scripts n Styles plugin
+
+= 2.0 =
+* Added: If Make visible on Scroll is set to 0 automatic activation and deactivation scroll height will be used (useful for responsive designs). 
+* Added: Tabs for settings.
+* Added: option to disable on scroll down (show only on scroll up).
+* Added: Class .up and .down on scroll up or down.
+* Added: Reset to default settings.
+* Added: remove myStickymenu settings on plugin uninstall.
+* Added: index.php to plugin root to prevent directory browsing.
+* Fixed: If sticky menu class does not exist (null or undefined), it will show console log instead of error.
+* Fixed: slide effect now slides on deactivate as well.
+* Fixed: admin bar overlap for screens less than 600 px wide.
+
+
 
 = 1.9.1 =
 * Changed: admin bar is fixed as default, and menu goes under it.
 
 = 1.9 =
-* Fixed: enable / disable at search pages
+* Fixed: enable / disable for search pages.
 
 = 1.8.9 =
 * Added: New option - Disable at certain posts and pages.
