@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7bc8b5cd8d10bdb795f7e3528e90e816
+class ComposerStaticInitaf7b110dce609ec68f2b69a0a7c366ef
 {
     public static $files = array (
         'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
@@ -145,10 +145,10 @@ class ComposerStaticInit7bc8b5cd8d10bdb795f7e3528e90e816
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7bc8b5cd8d10bdb795f7e3528e90e816::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7bc8b5cd8d10bdb795f7e3528e90e816::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit7bc8b5cd8d10bdb795f7e3528e90e816::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit7bc8b5cd8d10bdb795f7e3528e90e816::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaf7b110dce609ec68f2b69a0a7c366ef::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaf7b110dce609ec68f2b69a0a7c366ef::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitaf7b110dce609ec68f2b69a0a7c366ef::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitaf7b110dce609ec68f2b69a0a7c366ef::$classMap;
 
         }, null, ClassLoader::class);
     }

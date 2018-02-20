@@ -76,9 +76,12 @@
 
 							<div class="grid_3 omega no-m-b fourth">
 								<div class="cancer-logo">
-									<a href="http://www.cancer.dk/om+os/The+Danish+Cancer+Society.htm" target="_blank">
-<img src="/wp-content/uploads/2017/01/Logo_EP_Jan17_Jan18<?php if (pll_current_language()=='en'){ echo "_en"; } ?>.png" alt="" />
-</a>
+									<?php if (pll_current_language()=='en'): ?>
+									<a href="https://www.cancer.dk/international/about-the-danish-cancer-society/" target="_blank">
+									<?php else: ?>
+									<a href="https://www.cancer.dk/stoet-os/for-virksomheder/" target="_blank">
+									<?php endif?>
+<img src="/wp-content/uploads/2018/01/logo_ep_jan18_jan19<?php if (pll_current_language()=='en'){ echo "_en"; } ?>.png" alt="" /></a>
 								</div>
 							</div>
 

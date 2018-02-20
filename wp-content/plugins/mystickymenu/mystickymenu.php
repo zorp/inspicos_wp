@@ -3,7 +3,7 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for navigation menu. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 2.0.1
+	Version: 2.0.3
 	Author: m.r.d.a
 	Author URI: http://wordpress.transformnews.com/
 	Text Domain: mystickymenu
@@ -12,7 +12,7 @@
 	*/
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define( 'MYSTICKY_VERSION', '2.0.1' );
+define( 'MYSTICKY_VERSION', '2.0.3' );
 
 class MyStickyMenuBackend
 {
@@ -43,9 +43,9 @@ public function mysticky_admin_script() {
 
 	jQuery(document).ready(function($){
 			
-			
     	$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
 		$("#myfixed_bgcolor").parent().parent().parent().hide();
+		$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
 		$("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
 		$(".mysticky-hideformreset").hide();
 		$(".mysticky-hideform,.mysticky-general").fadeIn(300);			
@@ -57,7 +57,8 @@ public function mysticky_admin_script() {
 			$(".btn-style,.btn-advanced").removeClass("nav-tab-active");
 			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().show();
     		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
-			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().hide();
+			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
+			
 			$("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
 						
 			$(".mysticky-general").fadeIn(300);
@@ -81,14 +82,11 @@ public function mysticky_admin_script() {
 						
 							
 			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
-						
     		$("#myfixed_zindex,#myfixed_bgcolor,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().show();
-						
 			$("#myfixed_cssstyle").parent().parent().show();
-			
 			$("#mysticky_disable_at_front_home").parent().parent().hide();
-							
-			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().show();
+			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().show();
+				
 						
 			$(".mysticky-general").hide();
 			$(".mysticky-hideformreset").hide();
@@ -109,9 +107,7 @@ public function mysticky_admin_script() {
 			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
     		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
 			$("#myfixed_cssstyle").parent().parent().hide();
-							
-			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().hide();
-						
+			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
 			$("#mysticky_disable_at_front_home").parent().parent().show();
 			$(".mysticky-hideformreset").fadeIn(300);
 						
