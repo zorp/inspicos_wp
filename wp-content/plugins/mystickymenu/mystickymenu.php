@@ -3,7 +3,7 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for navigation menu. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 2.0.3
+	Version: 2.0.4
 	Author: m.r.d.a
 	Author URI: http://wordpress.transformnews.com/
 	Text Domain: mystickymenu
@@ -12,7 +12,7 @@
 	*/
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define( 'MYSTICKY_VERSION', '2.0.3' );
+define( 'MYSTICKY_VERSION', '2.0.4' );
 
 class MyStickyMenuBackend
 {
@@ -55,7 +55,7 @@ public function mysticky_admin_script() {
         
 			$(".btn-general").addClass("nav-tab-active");
 			$(".btn-style,.btn-advanced").removeClass("nav-tab-active");
-			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().show();
+			$("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().show();
     		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
 			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
 			
@@ -81,7 +81,7 @@ public function mysticky_admin_script() {
 			$(".btn-general,.btn-advanced").removeClass("nav-tab-active");
 						
 							
-			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
+			$("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
     		$("#myfixed_zindex,#myfixed_bgcolor,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().show();
 			$("#myfixed_cssstyle").parent().parent().show();
 			$("#mysticky_disable_at_front_home").parent().parent().hide();
@@ -104,7 +104,7 @@ public function mysticky_admin_script() {
 			$(".btn-advanced").addClass("nav-tab-active");
 			$(".btn-style,.btn-general").removeClass("nav-tab-active");
 						
-			$("#mysticky_class_selector,#myfixed_disable_small_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
+			$("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
     		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
 			$("#myfixed_cssstyle").parent().parent().hide();
 			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
@@ -325,6 +325,13 @@ public function mysticky_admin_script() {
 			'setting_section_id'
 		);
 		add_settings_field(
+			'myfixed_disable_large_screen', 
+			__("Disable at Large Screen Sizes", 'mystickymenu'),
+			array( $this, 'myfixed_disable_large_screen_callback' ), 
+			'my-stickymenu-settings', 
+			'setting_section_id'
+		);
+		add_settings_field(
 			'mysticky_active_on_height', 
 			__("Make visible on Scroll", 'mystickymenu'),
 			array( $this, 'mysticky_active_on_height_callback' ), 
@@ -454,6 +461,9 @@ public function mysticky_admin_script() {
 
 		if( isset( $input['myfixed_disable_small_screen'] ) )
 			$new_input['myfixed_disable_small_screen'] = absint( $input['myfixed_disable_small_screen'] );
+			
+		if( isset( $input['myfixed_disable_large_screen'] ) )
+			$new_input['myfixed_disable_large_screen'] = absint( $input['myfixed_disable_large_screen'] );
 
 		if( isset( $input['mysticky_active_on_height'] ) )
 			$new_input['mysticky_active_on_height'] = absint( $input['mysticky_active_on_height'] );
@@ -524,6 +534,7 @@ public function mysticky_admin_script() {
 				'myfixed_opacity' => '90',
 				'myfixed_transition_time' => '0.3',
 				'myfixed_disable_small_screen' => '0',
+				'myfixed_disable_large_screen' => '0',
 				'mysticky_active_on_height' => '0',
 				'mysticky_active_on_height_home' => '0',
 				'myfixed_fade' => 'on',
@@ -616,6 +627,24 @@ public function mysticky_admin_script() {
 		echo __("px width, 0  to disable.", 'mystickymenu');
 		echo '</p>';
 	}
+	
+	
+	
+	public function myfixed_disable_large_screen_callback()
+	{
+		printf(
+		'<p class="description">'
+		);
+		echo __("more than", 'mystickymenu');
+		printf(
+		' <input type="number" class="small-text" min="0" step="1" id="myfixed_disable_large_screen" name="mysticky_option_name[myfixed_disable_large_screen]" value="%s" />',
+			isset( $this->options['myfixed_disable_large_screen'] ) ? esc_attr( $this->options['myfixed_disable_large_screen']) : ''
+		);
+		echo __("px width, 0  to disable.", 'mystickymenu');
+		echo '</p>';
+	}
+	
+	
 
 	public function mysticky_active_on_height_callback()
 	{
@@ -909,11 +938,13 @@ class MyStickyMenuFrontend
 
 		$myfixed_disable_scroll_down = isset($mysticky_options['myfixed_disable_scroll_down']) ? $mysticky_options['myfixed_disable_scroll_down'] : 'false';
 		$mystickyTransition = isset($mysticky_options['myfixed_fade']) ? $mysticky_options['myfixed_fade'] : 'fade';
+		$mystickyDisableLarge = isset($mysticky_options['myfixed_disable_large_screen']) ? $mysticky_options['myfixed_disable_large_screen'] : '0';
 			
 		$mysticky_translation_array = array( 
 		    'mystickyClass' => $mysticky_options['mysticky_class_selector'] ,
 			'activationHeight' => $mysticky_options['mysticky_active_on_height'],
 			'disableWidth' => $mysticky_options['myfixed_disable_small_screen'],
+			'disableLargeWidth' => $mystickyDisableLarge,
 			'adminBar' => $top,
 			'mystickyTransition' => $mystickyTransition,
 			'mysticky_disable_down' => $myfixed_disable_scroll_down,

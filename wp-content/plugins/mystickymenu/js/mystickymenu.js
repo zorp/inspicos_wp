@@ -1,23 +1,32 @@
 /*!
  * myStickymenu by m.r.d.a
- * v2.0.1
+ * v2.0.4
  */
 
 (function( $ ) {
 	"use strict";
 
-	jQuery(document).ready(function($){
-		
-		
+	$(document).ready(function($){
 		
 	// get Sticky Class setting if class name existts
-	if ($(option.mystickyClass)[0]){
+	if ($(option.mystickyClass) [0]){
+		// Do nothing
+		}
+	else {
+		// Do something if class does not exist and stop
+		console.log("myStickymenu: Entered Sticky Class does not exist, change it in Dashboard / Settings / myStickymenu / Sticky Class. ");
+		return;
+	}
+		
 			
-   		// Do something if class exists
+   		// Get class name
 		var mystickyClass = document.querySelector(option.mystickyClass);
 		
 		// get disable at small screen size setting 
 		var disableWidth = parseInt(option.disableWidth);
+		
+		// get disable at large screen size setting 
+		var disableLargeWidth = parseInt(option.disableLargeWidth);
 		
 		// get body width
 		//var bodyWidth = parseInt(document.body.clientWidth);
@@ -34,12 +43,7 @@
 		// disable on scroll down	
 		var mysticky_disable_down = option.mysticky_disable_down;
 		
-		
-		
-		
-		
-		
-		
+
 	
 		
 		var viewportWidth;		
@@ -90,30 +94,13 @@
 			parentnav.replaceChild(wrappernav, mystickyClass);
 			wrappernav.appendChild(mystickyClass);
 			
-			
-			
-			
-			
-	
+		
 
 			
 			// get activation height from settings
 			if ( activationHeight == "0" ) {
 				var autoActivate = true;
 			}
-			
-			
-		
-		
-		
-		
-		
-		
-		
-			
-			
-			
-			
 			
 			
 			
@@ -123,7 +110,6 @@
 			
 			
 			function initialDivHeight(){
-				
 				
 				
 				
@@ -191,14 +177,7 @@
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			var adminBarHeight = 0;	
-		
+		var adminBarHeight = 0;	
 			
 		function calcAdminBarHeight(){
 			
@@ -248,11 +227,6 @@
 			
 			
 			
-			
-			
-			
-			
-			
 			var mydivWidth;
 			
 			
@@ -270,23 +244,11 @@
 			initialDivWidth();
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		
 		
 			var deactivationHeight = activationHeight;
 			
-			function CalcActivationHeight() { 
+			function calcActivationHeight() { 
 			
 				// If activate height (Make visible on Scroll) is set to 0, automatic calculation will be used.
 				if ( autoActivate == true ) {
@@ -330,14 +292,14 @@
 			
 			}
 
-			CalcActivationHeight();
+			calcActivationHeight();
 			
 	
 			
 			
 			
 			
-			function HeaderDeactivateOnHeight() {
+			function headerDeactivateOnHeight() {
 				
 				
 				if ( autoActivate == true ) {
@@ -369,12 +331,9 @@
 				
 			}
 				
-			HeaderDeactivateOnHeight();
+			headerDeactivateOnHeight();
 			
-			
-			
-			
-			
+
 			
 			var hasScrollY = 'scrollY' in window;	
 			var lastScrollTop = 0;
@@ -382,9 +341,7 @@
 
 			function onScroll(e) {
 				
-				
-				
-				
+								
 				//initialDivHeight();
 				
 				// if body width is larger than disable at small screen size setting 
@@ -393,9 +350,13 @@
 				
 				
 				if (viewportWidth >= disableWidth) {
-				
-				
-				
+					
+					
+					
+				if ( disableLargeWidth == 0 || viewportWidth <= disableLargeWidth ) {
+					
+					
+								
 				//if (mysticky_disable_down == "on") { 
 		
 				var y = hasScrollY ? window.scrollY : document.documentElement.scrollTop;
@@ -511,27 +472,30 @@
 				}
 				
 				
-			}	
+			}	// if disableWidth is greater than zero
+			
+			
+			}	// if disableLargeWidth is 0 or greater than zero
+			
+	
+			
 	
 			}
 
 			document.addEventListener('scroll', onScroll);
 		
-			
-			var width = $(window).width()
-			
-			function OnResizeDocument () {
-				
-				
-				
-				
-if($(window).width() != width ){
-  
-
-				
-				
+		
 		
 			
+		var width = $(window).width()
+			
+		function OnResizeDocument () {
+				
+
+			// don't recalculate on height change, only width				
+			if($(window).width() != width ){
+  
+
 				wrappernav.classList.remove('up');
 				wrappernav.classList.remove('down');
 	
@@ -550,59 +514,25 @@ if($(window).width() != width ){
 					// Remove width
 					mystickyClass.style.removeProperty("width");
 					initialDivWidth();	
-					
-					
-					// Calculate new width - need to put this in function like height
-					//var mydivWidth = ((mystickyClass.offsetWidth) + 'px');
-					//mystickyClass.style.width = mydivWidth;
-					
-					
-					
-				//	var rect = $(mystickyClass)[0].getBoundingClientRect();
-		//	var mydivWidth = rect.width + "px";
-			
-			//var mydivWidth = ((mystickyClass.offsetWidth) + 'px');
-		//	mystickyClass.style.width = mydivWidth;
-					
-					
-					
-					
-					
-					
-					
-					
-	
+
 				}
 				calcViewportWidth();
 				calcAdminBarHeight();
 				fixedDivHeight();
+				calcActivationHeight();
+				headerDeactivateOnHeight();
 				
-				CalcActivationHeight();
-				HeaderDeactivateOnHeight();
-				
-}	
+			}	
 			
-			}
-	
-			window.addEventListener('resize', OnResizeDocument);
-			
-			//var lazyLayout = OnResizeDocument().debounce(calculateLayout, 300);
-			//$(window).resize(lazyLayout);
-			
-			//window.addEventListener('resize', lazyLayout);
-			
-			// need to test this, it should fire script on mobile orientation change, since onresize is somehow faulty in this case
-			window.addEventListener('orientationchange', OnResizeDocument);
-	
-		//}	
-		
-		
 		}
-		
-		else {
-		console.log("myStickymenu: Entered Sticky Class does not exist, change it in Dashboard / Settings / myStickymenu / Sticky Class. ");
-    	// Do something if class does not exist
-		}
+	
+		window.addEventListener('resize', OnResizeDocument);
+						
+		// need to test this, it should fire script on mobile orientation change, since onresize is somehow faulty in this case
+		window.addEventListener('orientationchange', OnResizeDocument);
+	
+
+	
 
 	});
 
