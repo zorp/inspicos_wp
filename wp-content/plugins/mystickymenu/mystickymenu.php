@@ -3,7 +3,7 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for navigation menu. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 2.0.4
+	Version: 2.0.5
 	Author: m.r.d.a
 	Author URI: http://wordpress.transformnews.com/
 	Text Domain: mystickymenu
@@ -12,137 +12,75 @@
 	*/
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define( 'MYSTICKY_VERSION', '2.0.4' );
+define( 'MYSTICKY_VERSION', '2.0.5' );
 
 class MyStickyMenuBackend
 {
 
     private $options;
+	
+	
 
 	public function __construct()
-	{
+	{  
+	 
+		
 		add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'mysticky_load_transl') );
 		add_action( 'admin_init', array( $this, 'page_init' ) );
 		add_action( 'admin_init', array( $this, 'mysticky_default_options' ) );
 		
-		add_action( 'admin_enqueue_scripts',  array( $this, 'mysticky_enqueue_color_picker' ) );
-		add_action( 'admin_head', array( $this, 'mysticky_admin_script' ) );	
+		//add_action( 'admin_enqueue_scripts',  array( $this, 'mysticky_enqueue_color_picker' ) );
+		//add_action( 'admin_head', array( $this, 'mysticky_admin_script' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'mysticky_admin_script' ) );
+		
+		add_filter( 'plugin_action_links_mystickymenu/mystickymenu.php', array( $this, 'mystickymenu_settings_link' )  );
+		
+		
     }
-	
-	
+
+	public function mystickymenu_settings_link($links){ 
+		$settings_link = '<a href="options-general.php?page=my-stickymenu-settings">Settings</a>'; 
+		array_unshift($links, $settings_link); 
+	return $links; 
+	}
 	
 
-public function mysticky_admin_script() {
-	echo '<style type="text/css">.mysticky-general,.mysticky-style,.mysticky-advanced,.mysticky-hideform,.mysticky-hideformreset{display:none;}</style>';
-	echo '
-<script> 
-			
-(function( $ ) {
-	"use strict";
 
-	jQuery(document).ready(function($){
-			
-    	$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
-		$("#myfixed_bgcolor").parent().parent().parent().hide();
-		$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
-		$("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
-		$(".mysticky-hideformreset").hide();
-		$(".mysticky-hideform,.mysticky-general").fadeIn(300);			
-			
-					
-		$(".btn-general").click(function(){
-        
-			$(".btn-general").addClass("nav-tab-active");
-			$(".btn-style,.btn-advanced").removeClass("nav-tab-active");
-			$("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().show();
-    		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
-			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
-			
-			$("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
-						
-			$(".mysticky-general").fadeIn(300);
-			$(".mysticky-style,.mysticky-advanced,.mysticky-hideformreset") .hide();
-			
-						
-						
-						
-		});
-						
-		$(".btn-general,.btn-style,.btn-advanced").hover(function() {
-       		$(".btn-general,.btn-style,.btn-advanced").css("cursor","pointer");
-    	});
-						
-				
-							
-		$(".btn-style").click(function(){
-        
-			$(".btn-style").addClass("nav-tab-active");
-			$(".btn-general,.btn-advanced").removeClass("nav-tab-active");
-						
-							
-			$("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
-    		$("#myfixed_zindex,#myfixed_bgcolor,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().show();
-			$("#myfixed_cssstyle").parent().parent().show();
-			$("#mysticky_disable_at_front_home").parent().parent().hide();
-			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().show();
-				
-						
-			$(".mysticky-general").hide();
-			$(".mysticky-hideformreset").hide();
-			$(".mysticky-style") .fadeIn(300);
-			$(".mysticky-advanced").hide();
-						
-		});
-						
-						
-						
-						
-		$(".btn-advanced").click(function(){
-        
-   
-			$(".btn-advanced").addClass("nav-tab-active");
-			$(".btn-style,.btn-general").removeClass("nav-tab-active");
-						
-			$("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
-    		$("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
-			$("#myfixed_cssstyle").parent().parent().hide();
-			$("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
-			$("#mysticky_disable_at_front_home").parent().parent().show();
-			$(".mysticky-hideformreset").fadeIn(300);
-						
-			$(".mysticky-general").hide();
-			$(".mysticky-style") .hide();
-			$(".mysticky-advanced").fadeIn(300);
-						
-						
-						
-			});		
-						
-						
-						
-			$(".confirm").click(function() {
-       			return window.confirm("Reset to default settings?");
-    		});
-	
-	});		
-	
-	})(jQuery);	
-</script>';
-  
-}
-	
-	
-	
+
+
+    public function mysticky_admin_script($hook) {
+		if ($hook != 'settings_page_my-stickymenu-settings') {
+			return;
+		}
+
+		wp_register_script('mystickymenuAdminScript', plugins_url('/js/mystickymenu-admin.js', __FILE__), array( 'jquery' ), MYSTICKY_VERSION);
+		wp_enqueue_script('mystickymenuAdminScript');
+
+		wp_register_style('mystickymenuAdminStyle', plugins_url('/css/mystickymenu-admin.css', __FILE__) );
+	    wp_enqueue_style('mystickymenuAdminStyle');	
+		
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'my-script-handle', plugins_url('js/iris-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );	
+	}
+
+/*	
+	public function mysticky_enqueue_color_picker(  ) 
+	{
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script( 'my-script-handle', plugins_url('js/iris-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );		
+		
+	}	
+
+*/
+
 	
 		
-	public function mysticky_load_transl()
-	{
+	public function mysticky_load_transl(){
 		load_plugin_textdomain('mystickymenu', FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
 	}
 	
-	public function add_plugin_page()
-	{
+	public function add_plugin_page(){
 		// This page will be under "Settings"
 		add_options_page(
 			'Settings Admin', 
@@ -153,15 +91,16 @@ public function mysticky_admin_script() {
 		);
 	}
 
-	public function create_admin_page()
-	{
+	public function create_admin_page(){
 		// Set class property
 		$this->options = get_option( 'mysticky_option_name');
 		?>
-		<div class="wrap">
+		<div id="mystickymenu" class="wrap">
 			
 			<h2><?php _e('myStickymenu', 'mystickymenu'); ?></h2>  
-            <p><?php _e("Add sticky menu / header to any theme. <br />Simply change 'Sticky Class' to HTML element class desired to be sticky (div id can be used as well).", 'mystickymenu'); ?></p>  
+            <p><?php _e("Add sticky menu / header to any theme. <br />Simply change 'Sticky Class' to HTML element class desired to be sticky (div id can be used as well).", 'mystickymenu'); ?></p> 
+            
+            <div class="main-content"> 
                 
             
             
@@ -245,6 +184,27 @@ public function mysticky_admin_script() {
             
             
 			</div>
+            
+            
+            <div class="main-sidebar">	
+            
+            <h3><?php _e('Plugin info','mystickymenu'); ?></h3>
+            
+			<div class="inner">
+				<ul>
+					<li><strong><?php _e('Author:','mystickymenu'); ?></strong> <a href="http://wordpress.transformnews.com" target="_blank">m.r.d.a</a></li>
+					<li><strong><?php _e('Version:','mystickymenu'); ?></strong> <?php echo MYSTICKY_VERSION; ?></li>
+					<li><strong><?php _e('Documentation:','mystickymenu'); ?></strong> <a href="http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269" target="_blank">About Plugin</a> <a href="http://wordpress.transformnews.com/tutorials/mystickymenu-theme-support-682" target="_blank">Theme Support</a></li> 
+					<li><strong><?php _e('Support Forum','mystickymenu'); ?></strong>: <a href="https://wordpress.org/support/plugin/mystickymenu" target="_blank">WordPress.org</a></li>
+					<!--<li><strong><?php _e('Donate:','mystickymenu'); ?></strong> <a href="" target="_blank">Soon</a></li>-->
+     
+				</ul>
+			</div>
+
+			<p><a href="https://wordpress.org/support/plugin/mystickymenu/reviews/" target="_blank"><strong><?php _e('Add your own review','mystickymenu'); ?></strong></a></p>
+
+			</div>
+        </div>
 		<?php
 	}
 	
@@ -373,62 +333,62 @@ public function mysticky_admin_script() {
 		
 		add_settings_field(
 			'mysticky_disable_at_front_home', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			array( $this, 'mysticky_enable_callback' ), 
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_blog', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_page', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_tag', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_category', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_single', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_archive', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_enable_at_pages', 
-			__(" ", 'mystickysidebar'),
+			__(" ", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_enable_at_posts', 
-			__(" ", 'mystickysidebar'),
+			__(" ", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
 		add_settings_field(
 			'mysticky_disable_at_search', 
-			__("Disable at", 'mystickysidebar'),
+			__("Disable at", 'mystickymenu'),
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
@@ -538,7 +498,7 @@ public function mysticky_admin_script() {
 				'mysticky_active_on_height' => '0',
 				'mysticky_active_on_height_home' => '0',
 				'myfixed_fade' => 'on',
-				'myfixed_cssstyle' => '#mysticky-nav.wrapfixed { } #mysticky-nav.wrapfixed.up { } #mysticky-nav.wrapfixed.down { } #mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }'
+				'myfixed_cssstyle' => '#mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }'
 			);
 
 		if ( get_option('mysticky_option_name') == false ) {	
@@ -556,12 +516,7 @@ public function mysticky_admin_script() {
 	
 	
 	
-	public function mysticky_enqueue_color_picker(  ) 
-	{
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'my-script-handle', plugins_url('js/iris-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
-		
-	}
+
 
 	public function print_section_info()
 	{
@@ -571,7 +526,7 @@ public function mysticky_admin_script() {
 	public function mysticky_class_selector_callback()
 	{
 		printf(
-			'<p class="description"><input type="text" size="8" id="mysticky_class_selector" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> ',  
+			'<p class="description"><input type="text" size="18" id="mysticky_class_selector" class="mystickyinput" name="mysticky_option_name[mysticky_class_selector]" value="%s" /> ',  
 			isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
 		);
 		 echo __("menu or header element class or id.", 'mystickymenu');
@@ -708,11 +663,26 @@ public function mysticky_admin_script() {
 			'<textarea type="text" rows="4" cols="60" id="myfixed_cssstyle" name="mysticky_option_name[myfixed_cssstyle]">%s</textarea> <br />',
 			isset( $this->options['myfixed_cssstyle'] ) ? esc_attr( $this->options['myfixed_cssstyle']) : ''
 		);
-		echo '<p class="description">';
 		
-		echo __("If you want to change sticky hover color: ", 'mystickymenu'); 
-		echo '.myfixed li a:hover {color:#000; background-color: #ccc;}<br />'; 
-		echo __("More examples <a href='http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403'>here</a>.", 'mystickymenu'); 
+		echo '<p>';		
+		echo __("CSS ID's and Classes to use:", 'mystickymenu'); 
+		echo'</p>';
+		
+		echo '<pre>#mysticky-wrap { }<br>';
+		echo '#mysticky-nav.wrapfixed { }<br>';
+		echo '#mysticky-nav.wrapfixed.up { }<br>';
+		echo '#mysticky-nav.wrapfixed.down { }<br>';
+		echo '#mysticky-nav ';
+		printf (
+		isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
+		);
+		echo ' { }<br>#mysticky-nav ';
+		printf (
+		isset( $this->options['mysticky_class_selector'] ) ? esc_attr( $this->options['mysticky_class_selector']) : '' 
+		);
+		echo '.myfixed { }</pre>';
+		echo '<p class="description">';		
+		echo __("Find examples <a href='http://wordpress.transformnews.com/tutorials/mystickymenu-extended-style-functionality-using-myfixed-sticky-class-403'>here</a>.", 'mystickymenu'); 
 		echo'</p>';
 	}
 	
@@ -742,55 +712,69 @@ public function mysticky_admin_script() {
 		public function mysticky_enable_callback()
 	{
 		
-		_e('<span>front page </span>', 'mystickymenu');
+		
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_front_home]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_front_home]" type="checkbox" %2$s />  ',
 			'mysticky_disable_at_front_home',
 			checked( isset( $this->options['mysticky_disable_at_front_home'] ), true, false ) 
 		) ;
-		_e('<span>blog page </span>', 'mystickymenu');
+		_e('<span>front page </span>', 'mystickymenu');
+		printf('</div>');
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_blog]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_blog]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_blog',
 			checked( isset( $this->options['mysticky_disable_at_blog'] ), true, false ) 
 		);
-		_e('<span>pages </span>', 'mystickymenu');
+		_e('<span>blog page </span>', 'mystickymenu');
+		printf('</div>');
+		
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_page]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_page]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_page',
 			checked( isset( $this->options['mysticky_disable_at_page'] ), true, false ) 
 		);
-		_e('<span>tags </span>', 'mystickymenu');
+		_e('<span>pages </span>', 'mystickymenu');
+		printf('</div>');
+		
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_tag]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_tag]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_tag',
 			checked( isset( $this->options['mysticky_disable_at_tag'] ), true, false ) 
 		);
-		_e('<span>categories </span>', 'mystickymenu');
+		_e('<span>tags </span>', 'mystickymenu');
+		printf('</div>');
+		
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_category]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_category]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_category',
 			checked( isset( $this->options['mysticky_disable_at_category'] ), true, false ) 
 		);
-		_e('<span>posts </span>', 'mystickymenu');
+		_e('<span>categories </span>', 'mystickymenu');
+		printf('</div>');
+		
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_single]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_single]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_single',
 			checked( isset( $this->options['mysticky_disable_at_single'] ), true, false ) 
 		);
-		_e('<span>archives </span>', 'mystickymenu');
+		_e('<span>posts </span>', 'mystickymenu');
+		printf('</div>');
+		
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_archive]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_archive]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_archive',
 			checked( isset( $this->options['mysticky_disable_at_archive'] ), true, false ) 
 		);
+		_e('<span>archives </span>', 'mystickymenu');
+		printf('</div>');
 		
-		_e('<span>search </span>', 'mystickysidebar');
 		printf(
-			'<input id="%1$s" name="mysticky_option_name[mysticky_disable_at_search]" type="checkbox" %2$s /> ',
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_search]" type="checkbox" %2$s /> ',
 			'mysticky_disable_at_search',
 			checked( isset( $this->options['mysticky_disable_at_search'] ), true, false ) 
 		);
+		_e('<span>search </span>', 'mystickymenu');
+		printf('</div>');
 	
 		if  (isset ( $this->options['mysticky_disable_at_page'] ) == true )  {
 			
@@ -802,7 +786,7 @@ public function mysticky_admin_script() {
 				isset( $this->options['mysticky_enable_at_pages'] ) ? esc_attr( $this->options['mysticky_enable_at_pages']) : '' 
 			); 
 			
-		 	_e('<span class="description">Comma separated list of pages to enable. It should be page name, id or slug. Example: about-us, 1134, Contact Us. Leave blank if you realy want to disable sticky sidebar for all pages.</span>', 'mystickymenu');
+		 	_e('<span class="description">Comma separated list of pages to enable. It should be page name, id or slug. Example: about-us, 1134, Contact Us. Leave blank if you realy want to disable sticky menu for all pages.</span>', 'mystickymenu');
 			
 		}
 	
@@ -816,7 +800,7 @@ public function mysticky_admin_script() {
 				isset( $this->options['mysticky_enable_at_posts'] ) ? esc_attr( $this->options['mysticky_enable_at_posts']) : '' 
 			); 
 			
-		 	_e('<span class="description">Comma separated list of posts to enable. It should be post name, id or slug. Example: about-us, 1134, Contact Us. Leave blank if you realy want to disable sticky sidebar for all posts.</span>', 'mystickymenu');
+		 	_e('<span class="description">Comma separated list of posts to enable. It should be post name, id or slug. Example: about-us, 1134, Contact Us. Leave blank if you realy want to disable sticky menu for all posts.</span>', 'mystickymenu');
 			
 		}
 	
@@ -884,7 +868,7 @@ class MyStickyMenuFrontend
 	};
 	
 	if (  $mysticky_options['myfixed_cssstyle'] == "" )  {
-		echo '#mysticky-nav.wrapfixed { } #mysticky-nav.wrapfixed.up { } #mysticky-nav.wrapfixed.down { } #mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }';
+		echo '#mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }';
 	}
 	
 	
