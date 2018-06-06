@@ -82,10 +82,18 @@ function cookielawinfo_table_shortcode( $atts ) {
 	$cookies = new WP_Query( $args );
 	
 	$ret = '<table class="cookielawinfo-' . $style . '"><thead><tr>';
-	$ret .= '<th class="cookielawinfo-column-1">Cookie</th>';
-	$ret .= '<th class="cookielawinfo-column-2">Type</th>';
-	$ret .= '<th class="cookielawinfo-column-3">Duration</th>';
-	$ret .= '<th class="cookielawinfo-column-4">Description</th></tr>';
+	$ret .= '<th class="cookielawinfo-column-1">';
+	$ret .= __('Cookie','cookie-law-info');
+	$ret .= '</th>';
+	$ret .= '<th class="cookielawinfo-column-2">';
+	$ret .= __('Type','cookie-law-info');
+	$ret .= '</th>';
+	$ret .= '<th class="cookielawinfo-column-3">';
+	$ret .= __('Duration','cookie-law-info');
+	$ret .= '</th>';
+	$ret .= '<th class="cookielawinfo-column-4">';
+	$ret .= __('Description','cookie-law-info');
+	$ret .= '</th></tr>';
 	$ret .= '</thead><tbody>';
 	
 	if ( !$cookies->have_posts() ) {
@@ -160,14 +168,14 @@ function cookielawinfo_shortcode_reject_button( $atts ) {
 		$classr .= ' class="cli-plugin-main-button" ' ;
 	}
             
-        $url_reject = ( $settings['button_3_action'] == "CONSTANT_OPEN_URL" ) ? $settings['button_3_url'] : "#";
+        $url_reject = ( $settings['button_3_action'] == "cookie_action_open_url_reject" ) ? $settings['button_3_url'] : "#";
         
         $link_tag = '';
         $link_tag .= '<a href="' . $url_reject . '" id="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . '" ';
 	$link_tag .= ( $settings['button_3_new_win'] ) ? 'target="_blank" ' : '' ;
-	$link_tag .= $classr . ' >' . stripslashes( $settings['button_3_text'] ) . '</a>';
-        return $link_tag;
-        
+	$link_tag .= $classr . ' >' . stripslashes( $settings['button_3_text'] ) . '</a>';	
+    return $link_tag;
+
 }
 
 
@@ -228,7 +236,8 @@ function cookielawinfo_shortcode_main_button( $atts ) {
 		$classr .= ' class="cli-plugin-main-button" ' ;
 	}
             
-        $url_reject = ( $settings['button_3_action'] == "CONSTANT_OPEN_URL" ) ? $settings['button_3_url'] : "#";
+        $url_reject = ( $settings['button_3_action'] == "cookie_action_open_url_reject" ) ? $settings['button_3_url'] : "#";
+        
         
         $link_tag .= '<a href="' . $url_reject . '" id="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . '" ';
 	$link_tag .= ( $settings['button_3_new_win'] ) ? 'target="_blank" ' : '' ;

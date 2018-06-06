@@ -69,6 +69,7 @@ function cookielawinfo_get_default_settings() {
 		'notify_message'				=> addslashes ( 'This website uses cookies to improve your experience. We\'ll assume you\'re ok with this, but you can opt-out if you wish.[cookie_button] [cookie_link]' ),
 		'scroll_close'                  => false,
 		'scroll_close_reload'           => false,
+		'accept_close_reload'           => false,            
 		'showagain_background' 			=> '#fff',
 		'showagain_border' 				=> '#000',
 		'showagain_text'	 			=> addslashes ( 'Privacy & Cookies Policy' ),
@@ -122,6 +123,7 @@ function cookielawinfo_get_admin_settings() {
 	}
 	update_option( CLI_SETTINGS_FIELD, $settings );
 	return $settings;
+	
 }
 
 
@@ -288,6 +290,7 @@ function cookielawinfo_sanitise($key, $value) {
 		case 'button_3_as_button':
 		case 'scroll_close':
 		case 'scroll_close_reload':
+		case 'accept_close_reload':                    
 		case 'show_once_yn':
 		case 'header_fix':
 			if ( $value == 'true' || $value === true ) {

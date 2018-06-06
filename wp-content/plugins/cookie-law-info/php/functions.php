@@ -57,6 +57,7 @@ function cookielawinfo_get_json_settings() {
 		'notify_position_vertical'		=> $settings['notify_position_vertical'],
 		'scroll_close'                  => $settings['scroll_close'],
 		'scroll_close_reload'           => $settings['scroll_close_reload'],
+		'accept_close_reload'           => $settings['accept_close_reload'],            
 		'showagain_tab'					=> $settings['showagain_tab'],
 		'showagain_background'			=> $settings['showagain_background'],
 		'showagain_border'				=> $settings['showagain_border'],
@@ -331,9 +332,13 @@ function cookielawinfo_debug_admin_settings( $break ) {
 add_action('wp_head', 'include_admin_hdrscript_addedin_cookielawinfo');
 function include_admin_hdrscript_addedin_cookielawinfo(){
 
-   $third_party_cookie_options = get_option('cookielawinfo_thirdparty_settings');
-   if(!is_admin())
-   {
+    if ( !isset( $_COOKIE['viewed_cookie_policy'] )) {
+        return;
+    }
+    
+    $third_party_cookie_options = get_option('cookielawinfo_thirdparty_settings');
+    if(!is_admin())
+    {
        
        if(!empty($third_party_cookie_options)){
            if($third_party_cookie_options['thirdparty_on_field'] == 'true' && $_COOKIE['viewed_cookie_policy'] == 'yes'){
@@ -342,7 +347,7 @@ function include_admin_hdrscript_addedin_cookielawinfo(){
            
        }
        
-   }
+    }
 }
 
 /* Prints scripts or data before the closing body tag on the front end */

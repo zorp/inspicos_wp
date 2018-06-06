@@ -4,7 +4,7 @@ Donate link:
 Tags: eu cookie law, GDPR, cookie law, cookie consent, eu privacy directive, privacy directive, cookies, privacy, compliance
 Requires at least: 3.3.1
 Tested up to: 4.9.6
-Stable tag: 1.5.5
+Stable tag: 1.5.7
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,6 +166,14 @@ See http://cookielawinfo.com for more information on what is required.
 
 == Changelog ==
 
+= 1.5.7 =
+* Danish translation added
+
+= 1.5.6 =
+* Changed Reject button colour for Open URL and Close Header options.
+* Padding for message header
+* Audit table mobile view compatible
+
 = 1.5.5 =
 * GDPR compliance updates.
 
@@ -257,5 +265,6 @@ See http://cookielawinfo.com for more information on what is required.
 
 == Upgrade Notice ==
 
-= 1.5.5 =
-* GDPR compliance updates.
+= 1.5.7 =
+
+* Danish translation added

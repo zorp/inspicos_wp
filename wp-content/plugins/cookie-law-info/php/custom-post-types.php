@@ -90,7 +90,7 @@ function cookielawinfo_cookie_type() {
 	$custom = get_post_custom( $post->ID );
 	$cookie_type = ( isset ( $custom["_cli_cookie_type"][0] ) ) ? $custom["_cli_cookie_type"][0] : '';
 	?>
-	<label>Cookie Type: (persistent, session, third party )</label>
+	<label><?php echo __('Cookie Type: (persistent, session, third party )', 'cookie-law-info' ); ?></label>
 	<input name="_cli_cookie_type" value="<?php echo sanitize_text_field( $cookie_type ); ?>" style="width:95%;" />
 	<?php
 }
@@ -102,7 +102,7 @@ function cookielawinfo_cookie_duration() {
 	$custom = get_post_custom( $post->ID );
 	$cookie_duration = ( isset ( $custom["_cli_cookie_duration"][0] ) ) ? $custom["_cli_cookie_duration"][0] : '';
 	?>
-	<label>Cookie Duration:</label>
+	<label><?php echo __('Cookie Duration:', 'cookie-law-info' ); ?></label>
 	<input name="_cli_cookie_duration" value="<?php echo sanitize_text_field( $cookie_duration ); ?>" style="width:95%;" />
 	<?php
 }
@@ -113,7 +113,7 @@ function cookielawinfo_cookie_sensitivity() {
 	$custom = get_post_custom( $post->ID );
 	$cookie_sensitivity = ( isset ( $custom["_cli_cookie_sensitivity"][0] ) ) ? $custom["_cli_cookie_sensitivity"][0] : '';
 	?>
-	<label>Cookie Sensitivity: ( necessary , non-necessary )</label>
+	<label><?php echo __('Cookie Sensitivity: ( necessary , non-necessary )', 'cookie-law-info' ); ?></label>
 	<input name="_cli_cookie_sensitivity" value="<?php echo sanitize_text_field( $cookie_sensitivity ); ?>" style="width:95%;" />
 	<?php
 }
@@ -124,7 +124,7 @@ function cookielawinfo_cookie_slugid() {
 	$custom = get_post_custom( $post->ID );
 	$cookie_slugid = ( isset ( $custom["_cli_cookie_slugid"][0] ) ) ? $custom["_cli_cookie_slugid"][0] : '';
 	?>
-	<label>Cookie ID:</label>
+	<label><?php echo __('Cookie ID:','cookie-law-info'); ?></label>
 	<input name="_cli_cookie_slugid" value="<?php echo sanitize_text_field( $cookie_slugid ); ?>" style="width:95%;" />
 	<?php
 }
