@@ -70,7 +70,6 @@ function cookielawinfo_table_shortcode( $atts ) {
 		'not_shown_message' => ''
 	), $atts ) );
 	
-	global $post;
 	
 	$args = array(
 		'post_type' => 'cookielawinfo',
@@ -79,7 +78,7 @@ function cookielawinfo_table_shortcode( $atts ) {
 		'order' => 'ASC',
 		'orderby' => 'title'
 	);
-	$cookies = new WP_Query( $args );
+	$posts = get_posts($args);
 	
 	$ret = '<table class="cookielawinfo-' . $style . '"><thead><tr>';
 	$ret .= '<th class="cookielawinfo-column-1">';
@@ -96,24 +95,29 @@ function cookielawinfo_table_shortcode( $atts ) {
 	$ret .= '</th></tr>';
 	$ret .= '</thead><tbody>';
 	
-	if ( !$cookies->have_posts() ) {
-		$ret .= '<tr class="cookielawinfo-row"><td colspan="2" class="cookielawinfo-column-empty">' . $not_shown_message . '</td></tr>';
+	if ( !$posts ) {
+		$ret .= '<tr class="cookielawinfo-row"><td colspan="4" class="cookielawinfo-column-empty">' . $not_shown_message . '</td></tr>';
 	}
-	
-	while ( $cookies->have_posts() ) : $cookies->the_post();
-		// Get custom fields:
+        if( $posts )
+	{
+		foreach( $posts as $post )
+			{
 		$custom = get_post_custom( $post->ID );
 		$cookie_type = ( isset ( $custom["_cli_cookie_type"][0] ) ) ? $custom["_cli_cookie_type"][0] : '';
 		$cookie_duration = ( isset ( $custom["_cli_cookie_duration"][0] ) ) ? $custom["_cli_cookie_duration"][0] : '';
 		// Output HTML:
-		$ret .= '<tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">' . get_the_title() . '</td>';
+		$ret .= '<tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">' . $post->post_title . '</td>';
 		$ret .= '<td class="cookielawinfo-column-2">' . $cookie_type .'</td>';
 		$ret .= '<td class="cookielawinfo-column-3">' . $cookie_duration .'</td>';
-		$ret .= '<td class="cookielawinfo-column-4">' . get_the_content() .'</td>';
+		$ret .= '<td class="cookielawinfo-column-4">' . $post->post_content .'</td>';
+		$ret = apply_filters('cli_new_column_values_to_audit_table',$ret, $custom);
 		$ret .= '</tr>';
-	endwhile;
+
+		}
+	}
 	$ret .= '</tbody></table>';
 	return $ret;
+	
 }
 
 
@@ -130,7 +134,7 @@ function cookielawinfo_shortcode_accept_button( $atts ) {
 	);
 	$settings = wp_parse_args( cookielawinfo_get_admin_settings(), $defaults );
 
-	return '<a href="#" id="cookie_action_close_header" class="medium cli-plugin-button ' . $colour . '">' . stripslashes( $settings['button_1_text'] ) . '</a>';
+	return '<a href="#"  class="medium cookie_action_close_header cli-plugin-button ' . $colour . '">' . stripslashes( $settings['button_1_text'] ) . '</a>';
 }
 
 /** Returns HTML for a standard (green, medium sized) 'Accept' button */
@@ -162,16 +166,16 @@ function cookielawinfo_shortcode_reject_button( $atts ) {
         
         $classr = '';
         if ( $settings['button_3_as_button'] ) {
-		$classr .= ' class="' . $settings['button_3_button_size'] . ' cli-plugin-button cli-plugin-main-button"';
+		$classr .= ' class="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . ' ' . $settings['button_3_button_size'] . ' cli-plugin-button cli-plugin-main-button-reject"';
 	}
 	else {
-		$classr .= ' class="cli-plugin-main-button" ' ;
+		$classr .= ' class="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . ' cli-plugin-main-button-reject" ' ;
 	}
             
         $url_reject = ( $settings['button_3_action'] == "cookie_action_open_url_reject" ) ? $settings['button_3_url'] : "#";
         
         $link_tag = '';
-        $link_tag .= '<a href="' . $url_reject . '" id="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . '" ';
+        $link_tag .= '<a href="' . $url_reject . '" ';
 	$link_tag .= ( $settings['button_3_new_win'] ) ? 'target="_blank" ' : '' ;
 	$link_tag .= $classr . ' >' . stripslashes( $settings['button_3_text'] ) . '</a>';	
     return $link_tag;
@@ -211,17 +215,17 @@ function cookielawinfo_shortcode_main_button( $atts ) {
 	
 	$class = '';
 	if ( $settings['button_1_as_button'] ) {
-		$class .= ' class="' . $settings['button_1_button_size'] . ' cli-plugin-button cli-plugin-main-button"';
+		$class .= ' class="' . cookielawinfo_remove_hash ( $settings['button_1_action'] ) . ' ' . $settings['button_1_button_size'] . ' cli-plugin-button cli-plugin-main-button"';
 	}
 	else {
-		$class .= ' class="cli-plugin-main-button" ' ;
+		$class .= ' class="' . cookielawinfo_remove_hash ( $settings['button_1_action'] ) . ' cli-plugin-main-button" ' ;
 	}
 	
 	// If is action not URL then don't use URL!
 	$url = ( $settings['button_1_action'] == "CONSTANT_OPEN_URL" ) ? $settings['button_1_url'] : "#";
         
 	
-	$link_tag = '<a href="' . $url . '" id="' . cookielawinfo_remove_hash ( $settings['button_1_action'] ) . '" ';
+	$link_tag = '<a href="' . $url . '" ';
 	$link_tag .= ( $settings['button_1_new_win'] ) ? 'target="_blank" ' : '' ;
 	$link_tag .= $class . ' >' . stripslashes( $settings['button_1_text'] ) . '</a>';
         
@@ -230,16 +234,16 @@ function cookielawinfo_shortcode_main_button( $atts ) {
             
         $classr = '';
         if ( $settings['button_3_as_button'] ) {
-		$classr .= ' class="' . $settings['button_3_button_size'] . ' cli-plugin-button cli-plugin-main-button"';
+		$classr .= ' class="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . ' ' . $settings['button_3_button_size'] . ' cli-plugin-button cli-plugin-main-button-reject"';
 	}
 	else {
-		$classr .= ' class="cli-plugin-main-button" ' ;
+		$classr .= ' class="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . ' cli-plugin-main-button-reject" ' ;
 	}
             
         $url_reject = ( $settings['button_3_action'] == "cookie_action_open_url_reject" ) ? $settings['button_3_url'] : "#";
         
         
-        $link_tag .= '<a href="' . $url_reject . '" id="' . cookielawinfo_remove_hash ( $settings['button_3_action'] ) . '" ';
+        $link_tag .= '<a href="' . $url_reject . '"';
 	$link_tag .= ( $settings['button_3_new_win'] ) ? 'target="_blank" ' : '' ;
 	$link_tag .= $classr . ' >' . stripslashes( $settings['button_3_text'] ) . '</a>';
         }
@@ -282,7 +286,7 @@ function cookielawinfo_shortcode_button_DRY_code( $name ) {
 		);
 		$class_name = 'cli-plugin-main-link';
 	}
-	
+	$settings = apply_filters('wt_readmore_link_settings', $settings);
 	$class = '';
 	if ( $settings['button_x_as_button'] ) {
 		$class .= ' class="' . $settings['button_x_button_size'] . ' cli-plugin-button ' . $class_name . '"';

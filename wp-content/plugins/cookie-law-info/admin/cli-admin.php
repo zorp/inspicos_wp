@@ -174,7 +174,7 @@ function cookielawinfo_copy_old_settings_to_new() {
 		$new_settings['button_1_new_win'] 		= $old_settings['link_opens_new_window'];
 		$new_settings['button_1_as_button']		= $old_settings['show_as_button'];
 		$new_settings['button_1_button_colour']	= $old_settings['colour_button_bg'];
-		$new_settings['notify_message'] 		= $old_settings['message_text'];
+		$new_settings['notify_message'] 		= apply_filters('cli_change_message',$old_settings['message_text']);
 		$new_settings['text'] 					= $old_settings['colour_text'];
 		
 		// Save new values:
@@ -247,6 +247,10 @@ function cookielawinfo_allowed_html() {
 			'class' => array()
 		),
 		'strong' => array(
+			'id' => array(),
+			'class' => array()
+		),
+		'u' =>array(
 			'id' => array(),
 			'class' => array()
 		),

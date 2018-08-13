@@ -97,6 +97,11 @@ function cookielawinfo_inject_cli_script() {
 			$notify_html .= '<div id="' . cookielawinfo_remove_hash( $the_options["showagain_div_id"] ) . '"><span id="cookie_hdr_showagain">' . $the_options["showagain_text"] . '</span></div>';
 		}
 
+		global $wp_query; 
+                $post_id = $wp_query->get_queried_object_id();                
+                $post = get_post($post_id);
+                $current_post_slug = is_object($post) ? $post->post_name : get_home_url();                
+                $notify_html = apply_filters('cli_show_cookie_bar_only_on_selected_pages',$notify_html,$current_post_slug);
 		echo $notify_html;
 
 		// Now output the JavaScript:
@@ -127,12 +132,13 @@ function cookielawinfo_inject_cli_script() {
 */
 function cookielawinfo_enqueue_frontend_scripts() {
 	$the_options = cookielawinfo_get_admin_settings();
+        $version = '1.6.3';
 	if ( $the_options['is_on'] == true ) {
 
 		/**
 		 * Force reload
 		 */
-		$version = '1.5.4';
+		
 		
 		wp_register_style( 'cookielawinfo-style', CLI_PLUGIN_URL . 'css/cli-style.css', null, $version );
 		wp_enqueue_style( 'cookielawinfo-style' );
@@ -149,35 +155,32 @@ function cookielawinfo_enqueue_frontend_scripts() {
 }
 
 
-function get_non_necessary_cookie_ids(){
+function get_non_necessary_cookie_ids() {
     global $wpdb;
-    
-    	$args = array(
-            'post_type' => 'cookielawinfo',	
-            'meta_query' => array(
-		array(
-			'key' => '_cli_cookie_sensitivity',
-			'value' => 'non-necessary'
-		)
-	)
-            
-            );
-	$cookies = new WP_Query( $args );
-	
-	if ( !$cookies->have_posts() ) {
-		return;
-	}
-        $cookie_slugs = array();
-        
-        while($cookies->have_posts()):
-            
-            $cookies->the_post(); 
-            global $post;
-            $cookie_slugs[] = get_post_meta( $post->ID, "_cli_cookie_slugid", true);
-            
-        endwhile;
-        
-        return $cookie_slugs;
+
+    $args = array(
+        'post_type' => 'cookielawinfo',
+        'meta_query' => array(
+            array(
+                'key' => '_cli_cookie_sensitivity',
+                'value' => 'non-necessary'
+            )
+        )
+    );
+    $posts = get_posts($args);
+
+    if (!$posts) {
+        return;
+    }
+    $cookie_slugs = array();
+
+    if ($posts) {
+        foreach ($posts as $post) {
+            $cookie_slugs[] = get_post_meta($post->ID, "_cli_cookie_slugid", true);
+        }
+    }
+
+    return $cookie_slugs;
 }
 
 /**
@@ -341,8 +344,10 @@ function include_admin_hdrscript_addedin_cookielawinfo(){
     {
        
        if(!empty($third_party_cookie_options)){
-           if($third_party_cookie_options['thirdparty_on_field'] == 'true' && $_COOKIE['viewed_cookie_policy'] == 'yes'){
-               echo $third_party_cookie_options['thirdparty_head_section'];
+           if($third_party_cookie_options['thirdparty_on_field'] == 'true' && isset($_COOKIE['viewed_cookie_policy'])){
+               if($_COOKIE['viewed_cookie_policy'] == 'yes'){                   
+               echo $third_party_cookie_options['thirdparty_body_section'];
+               }
            }
            
        }
@@ -358,8 +363,10 @@ function include_admin_bodyscript_addedin_cookielawinfo(){
    if(!is_admin())
    {
        if(!empty($third_party_cookie_options)){
-           if($third_party_cookie_options['thirdparty_on_field'] == 'true' && $_COOKIE['viewed_cookie_policy'] == 'yes'){
+           if($third_party_cookie_options['thirdparty_on_field'] == 'true' && isset($_COOKIE['viewed_cookie_policy'])){
+               if($_COOKIE['viewed_cookie_policy'] == 'yes'){                   
                echo $third_party_cookie_options['thirdparty_body_section'];
+               }
            }
            
        }

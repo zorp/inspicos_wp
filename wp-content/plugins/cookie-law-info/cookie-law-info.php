@@ -2,11 +2,12 @@
 /*
 Plugin Name: GDPR Cookie Consent
 Plugin URI: https://wordpress.org/plugins/cookie-law-info/
-Description: A simple way of to show your website complies with the EU Cookie Law / GDPR.
-Author: webtoffee
+Description: A simple way to show your website complies with the EU Cookie Law / GDPR.
+Author: WebToffee
 Author URI: https://www.webtoffee.com/product/gdpr-cookie-consent/
-Version: 1.5.7
-License: GPL2
+Version: 1.6.3
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: cookie-law-info
 */
 
@@ -110,17 +111,18 @@ function cookielawinfo_uninstall_plugin() {
 	delete_option( CLI_SETTINGS_FIELD );
 	
 	// Bye bye custom meta:
-	global $post;
 	$args = array('post_type' => 'cookielawinfo');
-	$cookies = new WP_Query( $args );
+	$posts = get_posts($args);
 	
-	if ( !$cookies->have_posts() ) {
+	if ( !$posts ) {
 		return;
 	}
 	
-	while ( $cookies->have_posts() ) : $cookies->the_post();
-		// Get custom fields:
-		$custom = get_post_custom( $post->ID );
+        if( $posts )
+    {
+            foreach( $posts as $post )
+            {
+                $custom = get_post_custom( $post->ID );
 		// Look for old values. If they exist, move them to new values then delete old values:
 		if ( isset ( $custom["cookie_type"][0] ) ) {
 			delete_post_meta( $post->ID, "cookie_type", $custom["cookie_type"][0] );
@@ -134,7 +136,9 @@ function cookielawinfo_uninstall_plugin() {
 		if ( isset ( $custom["_cli_cookie_duration"][0] ) ) {
 			delete_post_meta( $post->ID, "_cli_cookie_duration", $custom["_cli_cookie_duration"][0] );
 		}
-	endwhile;
+            }
+        }
+	
 }
 
 

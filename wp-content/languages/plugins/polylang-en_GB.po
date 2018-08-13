@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Polylang - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-30 10:23:01+0000\n"
+"PO-Revision-Date: 2018-07-12 19:47:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,13 +11,26 @@ msgstr ""
 "Language: en_GB\n"
 "Project-Id-Version: Plugins - Polylang - Stable (latest release)\n"
 
+#: include/filters.php:356
+msgid "User"
+msgstr "User"
+
+#. translators: %s is a language native name
+#: include/filters.php:347
+msgid "User description - %s"
+msgstr "User description - %s"
+
+#: include/filters.php:323
+msgid "Translated user descriptions"
+msgstr "Translated user descriptions"
+
 #: settings/flags.php:231
 msgid "Tibet"
 msgstr "Tibet"
 
-#. #-#-#-#-#  polylang-code.pot (Polylang 2.3.1)  #-#-#-#-#
+#. #-#-#-#-#  polylang-code.pot (Polylang 2.3.8)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  polylang-code.pot (Polylang 2.3.1)  #-#-#-#-#
+#. #-#-#-#-#  polylang-code.pot (Polylang 2.3.8)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://polylang.pro"
 msgstr "https://polylang.pro"
@@ -104,23 +117,23 @@ msgstr "Allows to share the same URL slug across languages for posts and terms."
 msgid "Share slugs"
 msgstr "Share slugs"
 
-#: install/plugin-updater.php:404
+#: install/plugin-updater.php:413
 msgid "Error"
 msgstr "Error"
 
-#: install/plugin-updater.php:404
+#: install/plugin-updater.php:413
 msgid "You do not have permission to install plugin updates"
 msgstr "You do not have permission to install plugin updates"
 
 #. translators: %1$s plugin name, %3$s plugin version, %2$s and %5$s are link
 #. start tags, %4$s and %6$s are link end tags.
-#: install/plugin-updater.php:214
+#: install/plugin-updater.php:223
 msgid "There is a new version of %1$s available. %2$sView version %3$s details%4$s or %5$supdate now%6$s."
 msgstr "There is a new version of %1$s available. %2$sView version %3$s details%4$s or %5$supdate now%6$s."
 
 #. translators: %1$s plugin name, %3$s plugin version, %2$s is link start tag,
 #. %4$s is link end tag.
-#: install/plugin-updater.php:205
+#: install/plugin-updater.php:214
 msgid "There is a new version of %1$s available. %2$sView version %3$s details%4$s."
 msgstr "There is a new version of %1$s available. %2$sView version %3$s details%4$s."
 
@@ -1264,7 +1277,7 @@ msgid "The flag does not exist"
 msgstr "The flag does not exist"
 
 #. translators: accessibility text, %s is a native language name
-#: admin/admin-links.php:72 admin/admin-links.php:152
+#: admin/admin-links.php:80 admin/admin-links.php:160
 msgid "Add a translation in %s"
 msgstr "Add a translation in %s"
 
@@ -1275,7 +1288,7 @@ msgstr "This item is in %s"
 
 #. translators: accessibility text, %s is a native language name
 #: admin/admin-filters-columns.php:139 admin/admin-filters-columns.php:250
-#: admin/admin-links.php:91 admin/admin-links.php:173
+#: admin/admin-links.php:99 admin/admin-links.php:181
 msgid "Edit the translation in %s"
 msgstr "Edit the translation in %s"
 
@@ -1296,7 +1309,7 @@ msgstr "Adds multilingual capability to WordPress"
 msgid "Polylang"
 msgstr "Polylang"
 
-#: lingotek/lingotek.php:268
+#: lingotek/lingotek.php:276
 msgid "Learn more..."
 msgstr "Learn more..."
 
@@ -1484,7 +1497,7 @@ msgstr "Displays flags"
 msgid "Displays language names"
 msgstr "Displays language names"
 
-#: modules/plugins/plugins-compat.php:141
+#: modules/plugins/plugins-compat.php:148
 msgid "Import <strong>posts, pages, comments, custom fields, categories, and tags</strong> from a WordPress export file."
 msgstr "Import <strong>posts, pages, comments, custom fields, categories, and tags</strong> from a WordPress export file."
 
@@ -1792,11 +1805,11 @@ msgstr "About Polylang"
 msgid "The language was created, but the WordPress language file was not downloaded. Please install it manually."
 msgstr "The language was created, but the WordPress language file was not downloaded. Please install it manually."
 
-#: admin/admin-base.php:343 admin/admin-base.php:351
+#: admin/admin-base.php:334 admin/admin-base.php:342
 msgid "Filters content by language"
 msgstr "Filters content by language"
 
-#: admin/admin-base.php:334
+#: admin/admin-base.php:325
 msgid "Show all languages"
 msgstr "Show all languages"
 
@@ -1890,11 +1903,11 @@ msgstr "All languages"
 msgid "The widget is displayed for:"
 msgstr "The widget is displayed for:"
 
-#: admin/admin-filters-term.php:481
+#: admin/admin-filters-term.php:484
 msgid "None"
 msgstr "None"
 
-#: admin/admin-filters-term.php:94 admin/admin-filters-term.php:154
+#: admin/admin-filters-term.php:97 admin/admin-filters-term.php:157
 msgid "Sets the language"
 msgstr "Sets the language"
 
@@ -1913,8 +1926,8 @@ msgid "Languages"
 msgstr "Languages"
 
 #: admin/admin-filters-columns.php:187 admin/admin-filters-media.php:54
-#: admin/admin-filters-post.php:156 admin/admin-filters-term.php:87
-#: admin/admin-filters-term.php:146 include/translated-post.php:104
+#: admin/admin-filters-post.php:156 admin/admin-filters-term.php:90
+#: admin/admin-filters-term.php:149 include/translated-post.php:104
 msgid "Language"
 msgstr "Language"
 
