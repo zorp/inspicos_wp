@@ -87,6 +87,13 @@ class UpdraftPlus_Commands {
 		return $this->downloader($set_info);
 	}
 	
+	/**
+	 * Get backup progress (as HTML) for a particular backup
+	 *
+	 * @param Array $params - should have a key 'job_id' with corresponding value
+	 *
+	 * @return String - the HTML
+	 */
 	public function backup_progress($params) {
 	
 		if (false === ($updraftplus_admin = $this->_load_ud_admin())) return new WP_Error('no_updraftplus');
@@ -104,9 +111,14 @@ class UpdraftPlus_Commands {
 	
 	public function backupnow($params) {
 		
-		if (false === ($updraftplus_admin = $this->_load_ud_admin())) return new WP_Error('no_updraftplus');
+		if (false === ($updraftplus_admin = $this->_load_ud_admin()) || false === ($updraftplus = $this->_load_ud())) return new WP_Error('no_updraftplus');
 		
 		if (!UpdraftPlus_Options::user_can_manage()) return new WP_Error('updraftplus_permission_denied');
+
+		if (!empty($params['updraftplus_clone_backup'])) {
+			add_filter('updraft_backupnow_options', array($updraftplus, 'updraftplus_clone_backup_options'), 10, 2);
+			add_filter('updraftplus_initial_jobdata', array($updraftplus, 'updraftplus_clone_backup_jobdata'), 10, 3);
+		}
 
 		$background_operation_started_method_name = empty($params['background_operation_started_method_name']) ? '_updraftplus_background_operation_started' : $params['background_operation_started_method_name'];
 		$updraftplus_admin->request_backupnow($params, array($this->_uc_helper, $background_operation_started_method_name));
@@ -189,7 +201,7 @@ class UpdraftPlus_Commands {
 		$results['history'] = $updraftplus_admin->settings_downloading_and_restoring($backup_history, true, $get_history_opts);
 		
 		$results['count_backups'] = count($backup_history);
-	
+
 		return $results;
 	
 	}
@@ -197,19 +209,29 @@ class UpdraftPlus_Commands {
 	/**
 	 * Slightly misnamed - this doesn't always rescan, but it does always return the history status (possibly after a rescan)
 	 *
-	 * @param  string $what speific string to scan
-	 * @return array retuns an array of history statuses
+	 * @param  Array|String $data - with keys 'operation' and 'debug'; or, if a string (backwards compatibility), just the value of the 'operation' key (with debug assumed as 0)
+	 *
+	 * @return Array - returns an array of history statuses
 	 */
-	public function rescan($what) {
+	public function rescan($data) {
 
 		if (false === ($updraftplus_admin = $this->_load_ud_admin())) return new WP_Error('no_updraftplus');
 		
 		if (!UpdraftPlus_Options::user_can_manage()) return new WP_Error('updraftplus_permission_denied');
 		
-		$remotescan = ('remotescan' == $what);
-		$rescan = ($remotescan || 'rescan' == $what);
+		if (is_array($data)) {
+			$operation = empty($data['operation']) ? '' : $data['operation'];
+			$debug = !empty($data['debug']);
+		} else {
+			$operation = $data;
+			$debug = false;
+		}
+	
+		$remotescan = ('remotescan' == $operation);
+		$rescan = ($remotescan || 'rescan' == $operation);
 		
-		$history_status = $updraftplus_admin->get_history_status($rescan, $remotescan);
+		
+		$history_status = $updraftplus_admin->get_history_status($rescan, $remotescan, $debug);
 
 		return $history_status;
 		
@@ -226,7 +248,8 @@ class UpdraftPlus_Commands {
 		$output = ob_get_contents();
 		ob_end_clean();
 		
-		$remote_storage_options_and_templates = $updraftplus->get_remote_storage_options_and_templates();
+		$remote_storage_options_and_templates = UpdraftPlus_Storage_Methods_Interface::get_remote_storage_options_and_templates();
+		
 		return array(
 			'settings' => $output,
 			'remote_storage_options' => $remote_storage_options_and_templates['options'],
@@ -435,7 +458,7 @@ class UpdraftPlus_Commands {
 			
 			case 'backupnow_modal_contents':
 				$updraft_dir = $updraftplus->backups_dir_location();
-				if (!$updraftplus->really_is_writable($updraft_dir)) {
+				if (!UpdraftPlus_Filesystem_Functions::really_is_writable($updraft_dir)) {
 						$output = array('error' => true, 'html' => __("The 'Backup Now' button is disabled as your backup directory is not writable (go to the 'Settings' tab and find the relevant option).", 'updraftplus'));
 				} else {
 									$output = array('html' => $updraftplus_admin->backupnow_modal_contents());
@@ -448,7 +471,7 @@ class UpdraftPlus_Commands {
 				break;
 			
 			case 'disk_usage':
-				$output = $updraftplus_admin->get_disk_space_used($data);
+				$output = UpdraftPlus_Filesystem_Functions::get_disk_space_used($data);
 				break;
 			default:
 				// We just return a code - translation is done on the other side
@@ -850,22 +873,30 @@ class UpdraftPlus_Commands {
 	 * @return string - the result of the call
 	 */
 	public function process_updraftplus_clone_login($params) {
-		if (false === ($updraftplus_admin = $this->_load_ud_admin())) return new WP_Error('no_updraftplus');
+		if (false === ($updraftplus_admin = $this->_load_ud_admin()) || false === ($updraftplus = $this->_load_ud())) return new WP_Error('no_updraftplus');
 		if (!UpdraftPlus_Options::user_can_manage()) return new WP_Error('updraftplus_permission_denied');
 		
-		$response = $updraftplus_admin->get_updraftplus_clone()->ajax_process_login($params, false);
+		$response = $updraftplus->get_updraftplus_clone()->ajax_process_login($params, false);
 
 		if (isset($response['status']) && 'authenticated' == $response['status']) {
 			$tokens = isset($response['tokens']) ? $response['tokens'] : 0;
-			$content = '<p>' . __("Available temporary clone tokens:", "updraftplus") . ' ' . esc_html($tokens) . '</p>';
+			$content = '<div class="updraftclone-main-row">';
+			$content .= '<div class="updraftclone-tokens">';
+			$content .= '<p>' . __("Available temporary clone tokens:", "updraftplus") . ' <span class="tokens-number">' . esc_html($tokens) . '</span></p>';
+			$content .= '<p><a href="'.$updraftplus->get_url('buy-tokens').'">'.__('You can buy more temporary clone tokens here.', 'updraftplus').'</a></p>';
+			$content .= '</div>';
 			
 			if (0 != $response['tokens']) {
+				$content .= '<div class="updraftclone_action_box">';
 				$content .= $updraftplus_admin->updraftplus_clone_versions();
-				$content .= '<button id="updraft_migrate_createclone" class="button button-primary" data-clone_id="'.$response['clone_info']['id'].'" data-secret_token="'.$response['clone_info']['secret_token'].'">'. __('Create clone', 'updraftplus') . '</button>';
+				$content .= '<p class="updraftplus_clone_status"></p>';
+				$content .= '<button id="updraft_migrate_createclone" class="button button-primary button-hero" data-clone_id="'.$response['clone_info']['id'].'" data-secret_token="'.$response['clone_info']['secret_token'].'">'. __('Create clone', 'updraftplus') . '</button>';
 				$content .= '<span class="updraftplus_spinner spinner">' . __('Processing', 'updraftplus') . '...</span>';
-			} else {
-				$content .= '<p><a href="https://updraftplus.com/shop/">' . __("You can add more temporary clone tokens to your account here.", "updraftplus") .'</a></p>';
+				$content .= '</div>';
 			}
+			$content .= '</div>'; // end .updraftclone-main-row
+
+			$content .= isset($response['clone_list']) ? '<div class="clone-list"><h3>'.__('Current clones', 'updraftplus').' - <a target="_blank" href="https://updraftplus.com/my-account/clones/">'.__('manage', 'updraftplus').'</a></h3>'.$response['clone_list'].'</div>' : '';
 
 			$response['html'] = $content;
 		}
@@ -880,24 +911,44 @@ class UpdraftPlus_Commands {
 	 * @return string - the result of the call
 	 */
 	public function process_updraftplus_clone_create($params) {
-		if (false === ($updraftplus_admin = $this->_load_ud_admin())) return new WP_Error('no_updraftplus');
+		if (false === ($updraftplus_admin = $this->_load_ud_admin()) || false === ($updraftplus = $this->_load_ud())) return new WP_Error('no_updraftplus');
 		if (!UpdraftPlus_Options::user_can_manage()) return new WP_Error('updraftplus_permission_denied');
 
-		$response = $updraftplus_admin->get_updraftplus_clone()->ajax_process_clone($params);
+		$response = $updraftplus->get_updraftplus_clone()->ajax_process_clone($params);
 		
 		if (!isset($response['status']) && 'success' != $response['status']) return $response;
 
 		if (isset($response['data'])) {
 			$tokens = isset($response['data']['tokens']) ? $response['data']['tokens'] : 0;
-			$content = '<p>' . __("Your available temporary clone tokens:", "updraftplus") . ' ' . esc_html($tokens) . '</p>';
-			$content .= '<p>'. __('Your temporary clone has been created:', 'updraftplus') . ' ' . esc_html($response['data']['url']) . '</p>';
-			$content .= '<p>'. __('The creation of your backup data for creating the clone should now begin.', 'updraftplus') .'</p>';
+
+			$content = '<div class="updraftclone-main-row">';
+
+			$content .= '<div class="updraftclone-tokens">';
+			$content .= '<p>' . __("Available temporary clone tokens:", "updraftplus") . ' <span class="tokens-number">' . esc_html($tokens) . '</span></p>';
+			$content .= '</div>';
+
+			$content .= '<div class="updraftclone_action_box">';
+			$content .= '<p>' . __('Your clone has started and will be available at the following URLs once it is ready.', 'updraftplus') . '</p>';
+			$content .= '<p><strong>'. __('Front page:', 'updraftplus') . '</strong> <a target="_blank" href="' . esc_html($response['data']['url']) . '">' . esc_html($response['data']['url']) . '</a></p>';
+			$content .= '<p><strong>'. __('Dashboard:', 'updraftplus') . '</strong> <a target="_blank" href="' . esc_html(trailingslashit($response['data']['url'])) . 'wp-admin">' . esc_html(trailingslashit($response['data']['url'])) . 'wp-admin</a></p>';
+			$content .= '<p><a target="_blank" href="'.$updraftplus->get_url('my-account').'">'.__('You can find your temporary clone information in your updraftplus.com account here.', 'updraftplus').'</a></p>';
+			$content .= '</div>';
+
+			$content .= '</div>'; // end .updraftclone-main-row
+
+			$content .= '<p id="updraft_clone_progress">'. __('The creation of your data for creating the clone should now begin. NB: if the clone fails to boot, your token will be refunded after an hour.', 'updraftplus') .'<span class="updraftplus_spinner spinner">' . __('Processing', 'updraftplus') . '...</span></p>';
+			$content .= '<div id="updraft_clone_activejobsrow" style="display:none;"></div>';
 
 			$response['html'] = $content;
+			$response['url'] = $response['data']['url'];
+			$response['key'] = '';
 		} else {
-			$content .= '<p>'. __('The creation of your backup data for creating the clone should now begin.', 'updraftplus') .'</p>';
+			$content = '<p id="updraft_clone_progress">'. __('The creation of your data for creating the clone should now begin:', 'updraftplus') .'<span class="updraftplus_spinner spinner">' . __('Processing', 'updraftplus') . '...</span></p>';
+			$content .= '<div id="updraft_clone_activejobsrow" style="display:none;"></div>';
 
 			$response['html'] = $content;
+			$response['url'] = '';
+			$response['key'] = '';
 		}
 
 		return $response;

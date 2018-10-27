@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('UPDRAFTPLUS_DIR')) die('No direct access allowed');
-if (!class_exists('UpdraftPlus_PclZip')) require_once(UPDRAFTPLUS_DIR.'/class-zip.php');
+if (!class_exists('UpdraftPlus_PclZip')) require_once(UPDRAFTPLUS_DIR.'/includes/class-zip.php');
 
 /**
  * This file contains functions that are only needed/loaded when a backup is running (reduces memory usage on other pages)
@@ -216,7 +216,7 @@ class UpdraftPlus_Backup {
 		// Temporary file, to be able to detect actual completion (upon which, it is renamed)
 
 		// New (Jun-13) - be more aggressive in removing temporary files from earlier attempts - anything >=600 seconds old of this kind
-		$updraftplus->clean_temporary_files('_'.$updraftplus->file_nonce."-$whichone", 600);
+		UpdraftPlus_Filesystem_Functions::clean_temporary_files('_'.$updraftplus->file_nonce."-$whichone", 600);
 
 		// Firstly, make sure that the temporary file is not already being written to - which can happen if a resumption takes place whilst an old run is still active
 		$zip_name = $full_path.'.tmp';
@@ -297,11 +297,11 @@ class UpdraftPlus_Backup {
 			} else {
 				$updraftplus->log("Looked-for $whichone zip (".$this->index.") was not found (".basename($full_path).".tmp)", 'warning');
 			}
-			$updraftplus->clean_temporary_files('_'.$updraftplus->file_nonce."-$whichone", 0);
+			UpdraftPlus_Filesystem_Functions::clean_temporary_files('_'.$updraftplus->file_nonce."-$whichone", 0);
 		}
 
 		// Remove cache list files as well, if there are any
-		$updraftplus->clean_temporary_files('_'.$updraftplus->file_nonce."-$whichone", 0, true);
+		UpdraftPlus_Filesystem_Functions::clean_temporary_files('_'.$updraftplus->file_nonce."-$whichone", 0, true);
 
 		// Create the results array to send back (just the new ones, not any prior ones)
 		$files_existing = array();
@@ -363,7 +363,7 @@ class UpdraftPlus_Backup {
 		// We need to make sure that the loop below actually runs
 		if (empty($services)) $services = array('none');
 		
-		$storage_objects_and_ids = $updraftplus->get_enabled_storage_objects_and_ids($services);
+		$storage_objects_and_ids = UpdraftPlus_Storage_Methods_Interface::get_enabled_storage_objects_and_ids($services);
 
 		$total_instances_count = 0;
 
@@ -395,53 +395,65 @@ class UpdraftPlus_Backup {
 		$errors_before_uploads = $updraftplus->error_count();
 
 		foreach ($services as $ind => $service) {
-
-			$instance_id_count = 0;
-			$total_instance_ids = ('none' !== $service && '' !== $service && $storage_objects_and_ids[$service]['object']->supports_feature('multi_options')) ? count($storage_objects_and_ids[$service]['instance_settings']) : 1;
-
-			// Used for logging by record_upload_chunk()
-			$this->current_service = $service;
-
-			// Used when deciding whether to delete the local file
-			$this->last_service = ($ind+1 >= count($services) && $instance_id_count+1 >= $total_instance_ids && $errors_before_uploads == $updraftplus->error_count()) ? true : false;
-
-			$log_extra = $this->last_service ? ' (last)' : '';
-			$updraftplus->log("Cloud backup selection (".($ind+1)."/".count($services)."): ".$service." with instance (".($instance_id_count+1)."/".$total_instance_ids.")".$log_extra);
-			@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);
-
-			if ('none' == $service || '' == $service) {
-				$updraftplus->log("No remote despatch: user chose no remote backup service");
-				// Still want to mark as "uploaded", to signal that nothing more needs doing. (Important on incremental runs with no cloud storage).
-				foreach ($backup_array as $bind => $file) {
-					if ($updraftplus->is_uploaded($file)) {
-						$updraftplus->log("Already uploaded: $file");
-					} else {
-						$updraftplus->uploaded_file($file, true);
+			try {
+				$instance_id_count = 0;
+				$total_instance_ids = ('none' !== $service && '' !== $service && $storage_objects_and_ids[$service]['object']->supports_feature('multi_options')) ? count($storage_objects_and_ids[$service]['instance_settings']) : 1;
+	
+				// Used for logging by record_upload_chunk()
+				$this->current_service = $service;
+	
+				// Used when deciding whether to delete the local file
+				$this->last_service = ($ind+1 >= count($services) && $instance_id_count+1 >= $total_instance_ids && $errors_before_uploads == $updraftplus->error_count()) ? true : false;
+	
+				$log_extra = $this->last_service ? ' (last)' : '';
+				$updraftplus->log("Cloud backup selection (".($ind+1)."/".count($services)."): ".$service." with instance (".($instance_id_count+1)."/".$total_instance_ids.")".$log_extra);
+				@set_time_limit(UPDRAFTPLUS_SET_TIME_LIMIT);
+	
+				if ('none' == $service || '' == $service) {
+					$updraftplus->log("No remote despatch: user chose no remote backup service");
+					// Still want to mark as "uploaded", to signal that nothing more needs doing. (Important on incremental runs with no cloud storage).
+					foreach ($backup_array as $bind => $file) {
+						if ($updraftplus->is_uploaded($file)) {
+							$updraftplus->log("Already uploaded: $file");
+						} else {
+							$updraftplus->uploaded_file($file, true);
+						}
 					}
-				}
-				$this->prune_retained_backups(array('none' => array('all' => array(null, null))));
-			} elseif (!empty($storage_objects_and_ids[$service]['object']) && !$storage_objects_and_ids[$service]['object']->supports_feature('multi_options')) {
-				$remote_obj = $storage_objects_and_ids[$service]['object'];
-				
-				$do_prune = array_merge_recursive($do_prune, $this->upload_cloud($remote_obj, $service, $backup_array, ''));
-			} elseif (!empty($storage_objects_and_ids[$service]['instance_settings'])) {
-				foreach ($storage_objects_and_ids[$service]['instance_settings'] as $instance_id => $options) {
-					// Used for logging by record_upload_chunk()
-					$this->current_instance = $instance_id;
-
-					if (!isset($options['instance_enabled'])) $options['instance_enabled'] = 1;
-
-					if (1 == $options['instance_enabled']) {
-						$remote_obj = $storage_objects_and_ids[$service]['object'];
+					$this->prune_retained_backups(array('none' => array('all' => array(null, null))));
+				} elseif (!empty($storage_objects_and_ids[$service]['object']) && !$storage_objects_and_ids[$service]['object']->supports_feature('multi_options')) {
+					$remote_obj = $storage_objects_and_ids[$service]['object'];
 					
-						$remote_obj->set_options($options, true, $instance_id);
-						$do_prune = array_merge_recursive($do_prune, $this->upload_cloud($remote_obj, $service, $backup_array, $instance_id));
-					} else {
-						$updraftplus->log("This instance id ($instance_id) has been set to inactive.");
+					$do_prune = array_merge_recursive($do_prune, $this->upload_cloud($remote_obj, $service, $backup_array, ''));
+				} elseif (!empty($storage_objects_and_ids[$service]['instance_settings'])) {
+					foreach ($storage_objects_and_ids[$service]['instance_settings'] as $instance_id => $options) {
+						// Used for logging by record_upload_chunk()
+						$this->current_instance = $instance_id;
+	
+						if (!isset($options['instance_enabled'])) $options['instance_enabled'] = 1;
+	
+						if (1 == $options['instance_enabled']) {
+							$remote_obj = $storage_objects_and_ids[$service]['object'];
+						
+							$remote_obj->set_options($options, true, $instance_id);
+							$do_prune = array_merge_recursive($do_prune, $this->upload_cloud($remote_obj, $service, $backup_array, $instance_id));
+						} else {
+							$updraftplus->log("This instance id ($instance_id) has been set to inactive.");
+						}
+	
+						$instance_id_count++;
 					}
-
-					$instance_id_count++;
 				}
+			} catch (Exception $e) {
+				$log_message = 'Exception ('.get_class($e).') occurred during backup uploads to the '.$service.'. Exception Message: '.$e->getMessage().' (Code: '.$e->getCode().', line '.$e->getLine().' in '.$e->getFile().')';
+				$updraftplus->log($log_message);
+				error_log($log_message);
+				$updraftplus->log(sprintf(__('A PHP exception (%s) has occurred: %s', 'updraftplus'), get_class($e), $e->getMessage()), 'error');
+			// @codingStandardsIgnoreLine
+			} catch (Error $e) {
+				$log_message = 'PHP Fatal error ('.get_class($e).') has occurred during backup uploads to the '.$service.'. Error Message: '.$e->getMessage().' (Code: '.$e->getCode().', line '.$e->getLine().' in '.$e->getFile().')';
+				$updraftplus->log($log_message);
+				error_log($log_message);
+				$updraftplus->log(sprintf(__('A PHP fatal error (%s) has occurred: %s', 'updraftplus'), get_class($e), $e->getMessage()), 'error');
 			}
 		}
 
@@ -557,9 +569,7 @@ class UpdraftPlus_Backup {
 			return;
 		}
 
-// $updraftplus->jobdata_set('jobstatus', 'pruning');
-// $updraftplus->jobdata_set('prune', 'begun');
-		call_user_func_array(array($updraftplus, 'jobdata_set_multi'), array('jobstatus', 'pruning', 'prune', 'begun'));
+		$updraftplus->jobdata_set_multi(array('jobstatus' => 'pruning', 'prune' => 'begun'));
 
 		// Number of backups to retain - files
 		$updraft_retain = UpdraftPlus_Options::get_updraft_option('updraft_retain', 2);
@@ -651,7 +661,7 @@ class UpdraftPlus_Backup {
 					}
 					
 					if ($is_always_keep) {
-						if ($database_backups_found[$entity] < $updraft_retain) {
+						if ($database_backups_found[$key] < $updraft_retain) {
 							$this->log_with_db_occasionally("This backup set ($backup_datestamp) was an 'Always Keep' backup, and we have not yet reached any retain limits, so it should be counted in the count of how many have been retained for purposes of the 'how many to retain' count. It will not be pruned. Skipping.");
 							$database_backups_found[$key]++;
 						} else {
@@ -708,7 +718,7 @@ class UpdraftPlus_Backup {
 							foreach ($services as $service => $instance_ids_to_prune) {
 								foreach ($instance_ids_to_prune as $instance_id_to_prune => $sd) {
 									if ('none' != $service && '' != $service && $sd[0]->supports_feature('multi_options')) {
-										$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($service));
+										$storage_objects_and_ids = UpdraftPlus_Storage_Methods_Interface::get_storage_objects_and_ids(array($service));
 										if ('all' == $instance_id_to_prune) {
 											foreach ($storage_objects_and_ids[$service]['instance_settings'] as $saved_instance_id => $options) {
 												$sd[0]->set_options($options, false, $saved_instance_id);
@@ -866,7 +876,7 @@ class UpdraftPlus_Backup {
 					foreach ($services as $service => $instance_ids_to_prune) {
 						foreach ($instance_ids_to_prune as $instance_id_to_prune => $sd) {
 							if ("none" != $service && '' != $service && $sd[0]->supports_feature('multi_options')) {
-								$storage_objects_and_ids = $updraftplus->get_storage_objects_and_ids(array($service));
+								$storage_objects_and_ids = UpdraftPlus_Storage_Methods_Interface::get_storage_objects_and_ids(array($service));
 								if ('all' == $instance_id_to_prune) {
 									foreach ($storage_objects_and_ids[$service]['instance_settings'] as $saved_instance_id => $options) {
 										$sd[0]->set_options($options, false, $saved_instance_id);
@@ -1344,7 +1354,7 @@ class UpdraftPlus_Backup {
 			}
 		}
 
-		if ('finished' != $job_status && !$updraftplus->really_is_writable($this->updraft_dir)) {
+		if ('finished' != $job_status && !UpdraftPlus_Filesystem_Functions::really_is_writable($this->updraft_dir)) {
 			$updraftplus->log("Backup directory (".$this->updraft_dir.") is not writable, or does not exist");
 			$updraftplus->log(sprintf(__("Backup directory (%s) is not writable, or does not exist.", 'updraftplus'), $this->updraft_dir), 'error');
 			return array();
@@ -1647,7 +1657,7 @@ class UpdraftPlus_Backup {
 		
 		$all_table_names = array_map(array($this, 'cb_get_name'), $all_tables);
 
-		if (!$updraftplus->really_is_writable($this->updraft_dir)) {
+		if (!UpdraftPlus_Filesystem_Functions::really_is_writable($this->updraft_dir)) {
 			$updraftplus->log("The backup directory (".$this->updraft_dir.") could not be written to (could be account/disk space full, or wrong permissions).");
 			$updraftplus->log($this->updraft_dir.": ".__('The backup directory is not writable (or disk space is full) - the database backup is expected to shortly fail.', 'updraftplus'), 'warning');
 			// Why not just fail now? We saw a bizarre case when the results of really_is_writable() changed during the run.
@@ -2109,7 +2119,7 @@ class UpdraftPlus_Backup {
 	 */
 	public function encrypt_file($file) {
 		global $updraftplus;
-		$encryption = UpdraftPlus_Options::get_updraft_option('updraft_encryptionphrase');
+		$encryption = $updraftplus->get_job_option('updraft_encryptionphrase');
 		if (strlen($encryption) > 0) {
 			$updraftplus->log("Attempting to encrypt backup file");
 			try {
@@ -2132,11 +2142,7 @@ class UpdraftPlus_Backup {
 				$updraftplus->log(sprintf(__('A PHP fatal error (%s) has occurred: %s', 'updraftplus'), get_class($e), $e->getMessage()), 'error');
 				die();
 			}
-			if (null === $result) {
-// $updraftplus->log(sprintf(__("As previously warned (see: %s), encryption is no longer a feature of the free edition of UpdraftPlus", 'updraftplus'), 'https://updraftplus.com/next-updraftplus-release-ready-testing/ + https://updraftplus.com/shop/updraftplus-premium/'), 'warning', 'needpremiumforcrypt');
-// UpdraftPlus_Options::update_updraft_option('updraft_encryptionphrase', '');
-				return basename($file);
-			}
+			if (null === $result) return basename($file);
 			return $result;
 		} else {
 			return basename($file);
@@ -2144,7 +2150,7 @@ class UpdraftPlus_Backup {
 	}
 
 	public function close() {
-		return ($this->dbhandle_isgz) ? gzclose($this->dbhandle) : fclose($this->dbhandle);
+		return $this->dbhandle_isgz ? gzclose($this->dbhandle) : fclose($this->dbhandle);
 	}
 
 	/**
@@ -3218,7 +3224,7 @@ class UpdraftPlus_Backup {
 							if ($updraftplus->current_resumption >= 1) {
 								$time_passed = $updraftplus->jobdata_get('run_times');
 								if (!is_array($time_passed)) $time_passed = array();
-								list($max_time, $timings_string, $run_times_known) = $updraftplus->max_time_passed($time_passed, $updraftplus->current_resumption-1, $this->first_run);
+								list($max_time, $timings_string, $run_times_known) = UpdraftPlus_Manipulation_Functions::max_time_passed($time_passed, $updraftplus->current_resumption-1, $this->first_run);
 							} else {
 								$run_times_known = 0;
 								$max_time = -1;
@@ -3448,7 +3454,7 @@ class UpdraftPlus_Backup {
 		$this->zip_microtime_start = microtime(true);
 
 		// No need to add $itext here - we can just delete any temporary files for this zip
-		$updraftplus->clean_temporary_files('_'.$updraftplus->file_nonce."-".$youwhat, 600);
+		UpdraftPlus_Filesystem_Functions::clean_temporary_files('_'.$updraftplus->file_nonce."-".$youwhat, 600);
 
 		$this->index++;
 		$this->job_file_entities[$youwhat]['index'] = $this->index;
