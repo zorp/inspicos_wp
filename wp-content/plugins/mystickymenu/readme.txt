@@ -3,8 +3,8 @@ Contributors: damiroquai
 Donate link: http://wordpress.transformnews.com/contact
 Tags: sticky, menu, header, sticky menu, sticky header, floating, floating menu
 Requires at least: 3.5.1
-Tested up to: 4.9.3
-Stable tag: 2.0.5
+Tested up to: 4.9.8
+Stable tag: 2.0.6
 License: GPLv2 or later
 
 This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
@@ -54,6 +54,8 @@ In some cases you can use the whole header div and than just style it different 
 
 
 == Changelog ==
+= 2.0.6 =
+* Fixed: Enable / Disable at 404 page
 = 2.0.5 =
 * Added: Admin settings sidebar right
 * Added: Admin separated js script

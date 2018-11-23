@@ -3,7 +3,7 @@
 	Plugin Name: myStickymenu 
 	Plugin URI: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
 	Description: Simple sticky (fixed on top) menu implementation for navigation menu. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-	Version: 2.0.5
+	Version: 2.0.6
 	Author: m.r.d.a
 	Author URI: http://wordpress.transformnews.com/
 	Text Domain: mystickymenu
@@ -12,7 +12,7 @@
 	*/
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define( 'MYSTICKY_VERSION', '2.0.5' );
+define( 'MYSTICKY_VERSION', '2.0.6' );
 
 class MyStickyMenuBackend
 {
@@ -392,6 +392,12 @@ class MyStickyMenuBackend
 			'my-stickymenu-settings', 
 			'setting_section_id'
 		);
+		add_settings_field(
+			'mysticky_disable_at_404', 
+			__("Disable at", 'mystickymenu'),
+			'my-stickymenu-settings', 
+			'setting_section_id'
+		);
 		
 		
 		
@@ -476,7 +482,9 @@ class MyStickyMenuBackend
 		if( isset( $input['mysticky_disable_at_search'] ) )
 			$new_input['mysticky_disable_at_search'] = sanitize_text_field( $input['mysticky_disable_at_search'] );
 								
-			
+		if( isset( $input['mysticky_disable_at_404'] ) )
+			$new_input['mysticky_disable_at_404'] = sanitize_text_field( $input['mysticky_disable_at_404'] );
+				
 			
 			
 
@@ -775,6 +783,14 @@ class MyStickyMenuBackend
 		);
 		_e('<span>search </span>', 'mystickymenu');
 		printf('</div>');
+		
+		printf(
+			'<div><input id="%1$s" name="mysticky_option_name[mysticky_disable_at_404]" type="checkbox" %2$s /> ',
+			'mysticky_disable_at_404',
+			checked( isset( $this->options['mysticky_disable_at_404'] ), true, false ) 
+		);
+		_e('<span>404 </span>', 'mystickymenu');
+		printf('</div>');
 	
 		if  (isset ( $this->options['mysticky_disable_at_page'] ) == true )  {
 			
@@ -955,6 +971,7 @@ class MyStickyMenuFrontend
 		$mysticky_disable_at_single = isset($mysticky_options['mysticky_disable_at_single']);
 		$mysticky_disable_at_archive = isset($mysticky_options['mysticky_disable_at_archive']);
 		$mysticky_disable_at_search = isset($mysticky_options['mysticky_disable_at_search']);
+		$mysticky_disable_at_404 = isset($mysticky_options['mysticky_disable_at_404']);
 		$mysticky_enable_at_pages = isset($mysticky_options['mysticky_enable_at_pages']) ? $mysticky_options['mysticky_enable_at_pages'] : '';
 		$mysticky_enable_at_posts = isset($mysticky_options['mysticky_enable_at_posts']) ? $mysticky_options['mysticky_enable_at_posts'] : '';
 		//$mystickymenu_enable_at_pages_exp = explode( ',', $mystickymenu_enable_at_pages ); 
@@ -1035,8 +1052,15 @@ class MyStickyMenuFrontend
 
 		} elseif ( is_search()){
 		
-		//Archive
+		//Search
 			if ( $mysticky_disable_at_search == false ) { 
+				$this->mystickymenu_script();
+			};
+
+		} elseif ( is_404()){
+		
+		//404
+			if ( $mysticky_disable_at_404 == false ) { 
 				$this->mystickymenu_script();
 			};
 
