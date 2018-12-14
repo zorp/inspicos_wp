@@ -81,7 +81,7 @@
 									<?php else: ?>
 									<a href="https://www.cancer.dk/stoet-os/for-virksomheder/" target="_blank">
 									<?php endif?>
-<img src="/wp-content/uploads/2018/01/logo_ep_jan18_jan19<?php if (pll_current_language()=='en'){ echo "_en"; } ?>.png" alt="" /></a>
+<img src="/wp-content/uploads/2015/02/erhvervspartner-logo-uden-dato-e1544779434966.png" width="100%" alt="" /></a>
 								</div>
 							</div>
 

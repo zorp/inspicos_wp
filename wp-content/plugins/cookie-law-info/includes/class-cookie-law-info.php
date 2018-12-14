@@ -76,7 +76,7 @@ class Cookie_Law_Info {
 		} 
 		else 
 		{
-			$this->version = '1.7.0';
+			$this->version = '1.7.1';
 		}
 		$this->plugin_name = 'cookie-law-info';
 
@@ -84,7 +84,7 @@ class Cookie_Law_Info {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->cli_patches();
+		//$this->cli_patches();
 	}
 
 	/**
@@ -376,9 +376,9 @@ class Cookie_Law_Info {
 	            
 			'font_family' 					=> 'inherit', // Pick the family, not the easy name (see helper function below)
 			'header_fix'                    => false,
-			'is_on' 		=> true,
-	         'is_eu_on' 		=> false,
-	        'logging_on' 		=> false,
+			'is_on' 						=> true,
+	        'is_eu_on' 						=> false,
+	        'logging_on' 					=> false,
 			'notify_animate_hide'			=> true,
 			'notify_animate_show'			=> false,
 			'notify_div_id' 				=> '#cookie-law-info-bar',
@@ -400,9 +400,12 @@ class Cookie_Law_Info {
 			'show_once_yn'					=> false,	// this is a new feature so default = switched off
 			'show_once'						=> '10000',	// 8 seconds
 			'is_GMT_on'						=> true,
-			'as_popup'						=> false,
-			'popup_overlay'					=> true,
+			'as_popup'						=> false,  // version 1.7.1 onwards this option is merged with `cookie_bar_as`
+			'popup_overlay'					=> true,  // 
 			'bar_heading_text'				=>'',
+			'cookie_bar_as'					=>'banner',
+			'popup_showagain_position'		=>'bottom-right', //bottom-right | bottom-left | top-right | top-left
+			'widget_position'		=>'left', //left | right
 		);
 		return $key!="" ? $settings_v0_9[$key] : $settings_v0_9;
 	}
@@ -468,6 +471,9 @@ class Cookie_Law_Info {
 	    'as_popup'=>$settings['as_popup'],
 	    'popup_overlay'=>$settings['popup_overlay'],
 	    'bar_heading_text'=>$settings['bar_heading_text'],
+	    'cookie_bar_as'=>$settings['cookie_bar_as'],
+		'popup_showagain_position'=>$settings['popup_showagain_position'],
+		'widget_position'=>$settings['widget_position'],
 	  );
 	  $str = json_encode( $slim_settings );
 	  /*
@@ -801,7 +807,18 @@ class Cookie_Law_Info {
     {
     	$options=self::get_settings();
 
-    	//========reject button missing issue=========
+    	//========bar as widget=========@since 1.7.1
+    	if($options['cookie_bar_as']=='banner' && $options['as_popup']==true) //the site in popup mode
+		{
+			$options['cookie_bar_as']='popup';
+			$options['as_popup']=false;
+			$options['popup_showagain_position']=$options['notify_position_vertical'].'-'.$options['notify_position_horizontal'];
+			update_option( CLI_SETTINGS_FIELD,$options);
+		}
+
+
+
+    	//========reject button missing issue=========@since 1.6.7
     	$message_bar_text=$options['notify_message'];
     	//user turned on the reject button with his previous settings
     	if(isset($options['is_reject_on']) && $options['is_reject_on']==true)
@@ -832,6 +849,7 @@ class Cookie_Law_Info {
     	}
     	//---------reject button missing issue------------
 
+    	//bar heading text issue @since 1.6.7
     	$bar_version='1.6.6';
     	$bar_heading_version = get_option('cli_heading_version');
     	if($bar_heading_version!=$bar_version)

@@ -218,8 +218,7 @@ class Cookie_Law_Info_Public {
 	*/
 	public function cookielawinfo_inject_cli_script() 
 	{
-	  $the_options = Cookie_Law_Info::get_settings();;
-
+	  $the_options = Cookie_Law_Info::get_settings();
 	  	if ( $the_options['is_on'] == true )
 	  	{ 
 	        // Output the HTML in the footer:

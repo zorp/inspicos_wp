@@ -82,15 +82,15 @@
             <li><?php echo __("Optionally log users' consent and export into a CSV file.","cookie-law-info"); ?></li>
             <li><?php echo __("Customize the privacy overview in the cookie settings popup.","cookie-law-info"); ?></li>
             <li><?php echo __("Export/import cookies and related information via CSV file.","cookie-law-info"); ?></li>
-            <li><?php echo __("Scan and import/export the cookies in the homepage.","cookie-law-info"); ?></li>
+            <li><?php echo __("Scan and import/export the cookies in the website.","cookie-law-info"); ?></li>
             <li><?php echo __('Allow to display cookie settings popup where site visitors can opt-in or give consent to cookie categories.','cookie-law-info'); ?></li>
-            <li><?php echo __('Customisable to look just like your own website\'s style: customise the colours, styles and fonts.','cookie-law-info'); ?></li>
+            <li><?php echo __('Cookie bar preview in admin settings page.','cookie-law-info'); ?></li>
             <li><?php echo __('Put the cookie bar in either the header or the footer.','cookie-law-info'); ?></li>
         </ul>
         <br/>
     </p>
     <p style="text-align: center;">
-        <a href="http://cookielawinfo.com/user-guide/" target="_blank" class="cli-button cli-button-documentation" style=" color: #555 !important;"><?php echo __('Documentation','cookie-law-info'); ?></a>
+        <a href="https://www.webtoffee.com/category/documentation/gdpr-cookie-consent/" target="_blank" class="cli-button cli-button-documentation" style=" color: #555 !important;"><?php echo __('Documentation','cookie-law-info'); ?></a>
     </p>
 </div>
 
