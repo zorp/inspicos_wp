@@ -164,8 +164,8 @@ msgctxt "Libre Franklin font: on or off"
 msgid "on"
 msgstr "til"
 
-#: functions.php:64 functions.php:203
-#: template-parts/navigation/navigation-top.php:12
+#: template-parts/navigation/navigation-top.php:12 functions.php:64
+#: functions.php:203
 msgid "Top Menu"
 msgstr "Topmenu"
 
@@ -185,7 +185,7 @@ msgstr "Beklager, men din søgning gav intet resultat. Forsøg igen med andre s�
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr "Klar til at udgive dit første indlæg? <a href=\"%1$s\">Start her</a>."
 
-#: search.php:21 template-parts/post/content-none.php:17
+#: template-parts/post/content-none.php:17 search.php:21
 msgid "Nothing Found"
 msgstr "Intet fundet"
 
@@ -217,12 +217,12 @@ msgid "Search for:"
 msgstr "Søg efter:"
 
 #. translators: %s: Name of current post
-#: functions.php:390 template-parts/post/content-gallery.php:71
-#: template-parts/post/content.php:57 template-parts/post/content-image.php:61
-#: template-parts/post/content-audio.php:84
-#: template-parts/post/content-video.php:83
-#: template-parts/page/content-front-page.php:42
 #: template-parts/page/content-front-page-panels.php:45
+#: template-parts/page/content-front-page.php:42
+#: template-parts/post/content-audio.php:84 template-parts/post/content.php:57
+#: template-parts/post/content-gallery.php:71
+#: template-parts/post/content-video.php:83
+#: template-parts/post/content-image.php:61 functions.php:390
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr "Læs videre<span class=\"screen-reader-text\"> \"%s\"</span>"
 
@@ -234,11 +234,11 @@ msgstr "Mørk"
 msgid "Twenty Seventeen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
 msgstr "Twenty Seventeen behøver minimum WordPress version 4.7. Du anvender version %s. Opgradér venligst og forsøg igen."
 
-#: template-parts/post/content-gallery.php:78
-#: template-parts/post/content.php:64 template-parts/post/content-image.php:68
-#: template-parts/post/content-audio.php:91
-#: template-parts/post/content-video.php:90
 #: template-parts/page/content-page.php:26
+#: template-parts/post/content-audio.php:91 template-parts/post/content.php:64
+#: template-parts/post/content-gallery.php:78
+#: template-parts/post/content-video.php:90
+#: template-parts/post/content-image.php:68
 msgid "Pages:"
 msgstr "Sider:"
 
@@ -274,7 +274,7 @@ msgstr "Footer, Menu til sociale links"
 msgid "Comments are closed."
 msgstr "Lukket for kommentarer."
 
-#: index.php:54 archive.php:50 search.php:47
+#: archive.php:50 search.php:47 index.php:54
 msgid "Page"
 msgstr "Side"
 
@@ -286,11 +286,11 @@ msgstr "Hov! Den side findes ikke."
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr "Det ser ud til, at vi ikke kan finde det, du leder efter. Måske en søgning vil hjælpe?"
 
-#: index.php:52 archive.php:48 search.php:45
+#: archive.php:48 search.php:45 index.php:52
 msgid "Previous page"
 msgstr "Forrige side"
 
-#: index.php:53 archive.php:49 search.php:46
+#: archive.php:49 search.php:46 index.php:53
 msgid "Next page"
 msgstr "Næste side"
 

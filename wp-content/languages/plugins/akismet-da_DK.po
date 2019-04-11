@@ -133,8 +133,8 @@ msgstr "Fjerner..."
 msgid "Akismet"
 msgstr "Akismet"
 
-#: class.akismet-admin.php:107 class.akismet-admin.php:239
-#: class.akismet-admin.php:658 views/config.php:60
+#: views/config.php:60 class.akismet-admin.php:107 class.akismet-admin.php:239
+#: class.akismet-admin.php:658
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -197,7 +197,7 @@ msgstr "På denne side kan du se statistik for det spam, der er filtreret på di
 msgid "Akismet Configuration"
 msgstr "Akismet-indstillinger"
 
-#: class.akismet-admin.php:242 views/config.php:70
+#: views/config.php:70 class.akismet-admin.php:242
 msgid "API Key"
 msgstr "API-nøgle"
 
@@ -205,7 +205,7 @@ msgstr "API-nøgle"
 msgid "Enter/remove an API key."
 msgstr "Indtast/fjern en API-nøgle."
 
-#: class.akismet-admin.php:243 views/config.php:105
+#: views/config.php:105 class.akismet-admin.php:243
 msgid "Comments"
 msgstr "Kommentarer"
 
@@ -217,15 +217,15 @@ msgstr "Vis antallet af godkendte kommentarer ved siden af hver kommentarforfatt
 msgid "Choose to either discard the worst spam automatically or to always put all spam in spam folder."
 msgstr "Vælg enten at fjerne det værste spam automatisk, eller at lægge al spam i spam-mappen."
 
-#: class.akismet-admin.php:244 views/config.php:128
+#: views/config.php:128 class.akismet-admin.php:244
 msgid "Strictness"
 msgstr "Strenghed"
 
-#: class.akismet-admin.php:252 views/config.php:188
+#: views/config.php:188 class.akismet-admin.php:252
 msgid "Account"
 msgstr "Konto"
 
-#: class.akismet-admin.php:255 views/config.php:196
+#: views/config.php:196 class.akismet-admin.php:255
 msgid "Subscription Type"
 msgstr "Abonnementstype"
 
@@ -233,7 +233,7 @@ msgstr "Abonnementstype"
 msgid "The subscription status - active, cancelled or suspended"
 msgstr "Abonnementstatus - aktivt, opsagt eller sat i bero"
 
-#: class.akismet-admin.php:256 views/config.php:203
+#: views/config.php:203 class.akismet-admin.php:256
 msgid "Status"
 msgstr "Status"
 
@@ -386,11 +386,11 @@ msgstr "Akismet fangede denne kommentar som spam ved et automatisk ekstra tjek."
 msgid "Akismet cleared this comment during an automatic retry."
 msgstr "Ved et automatisk ekstra tjek af denne kommentar, blev den godkendt af Akismet."
 
-#: class.akismet.php:1263
+#: class.akismet.php:1268
 msgid "Please <a href=\"%1$s\">upgrade WordPress</a> to a current version, or <a href=\"%2$s\">downgrade to version 2.4 of the Akismet plugin</a>."
 msgstr "Du skal venligst <a href=\"%1$s\">opgradere WordPress</a> til den nuværende version, eller <a href=\"%2$s\">nedgradere til version 2.4 af Akismet pluginet</a>."
 
-#: class.akismet.php:1263
+#: class.akismet.php:1268
 msgid "Akismet %s requires WordPress %s or higher."
 msgstr "Akismet %s kræver WordPress %s eller højere."
 
@@ -572,15 +572,15 @@ msgstr "Aktiver Akismet"
 msgid "Get your API key"
 msgstr "Få din API-nøgle"
 
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://akismet.com/"
 msgstr "https://akismet.com/"
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://automattic.com/wordpress-plugins/"
 msgstr "https://automattic.com/wordpress-plugins/"
 
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "Automattic"
 msgstr "Automattic"
 
