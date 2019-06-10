@@ -1,69 +1,91 @@
 (function( $ ) {
-  "use strict";
-  
-    
+	"use strict";
 
-jQuery(document).ready(function($){
-	
+	jQuery(document).ready(function($){
+		
+		var handle = $( "#custom-handle" );
+		$( "#slider" ).slider({
+		  create: function() {			 
+			handle.text( $( this ).slider( "value" ) );
+			handle.text( $('#myfixed_opacity').val() );
+			handle.css('left', $('#myfixed_opacity').val() + '%')
+		  },
+		  slide: function( event, ui ) {
+			$('#myfixed_opacity').val(ui.value);
+			handle.text( ui.value );
+		  }
+		});
+		jQuery(
+		  '<div class="pt_number"><div class="pt_numberbutton pt_numberup">+</div><div class="pt_numberbutton pt_numberdown">-</div></div>'
+		).insertAfter("input.mysticky-number1");
+
+		jQuery(".mystickynumber1").each(function() {
+
+			var spinner = jQuery(this),
+			input = spinner.find('input[type="number"]'),
+			btnUp = spinner.find(".pt_numberup"),
+			btnDown = spinner.find(".pt_numberdown"),
+			min = input.attr("min"),
+			max = input.attr("max"),
+			valOfAmout = input.val(),
+			newVal = 0;
+
+			btnUp.on("click", function() {
+
+				var oldValue = parseFloat(input.val());
+
+				if (oldValue >= max) {
+				  var newVal = oldValue;
+				} else {
+				  var newVal = oldValue + 1;
+				}
+				spinner.find("input").val(newVal);
+				spinner.find("input").trigger("change");
+				console.log(newVal);
+			});
+			btnDown.on("click", function() {
+				var oldValue = parseFloat(input.val());
+				if (oldValue <= min) {
+				var newVal = oldValue;
+				} else {
+				var newVal = oldValue - 1;
+				}
+				spinner.find("input").val(newVal);
+				spinner.find("input").trigger("change");
+			});
+		});
+
+
+		$(".confirm").on( 'click', function() {
+			return window.confirm("Reset to default settings?");
+		});
+
+		var flag = 0;
+		$( "#mystickymenu-select option" ).each(function( i ) {
 			
-  $("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
-  $("#myfixed_bgcolor,#mysticky_disable_at_front_home").parent().parent().parent().hide();
-  $("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
-  $("#myfixed_cssstyle").parent().parent().hide();
-  $(".mysticky-hideformreset").hide();
-  $(".mysticky-hideform,.mysticky-general").fadeIn(300);
-  
-  
-  $(".btn-general").click(function(){
-    $(".btn-general").addClass("nav-tab-active");
-    $(".btn-style,.btn-advanced").removeClass("nav-tab-active");
-    $("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().show();
-    $("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css,#mysticky_disable_at_front_home").parent().parent().parent().hide();
-    $("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
-    $("#myfixed_cssstyle,#mysticky_disable_at_front_home").parent().parent().hide();
-    $(".mysticky-general").fadeIn(300);
-    $(".mysticky-style,.mysticky-advanced,.mysticky-hideformreset") .hide();				
-  });
-						
-  $(".btn-general,.btn-style,.btn-advanced").hover(function() {
-    $(".btn-general,.btn-style,.btn-advanced").css("cursor","pointer");
-  });
-							
-  $(".btn-style").click(function(){
-    $(".btn-style").addClass("nav-tab-active");
-    $(".btn-general,.btn-advanced").removeClass("nav-tab-active");
-    $("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade,#mysticky_disable_at_front_home").parent().parent().parent().hide();
-    $("#myfixed_zindex,#myfixed_bgcolor,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().show();
-    $("#myfixed_cssstyle").parent().parent().show();
-    $("#mysticky_disable_at_front_home").parent().parent().hide();
-    $("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().show();
-    $(".mysticky-general").hide();
-    $(".mysticky-hideformreset").hide();
-    $(".mysticky-style") .fadeIn(300);
-    $(".mysticky-advanced").hide();
-  });
-						
-  $(".btn-advanced").click(function(){
-    $(".btn-advanced").addClass("nav-tab-active");
-    $(".btn-style,.btn-general").removeClass("nav-tab-active");		
-    $("#mysticky_class_selector,#myfixed_disable_small_screen,#myfixed_disable_large_screen,#mysticky_active_on_height,#mysticky_active_on_height_home,#myfixed_fade").parent().parent().parent().hide();
-    $("#myfixed_zindex,#myfixed_opacity,#myfixed_transition_time,#disable_css").parent().parent().parent().hide();
-    $("#myfixed_cssstyle").parent().parent().hide();
-    $("#myfixed_bgcolor").parent().parent().parent().parent().parent().parent().hide();
-	$("#mysticky_disable_at_front_home").parent().parent().parent().show();
-	$("#mysticky_disable_at_front_home").parent().parent().show();
-    $(".mysticky-hideformreset").fadeIn(300);
-    $(".mysticky-general").hide();
-    $(".mysticky-style") .hide();
-    $(".mysticky-advanced").fadeIn(300);
-  });		
-						
-						
-						
-  $(".confirm").click(function() {
-    return window.confirm("Reset to default settings?");
-  });
-	
-});		
-	
-})(jQuery);	
+			if ($('select#mystickymenu-select option:selected').val() !== '' ) {
+				flag = 1;
+			}
+			if( $('select#mystickymenu-select option:selected').val() == $(this).val() ){
+				$('#mysticky_class_selector').show();
+			}else {
+				$('#mysticky_class_selector').hide();
+			}
+		});
+		if ( flag === 0 ) {
+			$('#mysticky_class_selector').show();
+			$("select#mystickymenu-select option[value=custom]").attr('selected', 'selected');
+		}
+		
+		$("#mystickymenu-select").on( 'change', function() {
+			if ($(this).val() == 'custom' ) {
+				$('#mysticky_class_selector').show();
+			}else {
+				$('#mysticky_class_selector').hide();
+			}
+
+		});
+
+	});
+
+})(jQuery);

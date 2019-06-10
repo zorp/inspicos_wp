@@ -8,16 +8,22 @@
 
 	$(document).ready(function($){
 		
-	// get Sticky Class setting if class name existts
-	if ($(option.mystickyClass) [0]){
-		// Do nothing
+		if ( jQuery.browser.mobile && !option.device_mobile) {
+			return false;
+		} else if ( !jQuery.browser.mobile && !option.device_desktop) {
+			return false;
 		}
-	else {
-		// Do something if class does not exist and stop
-		console.log("myStickymenu: Entered Sticky Class does not exist, change it in Dashboard / Settings / myStickymenu / Sticky Class. ");
-		return;
-	}
 		
+		// get Sticky Class setting if class name existts
+		if ($(option.mystickyClass) [0]){
+			// Do nothing
+			}
+		else {
+			// Do something if class does not exist and stop
+			console.log("myStickymenu: Entered Sticky Class does not exist, change it in Dashboard / Settings / myStickymenu / Sticky Class. ");
+			return;
+		}
+			
 			
    		// Get class name
 		var mystickyClass = document.querySelector(option.mystickyClass);
@@ -416,6 +422,8 @@
 							
 						if (mysticky_disable_down == "on") { 
        						wrappernav.style.top = "-" + (mydivHeight + adminBarHeight ) + "px";
+							jQuery('#mysticky-nav ' + option.mystickyClass+'.elementor-sticky').hide();
+							//jQuery('#mysticky-nav ' + option.mystickyClass).css( 'top' , "-" + (mydivHeight + adminBarHeight ) + "px");														
 						}
 							
 							
@@ -459,6 +467,9 @@
 						
 						if (mysticky_disable_down == "on") { 
 							wrappernav.style.top = adminBarHeight + "px";
+							jQuery('#mysticky-nav '+ option.mystickyClass).css( 'width' , mydivWidth + "px");
+							jQuery('#mysticky-nav ' + option.mystickyClass+'.elementor-sticky').show();
+						
 						}
 	  
   					}

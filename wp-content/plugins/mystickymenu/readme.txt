@@ -1,32 +1,175 @@
-=== myStickymenu ===
-Contributors: damiroquai
-Donate link: http://wordpress.transformnews.com/contact
-Tags: sticky, menu, header, sticky menu, sticky header, floating, floating menu
+﻿===Sticky Menu on Scroll, Sticky Header for Any Theme - myStickymenu===
+Contributors: tomeraharon, galdub, premio
+Tags: sticky, menu, header, sticky menu, sticky header, floating, floating menu, floating navigation menu, navigation menu, navigation, sticky navigation menu
 Requires at least: 3.5.1
-Tested up to: 4.9.8
-Stable tag: 2.0.6
+Tested up to: 5.2
+Stable tag: 2.1.6
 License: GPLv2 or later
 
-This lightweight plugin will made your menu or header sticky on top of page, after desired number of pixels when scrolled.
+This sticky menu plugin will make your menu or header stick to the top of page, after desired number of pixels when scrolled down and up. 
 
 == Description ==
+<strong>This sticky menu plugin will make your menu or header sticky on top of page, after desired number of pixels when scrolled. This lightweight plugin will help your visitors navigate easily and reach to the navigation menu without wasting time. Install My Sticky Menu and improve your website’s user experience! If you want to change the CSS style, disable on scroll down or disable on specific pages. check out the <a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="mystickymenu pro plans">Pro version</a>.</strong>
+
 By default, sticky menu is designed to use element class ".navbar" as "Sticky Class". That value should be modified in plugin settings for different themes to make it work. Sticky Class is actually nothing more than an element class (or id) of the element that should become sticky. 
 
-Advancement of this simple plugin is that increases usability and page views of your WordPress site since menu is available to the user all the time.
+With more than 60,000+ active installs and around 100 five-stars reviews, you can be sure that My Sticky Menu plugin is the right fit for your website.
 
-Plugin is localized (multi language support) and responsive (as far as your theme is). Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
+= BENEFITS =
+* Improve user experience by letting your visitors access the navigation menu and navigate to the pages they want when they want to.
+* Make your website look more modern with sticky menu on desktop and mobile.
+* Increase number of pageviews and 
 
-Plugin is originally designed for Twenty Thirteen template but should work on any theme.  
+The sticky header function is localized (multi language support) and responsive (as far as your theme is). Also there is possibility to add custom css code which make this plugin very flexible, customizable and user friendly.
 
-[Plugin Home + Demo URL][1] 
-[myStickymenu theme support page][2]
+My Sticky Menu plugin is originally designed for Twenty Thirteen template but should work on any theme, like: OceanWP, Nirvana Template, Travelify, Twenty Sixteen, Twenty Ten, Twenty Eleven, Max Magazine, Graduate, Lawyer theme, Spacious, Suits and more.
 
-[1]: http://wordpress.transformnews.com/plugins/mystickymenu-simple-sticky-fixed-on-top-menu-implementation-for-twentythirteen-menu-269
-[2]: http://wordpress.transformnews.com/tutorials/mystickymenu-theme-support-682
+My Sticky Menu is tested and compatible with Elementor website builder, Divi, WPBakery, Gutenberg, Visual composer, Beaver and other WordPress website builders.
+
+= WITH MY STICKY MENU YOU CAN: =
+* Show sticky header on scroll down/up
+* Fade or slide effect
+* Disable at small screen
+* Choose when to make visible on scroll
+* Change the background color
+* Change the opacity
+* Change the sticky transition time
+* Define the z-index of the sticky header
+
+= WHAT DO YOU GET IN THE PRO PLAN =
+* Disable floating menu on Desktop/Mobile
+* Disable floating menu on scroll down
+* Add CSS style to the floating header
+* Disable floating header on specific pages
+<a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="mystickymenu pro plans"><strong>>>> See Pro plans here</strong></a> 
+
+= Testimonials =
+
+> "Works great.
+One of the key element that i consider when choosing a theme is the sticky menu option. If the theme doesn't have it normally I don't use it. But now that’s not a problem for me anymore."<br><br>
+
+> "This plugin rocks!
+This plugin does exactly what it should. It is simple but powerful. I would suggest to anyone who wants to make their navigation menu sticky! I especially love the hide header on scroll down, show on scroll up feature that is built it. Great work!<br>
+
 
 == Installation ==
 Install like any other plugin. After install activate. 
 Go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id . Sticky Class should be HTML id or class of the HTML element desired to be sticky… Clear WordPress cache if exists.
+
+For example:
+
+Celestial-Lite (sticky header)
+** Sticky Class => #branding
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; } .myfixed #site-navigation { margin-top:0px!important; } .myfixed #logo img {width: 200px;}
+
+Church Theme
+** Sticky Class => #menu-hauptnavi
+
+Customizr Theme
+** Sticky Class => .row-fluid (for header) or .nav (for menu)
+
+CyberChimps
+** Sticky Class => .navbar-inner
+
+Decode
+** Sticky Class => .header-menu
+** Make visible when Scrolled after => 370
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; padding-top:5px; padding-bottom:5px; }
+
+Genesis / Dynamik Theme
+** Sticky Class(sticky header) =>.site-header
+** Sticky Class(sticky menu) =>.nav-primary
+
+Graduate
+** Sticky Class => .main-navigation
+
+Graphene
+** Sticky Class => #header-menu-wrap
+
+Illdy
+** Sticky Class => .top-header
+** Disable at Small Screen Sizes => 993
+
+Illdy (mobile support)
+** Sticky Class => .header-blog
+** CSS Style => #mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; } .myfixed .bottom-header {display:none;}
+
+Lawyer theme
+** Sticky Class => .wrapper
+** .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; } .myfixed { padding-left: 0px; padding-bottom: 0px; padding-top: 0px; } .wrapfixed { -webkit-box-shadow: 0 8px 6px -6px rgba(68,68,68,0.6); -moz-box-shadow: 0 8px 6px -6px rgba(68,68,68,0.6); box-shadow: 0 8px 6px -6px rgba(68,68,68,0.6); } .myfixed .logo img { max-height: 45px; } .myfixed .quick-info { display: none; } .myfixed .mainmenu { margin: 0px } .myfixed .mainmenu { padding-top: 7px; }
+
+Max Magazine
+** Sticky Class => #nav
+** Make visible when Scrolled after => 250
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; } #nav { min-height:40px!important; }
+
+Naturo Lite
+** Sticky Class => .header-inner
+
+Nirvana Template
+** Sticky Class => #access
+
+OceanWP
+** Sticky Class => #site-header
+
+Responsive
+** Sticky Class => .main-nav
+** Make visible when Scrolled after => 250
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; max-width:100%!important;} .myfixed .menu { background:none!important;}
+
+Spacious
+** Sticky Class => #masthead (sticky header)
+** Make visible when Scrolled after => 250
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; max-width:100%!important;} .myfixed #site-description { display:none;} .myfixed #site-title a { font-size: 24px; } .myfixed #header-text { padding:0px!important;} .myfixed .main-navigation { padding-top: 0px!important; }
+
+Storefront
+** Sticky Class => .main-navigation
+
+Suits
+** Sticky Class => .navbar
+
+Tempera Template
+** Sticky Class => .menu
+
+Travelify
+** Sticky Class => #main-nav
+
+Twenty Sixteen
+** Sticky Class => .site-header-main
+
+Twenty Ten
+** Sticky Class => .menu
+** Make visible when Scrolled after => 370
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; } .menu {min-height:38px;}
+
+Twenty Eleven
+** Sticky Class => #access
+** Make visible when Scrolled after => 600
+** .myfixed css class => .myfixed { float:none!important; max-width:100%;}
+.myfixed .menu { background-color:none; float:left; }
+.myfixed div { margin: 0px!important ; padding: 0px 7.6%; }
+
+Twenty Eleven (add search to sticky menu bar)
+** Sticky Class => #branding
+** Make visible when Scrolled after => 600
+** .myfixed css class => .myfixed { margin:0 auto!important; float:none!important; border:0px!important; background:none!important; max-width:100%!important; } .myfixed a {display:none;} #mysticky-wrap {min-height:500px;} .myfixed #site-title, .myfixed #site-description{display:none;} .myfixed #access { margin: 0px auto 0px; } .myfixed #searchform { top: 0.3em!important; }
+
+Twenty Twelve
+** Sticky Class => .nav-menu
+** Make visible when Scrolled after => 250
+
+Twenty Thirteen (sticky header – add your own custom logo image and edit to suite your needs)
+** Sticky Class => #masthead
+** .myfixed css class => .myfixed { margin:0 auto; max-width:1070px; width:100%!important;} .myfixed .search-form, .myfixed .site-description, .myfixed .site-title { display:none;} .myfixed .home-link { max-width: 55px; min-height: 38px; margin-left:20px; float:left; background-image: url('logo.png'); } .myfixed .navbar { max-width:645px; float:right;} .wrapfixed .navbar { background-color: transparent; } .wrapfixed ul { padding-right:0px; }
+
+Webnus netStudio theme
+** Sticky Class =>.nav-wrap2
+
+Weblizar
+** Sticky Class => .row
+
+Wrock Metro Theme (entire header)
+** Sticky Class =>#navigation
 
 
 == Frequently Asked Questions ==
@@ -46,14 +189,47 @@ In CSS you can style your custom class while not sticky using custom class you a
 
 In some cases you can use the whole header div and than just style it different with .myfixed class, hide what you don’t need using CSS display:none; property, and position logo and menu as you like. 
 
+= Is there a time limit for the free plan? =
+No. you can use the free plan as long as you want.
+
+= Can I use My Sticky Menu plugin on more than 1 domain? =
+There 2 ways to do it:
+1. You can install the free Sticky Menu plugin plugin on any website you want
+2. You can buy the Pro plan that includes licenses for 5 domains, or the Agency plan that includes licenses for 20 domains.
+Check out our <a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="mystickymenu plans page">plans page</a>.
+
+= How long is my paid Sticky Menu plugin plugin license valid for? =
+Once you purchase any <a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="mystickymenu plans page">paid plan</a> of my sticky menu, you can use it forever. Support and updates are available for 1 year. You can renew your license each year to get another year of support and updates.
+
+= Will Sticky Menu plugin stop working if I don’t renew my license? =
+Of course NOT! 🙂
+Your Sticky Menu plugin plugin and all your settings will continue to work as before; however, you will no longer receive plugin updates including feature additions, improvements, and support.
+
+= How do I activate my pro plan? =
+Just follow our <a href="https://premio.io/wordpress-premio-pro-version-installation-guide/" target="_blank" title="WordPress installation guide">pro installation guide</a>.
+
 == Screenshots ==
 
-1.  screenshot-1.png shows general administration settings.
-2.  screenshot-2.png shows style settings.
-3.  screenshot-3.png shows advanced settings.
+1. You can choose your current menu from the dropdown or enter it ID or class manually
+2. Add you custom CSS
+3. This is how myStickymenu will actually look on your site
 
 
 == Changelog ==
+= 2.1.6 =
+Saving issue bug fixed
+= 2.1.5 =
+Security update
+= 2.1.4 =
+Fixed some page builders issues
+= 2.1.3 =
+Fixed variable output warnings bugs
+= 2.1.2 =
+Upgrade page change
+= 2.1.1 =
+* Added a testimonial
+= 2.1 =
+* New and easy UI, you can now select your menu from a dropdown
 = 2.0.6 =
 * Fixed: Enable / Disable at 404 page
 = 2.0.5 =
@@ -206,6 +382,3 @@ In some cases you can use the whole header div and than just style it different 
 = 1.1 =
 * Added administration options, now available through Dashboard / Settings / myStickymenu. Options are as follows: Sticky Class, Sticky z-index, Sticky Width, Sticky Background Color, Sticky Opacity, Sticky Transition Time. 
 * Old mystickymenu.css file is deprecated and not in use anymore.
-
-
-
