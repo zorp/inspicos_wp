@@ -3,7 +3,7 @@
 Plugin Name: myStickymenu
 Plugin URI: https://premio.io/
 Description: Simple sticky (fixed on top) menu implementation for navigation menu. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-Version: 2.1.6
+Version: 2.1.7
 Author: Premio
 Author URI: https://premio.io/downloads/mystickymenu/
 Text Domain: mystickymenu
@@ -12,7 +12,7 @@ License: GPLv2 or later
 */
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define( 'MYSTICKY_VERSION', '2.1.5' );
+define( 'MYSTICKY_VERSION', '2.1.7' );
 
 class MyStickyMenuBackend
 {
@@ -457,7 +457,7 @@ class MyStickyMenuBackend
 							<div class="rpt_head rpt_head_0">
 								<div class="rpt_recurrence rpt_recurrence_0">For small website owners</div>
 								<div class="rpt_price rpt_price_0">$9</div>
-								<div class="rpt_description rpt_description_0">Per year. Renewals for 50% off</div>
+								<div class="rpt_description rpt_description_0">Per year. Renewals for 25% off</div>
 								<div style="clear:both;"></div>
 							</div>
 							<div class="rpt_features rpt_features_0">
@@ -477,7 +477,7 @@ class MyStickyMenuBackend
 							<div class="rpt_head rpt_head_1">
 								<div class="rpt_recurrence rpt_recurrence_1">For businesses with multiple websites</div>
 								<div class="rpt_price rpt_price_1">$25</div>
-								<div class="rpt_description rpt_description_1">Per year. Renewals for 50% off</div>
+								<div class="rpt_description rpt_description_1">Per year. Renewals for 25% off</div>
 								<div style="clear:both;"></div>
 							</div>
 							<div class="rpt_features rpt_features_1">
@@ -497,7 +497,7 @@ class MyStickyMenuBackend
 							<div class="rpt_head rpt_head_2">
 								<div class="rpt_recurrence rpt_recurrence_2">For agencies who manage clients</div>
 								<div class="rpt_price rpt_price_2">$49</div>
-								<div class="rpt_description rpt_description_2">Per year. Renewals for 50% off</div>
+								<div class="rpt_description rpt_description_2">Per year. Renewals for 25% off</div>
 								<div style="clear:both;"></div>
 							</div>
 							<div class="rpt_features rpt_features_2">
@@ -632,10 +632,12 @@ class MyStickyMenuFrontend
 			if  ($mysticky_options ['myfixed_disable_small_screen'] > 0 ){
 			//echo '@media (max-width: '.$mysticky_options['myfixed_disable_small_screen'].'px) {#mysticky-nav.wrapfixed {position: static;} }';
 			};
-			if (  $mysticky_options['myfixed_cssstyle'] == "" )  {
+			if ( !isset( $mysticky_options['myfixed_cssstyle'] ) )  {
 				echo '#mysticky-nav .myfixed { margin:0 auto; float:none; border:0px; background:none; max-width:100%; }';
 			}
-			echo $mysticky_options ['myfixed_cssstyle'];
+			if ( isset( $mysticky_options['myfixed_cssstyle'] ) && $mysticky_options['myfixed_cssstyle'] != '' )  {
+				echo $mysticky_options ['myfixed_cssstyle'];
+			}
 			echo '</style>';
 		}
 	}

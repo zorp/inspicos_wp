@@ -3,7 +3,7 @@ Contributors: tomeraharon, galdub, premio
 Tags: sticky, menu, header, sticky menu, sticky header, floating, floating menu, floating navigation menu, navigation menu, navigation, sticky navigation menu
 Requires at least: 3.5.1
 Tested up to: 5.2
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GPLv2 or later
 
 This sticky menu plugin will make your menu or header stick to the top of page, after desired number of pixels when scrolled down and up. 
@@ -42,6 +42,9 @@ My Sticky Menu is tested and compatible with Elementor website builder, Divi, WP
 * Add CSS style to the floating header
 * Disable floating header on specific pages
 <a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="mystickymenu pro plans"><strong>>>> See Pro plans here</strong></a> 
+
+= Live Demo =
+A live demo for myStickymenu plugin is available at <a href="https://demo.premio.io/mystickymenu/?utm_source=wordpressorg" target="_blank" title="Premio.io demo site">Premio's demo site</a>.
 
 = Testimonials =
 
@@ -208,6 +211,9 @@ Your Sticky Menu plugin plugin and all your settings will continue to work as be
 = How do I activate my pro plan? =
 Just follow our <a href="https://premio.io/wordpress-premio-pro-version-installation-guide/" target="_blank" title="WordPress installation guide">pro installation guide</a>.
 
+= Is there a live demo formyStickymenu =
+A live demo for myStickymenu plugin is available at <a href="https://demo.premio.io/mystickymenu/?utm_source=wordpressorg" target="_blank" title="Premio.io demo site">Premio's demo site</a>.
+
 == Screenshots ==
 
 1. You can choose your current menu from the dropdown or enter it ID or class manually
@@ -216,6 +222,8 @@ Just follow our <a href="https://premio.io/wordpress-premio-pro-version-installa
 
 
 == Changelog ==
+= 2.1.7 =
+Fixed undefined indexes
 = 2.1.6 =
 Saving issue bug fixed
 = 2.1.5 =
