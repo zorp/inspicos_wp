@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.2.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-06-13 17:32:18+0000\n"
+"PO-Revision-Date: 2019-10-01 08:35:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -133,7 +133,7 @@ msgid ""
 msgstr ""
 "Hi!\n"
 "\n"
-"Since WordPress 5.2 there is a built-in feature that detects when a plugin or theme causes a fatal error on your site, and notifies you with this automated email.\n"
+"Since WordPress 5.2 there is a built-in feature that detects when a plugin or theme causes a fatal error on your site and notifies you with this automated email.\n"
 "###CAUSE###\n"
 "First, visit your website (###SITEURL###) and check for any visible issues. Next, visit the page where the error was caught (###PAGEURL###) and check for any visible issues.\n"
 "\n"
@@ -3531,7 +3531,7 @@ msgstr "Blocks"
 #. translators: Abbreviated date/time format, see https://secure.php.net/date
 #: wp-includes/script-loader.php:615
 msgid "M j, Y g:i a"
-msgstr "M j, Y g:i a"
+msgstr "j M Y g:i a"
 
 #: wp-includes/js/dist/editor.js:12902
 msgid "Blocks"
@@ -13306,7 +13306,7 @@ msgstr "Check the junk or spam folder of your email client. Sometime emails wind
 
 #: wp-signup.php:838
 msgid "Wait a little longer. Sometimes delivery of email can be delayed by processes outside of our control."
-msgstr "Wait a little longer. Sometimes delivery of email can be delayed by processes outside of our control."
+msgstr "Wait a little longer. Sometimes delivery of email can be delayed by processes beyond our control."
 
 #: wp-signup.php:972
 msgid "Sorry, new registrations are not allowed at this time."

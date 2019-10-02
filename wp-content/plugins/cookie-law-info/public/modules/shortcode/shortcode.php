@@ -95,14 +95,14 @@ class Cookie_Law_Info_Shortcode {
         {
             if($_COOKIE["viewed_cookie_policy"]=='yes')
             {
-                $html.=__('Consent Accepted. ','cookie-law-info');
+                $html.=' '.__('Consent Accepted.','cookie-law-info');
             }else
             {
-                $html.=__('Consent rejected.','cookie-law-info');
+                $html.=' '.__('Consent rejected.','cookie-law-info');
             }
         }else //no conset given
         {
-            $html.=__('No consent given.','cookie-law-info');
+            $html.=' '.__('No consent given.','cookie-law-info');
         }
         $html.=' <a class="cli_manage_current_consent" style="cursor:pointer;">'.__('Manage your consent.','cookie-law-info').'</a> </div>';
         return $html;
@@ -190,6 +190,11 @@ class Cookie_Law_Info_Shortcode {
             'order' => 'ASC',
             'orderby' => 'title'
         );
+        global $sitepress;
+        if(function_exists('icl_object_id') && $sitepress) //wpml enabled
+        {
+            $args['suppress_filters']=false;
+        }
         $posts = get_posts($args);
         $ret = '<table class="cookielawinfo-row-cat-table cookielawinfo-' . $style . '"><thead><tr>';
         if(in_array('cookie',$columns))
