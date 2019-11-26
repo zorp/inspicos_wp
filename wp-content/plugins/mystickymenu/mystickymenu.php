@@ -3,7 +3,7 @@
 Plugin Name: myStickymenu
 Plugin URI: https://premio.io/
 Description: Simple sticky (fixed on top) menu implementation for navigation menu and Welcome bar for announcements and promotion. After install go to Settings / myStickymenu and change Sticky Class to .your_navbar_class or #your_navbar_id.
-Version: 2.2.3
+Version: 2.2.6
 Author: Premio
 Author URI: https://premio.io/downloads/mystickymenu/
 Text Domain: mystickymenu
@@ -12,9 +12,13 @@ License: GPLv2 or later
 */
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define( 'MYSTICKY_VERSION', '2.2.3' );
+define( 'MYSTICKY_VERSION', '2.2.6' );
 require_once("mystickymenu-fonts.php");
 require_once("welcome-bar.php");
+
+if(is_admin()) {
+    include_once 'class-review-box.php';
+}
 
 class MyStickyMenuBackend
 {
@@ -117,6 +121,9 @@ class MyStickyMenuBackend
 				foreach($post as $key=>$value) {
 					$post[$key] = self::sanitize_options($value);
 				}
+				
+				$post['device_desktop'] = 'on';
+				$post['device_mobile'] = 'on';
 				update_option( 'mysticky_option_name', $post);
 				echo '<div class="updated settings-error notice is-dismissible "><p><strong>' . esc_html__('Settings saved.','mystickymenu'). '</p></strong></div>';
 			} else {
@@ -156,7 +163,7 @@ class MyStickyMenuBackend
 
 		$mysticky_options = get_option( 'mysticky_option_name');
 		$is_old = get_option("has_sticky_header_old_version");
-		$is_old = ($is_old == "no")?false:true;
+		$is_old = ($is_old == "yes")?true:false;
 		$nonce = wp_create_nonce('mysticky_option_backend_update');
         $pro_url = "https://go.premio.io/?edd_action=add_to_cart&download_id=2199&edd_options[price_id]=";
 		
@@ -212,15 +219,15 @@ class MyStickyMenuBackend
 		<div id="mystickymenu" class="wrap mystickymenu">
 			<div class="sticky-header-menu">
 				<ul>
-					<li><a href="#sticky-header-settings" class="<?php echo $welcomebar_inactive_class; ?>"><?php _e('Sticky Menu', 'mystickymenu'); ?></a></li>
-					<li><a href="#sticky-header-welcome-bar" class="<?php echo $welcomebar_active_class; ?>"><?php _e('Welcome Bar', 'mystickymenu'); ?></a></li>
-					<li><a href="#sticky-header-upgrade" class="<?php echo (isset($_GET['type'])&&$_GET['type']=="upgrade")?"active":"" ?>"><?php _e('Upgrade to Pro', 'mystickymenu'); ?></a></li>
+					<li><a href="#sticky-header-settings" class="<?php echo $welcomebar_inactive_class; ?>"><?php esc_attr_e('Sticky Menu', 'mystickymenu'); ?></a></li>
+					<li><a href="#sticky-header-welcome-bar" class="<?php echo $welcomebar_active_class; ?>"><?php esc_attr_e('Welcome Bar', 'mystickymenu'); ?></a></li>
+					<li><a href="#sticky-header-upgrade" class="<?php echo (isset($_GET['type'])&&$_GET['type']=="upgrade")?"active":"" ?>"><?php esc_attr_e('Upgrade to Pro', 'mystickymenu'); ?></a></li>
 				</ul>
 			</div>
 			<div style="<?php echo $welcomebar_inactive_block; ?>" id="sticky-header-settings" class="sticky-header-content">
 				<div class="mystickymenu-heading">
 					<div class="myStickymenu-header-title">
-						<h3><?php _e('How To Make a Sticky Header', 'mystickymenu'); ?></h3>
+						<h3><?php esc_attr_e('How To Make a Sticky Header', 'mystickymenu'); ?></h3>
 					</div>
 					<p><?php _e("Add sticky menu / header to any theme. <br />Simply change 'Sticky Class' to HTML element class desired to be sticky (div id can be used as well).", 'mystickymenu'); ?></p>
 				</div>
@@ -332,7 +339,7 @@ class MyStickyMenuBackend
 						<tr>
 							<td>
 								<label for="myfixed_disable_small_screen" class="mysticky_title"><?php _e("Disable at Small Screen Sizes", 'mystickymenu')?></label>
-								<p class="description"><?php _e('Less than chosen screen width, set 0 to disable','mystickymenu');?></p>
+								<p class="description"><?php esc_attr_e('Less than chosen screen width, set 0 to disable','mystickymenu');?></p>
 							</td>
 							<td>
 								<div class="px-wrap">
@@ -342,7 +349,7 @@ class MyStickyMenuBackend
 							</td>
 							<td>
 								<label for="mysticky_active_on_height" class="mysticky_title"><?php _e("Make visible on Scroll", 'mystickymenu')?></label>
-								<p class="description"><?php _e('If set to 0 auto calculate will be used.','mystickymenu');?></p>
+								<p class="description"><?php esc_attr_e('If set to 0 auto calculate will be used.','mystickymenu');?></p>
 							</td>
 							<td>
 								<div class="px-wrap">
@@ -404,6 +411,94 @@ class MyStickyMenuBackend
 							</label>
 						</p>
 					</div>
+					<div class="mysticky-page-target-setting mystickymenu-content-option">
+						<label class="mysticky_title"><?php esc_attr_e('Page targeting', 'myStickymenu'); ?></label>
+						<div class="mystickymenu-input-section mystickymenu-page-target-wrap">
+							<div class="mysticky-welcomebar-setting-content-right">
+								<div class="mysticky-page-options" id="mysticky-welcomebar-page-options">
+									<?php $page_option = (isset($mysticky_options['mysticky_page_settings'])) ? $mysticky_options['mysticky_page_settings'] : array();
+									$url_options = array(
+										'page_contains' => 'pages that contain',
+										'page_has_url' => 'a specific page',
+										'page_start_with' => 'pages starting with',
+										'page_end_with' => 'pages ending with',
+									);
+
+									if(!empty($page_option) && is_array($page_option)) {
+										$count = 0;
+										foreach($page_option as $k=>$option) {
+											$count++;
+											?>
+											<div class="mysticky-page-option <?php echo $k==count($page_option)?"last":""; ?>">
+												<div class="url-content">
+													<div class="mysticky-welcomebar-url-select">
+														<select name="mysticky_option_name[mysticky_page_settings][<?php echo $count; ?>][shown_on]" id="url_shown_on_<?php echo $count  ?>_option">
+															<option value="show_on" <?php echo $option['shown_on']=="show_on"?"selected":"" ?> ><?php esc_html_e( 'Show on', 'mysticky' )?></option>
+															<option value="not_show_on" <?php echo $option['shown_on']=="not_show_on"?"selected":"" ?>><?php esc_html_e( "Don't show on", "mysticky" );?></option>
+														</select>
+													</div>
+													<div class="mysticky-welcomebar-url-option">
+														<select class="mysticky-url-options" name="mysticky_option_name[mysticky_page_settings][<?php echo $count; ?>][option]" id="url_rules_<?php echo $count  ?>_option">
+															<option disabled value=""><?php esc_html_e( "Select Rule", "mysticky" );?></option>
+															<?php foreach($url_options as $key=>$value) {
+																$selected = ( isset($option['option']) && $option['option']==$key )?" selected='selected' ":"";
+																echo '<option '.$selected.' value="'.$key.'">'.$value.'</option>';
+															} ?>
+														</select>
+													</div>
+													<div class="mysticky-welcomebar-url-box">
+														<span class='mysticky-welcomebar-url'><?php echo site_url("/"); ?></span>
+													</div>
+													<div class="mysticky-welcomebar-url-values">
+														<input type="text" value="<?php echo $option['value'] ?>" name="mysticky_option_name[mysticky_page_settings][<?php echo $count; ?>][value]" id="url_rules_<?php echo $count; ?>_value" />
+													</div>
+													<div class="mysticky-welcomebar-url-buttons">
+														<a class="mysticky-remove-rule" href="javascript:;">x</a>
+													</div>
+													<div class="clear"></div>
+												</div>
+											</div>
+											<?php
+										}
+									}
+									?>
+								</div>
+								<a href="javascript:void(0);" class="create-rule" id="mysticky_create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
+							</div>
+							<input type="hidden" id="mysticky_welcomebar_site_url" value="<?php echo site_url("/") ?>" />
+							<div class="mysticky-page-options-html" style="display: none;">
+								<div class="mysticky-page-option">
+									<div class="url-content">
+										<div class="mysticky-welcomebar-url-select">
+											<select name="mysticky_option_name[mysticky_page_settings][__count__][shown_on]" id="url_shown_on___count___option" <?php echo !$is_pro_active?"disabled":"" ?>>
+												<option value="show_on"><?php esc_html_e("Show on", "mysticky" );?></option>
+												<option value="not_show_on"><?php esc_html_e("Don't show on", "mysticky" );?></option>
+											</select>
+										</div>
+										<div class="mysticky-welcomebar-url-option">
+											<select class="mysticky-url-options" name="mysticky_option_name[mysticky_page_settings][__count__][option]" id="url_rules___count___option" <?php echo !$is_pro_active?"disabled":"" ?>>
+												<option selected="selected" disabled value=""><?php esc_html_e("Select Rule", "mysticky" );?></option>
+												<?php foreach($url_options as $key=>$value) {
+													echo '<option value="'.$key.'">'.$value.'</option>';
+												} ?>
+											</select>
+										</div>
+										<div class="mysticky-welcomebar-url-box">
+											<span class='mysticky-welcomebar-url'><?php echo site_url("/"); ?></span>
+										</div>
+										<div class="mysticky-welcomebar-url-values">
+											<input type="text" value="" name="mysticky_option_name[mysticky_page_settings][__count__][value]" id="url_rules___count___value" <?php echo !$is_pro_active?"disabled":"" ?> />
+										</div>
+										<div class="mysticky-welcomebar-url-buttons">
+											<a class="mysticky-remove-rule" href="javascript:void(0);">x</a>
+										</div>
+										<div class="clear"></div>
+									</div>
+									<?php if(!$is_old) { ?><span class="myStickymenu-upgrade"><a class="sticky-header-upgrade-now" href="#" target="_blank"><?php _e( 'Upgrade Now', 'mystickymenu' );?></a></span><?php } ?>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="mystickymenu-content-option">
 						<label class="mysticky_title css-style-title"><?php _e("CSS style", 'mystickymenu'); ?></label>
 						<span class="mysticky_text"><?php _e( 'Add/edit CSS style. Leave it blank for default style.', 'mystickymenu');?></span>
@@ -440,55 +535,55 @@ class MyStickyMenuBackend
 								<li>
 									<label>
 										<input id="mysticky_disable_at_front_home" name="mysticky_option_name[mysticky_disable_at_front_home]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?>  <?php checked( @$mysticky_options['mysticky_disable_at_front_home'], 'on' );?>/>
-										<span><?php _e('front page', 'mystickymenu' );?></span>
+										<span><?php esc_attr_e('front page', 'mystickymenu' );?></span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_blog" name="mysticky_option_name[mysticky_disable_at_blog]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?>  <?php checked( @$mysticky_options['mysticky_disable_at_blog'], 'on' );?>/>
-										<span><?php _e('blog page', 'mystickymenu' );?></span>
+										<span><?php esc_attr_e('blog page', 'mystickymenu' );?></span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_page" name="mysticky_option_name[mysticky_disable_at_page]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?> <?php checked( @$mysticky_options['mysticky_disable_at_page'], 'on' );?> />
-										<span><?php _e('pages', 'mystickymenu' );?> </span>
+										<span><?php esc_attr_e('pages', 'mystickymenu' );?> </span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_tag" name="mysticky_option_name[mysticky_disable_at_tag]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?> <?php checked( @$mysticky_options['mysticky_disable_at_tag'], 'on' );?> />
-										<span><?php _e('tags', 'mystickymenu' );?> </span>
+										<span><?php esc_attr_e('tags', 'mystickymenu' );?> </span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_category" name="mysticky_option_name[mysticky_disable_at_category]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?>  <?php checked( @$mysticky_options['mysticky_disable_at_category'], 'on' );?>/>
-										<span><?php _e('categories', 'mystickymenu' );?></span>
+										<span><?php esc_attr_e('categories', 'mystickymenu' );?></span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_single" name="mysticky_option_name[mysticky_disable_at_single]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?> <?php checked( @$mysticky_options['mysticky_disable_at_single'], 'on' );?> />
-										<span><?php _e('posts', 'mystickymenu' );?> </span>
+										<span><?php esc_attr_e('posts', 'mystickymenu' );?> </span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_archive" name="mysticky_option_name[mysticky_disable_at_archive]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?> <?php checked( @$mysticky_options['mysticky_disable_at_archive'], 'on' );?> />
-										<span><?php _e('archives', 'mystickymenu' );?> </span>
+										<span><?php esc_attr_e('archives', 'mystickymenu' );?> </span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_search" name="mysticky_option_name[mysticky_disable_at_search]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?> <?php checked( @$mysticky_options['mysticky_disable_at_search'], 'on' );?> />
-										<span><?php _e('search', 'mystickymenu' );?> </span>
+										<span><?php esc_attr_e('search', 'mystickymenu' );?> </span>
 									</label>
 								</li>
 								<li>
 									<label>
 										<input id="mysticky_disable_at_404" name="mysticky_option_name[mysticky_disable_at_404]" type="checkbox"  <?php echo !$is_old?"disabled":"" ?>  <?php checked( @$mysticky_options['mysticky_disable_at_404'], 'on' );?>/>
-										<span><?php _e('404', 'mystickymenu' );?> </span>
+										<span><?php esc_attr_e('404', 'mystickymenu' );?> </span>
 									</label>
 								</li>
 							</ul>
@@ -525,19 +620,20 @@ class MyStickyMenuBackend
 							<p></p>
 						</div>
 					</div>
+					
 				</div>
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Save', 'mystickymenu');?>">
+					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e('Save', 'mystickymenu');?>">
 				</p>
 				<input type="hidden" name="nonce" value="<?php echo $nonce ?>">
 				</form>
 				<form class="mysticky-hideformreset" method="post" action="">
-					<input name="reset_mysticky_options" class="button button-secondary confirm" type="submit" value="<?php _e('Reset', 'mystickymenu');?>" >
+					<input name="reset_mysticky_options" class="button button-secondary confirm" type="submit" value="<?php esc_attr_e('Reset', 'mystickymenu');?>" >
 					<input type="hidden" name="action" value="reset" />
 					<?php $nonce = wp_create_nonce('mysticky_option_backend_reset_nonce'); ?>
 					<input type="hidden" name="nonce" value="<?php echo $nonce ?>">
 				</form>
-				<p class="myStickymenu-review"><a href="https://wordpress.org/support/plugin/mystickymenu/reviews/" target="_blank"><?php _e('Leave a review','mystickymenu'); ?></a></p>
+				<p class="myStickymenu-review"><a href="https://wordpress.org/support/plugin/mystickymenu/reviews/" target="_blank"><?php esc_attr_e('Leave a review','mystickymenu'); ?></a></p>
 			</div>
 			<div style="<?php echo $welcomebar_active_block; ?>" id="sticky-header-welcome-bar" class="sticky-header-content">
 				<?php mysticky_welcome_bar_backend(); ?>
@@ -561,7 +657,7 @@ class MyStickyMenuBackend
 								<div class="rpt_feature rpt_feature_0-1"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>You can show the menu when scrolling up, down or both</span>Show on scroll up/down<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_0-2"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>You can disable the sticky effect on desktop or mobile</span>Devices<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_0-3"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Add CSS of your own to the sticky menu</span>CSS style<span class="rpt_tooltip_plus" > +</span></a></div>
-								<div class="rpt_feature rpt_feature_0-4"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Exclude pages you don't want to have sticky menu</span>Page targeting<span class="rpt_tooltip_plus" > +</span></a></div>
+								<div class="rpt_feature rpt_feature_0-4"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Show/hide the sticky menu on specific pages</span>Page targeting<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_0-5"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Fade/Slide, opacity, background color, transition time and more</span>Effects and more<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_0-6"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Including page targeting, delay and scroll triggers, devices, position, height, expiry date, open link in a new tab and remove credit</span>Welcome bar<span class="rpt_tooltip_plus"> +</span></a></div>
                                 <div class="rpt_feature rpt_feature_0-9">
@@ -594,7 +690,7 @@ class MyStickyMenuBackend
 								<div class="rpt_feature rpt_feature_1-1"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>You can show the menu when scrolling up, down or both</span>Show on scroll up/down<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_1-2"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>You can disable the sticky effect on desktop or mobile</span>Devices<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_1-3"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Add CSS of your own to the sticky menu</span>CSS style<span class="rpt_tooltip_plus" > +</span></a></div>
-								<div class="rpt_feature rpt_feature_1-4"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Exclude pages you don't want to have sticky menu</span>Page targeting<span class="rpt_tooltip_plus" > +</span></a></div>
+								<div class="rpt_feature rpt_feature_1-4"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Show/hide the sticky menu on specific pages</span>Page targeting<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_1-5"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Fade/Slide, opacity, background color, transition time and more</span>Effects and more<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_1-6"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Including page targeting, delay and scroll triggers, devices, position, height, expiry date, open link in a new tab and remove credit</span>Welcome bar<span class="rpt_tooltip_plus"> +</span></a></div>
                                 <div class="rpt_feature rpt_feature_0-9">
@@ -627,7 +723,7 @@ class MyStickyMenuBackend
 								<div class="rpt_feature rpt_feature_2-1"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>You can show the menu when scrolling up, down or both</span>Show on scroll up/down<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_2-2"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>You can disable the sticky effect on desktop or mobile</span>Devices<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_2-3"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Add CSS of your own to the sticky menu</span>CSS style<span class="rpt_tooltip_plus" > +</span></a></div>
-								<div class="rpt_feature rpt_feature_2-4"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Exclude pages you don't want to have sticky menu</span>Page targeting<span class="rpt_tooltip_plus" > +</span></a></div>
+								<div class="rpt_feature rpt_feature_2-4"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Show/hide the sticky menu on specific pages</span>Page targeting<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_2-5"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Fade/Slide, opacity, background color, transition time and more</span>Effects and more<span class="rpt_tooltip_plus" > +</span></a></div>
 								<div class="rpt_feature rpt_feature_2-6"><a href="javascript:;" class="rpt_tooltip"><span class="intool"><b></b>Including page targeting, delay and scroll triggers, devices, position, height, expiry date, open link in a new tab and remove credit</span>Welcome bar<span class="rpt_tooltip_plus"> +</span></a></div>
                                 <div class="rpt_feature rpt_feature_0-9">
@@ -682,9 +778,66 @@ class MyStickyMenuBackend
 		} else {
 			$mysticky_class_id_selector = 'custom';
 		}
+		
+		$mystickyClass = '.navbar';		
+		$template_name = get_template();
+		switch( $template_name ){
+			case 'ashe':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '#main-nav';
+				break;
+			case 'astra':
+			case 'hello-elementor':
+			case 'sydney':
+			case 'twentysixteen':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = 'header.site-header';
+				break;
+			case 'generatepress':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = 'nav.main-navigation';
+				break;
+			case 'transportex':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '.transportex-menu-full';
+				break;
+			case 'hestia':
+			case 'neve':	
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = 'header.header';
+				break;
+			case 'mesmerize':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '.navigation-bar';
+				break;
+			case 'oceanwp':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = 'header#site-header';
+				break;
+			case 'shapely':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '#site-navigation';
+				break;
+			case 'storefront':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '.storefront-primary-navigation';
+				break;
+			case 'twentynineteen':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '#site-navigation';
+				break;				
+			case 'twentyseventeen':
+				$mysticky_class_id_selector = 'custom';
+				$mystickyClass = '.navigation-top';
+				break;
+			default:
+				break;
+		}
+		
+		
 		$default = array(
 				'mysticky_class_id_selector'	=> $mysticky_class_id_selector,
-				'mysticky_class_selector' 		=> '.navbar',
+				'mysticky_class_selector' 		=> $mystickyClass,
 				'device_desktop' 				=> 'on',
 				'device_mobile' 				=> 'on',
 				'myfixed_zindex' 				=> '99990',
@@ -774,6 +927,32 @@ class MyStickyMenuFrontend
 				echo $mysticky_options ['myfixed_cssstyle'];
 			}
 			echo '</style>';
+			$template_name = get_template();
+			?>
+			<style type="text/css">
+				<?php if( $template_name == 'hestia' ) { ?>
+					#mysticky-nav.wrapfixed {box-shadow: 0 1px 10px -6px #0000006b,0 1px 10px 0 #0000001f,0 4px 5px -2px #0000001a;}
+					#mysticky-nav.wrapfixed .navbar {position: relative;background-color: transparent;box-shadow: none;}
+				<?php } ?>
+				<?php if( $template_name == 'shapely' ) { ?>
+					#mysticky-nav.wrapfixed #site-navigation {position: relative;}
+				<?php } ?>
+				<?php if( $template_name == 'storefront' ) { ?>
+					#mysticky-nav.wrapfixed > .site-header {margin-bottom: 0;}
+					#mysticky-nav.wrapfixed > .storefront-primary-navigation {padding: 10px 0;}
+				<?php } ?>
+				<?php if( $template_name == 'transportex' ) { ?>
+					#mysticky-nav.wrapfixed > .transportex-menu-full {margin: 0 auto;}
+					.transportex-headwidget #mysticky-nav.wrapfixed .navbar-wp {top: 0;}
+				<?php } ?>
+				<?php if( $template_name == 'twentynineteen' ) { ?>
+					#mysticky-nav.wrapfixed {padding: 10px;}
+				<?php } ?>
+				<?php if( $template_name == 'twentysixteen' ) { ?>
+					#mysticky-nav.wrapfixed > .site-header {padding-top: 0;padding-bottom: 0;}
+				<?php } ?>
+			</style>
+			<?php
 		}
 	}
 	
@@ -863,6 +1042,52 @@ class MyStickyMenuFrontend
 		$mystickyDisableLarge = isset($mysticky_options['myfixed_disable_large_screen']) ? $mysticky_options['myfixed_disable_large_screen'] : '0';
 
 		$mystickyClass = ( $mysticky_options['mysticky_class_id_selector'] != 'custom') ? '.menu-' . $mysticky_options['mysticky_class_id_selector'] .'-container' : $mysticky_options['mysticky_class_selector'];
+		
+		if ( $mysticky_options['mysticky_class_id_selector'] != 'custom' ) {
+			$template_name = get_template();
+			switch( $template_name ){
+				case 'ashe':
+					$mystickyClass = '#main-nav';
+					break;
+				case 'astra':
+				case 'hello-elementor':
+				case 'sydney':
+				case 'twentysixteen':
+					$mystickyClass = 'header.site-header';
+					break;
+				case 'generatepress':
+					$mystickyClass = 'nav.main-navigation';
+					break;
+				case 'transportex':
+					$mystickyClass = '.transportex-menu-full';
+					break;
+				case 'hestia':
+				case 'neve':				
+					$mystickyClass = 'header.header';
+					break;
+				case 'mesmerize':
+					$mystickyClass = '.navigation-bar';
+					break;
+				case 'oceanwp':
+					$mystickyClass = 'header#site-header';
+					break;
+				case 'shapely':
+					$mystickyClass = '#site-navigation';
+					break;
+				case 'storefront':
+					$mystickyClass = '.storefront-primary-navigation';
+					break;
+				case 'twentynineteen':
+					$mystickyClass = '#site-navigation';
+					break;				
+				case 'twentyseventeen':
+					$mystickyClass = '.navigation-top';
+					break;
+				default:
+					break;
+			}
+		}
+		
 
 		$mysticky_translation_array = array(
 		    'mystickyClass' 			=> $mystickyClass,
@@ -977,6 +1202,8 @@ class MyStickyMenuFrontend
 
 if( is_admin() ) {
 	new MyStickyMenuBackend();
+	require_once 'mystickymenu-affiliate.php';
+	
 } else {
 	new MyStickyMenuFrontend();
 }

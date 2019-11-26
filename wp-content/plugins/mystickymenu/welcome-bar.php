@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 function mysticky_welcome_bar_backend() {
 	$nonce = wp_create_nonce('mysticky_option_welcomebar_update');
 	$nonce_reset = wp_create_nonce('mysticky_option_welcomebar_reset');
-	
+
 	$welcomebar = get_option( 'mysticky_option_welcomebar' );
 	if ( $welcomebar == '' || empty($welcomebar)) {
 		$welcomebar = mysticky_welcomebar_pro_widget_default_fields();
 	}
-	
+
 	$mysticky_welcomebar_showx_desktop = $mysticky_welcomebar_showx_mobile = '';
 	$mysticky_welcomebar_btn_desktop = $mysticky_welcomebar_btn_mobile = '';
 	$mysticky_welcomebar_display_desktop = $mysticky_welcomebar_display_mobile = '';
@@ -218,7 +218,7 @@ function mysticky_welcome_bar_backend() {
 									</label>
 									<label>
 										<input type="radio" name="mysticky_option_welcomebar[mysticky_welcomebar_trigger]" value="after_scroll" disabled />&nbsp;<?php _e( 'After Scroll', 'myStickymenu' );?>
-									</label>								
+									</label>
 								</div>
 								<div class="mysticky-welcomebar-setting-action mysticky-welcomebar-triggersec">
 									<div class="px-wrap">
@@ -238,36 +238,36 @@ function mysticky_welcome_bar_backend() {
 							</div>
 						</div>
 						<div class="mysticky-welcomebar-setting-content show-on-apper">
-						<label><?php _e('Page targeting', 'myStickymenu'); ?></label>
-						<div class="mysticky-welcomebar-setting-content-right">
-							<a href="javascript:void(0);" class="create-rule" id="create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
-						</div>
-						<div class="mysticky-welcomebar-page-options-html" style="display: none">
-							<div class="mysticky-welcomebar-page-option">
-								<div class="url-content">
-									<div class="mysticky-welcomebar-url-select">
-										<select name="mysticky_option_welcomebar[page_settings][__count__][shown_on]" id="url_shown_on___count___option" disabled>
-											<option value="show_on"><?php esc_html_e("Show on", "mysticky" );?></option>
-											<option value="not_show_on"><?php esc_html_e("Don't show on", "mysticky" );?></option>
-										</select>
+							<label><?php _e('Page targeting', 'myStickymenu'); ?></label>
+							<div class="mysticky-welcomebar-setting-content-right">
+								<a href="javascript:void(0);" class="create-rule" id="create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
+							</div>
+							<div class="mysticky-welcomebar-page-options-html" style="display: none">
+								<div class="mysticky-welcomebar-page-option">
+									<div class="url-content">
+										<div class="mysticky-welcomebar-url-select">
+											<select name="mysticky_option_welcomebar[page_settings][__count__][shown_on]" id="url_shown_on___count___option" disabled>
+												<option value="show_on"><?php esc_html_e("Show on", "mysticky" );?></option>
+												<option value="not_show_on"><?php esc_html_e("Don't show on", "mysticky" );?></option>
+											</select>
+										</div>
+										<div class="mysticky-welcomebar-url-option">
+											<select class="mysticky-welcomebar-url-options" name="mysticky_option_welcomebar[page_settings][__count__][option]" id="url_rules___count___option" disabled>
+												<option selected="selected" disabled value=""><?php esc_html_e("Select Rule", "mysticky" );?></option>
+											</select>
+										</div>
+										<div class="mysticky-welcomebar-url-box">
+											<span class='mysticky-welcomebar-url'><?php echo site_url("/"); ?></span>
+										</div>
+										<div class="mysticky-welcomebar-url-values">
+											<input type="text" value="" name="mysticky_option_welcomebar[page_settings][__count__][value]" id="url_rules___count___value" disabled />
+										</div>
+										<div class="clear"></div>
 									</div>
-									<div class="mysticky-welcomebar-url-option">
-										<select class="mysticky-welcomebar-url-options" name="mysticky_option_welcomebar[page_settings][__count__][option]" id="url_rules___count___option" disabled>
-											<option selected="selected" disabled value=""><?php esc_html_e("Select Rule", "mysticky" );?></option>
-										</select>
-									</div>
-									<div class="mysticky-welcomebar-url-box">
-										<span class='mysticky-welcomebar-url'><?php echo site_url("/"); ?></span>
-									</div>
-									<div class="mysticky-welcomebar-url-values">
-										<input type="text" value="" name="mysticky_option_welcomebar[page_settings][__count__][value]" id="url_rules___count___value" disabled />
-									</div>
-									<div class="clear"></div>
 								</div>
 							</div>
+							<div class="mysticky-welcomebar-page-options mysticky-welcomebar-setting-content-right" id="mysticky-welcomebar-page-options" style="display:none"></div>
 						</div>
-					</div>
-					<div class="mysticky-welcomebar-page-options mysticky-welcomebar-setting-content-right" id="mysticky-welcomebar-page-options"></div>
 					</div>
 				</div>
 			</div>
@@ -290,13 +290,13 @@ function mysticky_welcome_bar_backend() {
 				</div>
 			</div>
 		</div>
-		<div class="mysticky-welcomebar-submit">			
+		<div class="mysticky-welcomebar-submit">
 			<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Save', 'mystickymenu');?>">
 		</div>
 		<input type="hidden" name="nonce" value="<?php echo $nonce; ?>">
 		<input type="hidden" name="active_tab_element" value="1">
 		<input type="hidden" id="save_welcome_bar" name="save_welcome_bar" value="">
-		
+
 	</form>
 	<form class="mysticky-welcomebar-form-reset" method="post" action="#">
 		<div class="mysticky-welcomebar-submit">
@@ -342,7 +342,7 @@ function mysticky_welcome_bar_backend() {
 			font-family: inherit;
 			margin: 0;
 			padding: 0;
-			line-height: 1.2;			
+			line-height: 1.2;
 			font-weight: 400;
 		}
 		.mysticky-welcomebar-fixed .mysticky-welcomebar-btn {
@@ -424,8 +424,8 @@ function mysticky_welcome_bar_backend() {
 		.mysticky-welcomebar-getbar:hover {
 			color: #000000 !important;
 			opacity: 0.5 !important;
-		}	
-		
+		}
+
 		@media only screen and (max-width: 1024px) {
 			.mysticky-welcomebar-fixed {
 				padding: 0 20px 0 10px;
@@ -438,7 +438,7 @@ function mysticky_welcome_bar_backend() {
 			}
 		}
 	</style>
-	
+
 	<?php
 }
 
@@ -472,7 +472,7 @@ function mysticky_welcomebar_pro_widget_default_fields() {
 
 function mysticky_welcome_bar_frontend(){
 	$welcomebar = get_option( 'mysticky_option_welcomebar' );
-	
+
 	if ( ( isset($welcomebar['mysticky_welcomebar_expirydate']) && $welcomebar['mysticky_welcomebar_expirydate'] !='' && strtotime( date('m/d/Y')) > strtotime($welcomebar['mysticky_welcomebar_expirydate']) ) || !isset($welcomebar['mysticky_welcomebar_enable'] ) ) {
 		return;
 	}
@@ -491,12 +491,12 @@ function mysticky_welcome_bar_frontend(){
 	if( isset($welcomebar['mysticky_welcomebar_btn_mobile']) ) {
 		$mysticky_welcomebar_btn_mobile = ' mysticky-welcomebar-btn-mobile';
 	}
-	
+
 	$mysticky_welcomebar_display_desktop = ' mysticky-welcomebar-display-desktop';
 	$mysticky_welcomebar_display_mobile = ' mysticky-welcomebar-display-mobile';
-	
+
 	$display_main_class = "mysticky-welcomebar-position-" . $welcomebar['mysticky_welcomebar_position'] . $mysticky_welcomebar_showx_desktop . $mysticky_welcomebar_showx_mobile . $mysticky_welcomebar_btn_desktop . $mysticky_welcomebar_btn_mobile . $mysticky_welcomebar_display_desktop . $mysticky_welcomebar_display_mobile;
-	
+
 	if( isset($welcomebar['mysticky_welcomebar_actionselect']) ) {
 		if( $welcomebar['mysticky_welcomebar_actionselect'] == 'redirect_to_url' ) {
 			$mysticky_welcomebar_actionselect_url = esc_url( $welcomebar['mysticky_welcomebar_redirect'] );
@@ -511,7 +511,7 @@ function mysticky_welcome_bar_frontend(){
 			$welcomebar_enable_block = "bottom: -60px";
 		}
 	}
-	
+
 	?>
 	<div class="mysticky-welcomebar-fixed <?php echo $display_main_class; ?>" style="<?php echo $welcomebar_enable_block; ?>" data-after-triger="after_a_few_seconds" data-triger-sec="0" data-position="<?php echo esc_attr($welcomebar['mysticky_welcomebar_position']);?>" data-height="<?php echo esc_attr($welcomebar['mysticky_welcomebar_height']);?>" data-rediect="<?php echo esc_attr($welcomebar['mysticky_welcomebar_actionselect']);?>">
 		<div class="mysticky-welcomebar-content">
@@ -521,24 +521,25 @@ function mysticky_welcome_bar_frontend(){
 			<a href="<?php echo $mysticky_welcomebar_actionselect_url; ?>" <?php if( isset($welcomebar['mysticky_welcomebar_redirect_newtab']) && $welcomebar['mysticky_welcomebar_actionselect'] == 'redirect_to_url' && $welcomebar['mysticky_welcomebar_redirect_newtab']== 1):?> target="_blank" <?php endif;?>><?php echo isset($welcomebar['mysticky_welcomebar_btn_text'])?$welcomebar['mysticky_welcomebar_btn_text']:"Got it!";?></a>
 		</div>
 		<a href="javascript:void(0)" class="mysticky-welcomebar-close">X</a>
-		<a href="https://premio.io/downloads/mystickymenu/?utm_source=credit&domain=<?php echo $_SERVER['HTTP_HOST']; ?>" class="mysticky-welcomebar-getbar" target="_blank"><?php _e( 'Get Bar', 'mystickymenu' );?></a>
+		<a href="https://premio.io/downloads/mystickymenu/?utm_source=credit&domain=<?php echo $_SERVER['HTTP_HOST']; ?>" class="mysticky-welcomebar-getbar" target="_blank" rel="noopener"><?php _e( 'Get Bar', 'mystickymenu' );?></a>
 	</div>
-	<script>		
-	
+	<script>
+
 	jQuery(document).ready(function($){
+		var mysticky_welcomebar_height = jQuery( '.mysticky-welcomebar-fixed' ).innerHeight();
 		if( jQuery( '.mysticky-welcomebar-fixed' ).data('position') == 'top' ) {
-			jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '-60px' );
+			jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '-' + mysticky_welcomebar_height + 'px' );
 		} else {
-			jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '-60px' );
-		}			
+			jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '-' + mysticky_welcomebar_height + 'px' );
+		}
 		if ( sessionStorage.getItem("welcomebar_close") === null ){
-			
+
 			var after_trigger = jQuery( '.mysticky-welcomebar-fixed' ).data('after-triger');
-			
-			if ( after_trigger == 'after_a_few_seconds' ) {				
+
+			if ( after_trigger == 'after_a_few_seconds' ) {
 				if ( $( '.mysticky-welcomebar-fixed' ).hasClass( 'mysticky-welcomebar-display-desktop' ) ) {
 					if ( $( window ).width() > 767 ) {
-						var trigger_sec = jQuery( '.mysticky-welcomebar-fixed' ).data('triger-sec') * 1000;						
+						var trigger_sec = jQuery( '.mysticky-welcomebar-fixed' ).data('triger-sec') * 1000;
 						var welcombar_position = $( '.mysticky-welcomebar-fixed' ).data('position');
 						var welcombar_height = $( '.mysticky-welcomebar-fixed' ).data('height');
 						setTimeout(function(){
@@ -548,13 +549,13 @@ function mysticky_welcome_bar_frontend(){
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '0' );
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 								$( 'html' ).css( 'margin-bottom', '' );
-								$( 'html' ).attr( 'style', 'margin-top: 60px !important' );
-								$( '#mysticky-nav' ).css( 'top', '60px' );
+								$( 'html' ).attr( 'style', 'margin-top: ' + mysticky_welcomebar_height + 'px !important' );
+								$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 							} else {
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '0' );
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 								$( 'html' ).css( 'margin-top', '' );
-								$( 'html' ).attr( 'style', 'margin-bottom: 60px !important' );
+								$( 'html' ).attr( 'style', 'margin-bottom: ' + mysticky_welcomebar_height + 'px !important' );
 							}
 						}, trigger_sec );
 					}
@@ -572,20 +573,21 @@ function mysticky_welcome_bar_frontend(){
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '0' );
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 								$( 'html' ).css( 'margin-bottom', '' );
-								$( 'html' ).attr( 'style', 'margin-top: 60px !important' );
-								$( '#mysticky-nav' ).css( 'top', '60px' );
+								$( 'html' ).attr( 'style', 'margin-top: ' + mysticky_welcomebar_height + 'px !important' );
+								$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 							} else {
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '0' );
 								jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 								$( 'html' ).css( 'margin-top', '' );
-								$( 'html' ).attr( 'style', 'margin-bottom: 60px !important' );
+								$( 'html' ).attr( 'style', 'margin-bottom: ' + mysticky_welcomebar_height + 'px !important' );
 							}
 						}, trigger_sec );
 					}
 				}
 			}
+			mystickyelements_present();
 		}
-		$( window ).resize( function(){				
+		$( window ).resize( function(){
 			if ( sessionStorage.getItem("welcomebar_close") === null ){
 				var after_trigger = jQuery( '.mysticky-welcomebar-fixed' ).data('after-triger');
 				if ( after_trigger == 'after_a_few_seconds' ) {
@@ -600,13 +602,13 @@ function mysticky_welcome_bar_frontend(){
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-bottom', '' );
-									$( 'html' ).attr( 'style', 'margin-top: 60px !important' );
-									$( '#mysticky-nav' ).css( 'top', '60px' );
+									$( 'html' ).attr( 'style', 'margin-top: ' + mysticky_welcomebar_height + 'px !important' );
+									$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 								} else {
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-top', '' );
-									$( 'html' ).attr( 'style', 'margin-bottom: 60px !important' );
+									$( 'html' ).attr( 'style', 'margin-bottom: ' + mysticky_welcomebar_height + 'px !important' );
 								}
 							}, trigger_sec );
 						}
@@ -618,30 +620,31 @@ function mysticky_welcome_bar_frontend(){
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-bottom', '' );
-									$( 'html' ).attr( 'style', 'margin-top: 60px !important' );
-									$( '#mysticky-nav' ).css( 'top', '60px' );
+									$( 'html' ).attr( 'style', 'margin-top: ' + mysticky_welcomebar_height + 'px !important' );
+									$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 								} else {
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-top', '' );
-									$( 'html' ).attr( 'style', 'margin-bottom: 60px !important' );
+									$( 'html' ).attr( 'style', 'margin-bottom: ' + mysticky_welcomebar_height + 'px !important' );
 								}
 							}, trigger_sec );
 						}
 					}
 				}
-			}				
+				mystickyelements_present();
+			}
 		} );
-		
-		jQuery(window).scroll(function(){				
+
+		jQuery(window).scroll(function(){
 			if ( sessionStorage.getItem("welcomebar_close") === null ){
 				var welcombar_height = $( '.mysticky-welcomebar-fixed' ).data('height');
 				var welcombar_position = $( '.mysticky-welcomebar-fixed' ).data('position');
-				if ( welcombar_position == 'top' ) {					
-					$( '#mysticky-nav' ).css( 'top', welcombar_height + 'px' );
+				if ( welcombar_position == 'top' ) {
+					$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 				}
-				if ( after_trigger === 'after_scroll' ) {					
-					var scroll = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());  
+				if ( after_trigger === 'after_scroll' ) {
+					var scroll = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());
 					var after_scroll_val = jQuery( '.mysticky-welcomebar-fixed' ).data('triger-sec');
 					var welcombar_position = $( '.mysticky-welcomebar-fixed' ).data('position');
 					var welcombar_height = $( '.mysticky-welcomebar-fixed' ).data('height');
@@ -653,13 +656,13 @@ function mysticky_welcome_bar_frontend(){
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-bottom', '' );
-									$( 'html' ).attr( 'style', 'margin-top: 60px !important' );
-									$( '#mysticky-nav' ).css( 'top', '60px' );
+									$( 'html' ).attr( 'style', 'margin-top: ' + mysticky_welcomebar_height + 'px !important' );
+									$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 								} else {
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-top', '' );
-									$( 'html' ).attr( 'style', 'margin-bottom: 60px !important' );
+									$( 'html' ).attr( 'style', 'margin-bottom: ' + mysticky_welcomebar_height + 'px !important' );
 								}
 							}
 						}
@@ -670,36 +673,85 @@ function mysticky_welcome_bar_frontend(){
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-bottom', '' );
-									$( 'html' ).attr( 'style', 'margin-top: 60px !important' );
-									$( '#mysticky-nav' ).css( 'top', '60px' );
+									$( 'html' ).attr( 'style', 'margin-top: ' + mysticky_welcomebar_height + 'px !important' );
+									$( '#mysticky-nav' ).css( 'top', mysticky_welcomebar_height + 'px' );
 								} else {
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '0' );
 									jQuery( '.mysticky-welcomebar-fixed' ).css( 'opacity', '1' );
 									$( 'html' ).css( 'margin-top', '' );
-									$( 'html' ).attr( 'style', 'margin-bottom: 60px !important' );
+									$( 'html' ).attr( 'style', 'margin-bottom: ' + mysticky_welcomebar_height + 'px !important' );
 								}
 							}
 						}
 					}
 				}
+				mystickyelements_present();
 			}
-			
+
 		});
-		jQuery( '.mysticky-welcomebar-close, .mysticky-welcomebar-btn a' ).on( 'click', function(){				
-			sessionStorage.setItem('welcomebar_close', 'close');				
+		jQuery( '.mysticky-welcomebar-close, .mysticky-welcomebar-btn a' ).on( 'click', function(){
+			console.log("mysticky_welcomebar_height = " + mysticky_welcomebar_height);
+			sessionStorage.setItem('welcomebar_close', 'close');
 			var welcombar_position = $( '.mysticky-welcomebar-fixed' ).data('position');
-			var welcombar_height = $( '.mysticky-welcomebar-fixed' ).data('height');				
+			var welcombar_height = $( '.mysticky-welcomebar-fixed' ).data('height');
 			jQuery( '.mysticky-welcomebar-fixed' ).slideUp( 'slow' );
 			if ( welcombar_position == 'top' ) {
-				jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '-' + welcombar_height + 'px' );
+				jQuery( '.mysticky-welcomebar-fixed' ).css( 'top', '-' + mysticky_welcomebar_height + 'px' );
 			} else {
-				jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '-' + welcombar_height + 'px' );
+				jQuery( '.mysticky-welcomebar-fixed' ).css( 'bottom', '-' + mysticky_welcomebar_height + 'px' );
 			}
 			jQuery( 'html' ).css( 'margin-top', '' );
 			jQuery( 'html' ).css( 'margin-bottom', '' );
 			$( '#mysticky-nav' ).css( 'top', '0px' );
+			/*if mystickyelements show*/
+			var mystickyelements_show = $( '.mystickyelements-fixed' ).length;
+			if( mystickyelements_show && $( window ).width() <= 1024 && $( '.mystickyelements-fixed' ).hasClass( 'mystickyelements-position-mobile-top' ) && welcombar_position == 'top' ) {
+				var mystickyelements_height 	  = $( '.mystickyelements-fixed' ).height();
+				$( '.mystickyelements-fixed' ).css( 'top', '' );
+				$( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_height + 'px !important' );
+			}
 		} );
 	});
+	function mystickyelements_present() {
+		var after_trigger 		  = jQuery( '.mysticky-welcomebar-fixed' ).data('after-triger');
+		var mystickyelements_show = jQuery( '.mystickyelements-fixed' ).length;
+		if( mystickyelements_show ) {
+			var welcombar_position 			  = jQuery( '.mysticky-welcomebar-fixed' ).data('position');
+			var welcombar_height 			  = jQuery( '.mysticky-welcomebar-fixed' ).innerHeight();
+			var mystickyelements_height 	  = jQuery( '.mystickyelements-fixed' ).height();
+			var mystickyelements_total_height = welcombar_height + mystickyelements_height;
+			if ( jQuery( window ).width() <= 1024 && jQuery( '.mystickyelements-fixed' ).hasClass( 'mystickyelements-position-mobile-top' ) ) {
+				if ( after_trigger == 'after_a_few_seconds' ) {
+					if ( jQuery( '.mysticky-welcomebar-fixed' ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+						var trigger_sec = jQuery( '.mysticky-welcomebar-fixed' ).data('triger-sec') * 1000;
+						setTimeout(function(){
+							if ( welcombar_position == 'top' ) {
+								jQuery( '.mystickyelements-fixed' ).css( 'top', welcombar_height );
+								jQuery( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_total_height + 'px !important' );
+							} else {
+								jQuery( '.mystickyelements-fixed' ).css( 'top', '' );
+								jQuery( 'html' ).attr( 'style', 'margin-bottom: ' + welcombar_height + 'px !important' );
+							}
+						}, trigger_sec );
+					}
+				} else if ( after_trigger === 'after_scroll' ) {
+					var scroll = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());
+					var after_scroll_val = $( '.mysticky-welcomebar-fixed' ).data('triger-sec');
+					if( scroll > after_scroll_val ) {
+						if ( jQuery( '.mysticky-welcomebar-fixed' ).hasClass( 'mysticky-welcomebar-display-mobile' ) ) {
+							if ( welcombar_position == 'top' ) {
+								jQuery( '.mystickyelements-fixed' ).css( 'top', welcombar_height );
+								jQuery( 'html' ).attr( 'style', 'margin-top: ' + mystickyelements_total_height + 'px !important' );
+							} else {
+								jQuery( '.mystickyelements-fixed' ).css( 'top', '' );
+								jQuery( 'html' ).attr( 'style', 'margin-bottom: ' + welcombar_height + 'px !important' );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	</script>
 	<style>
 	.mysticky-welcomebar-fixed {
@@ -827,8 +879,8 @@ function mysticky_welcome_bar_frontend(){
 	.mysticky-welcomebar-getbar:hover {
 		color: #000000 !important;
 		opacity: 0.5 !important;
-	}	
-	@media only screen and (max-width: 767px) {			
+	}
+	@media only screen and (max-width: 767px) {
 		.mysticky-welcomebar-display-desktop.mysticky-welcomebar-position-top.mysticky-welcomebar-fixed {
 			top: -60px;
 		}

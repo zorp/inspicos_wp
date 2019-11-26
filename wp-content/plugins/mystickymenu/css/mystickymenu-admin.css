@@ -1502,6 +1502,7 @@ p.udner-title {
 	border: 1px solid #E1E6E6;
 	padding: 20px;
 	border-radius: 7px;
+    position: relative;
 }
 .mysticky-welcomebar-header-title h3 {
 	margin: 0;
@@ -1645,7 +1646,7 @@ a.create-rule {
 .mysticky-welcomebar-upgrade-main {
 	position: relative;
 	vertical-align: top;
-	width: 58%;
+	width: 100%;
 	padding-right: 10px;
 	padding-bottom: 0;
 }
@@ -1665,7 +1666,7 @@ a.create-rule {
 	float: left;
 	
 }
-.mysticky-welcomebar-page-option .url-content .mysticky-welcomebar-url-select,
+
 .mysticky-welcomebar-page-option .url-content .mysticky-welcomebar-url-values,
 .mysticky-welcomebar-page-option .url-content .mysticky-welcomebar-url-option{
 	width: 20%;
@@ -1675,15 +1676,67 @@ a.create-rule {
 	text-align: right;
 	margin-top: 10px;	
 }
-.mysticky-welcomebar-page-option .url-content select {
+
+/*.mysticky-welcomebar-page-option .url-content select {
 	width: 120px;	
 }
+*/
 .mysticky-welcomebar-page-option .url-content input[type="text"] {
 	height: 38px;
 	padding: 0 15px;
 	border-radius: 0;
 }
-.mysticky-welcomebar-remove-rule {
+
+.mysticky-page-option .myStickymenu-upgrade {
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(0,0,0,0.6);
+    bottom: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mysticky-page-option {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #DCE2E2;
+    border-radius: 10px;
+    position: relative;
+}
+.mysticky-page-option .url-content {
+    display: flex;
+    align-items: center;
+}
+.mysticky-page-option .url-content > div {
+    padding: 0 5px;
+}
+.mysticky-page-option .url-content > div.mysticky-welcomebar-url-box {
+    width: 260px;
+    text-align: right;
+}
+.mysticky-page-option .url-content > div.mysticky-welcomebar-url-box {
+    width: 300px;
+}
+.mysticky-page-option .url-content select {
+    width: 250px;
+}
+.mysticky-page-option .url-content input[type="text"] {
+    height: 38px;
+    padding: 0 15px;
+    border-radius: 0;
+}
+.mystickymenu-page-target-wrap {
+    padding-bottom: 20px;
+}
+
+.mysticky-welcomebar-remove-rule ,
+.mysticky-remove-rule {
 	color: #fff;
 	background-color: #666;
 	text-decoration: none;
@@ -1701,9 +1754,9 @@ a.create-rule {
 	vertical-align: top;
 }
 .mysticky-welcomebar-setting-right {
-	position: fixed;
-	top: 150px;
-	right: 70px;
+	position: absolute;
+	top: 32px;
+	right: 50px;
 	width: 500px;
 }
 .mysticky-welcomebar-header-title::after {

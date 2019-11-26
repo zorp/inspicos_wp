@@ -2,8 +2,8 @@
 Contributors: tomeraharon, galdub, premio
 Tags:menu, header, sticky menu, sticky header, floating menu, floating navigation menu, navigation menu, navigation, sticky navigation menu, welcome bar, hello bar, top bar, sticky bar, floating bar, notification bar
 Requires at least: 3.5.1
-Tested up to: 5.2
-Stable tag: 2.2.3
+Tested up to: 5.3
+Stable tag: 2.2.6
 License: GPLv2 or later
 
 This sticky menu plugin will make your menu or header stick to the top of page, when scrolled down and up. Also create a beautiful Welcome bar with it.
@@ -52,7 +52,7 @@ My Sticky Menu is tested and compatible with Elementor website builder, Divi, WP
 * Disable floating menu on Desktop/Mobile
 * Disable floating menu on scroll down
 * Add CSS style to the floating header
-* Disable floating header on specific pages
+* Disable/enable floating header on specific pages
 
 But wait, there's more 😉
 
@@ -257,6 +257,12 @@ After installing the plugin, you’ll have the option to turn on the welcome bar
 
 
 == Changelog ==
+= 2.2.6 =
+Sanitize input fixes
+= 2.2.5 =
+myStickyelements now works out-of-the-box with the following themes (which means you don't need to find your menu's class, it should work right after installation): Twenty Nineteen, Twenty Seventeen, Hello Elementor, OceanWP, Astra, Storefront, Twenty Sixteen, Neve, Hestia, Sydney, Shapely, GeneratePress, Mesmerize, Ashe, and Total. We've also added Google Lighthouse compatibility
+= 2.2.4 =
+Smoother transition when the sticky menu disappears
 = 2.2.3 =
 Pro version changes
 = 2.2.2 =

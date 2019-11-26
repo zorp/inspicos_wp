@@ -121,7 +121,8 @@
 	    $( '#create-rule' ).on( 'click', function(){
 	        var append_html = page_option_content.replace(/__count__/g, '1', page_option_content);
 	        $( '.mysticky-welcomebar-page-options' ).append( append_html );
-			$( this ).remove();
+			$( '.mysticky-welcomebar-page-options' ).show();
+			$( this ).parent().remove();
 	    });
 	    $( '.sticky-header-menu ul li a' ).on( 'click', function(){
 	    	if ( $( "#sticky-header-welcome-bar" ).is( ":visible" ) ) {
@@ -132,6 +133,45 @@
 			if ( $( "#sticky-header-welcome-bar" ).is( ":visible" ) ) {
 	    		check_for_preview_pos();
 	    	}
+		});
+		/*Mysticky page target*/
+		var mysticky_total_page_option = 0;
+		var mysticky_page_option_content = "";
+		mysticky_total_page_option = $( '.mysticky-page-option' ).length;
+	    mysticky_page_option_content = $( '.mysticky-page-options-html' ).html();
+	    $( '.mysticky-page-options-html' ).remove();
+
+	    $( '#mysticky_create-rule' ).on( 'click', function(){
+	    	
+	        var append_html = mysticky_page_option_content.replace(/__count__/g, mysticky_total_page_option, mysticky_page_option_content);
+	        mysticky_total_page_option++;
+	        $( '.mysticky-page-options' ).append( append_html );
+	        $( '.mysticky-page-options .mysticky-page-option' ).removeClass( 'last' );
+	        $( '.mysticky-page-options .mysticky-page-option:last' ).addClass( 'last' );
+			
+			if( $( '.mysticky-page-option .myStickymenu-upgrade' ).length > 0 ) {
+				$( this ).remove();
+			}
+	    });
+	    $( document ).on( 'click', '.mysticky-remove-rule', function() {
+	       $( this ).closest( '.mysticky-page-option' ).remove();
+	        $( '.mysticky-page-options .mysticky-page-option' ).removeClass( 'last' );
+	        $( '.mysticky-page-options .mysticky-page-option:last' ).addClass( 'last' );
+	    });
+		$( document ).on( 'change', '.mysticky-url-options', function() {
+			var current_val = jQuery( this ).val();
+			var mysticky_welcomebar_siteURL = jQuery( '#mysticky_welcomebar_site_url' ).val();
+			var mysticky_welcomebar_newURL  = mysticky_welcomebar_siteURL;
+			if( current_val == 'page_has_url' ) {
+				mysticky_welcomebar_newURL = mysticky_welcomebar_siteURL;
+			} else if( current_val == 'page_contains' ) {
+				mysticky_welcomebar_newURL = mysticky_welcomebar_siteURL + '%s%';
+			} else if( current_val == 'page_start_with' ) {
+				mysticky_welcomebar_newURL = mysticky_welcomebar_siteURL + 's%';
+			} else if( current_val == 'page_end_with' ) {
+				mysticky_welcomebar_newURL = mysticky_welcomebar_siteURL + '%s';
+			}
+			$( this ).closest( '.url-content' ).find( '.mysticky-welcomebar-url' ).text( mysticky_welcomebar_newURL );
 		});
 		/* welcome bar live preview */
 		/* Apply Wp Color Picker */
@@ -246,14 +286,22 @@
 	    });
 	});
 	function check_for_preview_pos() {
+		var mysticky_welcomebar_form_pos = $( '#sticky-header-welcome-bar' ).offset().top;
 		if($(".show-on-apper").length && $(".mysticky-welcomebar-setting-right").length) {
-			var topPos = $(".show-on-apper").offset().top - $(window).scrollTop() - 650;
+			var topPos = $(".show-on-apper").offset().top - $(window).scrollTop() - 700;
 			if (topPos < 0) {
 				topPos = Math.abs(topPos);
 				jQuery(".mysticky-welcomebar-setting-right").css("margin-top", ((-1)*topPos)+"px");
 			} else {
 				jQuery(".mysticky-welcomebar-setting-right").css("margin-top", "0");
 			}
+		}
+		if ( ( mysticky_welcomebar_form_pos + 32 ) < $(window).scrollTop() ) {
+			$( '.mysticky-welcomebar-setting-right' ).css( 'position', 'fixed' );
+			$( '.mysticky-welcomebar-setting-right' ).css( 'right', '70px' );
+		} else {
+			$( '.mysticky-welcomebar-setting-right' ).css( 'position', 'absolute' );
+			$( '.mysticky-welcomebar-setting-right' ).css( 'right', '50px' );
 		}
 	}
 
