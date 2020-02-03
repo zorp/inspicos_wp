@@ -462,6 +462,10 @@ button.button.wp-color-result {
     border-radius: 50%;
     height: 30px !important;
 }
+button.button.wp-color-result .color-alpha {
+	border-radius: 50% !important;
+	height: 28px !important;
+}
 
 .mystickymenu-content-section h3 {
     margin-left: 20px;
@@ -573,9 +577,9 @@ div#slider.ui-slider {
     background: #E1DAF6;
     color: #7559C0;
 }
-.sticky-header-content {
+/*.sticky-header-content {
     display: none;
-}
+}*/
 @media only screen and (min-width: 1024px) and (max-width: 1200px) {
     .pt_numberbutton.pt_numberdown {
         position: relative;
@@ -1580,7 +1584,8 @@ p.udner-title {
 	padding-right: 60px;
 }
 .mysticky-welcomebar-setting-content-right select ,
-.mysticky-welcomebar-setting-content-right input[type="text"] {
+.mysticky-welcomebar-setting-content-right input[type="text"] ,
+.mysticky-welcomebar-setting-content-right textarea {
 	width: 229px;
 	height: 42px;
 	border-radius: 20px;
@@ -1593,12 +1598,24 @@ p.udner-title {
 	font-size: 14px;
 	font-weight: 400;
 }
-.mysticky-welcomebar-setting-wrap .wp-picker-container input[type="text"].wp-color-picker {
+.mysticky-welcomebar-setting-content-right select {
+	padding-right: 30px;
+}
+.mysticky-welcomebar-setting-content-right textarea {
+	height: 100px;
+	border-radius: 10px;
+	padding-top: 9px;
+}
+#mystickymenu .wp-picker-container input[type="text"].wp-color-picker {
 	border-radius: 0;
 	height: 32px;
+	border: 1px solid #DCE2E2;
 }
-.mysticky-welcomebar-setting-content-right .wp-picker-input-wrap .button {
+#mystickymenu .wp-picker-input-wrap .button {
 	height: 32px;
+}
+#mystickymenu .form-table .wp-picker-input-wrap label {
+    padding-right: 10px;
 }
 .mysticky-welcomebar-setting-action {
 	display: inline-block;
@@ -1672,7 +1689,7 @@ a.create-rule {
 	width: 20%;
 }
 .mysticky-welcomebar-page-option .url-content > div.mysticky-welcomebar-url-box {
-	width: 25%;
+	width: 28%;
 	text-align: right;
 	margin-top: 10px;	
 }

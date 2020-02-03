@@ -105,10 +105,13 @@
 		/*02-08-2019 welcom bar js*/
 		$( '.mysticky-welcomebar-action' ).on( 'change', function(){
 			var mysticky_welcomebar_action = $( this ).val();
-			if ( mysticky_welcomebar_action == 'close_bar' ) {
-				$( '.mysticky-welcomebar-redirect' ).hide();
-			} else {
+			if ( mysticky_welcomebar_action == 'redirect_to_url' ) {
 				$( '.mysticky-welcomebar-redirect' ).show();
+			} else {
+				$( '.mysticky-welcomebar-redirect' ).hide();
+			}
+			if ( $('.mysticky-welcomebar-action option:selected').attr('data-href') !== '' && mysticky_welcomebar_action == 'thankyou_screen' ) {
+				window.open( $( '.mysticky-welcomebar-action option:selected' ).attr('data-href') , '_blank');
 			}
 		} );
 		//$( '#mysticky_welcomebar_expirydate' ).datepicker(  );
@@ -239,16 +242,27 @@
 			$( '.mysticky-welcomebar-btn a' ).css( 'font-size', mysticky_welcomebar_fontsize_val + 'px' );
 		} );
 
-		$( 'input[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).on( 'keyup', function(){
-			var mysticky_bar_text_val = $( this ).val();
-			$( '.mysticky-welcomebar-content p' ).text( mysticky_bar_text_val );
+		$( 'textarea[name="mysticky_option_welcomebar[mysticky_welcomebar_bar_text]"]' ).on( 'keyup', function(e){			
+			var mysticky_bar_text_val = $( this ).val().replace(/(?:\r\n|\r|\n)/g, '<br />');
+			$( '.mysticky-welcomebar-content' ).html( "<p>" + mysticky_bar_text_val + "</p>");
 		} );
 
 		$( 'input[name="mysticky_option_welcomebar[mysticky_welcomebar_btn_text]"]' ).on( 'keyup', function(){
 			var mysticky_btn_text_val = $( this ).val();
+			
 			$( '.mysticky-welcomebar-btn a' ).text( mysticky_btn_text_val );
 		} );
-
+		
+		/* DATE: 11-12-2019 start */
+		$( 'select[name="mysticky_option_welcomebar[mysticky_welcomebar_attentionselect]"]' ).on( 'change', function(){ 
+			$(".mysticky-welcomebar-fixed").removeClass (function (index, className) {
+				return (className.match (/(^|\s)mysticky-welcomebar-attention-\S+/g) || []).join(' ');
+			});
+			$( '.mysticky-welcomebar-fixed' ).addClass( 'mysticky-welcomebar-attention-' + $(this).val() );
+			
+		} );
+		/* DATE: 11-12-2019 End */
+		
 		$( '.mysticky-welcomebar-submit input#submit' ).on( 'click', function(e){
 			if ( $( 'input[name="mysticky_option_welcomebar[mysticky_welcomebar_enable]"]' ).prop( 'checked' ) == false && $( 'input#save_welcome_bar' ).val() == '' ) {
 				e.preventDefault();

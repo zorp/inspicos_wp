@@ -3,7 +3,7 @@ Contributors: tomeraharon, galdub, premio
 Tags:menu, header, sticky menu, sticky header, floating menu, floating navigation menu, navigation menu, navigation, sticky navigation menu, welcome bar, hello bar, top bar, sticky bar, floating bar, notification bar
 Requires at least: 3.5.1
 Tested up to: 5.3
-Stable tag: 2.2.6
+Stable tag: 2.3.3
 License: GPLv2 or later
 
 This sticky menu plugin will make your menu or header stick to the top of page, when scrolled down and up. Also create a beautiful Welcome bar with it.
@@ -42,6 +42,7 @@ My Sticky Menu is tested and compatible with Elementor website builder, Divi, WP
 = WITH WELCOME BAR FEATURE YOU CAN: =
 * Display your floating bar at top position
 * Change the background and button colors for your hello bar
+* Add an attention effect to your button and increase conversion and CTR
 * Change font size and font family
 * Set your own text and call-to-action button text
 * Show the closing X on desktop/mobile
@@ -65,6 +66,7 @@ But wait, there's more 😉
 * Show your bar on scroll or after a few seconds
 * Set an expiry date for your welcome bar
 * Display your floating bar on specific pages
+* New: You can set a thank you screen which appears after the button is clicked (can be used for coupons or any other message you want to show your visitors after they click on the button)
 
 <a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="mystickymenu pro plans"><strong>>>> See Pro plans here</strong></a> 
 
@@ -257,6 +259,20 @@ After installing the plugin, you’ll have the option to turn on the welcome bar
 
 
 == Changelog ==
+= 2.3.3 =
+Slight CSS fixes
+= 2.3.2 =
+Minor bug fixes
+= 2.3.1 =
+If the sticky menu is on, and welcome bar is disabled, google fonts aren't downloaded
+= 2.3 =
+Fixed some appearance issues
+= 2.2.9 =
+Multiple lines support for the Welcome Bar
+= 2.2.8 =
+WP-admin submit button styling bug fixed
+= 2.2.7 =
+Added attention effects for the button
 = 2.2.6 =
 Sanitize input fixes
 = 2.2.5 =
